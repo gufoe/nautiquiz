@@ -1,47 +1,17 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+  <q-page class="text-center">
+    <h4>SOS Patente Nautica</h4>
+    <div class="column q-gap-1">
+      <div class="q-mt-md q-mb-xs text-grey">Quizzoni</div>
+      <q-btn flat label="Quizzone" to="quiz-mode" />
+      <q-btn flat label="Quizzone a vela" />
+      <div class="q-mt-md q-mb-xs text-grey">Carteggioni</div>
+      <q-btn flat label="Carteggio" />
+      <q-btn flat label="Carteggio 5D" />
+      <q-btn flat label="Carteggio 42D" />
+    </div>
   </q-page>
+  yo
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-
-defineOptions({
-  name: 'IndexPage'
-});
-
-const todos = ref<Todo[]>([
-  {
-    id: 1,
-    content: 'ct1'
-  },
-  {
-    id: 2,
-    content: 'ct2'
-  },
-  {
-    id: 3,
-    content: 'ct3'
-  },
-  {
-    id: 4,
-    content: 'ct4'
-  },
-  {
-    id: 5,
-    content: 'ct5'
-  }
-]);
-
-const meta = ref<Meta>({
-  totalCount: 1200
-});
-</script>
+<script setup lang="ts"></script>
