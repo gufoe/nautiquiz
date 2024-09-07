@@ -30,14 +30,17 @@
           border-radius: 10px;
         "
       />
-      <div class="q-mt-md q-mb-xs text-bold row no-wrap" style="gap: 5px">
+      <div
+        class="q-mt-md q-mb-xs text-bold row no-wrap cursor-pointer"
+        style="gap: 5px; position: relative; z-index: 10"
+        @click="toggleQuizFav(current_quiz.id)"
+      >
         <!-- {{ current_quiz.id }}) -->
         <q-icon
           name="star"
           :color="isQuizFav(current_quiz.id) ? 'yellow' : 'grey-4'"
           size="sm"
           style="margin-top: 3px"
-          @click="toggleQuizFav(current_quiz.id)"
         />
         <div>
           {{ current_quiz.question }}
