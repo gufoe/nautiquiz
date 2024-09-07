@@ -21,12 +21,18 @@
         :disable="stats.completed - stats.correct <= 0"
         :to="{ name: 'quiz', query: { mode: 'mistakes' } }"
       />
+      <q-btn
+        flat
+        :label="`Preferiti (${QUIZ_FAVS.length})`"
+        :disable="QUIZ_FAVS.length <= 0"
+        :to="{ name: 'quiz', query: { mode: 'favs' } }"
+      />
     </div>
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { getQuizStats } from 'src/utils';
+import { getQuizStats, QUIZ_FAVS } from 'src/utils';
 
 const stats = getQuizStats();
 </script>

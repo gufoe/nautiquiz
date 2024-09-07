@@ -30,7 +30,19 @@
           border-radius: 10px;
         "
       />
-      <div class="q-mt-md q-mb-xs text-bold">{{ current_quiz.question }}</div>
+      <div class="q-mt-md q-mb-xs text-bold row no-wrap" style="gap: 5px">
+        <!-- {{ current_quiz.id }}) -->
+        <q-icon
+          name="star"
+          :color="isQuizFav(current_quiz.id) ? 'yellow' : 'grey-4'"
+          size="sm"
+          style="margin-top: 3px"
+          @click="toggleQuizFav(current_quiz.id)"
+        />
+        <div>
+          {{ current_quiz.question }}
+        </div>
+      </div>
       <ol type="a">
         <li
           v-for="(c, c_i) in current_quiz.choiches"
@@ -88,16 +100,26 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { QuizHistory, QuizInterface, QuizMode, Storage } from '../utils.ts';
+import {
+  getQuizHistory,
+  isQuizFav,
+  QUIZ_FAVS,
+  QuizHistory,
+  QuizInterface,
+  QuizMode,
+  Storage,
+  toggleQuizFav,
+} from '../utils.ts';
 
 import { useRoute } from 'vue-router';
 import { QUIZZES } from 'src/data/quiz.ts';
 const route = useRoute();
-const quiz_history: QuizHistory = Storage.get<QuizHistory>('history') ?? {};
+const quiz_history = getQuizHistory();
 const modes: Record<QuizMode, (q: QuizInterface) => boolean> = {
   all: () => true,
   // all: (q) => !!q.description,
   missing: (q: QuizInterface) => !(q.id in quiz_history),
+  favs: (q: QuizInterface) => QUIZ_FAVS.value.includes(q.id),
   mistakes: (q: QuizInterface) =>
     q.id in quiz_history && quiz_history[q.id] !== q.answer,
 };
