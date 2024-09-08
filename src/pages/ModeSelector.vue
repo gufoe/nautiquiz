@@ -1,6 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="text-center">
-    <h4>SOS Patente Nautica</h4>
+  <q-page view="lHh Lpr lFf" class="text-center">
     <div class="column q-gap-1">
       <div class="q-mt-md q-mb-xs text-grey">Quali quiz vuoi svolgere?</div>
       <q-btn
@@ -27,12 +26,33 @@
         :disable="QUIZ_FAVS.length <= 0"
         :to="{ name: 'quiz', query: { mode: 'favs' } }"
       />
+      <q-btn
+        flat
+        :label="`Segnalazioni (${QUIZ_ISSUES.length})`"
+        :disable="QUIZ_ISSUES.length <= 0"
+        :to="{ name: 'quiz', query: { mode: 'issues' } }"
+      />
     </div>
-  </q-layout>
+    <div class="q-mt-md">
+      <div class="text-caption text-grey">
+        Progresso:
+        {{ ((stats.completed / stats.total) * 100).toFixed(0) }}%
+        <br />
+        Corrette:
+        {{ ((stats.correct / stats.completed) * 100).toFixed(0) }}%
+        <br />
+        Completati: {{ stats.completed }}
+        <br />
+        Errori:
+        {{ stats.completed - stats.correct }}
+        <br />
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
-import { getQuizStats, QUIZ_FAVS } from 'src/utils';
+import { getQuizStats, QUIZ_FAVS, QUIZ_ISSUES } from 'src/utils';
 
 const stats = getQuizStats();
 </script>

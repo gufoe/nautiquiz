@@ -23,7 +23,7 @@ export interface QuizInterface {
   image?: string;
 }
 
-export type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs';
+export type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
 
 export function getQuizHistory(): QuizHistory {
   return Storage.get<QuizHistory>('history', () => ({}));
@@ -37,18 +37,31 @@ export function getQuizStats() {
   };
 }
 
-export const QUIZ_FAVS = ref(Storage.get<number[]>('quiz-favs', () => []));
+export class StoredQuestions {
+  private readonly favs;
 
-export function isQuizFav(quiz_id: number) {
-  return QUIZ_FAVS.value.includes(quiz_id);
-}
-
-export function toggleQuizFav(quiz_id: number) {
-  const i = QUIZ_FAVS.value.indexOf(quiz_id);
-  if (i < 0) {
-    QUIZ_FAVS.value.push(quiz_id);
-  } else {
-    QUIZ_FAVS.value.splice(i, 1);
+  constructor(private storage_name: string) {
+    this.favs = ref(Storage.get<number[]>(this.storage_name, () => []));
   }
-  Storage.set('quiz-favs', QUIZ_FAVS.value);
+
+  includes(quiz_id: number) {
+    return this.favs.value.includes(quiz_id);
+  }
+
+  toggle(quiz_id: number) {
+    const i = this.favs.value.indexOf(quiz_id);
+    if (i < 0) {
+      this.favs.value.push(quiz_id);
+    } else {
+      this.favs.value.splice(i, 1);
+    }
+    Storage.set(this.storage_name, this.favs.value);
+  }
+
+  get length() {
+    return this.favs.value.length;
+  }
 }
+
+export const QUIZ_FAVS = new StoredQuestions('quiz-favs');
+export const QUIZ_ISSUES = new StoredQuestions('quiz-issues');

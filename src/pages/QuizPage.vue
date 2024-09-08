@@ -2,16 +2,9 @@
   <q-page view="lHh Lpr lFf" class="column col q-pa-md" style="gap: 20px">
     <!-- <h4 class="text-center">QUIZ</h4> -->
 
-    <q-linear-progress
-      stripe
-      rounded
-      size="20px"
-      :value="percent"
-      color="blue"
-      class="q-mt-sm"
-    >
+    <q-linear-progress size="18px" rounded :value="percent" color="blue">
       <div class="absolute-full flex flex-center">
-        <q-badge :label="percent_label" />
+        <q-badge :label="percent_label" color="grey-2" text-color="grey" />
       </div>
     </q-linear-progress>
     <div
@@ -33,12 +26,12 @@
       <div
         class="q-mt-md q-mb-xs text-bold row no-wrap cursor-pointer"
         style="gap: 5px; position: relative; z-index: 10"
-        @click="toggleQuizFav(current_quiz.id)"
+        @click="QUIZ_FAVS.toggle(current_quiz.id)"
       >
         <!-- {{ current_quiz.id }}) -->
         <q-icon
           name="star"
-          :color="isQuizFav(current_quiz.id) ? 'yellow' : 'grey-4'"
+          :color="QUIZ_FAVS.includes(current_quiz.id) ? 'yellow' : 'grey-4'"
           size="sm"
           style="margin-top: 3px"
         />
@@ -58,7 +51,22 @@
       </ol>
 
       <div class="text-grey" v-if="is_answered">
-        Tocca ovunque per continuare
+        <div class="row items-center">
+          <q-icon name="touch_app" size="sm" />
+          &nbsp; Tocca ovunque per continuare
+        </div>
+        <div
+          class="row items-center"
+          style="position: relative; z-index: 9"
+          @click.stop="QUIZ_ISSUES.toggle(current_quiz.id)"
+        >
+          <q-icon
+            name="error_outline"
+            size="sm"
+            :color="QUIZ_ISSUES.includes(current_quiz.id) ? 'red' : undefined"
+          />
+          &nbsp; Segnala un problema
+        </div>
         <hr />
         {{ current_quiz.description }}
         <div
@@ -105,13 +113,12 @@
 import { computed, ref } from 'vue';
 import {
   getQuizHistory,
-  isQuizFav,
   QUIZ_FAVS,
+  QUIZ_ISSUES,
   QuizHistory,
   QuizInterface,
   QuizMode,
   Storage,
-  toggleQuizFav,
 } from '../utils.ts';
 
 import { useRoute } from 'vue-router';
@@ -122,7 +129,8 @@ const modes: Record<QuizMode, (q: QuizInterface) => boolean> = {
   all: () => true,
   // all: (q) => !!q.description,
   missing: (q: QuizInterface) => !(q.id in quiz_history),
-  favs: (q: QuizInterface) => QUIZ_FAVS.value.includes(q.id),
+  favs: (q: QuizInterface) => QUIZ_FAVS.includes(q.id),
+  issues: (q: QuizInterface) => QUIZ_ISSUES.includes(q.id),
   mistakes: (q: QuizInterface) =>
     q.id in quiz_history && quiz_history[q.id] !== q.answer,
 };
@@ -130,7 +138,7 @@ const available_quizzes = QUIZZES.filter((q) =>
   modes[route.query.mode as QuizMode](q),
 );
 available_quizzes.sort(() => Math.random() - 0.5);
-available_quizzes.splice(10);
+available_quizzes.splice(1);
 
 const current_quiz_index = ref(0);
 const current_quiz = computed(
