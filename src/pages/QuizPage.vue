@@ -2,7 +2,12 @@
   <q-page view="lHh Lpr lFf" class="column col q-pa-md" style="gap: 20px">
     <!-- <h4 class="text-center">QUIZ</h4> -->
 
-    <q-linear-progress size="18px" rounded :value="percent" color="blue">
+    <q-linear-progress
+      size="18px"
+      rounded
+      :value="percent"
+      :color="current_errors.length > max_errors ? 'red' : 'blue'"
+    >
       <div class="absolute-full flex flex-center">
         <q-badge :label="percent_label" color="grey-2" text-color="grey" />
       </div>
@@ -138,7 +143,7 @@ const available_quizzes = QUIZZES.filter((q) =>
   modes[route.query.mode as QuizMode](q),
 );
 available_quizzes.sort(() => Math.random() - 0.5);
-available_quizzes.splice(1);
+available_quizzes.splice(20);
 
 const current_quiz_index = ref(0);
 const current_quiz = computed(
@@ -159,8 +164,15 @@ const percent = computed(
 );
 const percent_label = computed(
   () =>
-    `${Object.values(session_answers.value).length} / ${available_quizzes.length}`,
+    `${Object.values(session_answers.value).length} / ${available_quizzes.length} (Errori: ${current_errors.value.length})`,
 );
+const max_errors = 4;
+const current_errors = computed(() => {
+  return available_quizzes.filter(
+    (x) =>
+      x.id in session_answers.value && x.answer !== session_answers.value[x.id],
+  );
+});
 
 function selectAnswer(index: number) {
   session_answers.value[current_quiz.value.id] = index;
