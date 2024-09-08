@@ -120,7 +120,7 @@
           if (current_quiz_index + 1 < available_quizzes.length) {
             current_quiz_index++;
           } else {
-            $router.replace({ name: 'quiz-mode' });
+            $router.replace({ name: 'quiz-home', params: $route.params });
           }
         "
       />
