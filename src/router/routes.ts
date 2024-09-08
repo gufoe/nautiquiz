@@ -11,13 +11,13 @@ const routes: RouteRecordRaw[] = [
         name: 'home',
       },
       {
-        name: 'quiz-mode',
-        path: 'quiz-mode',
+        name: 'quiz-home',
+        path: ':mode/',
         component: () => import('pages/ModeSelector.vue'),
       },
       {
         name: 'quiz',
-        path: 'quiz',
+        path: ':mode/quiz',
         component: () => import('pages/QuizPage.vue'),
       },
     ],

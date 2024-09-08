@@ -12,14 +12,10 @@
         <q-badge :label="percent_label" color="grey-2" text-color="grey" />
       </div>
     </q-linear-progress>
-    <div
-      class="column overflow-auto col"
-      style="gap: 10px"
-      :key="current_quiz.id"
-    >
+    <div class="column col" style="gap: 10px" :key="current_quiz.id">
       <img
         v-if="current_quiz.image"
-        :src="`quiz-images/${current_quiz.image}`"
+        :src="`${current_quiz.image}`"
         class="self-center"
         style="
           max-width: 80%;
@@ -31,12 +27,12 @@
       <div
         class="q-mt-md q-mb-xs text-bold row no-wrap cursor-pointer"
         style="gap: 5px; position: relative; z-index: 10"
-        @click="QUIZ_FAVS.toggle(current_quiz.id)"
+        @click="quiz.favs.toggle(current_quiz.id)"
       >
         <!-- {{ current_quiz.id }}) -->
         <q-icon
           name="star"
-          :color="QUIZ_FAVS.includes(current_quiz.id) ? 'yellow' : 'grey-4'"
+          :color="quiz.favs.includes(current_quiz.id) ? 'yellow' : 'grey-4'"
           size="sm"
           style="margin-top: 3px"
         />
@@ -44,16 +40,34 @@
           {{ current_quiz.question }}
         </div>
       </div>
-      <ol type="a">
-        <li
-          v-for="(c, c_i) in current_quiz.choiches"
-          class="q-py-xs"
-          :class="`text-${optionColor(c_i) ?? 'grey'}`"
-          v-text="c"
-          :key="[current_quiz.id, c_i].join('x')"
-          @click="!is_answered && selectAnswer(c_i)"
-        />
-      </ol>
+      <template v-if="'choiches' in current_quiz">
+        <ol type="a">
+          <li
+            v-for="(c, c_i) in current_quiz.choiches"
+            class="q-py-xs"
+            :class="`text-${optionColor(c_i) ?? 'grey'}`"
+            v-text="c"
+            :key="[current_quiz.id, c_i].join('x')"
+            @click="!is_answered && selectAnswer(c_i)"
+          />
+        </ol>
+      </template>
+      <div v-else class="row" style="gap: 20px">
+        <q-btn
+          class="col"
+          :color="optionColor(0)"
+          @click="!is_answered && selectAnswer(0)"
+          icon="close"
+          >FALSO</q-btn
+        >
+        <q-btn
+          class="col"
+          icon="done"
+          :color="optionColor(1)"
+          @click="!is_answered && selectAnswer(1)"
+          >VERO</q-btn
+        >
+      </div>
 
       <div class="text-grey" v-if="is_answered">
         <div class="row items-center">
@@ -63,12 +77,12 @@
         <div
           class="row items-center"
           style="position: relative; z-index: 9"
-          @click.stop="QUIZ_ISSUES.toggle(current_quiz.id)"
+          @click.stop="quiz.issues.toggle(current_quiz.id)"
         >
           <q-icon
             name="error_outline"
             size="sm"
-            :color="QUIZ_ISSUES.includes(current_quiz.id) ? 'red' : undefined"
+            :color="quiz.issues.includes(current_quiz.id) ? 'red' : undefined"
           />
           &nbsp; Segnala un problema
         </div>
@@ -116,32 +130,17 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import {
-  getQuizHistory,
-  QUIZ_FAVS,
-  QUIZ_ISSUES,
-  QuizHistory,
-  QuizInterface,
-  QuizMode,
-  Storage,
-} from '../utils.ts';
+import { QuizMode } from '../utils.ts';
 
+import { getQuiz } from 'src/utils';
 import { useRoute } from 'vue-router';
-import { QUIZZES } from 'src/data/quiz.ts';
+const r = useRoute();
+const quiz = getQuiz(r.params.mode as 'base' | 'vela');
+
 const route = useRoute();
-const quiz_history = getQuizHistory();
-const modes: Record<QuizMode, (q: QuizInterface) => boolean> = {
-  all: () => true,
-  // all: (q) => !!q.description,
-  missing: (q: QuizInterface) => !(q.id in quiz_history),
-  favs: (q: QuizInterface) => QUIZ_FAVS.includes(q.id),
-  issues: (q: QuizInterface) => QUIZ_ISSUES.includes(q.id),
-  mistakes: (q: QuizInterface) =>
-    q.id in quiz_history && quiz_history[q.id] !== q.answer,
-};
-const available_quizzes = QUIZZES.filter((q) =>
-  modes[route.query.mode as QuizMode](q),
-);
+const quiz_history = quiz.getQuizHistory();
+
+const available_quizzes = quiz.getQuizzes(route.query.mode as QuizMode);
 available_quizzes.sort(() => Math.random() - 0.5);
 available_quizzes.splice(20);
 
@@ -174,10 +173,10 @@ const current_errors = computed(() => {
   );
 });
 
-function selectAnswer(index: number) {
-  session_answers.value[current_quiz.value.id] = index;
-  quiz_history[current_quiz.value.id] = index;
-  Storage.set<QuizHistory>('history', quiz_history);
+function selectAnswer(answer: number) {
+  session_answers.value[current_quiz.value.id] = answer;
+  quiz_history[current_quiz.value.id] = answer;
+  quiz.setQuizHistory(quiz_history as never);
 }
 
 function optionColor(c_i: number) {

@@ -6,31 +6,39 @@
         flat
         :label="`Tutti (${stats.total})`"
         :disable="stats.total <= 0"
-        :to="{ name: 'quiz', query: { mode: 'all' } }"
+        :to="{ name: 'quiz', params: $route.params, query: { mode: 'all' } }"
       />
       <q-btn
         flat
         :label="`Mancanti (${stats.total - stats.completed})`"
         :disable="stats.total - stats.completed <= 0"
-        :to="{ name: 'quiz', query: { mode: 'missing' } }"
+        :to="{
+          name: 'quiz',
+          params: $route.params,
+          query: { mode: 'missing' },
+        }"
       />
       <q-btn
         flat
         :label="`Errati (${stats.completed - stats.correct})`"
         :disable="stats.completed - stats.correct <= 0"
-        :to="{ name: 'quiz', query: { mode: 'mistakes' } }"
+        :to="{
+          name: 'quiz',
+          params: $route.params,
+          query: { mode: 'mistakes' },
+        }"
       />
       <q-btn
         flat
-        :label="`Preferiti (${QUIZ_FAVS.length})`"
-        :disable="QUIZ_FAVS.length <= 0"
-        :to="{ name: 'quiz', query: { mode: 'favs' } }"
+        :label="`Preferiti (${quiz.favs.length})`"
+        :disable="quiz.favs.length <= 0"
+        :to="{ name: 'quiz', params: $route.params, query: { mode: 'favs' } }"
       />
       <q-btn
         flat
-        :label="`Segnalazioni (${QUIZ_ISSUES.length})`"
-        :disable="QUIZ_ISSUES.length <= 0"
-        :to="{ name: 'quiz', query: { mode: 'issues' } }"
+        :label="`Segnalazioni (${quiz.issues.length})`"
+        :disable="quiz.issues.length <= 0"
+        :to="{ name: 'quiz', params: $route.params, query: { mode: 'issues' } }"
       />
     </div>
     <div class="q-mt-md">
@@ -52,7 +60,9 @@
 </template>
 
 <script setup lang="ts">
-import { getQuizStats, QUIZ_FAVS, QUIZ_ISSUES } from 'src/utils';
-
-const stats = getQuizStats();
+import { getQuiz } from 'src/utils';
+import { useRoute } from 'vue-router';
+const r = useRoute();
+const quiz = getQuiz(r.params.mode as 'base' | 'vela');
+const stats = quiz.getQuizStats();
 </script>

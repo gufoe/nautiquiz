@@ -1,4 +1,4 @@
-import { QuizInterface } from 'src/utils';
+import { QuizInterface, QuizVelaInterface } from 'src/utils';
 
 export const QUIZZES: QuizInterface[] = [
   {
@@ -117,7 +117,7 @@ export const QUIZZES: QuizInterface[] = [
       'Con riferimento alla figura, quale porzione dello scafo è indicata dalle linee trasversali?',
     answer: 1,
     choiches: ['specchio di poppa.', 'opera viva.', 'opera morta.'],
-    image: 'image_row_11.png',
+    image: '/quiz-base-images/image_row_11.png',
     description:
       "L'opera viva è la parte dello scafo che si trova al di sotto della linea di galleggiamento, a contatto con l'acqua quando l'imbarcazione è in assetto di navigazione. La distinzione tra opera viva e opera morta è fondamentale: l'opera viva influenza direttamente le prestazioni idrodinamiche della nave, come la resistenza all'avanzamento e la stabilità, mentre l'opera morta è situata al di sopra della linea di galleggiamento e comprende tutte le strutture che restano fuori dall'acqua durante la navigazione normale.\n\nNel contesto più tecnico, le linee trasversali nella figura possono indicare una sezione trasversale che mostra la parte inferiore dello scafo immersa in acqua. Questo include la carena e tutte le superfici in contatto con l'acqua, che contribuiscono al galleggiamento e alla manovrabilità della nave. Dunque, ciò che viene rappresentato dalle linee trasversali è appunto l'opera viva.",
   },
@@ -127,7 +127,7 @@ export const QUIZZES: QuizInterface[] = [
       'Con riferimento al disegno rappresentato in figura, quale porzione dello scafo è indicata dalle linee trasversali?',
     answer: 0,
     choiches: ['opera morta.', 'specchio di poppa.', 'opera viva.'],
-    image: 'image_row_12.png',
+    image: '/quiz-base-images/image_row_12.png',
     description:
       "Le linee trasversali rappresentate nel disegno indicano la porzione sommersa dello scafo di una nave, ovvero quella parte che è costantemente a contatto con l'acqua. Questa parte strutturale è denominata \"opera viva\". L'opera viva è cruciale per determinare l'assetto, la stabilità e la manovrabilità della nave, poiché influenza direttamente la resistenza idrodinamica e quindi l'efficienza in navigazione. Inoltre, la manutenzione dell'opera viva, come la prevenzione della crescita di alghe e barnacles, è fondamentale per garantire prestazioni ottimali e ridurre il consumo di carburante. Rispetto alle altre opzioni, l'opera morta si riferisce alla porzione emersa dello scafo, mentre lo specchio di poppa è la parte posteriore verticale dello scafo. Data la rappresentazione delle linee trasversali che indicano la parte sommersa, è corretto identificare questa porzione come \"opera viva\".",
   },
@@ -227,7 +227,7 @@ export const QUIZZES: QuizInterface[] = [
       'giardinetto di sinistra.',
       'dritto di prora.',
     ],
-    image: 'image_row_21.png',
+    image: '/quiz-base-images/image_row_21.png',
     description:
       "La prora è la parte anteriore di una nave. Il termine “dritto di prora” si riferisce specificamente all'estremità più avanzata dello scafo. Nella nautica, il mascone è la parte della nave che si trova tra la prora e la sezione centrale, situato quindi di lato rispetto alla prora. Il giardinetto, invece, è la parte laterale posteriore della nave, prossima alla poppa. Dato che la freccia nel diagramma punta verso la parte frontale centro-lineare dell'unità navale rappresentata, indica inequivocabilmente il dritto di prora. L'identificazione precisa di questi termini è cruciale per la navigazione sicura e la comunicazione efficace a bordo e con altre navi.",
   },
@@ -241,7 +241,7 @@ export const QUIZZES: QuizInterface[] = [
       'giardinetto di dritta.',
       'dritto di prora.',
     ],
-    image: 'image_row_22.png',
+    image: '/quiz-base-images/image_row_22.png',
     description:
       'Il mascone di dritta è la parte della prua (prora) di una nave che si trova tra la linea centrale (linea di chiglia) e la fiancata dritta (destra) della nave. La freccia indicata in figura punta proprio in questa direzione, ovvero al punto della prua anteriore destra rispetto alla nave. Il giardinetto di dritta, invece, è una zona verso poppa, quindi più indietro rispetto alla prua; mentre il dritto di prora è la parte più avanzata della prua stessa e si trova esattamente sulla linea centrale dell\'imbarcazione. Poiché la freccia punta in una zona che non coincide con il centro anteriore o una zona più arretrata, ma si colloca sulla prua destra, la risposta corretta è "mascone di dritta".',
   },
@@ -275,7 +275,7 @@ export const QUIZZES: QuizInterface[] = [
       "La freccia verso l'unità rappresentata in figura a fianco indica il:",
     answer: 0,
     choiches: ['giardinetto di dritta.', 'babordo.', 'mascone di dritta.'],
-    image: 'image_row_25.png',
+    image: '/quiz-base-images/image_row_25.png',
     description:
       'Per comprendere la corretta risposta, è importante sapere come vengono denominati i vari settori della nave in ambito nautico. Il "giardinetto" indica la parte della nave compresa tra la prua e il traverso (90 gradi rispetto alla prua). Il "babordo" (o “sinistra”) è il lato sinistro della nave guardando verso prua. Il "mascone di dritta" invece è la parte della nave che si trova entro un angolo di 45 gradi rispetto alla linea di mezzeria a prua, ma sul lato destro. \n\nAnalizzando la figura correlata alla domanda e osservando la posizione della freccia, si può notare che essa punta verso l\'angolo tra prua e traverso dritta della nave. Questo corrisponde chiaramente al "giardinetto di dritta", che rappresenta il settore di poppavia della nave sul lato destro, situato tra il traverso e la poppa.\n\nQuesta comprensione delle diverse terminologie e settori della nave è essenziale per garantire una corretta navigazione e comunicazione marittima, che sono requisiti fondamentali per il conseguimento della patente nautica.',
   },
@@ -285,7 +285,7 @@ export const QUIZZES: QuizInterface[] = [
       "La freccia verso l'unità rappresentata in figura a fianco indica il:",
     answer: 0,
     choiches: ['giardinetto di sinistra.', 'babordo.', 'mascone di sinistra.'],
-    image: 'image_row_26.png',
+    image: '/quiz-base-images/image_row_26.png',
     description:
       'La freccia indicata nel diagramma punta verso una parte specifica dell\'unità (imbarcazione), che a sua volta determina la corretta terminologia nautica da utilizzare. In questo contesto, è essenziale comprendere la nomenclatura delle varie parti di una nave.\n\nIl "giardinetto" è una porzione dell\'imbarcazione che si trova tra il traverso e la poppa. Più precisamente, il giardinetto di sinistra è la parte posteriore della nave, ma non completamente alla poppa; è la porzione compresa tra i 45° e i 135° partendo dalla poppa verso la prua sul lato sinistro. Babordo, un termine derivato dalla terminologia francese e inglese "port", indica semplicemente il lato sinistro dell\'imbarcazione, ma non specifica una posizione precisa lungo il lato. Il "mascone" di sinistra si riferisce invece alla parte anteriore della nave, tra la prua e il traverso sul lato sinistro.\n\nLa figura con la freccia indica una porzione compresa tra il traverso e la poppa sul lato sinistro, che corrisponde esattamente alla definizione di "giardinetto di sinistra", giustificando perché questa è la risposta corretta.',
   },
@@ -658,7 +658,7 @@ export const QUIZZES: QuizInterface[] = [
       "La freccia verso l'unità rappresentata in figura a fianco indica il:",
     answer: 1,
     choiches: ['mascone.', 'traverso.', 'giardinetto.'],
-    image: 'image_row_59.png',
+    image: '/quiz-base-images/image_row_59.png',
     description:
       "Il mascone è la parte della prua di un'imbarcazione che si trova tra la linea di mezzeria e i fianchi, ovvero una porzione anteriore dell'imbarcazione, approssimativamente compresa tra la prua stessa e una linea a circa 45 gradi rispetto alla prua. È il settore dell'imbarcazione dove la struttura inizia a curvare verso l'esterno, definendo il volume frontale e influenzando il comportamento dell'unità rispetto alle onde e al vento.\n\nOsservando l'immagine fornita, la freccia indica una zona posta anteriormente verso i lati dell'unità navale, confermando quindi che la regione rappresentata è il mascone. In opposizione, il traverso si trova perpendicolarmente alla linea longitudinale dell'imbarcazione e si riferisce alla sezione centrale tra prua e poppa. Il giardinetto, invece, è localizzato verso la parte posteriore dell'imbarcazione, tra poppa e traverso. Poiché la freccia indica una posizione chiaramente anteriore, tra la linea di mezzeria e le fiancate frontali, la risposta corretta è \"mascone\".",
   },
@@ -671,7 +671,7 @@ export const QUIZZES: QuizInterface[] = [
       'la murata sinistra.',
       'il giardinetto di sinistra.',
     ],
-    image: 'image_row_60.png',
+    image: '/quiz-base-images/image_row_60.png',
     description:
       'La risposta corretta è "il giardinetto di sinistra."\n\nLa terminologia nautica utilizza specifici termini per descrivere le varie parti di una nave o imbarcazione. \n\nIl termine "giardinetto" si riferisce a una particolare zona della nave posizionata verso poppa, ma non direttamente alla poppa stessa. Per essere precisi, il giardinetto si trova nella parte laterale posteriore della nave, al di là della perpendicolare poppiera e fino al traverso poppiero. È una parte della nave che si trova tra il campo visivo laterale e il campo visivo diretto verso poppa.\n\nIn contrapposizione, termini come "mascone" e "murata" indicano diverse parti della nave. Il "mascone" è la parte anteriore laterale della nave, indicata tipicamente dalla parte della prua. La "murata" rappresenta, invece, il lato di una nave o imbarcazione che si estende dalla prua alla poppa. Quando si specifica la murata sinistra, ci si riferisce semplicemente al lato sinistro della nave lungo tutta la sua lunghezza.\n\nIl contesto visivo fornito potrebbe mostrare una vista che semplifica la localizzazione della parte specifica della nave, ma conoscendo la terminologia nautica, la descrizione concorda precisamente con il "giardinetto di sinistra," che è una più precisa delimitazione spaziale rispetto a "mascone" o "murata."',
   },
@@ -684,7 +684,7 @@ export const QUIZZES: QuizInterface[] = [
       'il mascone di dritta.',
       'la murata di dritta.',
     ],
-    image: 'image_row_61.png',
+    image: '/quiz-base-images/image_row_61.png',
     description:
       "Il baglio massimo è la larghezza massima dello scafo e viene generalmente misurata in corrispondenza della sezione maestra. Il mascone è la parte della prua in corrispondenza della curva di raccordo con il fianco dello scafo e può essere di sinistra o di dritta a seconda del lato considerato. La murata invece è la parte dello scafo che si sviluppa in altezza dal ponte (o dal galleggiamento) fino all'opera viva, sia sul lato di destra (dritta) che su quello di sinistra (sinistra). Guardando l'immagine, le frecce indicano la parte laterale della prua, il che corrisponde a quella zona arrotondata tra la prua e il fianco dello scafo, che è esattamente la definizione del mascone di dritta. Quindi, la risposta corretta è quella del mascone di dritta poiché le frecce puntano alla zona specifica della prua destra che si configura come tale.",
   },
@@ -2079,7 +2079,7 @@ export const QUIZZES: QuizInterface[] = [
       "le prese dell'acqua di raffreddamento.",
       'Il trim tab.',
     ],
-    image: 'image_row_177.png',
+    image: '/quiz-base-images/image_row_177.png',
     description:
       "Nel motore fuoribordo, le prese dell'acqua di raffreddamento sono fondamentali per il funzionamento del sistema di raffreddamento del motore. Sono situate generalmente nella parte inferiore del piede del motore e hanno la funzione di aspirare l'acqua dall'ambiente circostante (mare, fiume, ecc.) per raffreddare il motore. Le frecce nella figura indicano questi fori o griglie attraverso i quali l'acqua entra nel sistema di raffreddamento. L'acqua passa poi attraverso una pompa e circola nel motore, assorbendo il calore generato dal funzionamento dell'unità, prima di essere espulsa come scarico. Questa caratteristica è cruciale per prevenire il surriscaldamento del motore e garantire che operi entro la gamma di temperature ottimali, evitando danni o inefficienze.",
   },
@@ -2092,7 +2092,7 @@ export const QUIZZES: QuizInterface[] = [
       'il connettore del tubo carburante.',
       'la «spia», fuoriuscita di acqua che testimonia il corretto funzionamento del circuito di raffreddamento.',
     ],
-    image: 'image_row_178.png',
+    image: '/quiz-base-images/image_row_178.png',
     description:
       "La freccia indicata in figura punta il connettore del tubo carburante del motore fuoribordo. Il connettore del tubo carburante è il punto di collegamento tra il serbatoio del carburante e il motore stesso, permettendo il trasferimento del carburante necessario per il funzionamento del motore. Questa connessione è essenziale per il corretto funzionamento del motore, in quanto un'adeguata fornitura di carburante garantisce che il motore possa operare in modo efficiente e senza interruzioni. La presenza di un connettore sicuro e ben collegato è fondamentale per prevenire perdite di carburante e assicurare una combustione efficace all'interno dei cilindri del motore.",
   },
@@ -2105,7 +2105,7 @@ export const QUIZZES: QuizInterface[] = [
       'leva cambio (avanti/folle/indietro)',
       'elica.',
     ],
-    image: 'image_row_179.png',
+    image: '/quiz-base-images/image_row_179.png',
     description:
       "La freccia nella figura indica l'elica del motore fuoribordo. L'elica è un componente cruciale in quanto converte la potenza del motore in spinta, permettendo alla barca di muoversi attraverso l'acqua. È posizionata sullo stelo o sull'albero motore, sotto la piastra anticavitazione e dietro la scatola dell'ingranaggio. La piastra anticavitazione, invece, si trova sopra l'elica e serve a prevenire l'effetto di cavitazione, che può ridurre l'efficienza della propulsione. La leva cambio è una componente di controllo che si trova solitamente sulla console del motore e permette di selezionare le marce avanti, indietro o il folle, ed è quindi separata dall'elica visibile nella figura.",
   },
@@ -2115,7 +2115,7 @@ export const QUIZZES: QuizInterface[] = [
       'Quale parte della trasmissione entrofuoribordo è indicata dalla freccia?',
     answer: 2,
     choiches: ['giunto cardanico.', 'basamento motore.', 'gruppo poppiero.'],
-    image: 'image_row_180.png',
+    image: '/quiz-base-images/image_row_180.png',
     description:
       "Il gruppo poppiero è la parte della trasmissione dei motori entrofuoribordo responsabile di trasmettere la potenza dal motore all'elica. Si trova nella parte posteriore dell'imbarcazione, sporgendo attraverso la poppa, ed è composta da più componenti fondamentali che includono l'albero di trasmissione, l’ingranaggio di inversione e l’elica stessa. La sua funzione principale è permettere la regolazione dell'inclinazione e dell'orientamento dell'elica per dirigere la barca e ottimizzare la spinta. A differenza del giunto cardanico, che è una giunzione flessibile utilizzata per trasmettere coppia tra alberi che non sono allineati, e del basamento motore, che è la struttura di supporto del motore stesso, il gruppo poppiero svolge un ruolo chiave nel controllo e nella trasmissione della potenza.",
   },
@@ -2124,7 +2124,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Quale parte dello scafo è indicata dalla freccia?',
     answer: 2,
     choiches: ['trasmissione.', 'gruppo poppiero.', 'paratia del vano motore.'],
-    image: 'image_row_181.png',
+    image: '/quiz-base-images/image_row_181.png',
     description:
       'La parte dello scafo indicata dalla freccia nel contesto nautico è la "paratia del vano motore". La paratia è una struttura trasversale interna al vano barca, che funge principalmente da elemento di rinforzo e separazione all\'interno dello scafo. Nel caso specifico, la paratia del vano motore separa fisicamente e in genere anche acusticamente il compartimento del motore dal resto delle aree abitative o di stiva della barca. Questo componente è essenziale per la sicurezza, poiché, in caso di incendio nel vano motore, la paratia aiuta a contenere le fiamme e il calore, limitando la loro propagazione ad altre aree dell\'imbarcazione. Inoltre, la paratia del vano motore riduce il rumore e le vibrazioni prodotte dal motore, migliorando il comfort a bordo.',
   },
@@ -2134,7 +2134,7 @@ export const QUIZZES: QuizInterface[] = [
       'Quale parte degli organi di trasmissione di un motore entro bordo è indicata dalla freccia?',
     answer: 0,
     choiches: ['astuccio.', 'asse portaelica.', 'giunto.'],
-    image: 'image_row_182.png',
+    image: '/quiz-base-images/image_row_182.png',
     description:
       "L'asse portaelica è il componente degli organi di trasmissione di un motore entrobordo che ha la funzione di trasmettere il moto dall'uscita del riduttore alla elica. Si tratta di una barra solitamente in acciaio inox, designata per resistere alla corrosione marina e alle sollecitazioni meccaniche. \n\nIl giunto collega il riduttore all'asse portaelica, consentendo una corretta trasmissione del moto anche in presenza di leggeri disallineamenti tra motore e asse. Questo componente è fondamentale per evitare vibrazioni dannose e per permettere la compensazione di movimenti o oscillazioni.\n\nL'astuccio è il tubo, solitamente in bronzo o altro materiale resistente alla corrosione marina, all'interno del quale passa l'asse portaelica. L'astuccio protegge l'asse dall'ambiente esterno e contiene i dispositivi di tenuta che impediscono all'acqua di entrare nell'imbarcazione dove l'asse attraversa lo scafo. \n\nIn sintesi, l'asse portaelica è la parte che direttamente trasmette il moto alle eliche e, pertanto, è quella indicata quando si chiede specificatamente quale componente degli organi di trasmissione viene mostrato dalla freccia.",
   },
@@ -2144,7 +2144,7 @@ export const QUIZZES: QuizInterface[] = [
       'Quale parte degli organi di trasmissione di un motore entro bordo è indicata dalla freccia?',
     answer: 1,
     choiches: ['astuccio.', 'asse portaelica.', 'giunto.'],
-    image: 'image_row_183.png',
+    image: '/quiz-base-images/image_row_183.png',
     description:
       "La figura mostra un componente di un motore entrobordo con una freccia che indica l'asse che collega il motore all'elica. Questa parte è chiamata \"asse portaelica\". L'asse portaelica è un elemento critico dei sistemi di propulsione marittima, poiché trasferisce la potenza dal motore all'elica, permettendo così alla barca di muoversi. Gli organi di trasmissione di un motore entrobordo includono vari componenti come l'astuccio e il giunto, ma l'asse portaelica è specificamente l'asse rotante che supporta l'elica e trasmette la forza meccanica necessaria affinché l'elica propulsi l'imbarcazione nell'acqua.",
   },
@@ -2154,7 +2154,7 @@ export const QUIZZES: QuizInterface[] = [
       'Quale parte degli organi di trasmissione di un motore entro bordo è indicata dalla freccia?',
     answer: 1,
     choiches: ['astuccio.', 'invertitore/riduttore.', 'asse.'],
-    image: 'image_row_184.png',
+    image: '/quiz-base-images/image_row_184.png',
     description:
       "Nel contesto di un motore entrobordo, l'invertitore/riduttore è un componente che serve essenzialmente a due scopi: cambiare il senso di rotazione dell'asse dell'elica (marcia avanti, retromarcia) e modificare il rapporto di trasmissione tra il motore e l'elica. Questi sono componenti cruciali per la gestione delle prestazioni dell'imbarcazione. Nell'immagine specifica, la parte indicata dalla freccia corrisponde precisamente all'invertitore/riduttore, dato che questo componente connette direttamente il motore all'asse di trasmissione e alla parte anteriore dell'asse stesso, fondamentalmente fungendo da intermediario tra il motore e l'elica. Tale disposizione permette di regolare sia la velocità che la direzione del moto dell'imbarcazione, funzioni che sono integralmente gestite dall'invertitore/riduttore.",
   },
@@ -2644,7 +2644,7 @@ export const QUIZZES: QuizInterface[] = [
       'una trasmissione "V drive".',
       'un piede "S drive".',
     ],
-    image: 'image_row_226.png',
+    image: '/quiz-base-images/image_row_226.png',
     description:
       'L\'immagine rappresenta una trasmissione IPS (Inboard Performance System). Questi sistemi sono una tecnologia avanzata che utilizza eliche controrotanti montate su pod orientabili, integrati direttamente nel fondo dello scafo. La caratteristica distintiva dell\'IPS rispetto agli altri tipi di trasmissioni è che le eliche spingono "in avanti", cioè sono montate davanti agli assi dell\'elica stessa, migliorando l\'efficienza idrodinamica e la manovrabilità della barca. L\'IPS permette di raggiungere velocità più elevate con minori consumi di carburante rispetto alle trasmissioni tradizionali e consente manovre molto precise grazie alla possibilità di orientare i pod in tutte le direzioni. A differenza del "V drive" o del "S drive", l\'IPS è associato a una maggiore facilità di controllo e a una performance ottimizzata sia in termini di velocità sia di efficienza.',
   },
@@ -4403,7 +4403,7 @@ export const QUIZZES: QuizInterface[] = [
       'la manovra in figura B.',
       'la manovra in figura C.',
     ],
-    image: 'image_row_371.png',
+    image: '/quiz-base-images/image_row_371.png',
     description:
       "Quando un uomo cade in mare di prora lato dritto da un'imbarcazione a motore, la manovra corretta è quella che consente di recuperare il naufrago in modo rapido e sicuro, evitando di allontanarsi troppo dalla posizione della caduta e mantenendo il naufrago sempre sotto osservazione.\n\nLa manovra in figura B è corretta perché prevede una virata a destra (a dritta) di circa 270 gradi, che consente di tornare indietro verso il punto di caduta in modo diretto, permettendo al timoniere di avere sempre una visuale chiara del naufrago. Questo approccio minimizza la distanza percorsa e mantiene il controllo sulla situazione, ciò è fondamentale per garantire un recupero rapido e sicuro, riducendo il rischio di perderlo di vista.\n\nLe altre due manovre hanno dei difetti. La manovra in figura A potrebbe comportare allontanamenti eccessivi o percorsi più lunghi prima di tornare al punto di caduta, mentre la manovra in figura C prevede una virata a sinistra che rischia di far perdere di vista il naufrago dal lato dritto, rappresentando potenzialmente un pericolo.",
   },
@@ -5427,7 +5427,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'unità A, perché è in fase di avvicinamento all'imboccatura del porto.",
       "l'unità B, perché sta uscendo dal porto.",
     ],
-    image: 'image_row_454.png',
+    image: '/quiz-base-images/image_row_454.png',
     description:
       "L'unità B, perché sta uscendo dal porto, ha il diritto di precedenza. Questo è dovuto a diverse norme di navigazione che regolano l’entrata e l’uscita dai porti. Tali norme stabiliscono che le imbarcazioni che stanno uscendo dal porto devono avere la precedenza per garantire la sicurezza e la fluidità del traffico navale. L'unità A deve cedere il passo all'unità B per evitare collisioni e garantire che le operazioni di manovra all'interno e vicino all'imboccatura del porto si svolgano in modo ordinato. Le ordinanze locali potrebbero modificare queste regole generali, ma nella situazione standard la precedenza spetta all'imbarcazione che esce.",
   },
@@ -5762,7 +5762,7 @@ export const QUIZZES: QuizInterface[] = [
       'ha un palombaro in immersione.',
       'è ferma.',
     ],
-    image: 'image_row_480.png',
+    image: '/quiz-base-images/image_row_480.png',
     description:
       "La bandiera A (Alfa) del Codice Internazionale dei Segnali viene esposta per indicare la presenza di un sommozzatore in immersione nelle vicinanze dell'unità che la issa. Questo segnale è utilizzato come misura di sicurezza per evitare collisioni o altri incidenti che potrebbero mettere in pericolo il sommozzatore. Le imbarcazioni che si avvicinano devono prestare particolare attenzione e mantenere una distanza di sicurezza adeguata. L'uso di questa bandiera è essenziale per garantire operazioni subacquee sicure e per informare gli altri naviganti della situazione particolare che richiede cautela.",
   },
@@ -6490,7 +6490,7 @@ export const QUIZZES: QuizInterface[] = [
       "Nella situazione illustrata di unità alla fonda, dove è più opportuno calare l'ancora?",
     answer: 2,
     choiches: ['nel punto A.', 'nel punto B.', 'nel punto C.'],
-    image: 'image_row_542.png',
+    image: '/quiz-base-images/image_row_542.png',
     description:
       "Nell'illustrazione di unità alla fonda, la scelta corretta è calare l'ancora nel punto B perché rappresenta la posizione migliore per garantire sicurezza e stabilità all'imbarcazione. Scegliere il punto B implica considerare diversi fattori:\n\n1. **Vento e corrente**: Il punto B è generalmente scelto perché offre una posizione ottimale rispetto al vento e alla corrente. Calare l'ancora in un punto dove il vento e la corrente si oppongono o agiscono longitudinalmente sull'imbarcazione riduce il rischio di derive indesiderate. È importante calare l'ancora sopravvento o controcorrente in modo che l'imbarcazione resti orientata con la prua verso questi elementi naturali.\n\n2. **Fondale e spazio di virata**: Il punto B offre anche un fondale appropriato e sufficiente spazio per permettere la virata dell'imbarcazione in caso di variazione dei venti o delle correnti. Un ancoraggio sicuro implica che ci sia abbastanza catena in acqua (almeno 3-5 volte la profondità del fondale), che dovrebbe stendersi senza ostacoli garantendo che l'imbarcazione abbia abbastanza spazio per spostarsi naturalmente senza pericoli di collisione.\n\n3. **Prossimità a ostacoli**: L'ancoraggio nel punto B evita l'avvicinamento a scogli, bassi fondali o altre imbarcazioni che potrebbero rappresentare un pericolo. Questo è particolarmente importante in aree affollate o con variazioni del fondale che potrebbero influire sul posizionamento dell'ancora e sulla sicurezza dell'imbarcazione.\n\n4. **Protezione da condizioni avverse**: Infine, il punto B potrebbe offrire una migliore protezione da onde e maree rispetto ai punti A e C, garantendo un ancoraggio più stabile e riducendo il rischio di strappo dell'ancora.\n\nQuesti fattori evidenziano perché il punto B rappresenta la scelta più sicura e strategica per calare l'ancora in modo da garantire la stabilità e la protezione dell'imbarcazione.",
   },
@@ -6504,7 +6504,7 @@ export const QUIZZES: QuizInterface[] = [
       'quella della barca B, perché ha spazio per la ruota.',
       'quella della barca C, perché è la più lontana dalle altre unità.',
     ],
-    image: 'image_row_543.png',
+    image: '/quiz-base-images/image_row_543.png',
     description:
       "L'ancoraggio corretto è quello della barca B perché ha spazio sufficiente per la ruota. In una rada affollata, è cruciale assicurare che l'ancora abbia spazio per girare correttamente con i cambiamenti di direzione del vento e delle correnti. La ruota dell'ancora rappresenta il raggio di movimento della barca attorno al punto di ancoraggio. Se una barca non ha spazio sufficiente per questa rotazione, rischia di avvicinarsi troppo agli altri natanti, creando situazioni di potenziale collisione o trascinamento dell'ancora. La posizione di barca B assicura che ci sia un'area adeguata per girare liberamente, evitando interferenze con le altre unità ancorate nelle vicinanze.",
   },
@@ -6604,7 +6604,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'assenza di corrente.",
       'la presenza di una corrente sostenuta, di cui devo tener conto in manovra di ancoraggio.',
     ],
-    image: 'image_row_551.png',
+    image: '/quiz-base-images/image_row_551.png',
     description:
       "La presenza di una corrente sostenuta può essere dedotta dalla disposizione e dall'orientamento delle unità già alla fonda. Se le imbarcazioni alla fonda sono tutte orientate nella stessa direzione, è un chiaro segnale che una corrente significativa sta influenzando il loro posizionamento. Nelle acque calme o con corrente debole, le barche tenderebbero a orientarsi secondo il vento predominante, ma con una forte corrente, l'influenza della corrente supera quella del vento, determinando l'allineamento uniforme delle imbarcazioni. Riconoscere e tener conto di questa condizione è fondamentale per una corretta manovra di ancoraggio, poiché la corrente influenzerà il controllo dell'imbarcazione e la posizione finale dell’ancora.",
   },
@@ -6618,7 +6618,7 @@ export const QUIZZES: QuizInterface[] = [
       'la rotazione verso Sud delle unità alla fonda, qualora il vento cessasse.',
       'la rotazione verso Ovest delle unità alla fonda, qualora il vento cessasse.',
     ],
-    image: 'image_row_552.png',
+    image: '/quiz-base-images/image_row_552.png',
     description:
       "Quando il vento cessa, l'orientamento delle imbarcazioni alla fonda è influenzato principalmente dalla corrente. L'osservazione della figura suggerisce la presenza di una prevalente corrente da Nord a Sud. In assenza di vento, le imbarcazioni si orienteranno con la prua rivolta verso nord, adattandosi alla direzione della corrente che le spinge verso sud. Pertanto, deduco che la rotazione delle unità alla fonda, in caso di cessazione del vento, sarà verso sud.",
   },
@@ -6728,7 +6728,7 @@ export const QUIZZES: QuizInterface[] = [
       "In figura a fianco è indicata un'unità all'ormeggio \"all'inglese\", come sono denominati i cavi di ormeggio indicati dalle frecce?",
     answer: 2,
     choiches: ['calumo.', 'mascone.', 'spring.'],
-    image: 'image_row_561.png',
+    image: '/quiz-base-images/image_row_561.png',
     description:
       "I cavi di ormeggio indicati dalle frecce sono denominati \"spring\". \n\nGli spring sono cavi di ormeggio che vengono fissati sia a prua che a poppa e hanno la funzione di contrastare i movimenti longitudinali dell'unità, cioè il movimento avanti e indietro rispetto al molo. Questo tipo di ormeggio è tipicamente utilizzato nell'ormeggio \"all'inglese\", dove l'imbarcazione è posizionata parallela alla banchina. Gli spring, insieme agli altri cavi di ormeggio come le cime di prua e di poppa, lavorano in sinergia per mantenere l'imbarcazione saldamente in posizione, garantendo stabilità e sicurezza.",
   },
@@ -6742,7 +6742,7 @@ export const QUIZZES: QuizInterface[] = [
       'traversino di poppa e traversino di prua.',
       'doppini.',
     ],
-    image: 'image_row_562.png',
+    image: '/quiz-base-images/image_row_562.png',
     description:
       "Nel disegno viene mostrata una configurazione di ormeggio con cavi paralleli all'asse longitudinale dell'unità, che corrono dalla poppa e dalla prua verso punti di ormeggio laterali. Questa disposizione è tipica degli spring, che sono cavi progettati specificamente per impedire il movimento avanti e indietro dell'imbarcazione. Gli spring di poppa sono attaccati intorno alla metà anteriore dell'imbarcazione (prua) e corrono verso la poppa, mentre gli spring di prua sono attaccati intorno alla metà posteriore dell'imbarcazione (poppa) e corrono verso la prua. Questo tipo di ormeggio garantisce la stabilità longitudinale e previene che l'imbarcazione si muova avanti e indietro, sfruttando i cavi tesi in direzione opposta a tali movimenti. I traversini, invece, sono cavi disposti in modo traversale per prevenire il movimento laterale dell'imbarcazione, mentre i doppini non sono una tipologia specifica di cavi d'ormeggio. Quindi, gli spring di poppa e di prua descrivono precisamente la configurazione mostrata nel disegno.",
   },
@@ -6755,7 +6755,7 @@ export const QUIZZES: QuizInterface[] = [
       'no, perché senza uno "spring" di prua e uno "spring" di poppa può muoversi lungo l\'asse longitudinale.',
       'no, perché ha bisogno della "grippia".',
     ],
-    image: 'image_row_563.png',
+    image: '/quiz-base-images/image_row_563.png',
     description:
       "La risposta corretta è \"no, perché senza uno 'spring' di prua e uno 'spring' di poppa può muoversi lungo l'asse longitudinale.\" \n\nLa configurazione corrente con i soli traversini non è sufficiente per un ormeggio stabile nel lungo termine perché non limita il movimento dell'imbarcazione lungo l'asse longitudinale (cioè avanti e indietro). Gli \"spring\" sono cime disposte diagonalmente dalla prua e dalla poppa verso la banchina o il molo e fungono da freni per questo tipo di movimento. Senza di essi, l'imbarcazione è soggetta agli effetti delle onde, delle correnti e del vento, e può quindi scivolare avanti e indietro, danneggiandosi o danneggiando il molo. L'utilizzo degli \"spring\" consente di distribuire meglio gli sforzi sulle cime d'ormeggio e di mantenere l'imbarcazione correttamente posizionata vicino alla banchina.",
   },
@@ -6781,7 +6781,7 @@ export const QUIZZES: QuizInterface[] = [
       'quella sulla bitta A.',
       'è indifferente.',
     ],
-    image: 'image_row_565.png',
+    image: '/quiz-base-images/image_row_565.png',
     description:
       "La cima di poppa che va assicurata per prima è quella sulla bitta B. Durante l'ormeggio, è fondamentale controllare la direzione e la stabilità dell'imbarcazione. Assicurando per prima la cima di poppa sulla bitta B, che è la più distante dalla prua rispetto alla bitta A, si esercita un maggiore controllo sul movimento longitudinale della barca, stabilizzandola meglio nell'ormeggio. Questo metodo riduce il rischio che l'imbarcazione venga spinta in avanti o torni indietro per effetto di correnti o venti, rendendo più sicuro e gestibile il successivo fissaggio della cima di prua. Seguendo questo ordine, si minimizzano tensioni e movimenti indesiderati dell'imbarcazione, garantendo un ormeggio più saldo e controllato.",
   },
@@ -6795,7 +6795,7 @@ export const QUIZZES: QuizInterface[] = [
       'quella sulla bitta A.',
       'è indifferente.',
     ],
-    image: 'image_row_566.png',
+    image: '/quiz-base-images/image_row_566.png',
     description:
       "Per comprendere quale cima di poppa va assicurata per prima, è fondamentale analizzare la dinamica di attracco e come influenze esterne quali correnti e vento agiscono sull'imbarcazione. Nel caso di specie, una delle prime considerazioni da fare è la direzione di tali forze e come queste tendono a spostare l'imbarcazione.\n\nAssicurare la cima sulla bitta B per prima è cruciale in quanto tale posizione di ancoraggio contribuisce a stabilizzare la barca nello specifico scenario. Tipicamente, la bitta B si torva in una posizione in cui l'imbarcazione è più suscettibile agli effetti destabilizzanti del vento e delle correnti. Ancorare per prima la cima dalla bitta B permette di controllare meglio movimenti laterali e di rotazione della barca.\n\nCon questa stabilizzazione iniziale, il controllo sull'imbarcazione è migliorato, facilitando l'ormeggio delle altre cime. Se la cima dalla bitta A venisse assicurata per prima, si rischierebbe di non avere il controllo necessario sui movimenti di poppa, potenzialmente portando a complicazioni nell'ormeggio e nel posizionamento corretto della barca.\n\nPertanto, la scelta di ancorare prima la cima di poppa sulla bitta B viene motivata dalla necessità di avere il massimo controllo sulla barca nella fase iniziale dell'ormeggio, garantendo una stabilizzazione efficace e riducendo il rischio di derive indesiderate.",
   },
@@ -6809,7 +6809,7 @@ export const QUIZZES: QuizInterface[] = [
       'quella sulla bitta A.',
       'è indifferente.',
     ],
-    image: 'image_row_567.png',
+    image: '/quiz-base-images/image_row_567.png',
     description:
       "In una situazione di ormeggio all'interno di un porto, le cime di poppa, solitamente, servono a mantenere la barca parallela alla banchina e a evitare movimenti laterali. Per lasciare la banchina in sicurezza, è cruciale considerare la direzione del vento, della corrente e la configurazione delle cime.\n\nLiberare per prima la cima sulla bitta B è corretto perché consente di mantenere un miglior controllo sull'uscita. La cima sulla bitta A può essere mantenuta per evitare che l'unità navale si sposti prematuramente verso il largo senza controllo. La cima B, vicino alla prua, consente alla barca di effettuare un movimento iniziale controllato allontanandosi diagonalmente dalla banchina. Subito dopo, sarà possibile liberare la cima A e completare la manovra.\n\nLiberare per prima la cima sulla bitta A potrebbe far muovere la poppa della barca verso la banchina sotto l'effetto di forza del timone e della propulsione, rischiando di danneggiare l'unità o la banchina stessa. Pertanto, la sequenza corretta minimizza il rischio di incidente e garantisce una partenza fluida e sicura, mantenendo per più tempo il controllo della posizione.",
   },
@@ -6823,7 +6823,7 @@ export const QUIZZES: QuizInterface[] = [
       'quella sulla bitta A.',
       'è indifferente.',
     ],
-    image: 'image_row_568.png',
+    image: '/quiz-base-images/image_row_568.png',
     description:
       "Il motivo per cui bisogna liberare per prima la cima di poppa sulla bitta B è legato alla dinamica di movimentazione dell'imbarcazione quando si lascia la banchina. Liberare per primo la cima di poppa fissata sulla bitta A porterebbe la poppa a muoversi lateralmente verso la banchina, poiché il punto di ancoraggio B sarebbe ancora attivo, imponendo un movimento attorno a quel punto. Al contrario, liberando per prima la cima di poppa su B, l'imbarcazione rimarrebbe ferma lungo la banchina sorretta dalla cima sulla bitta A, consentendo un rilascio più controllato e sicuro. Successivamente, una volta che la cima su B è sganciata, si può procedere con la cima su A senza rischiare movimenti incontrollati che potrebbero danneggiare l'imbarcazione o la banchina stessa. Questo processo assicura un'uscita fluida e ben gestita dall'ormeggio.",
   },
@@ -6915,7 +6915,7 @@ export const QUIZZES: QuizInterface[] = [
       'Dovendo accostare di poppa, con un’unità munita di una sola elica destrorsa, quale manovra conviene:',
     answer: 1,
     choiches: ['la manovra n. 1.', 'la manovra n. 2.', 'è indifferente.'],
-    image: 'image_row_576.png',
+    image: '/quiz-base-images/image_row_576.png',
     description:
       "Accostare di poppa con un'unità munita di una sola elica destrorsa richiede una particolare attenzione alla direzione della spinta laterale della pala dell'elica, fenomeno noto come \"effetto evolutivo\". Un'elica destrorsa genera una spinta laterale verso dritta (destra) quando la barca è in retromarcia. Pertanto, per accostare a una banchina sul lato sinistro, è consigliabile avvicinarsi con il lato sinistro della poppa prima di dare marcia indietro. Ciò consente di utilizzare l'effetto evolutivo a proprio vantaggio, facendo sì che la spinta laterale dell'elica spinga la poppa verso il lato destro, facilitando l'avvicinamento alla banchina. Questa manovra sfrutta il comportamento naturale dell'elica per migliorare il controllo durante l'approccio alla banchina, rendendo la manovra più sicura ed efficace.",
   },
@@ -6934,7 +6934,7 @@ export const QUIZZES: QuizInterface[] = [
       'Dovendo raggiungere la banchina con la poppa a bordo di una unità dotata di una sola elica sinistrorsa, è più conveniente assumere quale posizione di partenza:',
     answer: 2,
     choiches: ['la posizione 1.', 'la posizione 2.', 'la posizione 3.'],
-    image: 'image_row_578.png',
+    image: '/quiz-base-images/image_row_578.png',
     description:
       "Quando ci si trova a dover ormeggiare con la poppa a bordo di un'unità dotata di una sola elica sinistrorsa, è importante tenere in considerazione l'effetto evolutivo dell'elica. Un'elica sinistrorsa tende a spingere la poppa verso destra quando si innesta la marcia avanti e verso sinistra quando si innesta la marcia indietro. \n\nPartendo dalla posizione 2, l'effetto evolutivo dell'elica sinistrorsa faciliterà il movimento di avvicinamento in retromarcia verso la banchina. In pratica, mentre si governa l’unità in retromarcia, la poppa tenderà naturalmente verso la sinistra, facilitando l'allineamento corretto con la banchina e minimizzando il bisogno di ulteriori correzioni di rotta. Questo sfruttamento dell’effetto evolutivo risulterà quindi in un manovra più agevole e controllata, rendendo la posizione di partenza 2 la scelta migliore.",
   },
@@ -6944,7 +6944,7 @@ export const QUIZZES: QuizInterface[] = [
       'Dovendo raggiungere la banchina con la poppa a bordo di una unità dotata di una sola elica destrorsa, è più conveniente assumere quale posizione di partenza:',
     answer: 1,
     choiches: ['la posizione 1.', 'la posizione 2.', 'la posizione 3.'],
-    image: 'image_row_579.png',
+    image: '/quiz-base-images/image_row_579.png',
     description:
       "Per ormeggiare la poppa di un'imbarcazione dotata di un'elica destrorsa, è consigliabile partire dalla posizione 1. Un'elica destrorsa, vista da poppa, ruota in senso orario, generando un effetto evolutivo che tende a spingere la poppa verso sinistra e la prua verso destra. Questo effetto è più pronunciato a basse velocità e durante le manovre. Partendo dalla posizione 1, con il ponte della barca inclinato rispetto alla banchina, l'effetto evolutivo dell'elica può essere sfruttato per avvicinare facilmente la poppa alla banchina. Quando si innesta la marcia in avanti, l'elica destrorsa spingerà la poppa verso la banchina e permetterà di completare l'ormeggio con maggiore controllo e precisione. Tentare la manovra da un'altra posizione potrebbe richiedere più correzioni e manovre successive, rendendo l'operazione più complicata e meno efficiente.",
   },
@@ -7300,7 +7300,7 @@ export const QUIZZES: QuizInterface[] = [
       "un'unità da diporto intenta alla pesca sportiva.",
       "un'unità che non governa, con abbrivio.",
     ],
-    image: 'image_row_609.png',
+    image: '/quiz-base-images/image_row_609.png',
     description:
       "Il cono con il vertice rivolto verso il basso indica che l'unità sta procedendo sia a motore che a vela. Questo segnale è usato per avvisare le altre imbarcazioni che l'unità ha capacità di manovra ridotta rispetto a una che sta andando esclusivamente a motore. Tale informazione è cruciale per evitare collisioni e per facilitare la corretta applicazione delle regole di precedenza in mare. Secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), le unità che navigano a vela hanno di solito la precedenza sulle unità a motore, ma se una imbarcazione utilizza sia il motore che la vela, deve segnalare questa condizione per informare le altre unità della sua situazione particolare.",
   },
@@ -7591,7 +7591,7 @@ export const QUIZZES: QuizInterface[] = [
       "da pesca, di lunghezza inferiore a 50 metri, che è intenta alla pesca non a strascico che dirige a dritta dell'osservatore.",
       "a motore che sta mostrando il fianco di dritta e che sta dirigendo a sinistra dell'osservatore.",
     ],
-    image: 'image_row_633.png',
+    image: '/quiz-base-images/image_row_633.png',
     description:
       "In base ai fanali rappresentati (due luci bianche in alto e una luce verde in basso), si può identificare che la nave in questione è una nave da pesca di lunghezza uguale o superiore a 50 metri, che è intenta alla pesca a strascico e che dirige a sinistra dell'osservatore.\n\nI fanali usati per le navi da pesca a strascico sono specifici e regolati dalle normative internazionali per prevenire collisioni in mare. Una nave da pesca a strascico mostra:\n\n1. Due fanali in alto (un fanale verde sopra un fanale bianco) ad indicare la sua attività di pesca a strascico.\n2. La lunghezza della nave (uguale o superiore ai 50 metri) è indicata da due fanali bianchi in posizione verticale. I due fanali bianchi sovrapposti indicano che la nave è significativamente lunga, obbligando altre imbarcazioni a tenere conto del suo spazio di manovra e comportamento in mare.\n3. La luce verde a dritta (ovvero la parte destra della nave dalla prospettiva di chi naviga) indica che la nave è visibile dal lato di dritta e si sta dirigendo a sinistra rispetto all'osservatore.\n\nPertanto, l'interpretazione di questi segnali luminari indica che la nave in questione è una grande unità da pesca impegnata in attività specifiche che richiedono spazio e attenzione da parte degli altri navigatori, confermando l'accuratezza della scelta della risposta.",
   },
@@ -7694,7 +7694,7 @@ export const QUIZZES: QuizInterface[] = [
       "intenta alla pesca a strascico, i cui attrezzi si estendono fuoribordo per più di 150 metri, che dirige verso l'osservatore.",
       "intenta alla pesca non a strascico, i cui attrezzi si estendono fuoribordo per più di 150 metri, che dirige verso l'osservatore.",
     ],
-    image: 'image_row_641.png',
+    image: '/quiz-base-images/image_row_641.png',
     description:
       "Il fanale rappresentato indica un'unità intenta alla pesca non a strascico, i cui attrezzi si estendono fuoribordo per più di 150 metri, che dirige verso l'osservatore. Nel sistema di segnalazione luminoso marittimo, un fanale verde acceso accoppiato a un fanale bianco sopra di esso e più in basso è utilizzato per segnalare un'unità impegnata nella pesca diversa dalla pesca a strascico. La presenza di attrezzi estesi per più di 150 metri è indicata dalla luce bianca posizionata sopra quella verde. La direzione dell'osservatore è infine confermata dall'orientamento del fanale stesso.",
   },
@@ -7707,7 +7707,7 @@ export const QUIZZES: QuizInterface[] = [
       "di lunghezza inferiore a 50 metri, intenta alla pesca non a strascico, che dirige verso l'osservatore.",
       "a vela con i fanali facoltativi d'albero che dirige verso l'osservatore.",
     ],
-    image: 'image_row_642.png',
+    image: '/quiz-base-images/image_row_642.png',
     description:
       "Il fanale indicato nella figura rappresenta un'unità di lunghezza inferiore a 50 metri, intenta alla pesca a strascico, che dirige verso l'osservatore. Questo si deduce dalla configurazione dei fanali di navigazione mostrati. In particolare, gli elementi chiave sono:\n\n1. **Fanale verde e fanale bianco**: La combinazione di luce verde sopra la luce bianca è tipica delle unità impegnate nella pesca a strascico.\n\n2. **Unità di lunghezza inferiore a 50 metri**: Le dimensioni dell'unità sono indicate dal tipo e dalla disposizione dei fanali, conformemente alle normative del Colreg (Collision Regulations), che stabiliscono che le unità inferiori ai 50 metri devono mostrare specifici segnali luminosi.\n\n3. **Direzione verso l'osservatore**: La posizione relativa dei fanali (ad esempio, nessun fanale rosso visibile) indica che l'unità sta dirigendo verso l'osservatore, poiché dalla prua di una nave si osservano tipicamente questi fanali.",
   },
@@ -7720,7 +7720,7 @@ export const QUIZZES: QuizInterface[] = [
       'a motore di lunghezza inferiore a 50 metri che mostra la dritta.',
       'a vela che mostra la dritta.',
     ],
-    image: 'image_row_643.png',
+    image: '/quiz-base-images/image_row_643.png',
     description:
       "Un'unità a motore di lunghezza uguale o superiore a 50 metri mostra, oltre ai fanali regolamentari, un secondo fanale a luce bianca sulla stessa linea verticale sopra il primo. I fanali mostrati nell'immagine indicano che l'unità è vista dal lato di dritta (destra), poiché si vedono sia il fanale di via verde sia il fanale di testa d'albero bianco. La presenza di due fanali di testa d'albero indica una lunghezza della nave uguale o superiore a 50 metri. Pertanto, l'unità è a motore e di lunghezza uguale o superiore a 50 metri, e sta mostrando la dritta.",
   },
@@ -7733,7 +7733,7 @@ export const QUIZZES: QuizInterface[] = [
       'a vela, che mostra la prora.',
       'a motore, di lunghezza inferiore a 20 metri, che mostra la prora.',
     ],
-    image: 'image_row_644.png',
+    image: '/quiz-base-images/image_row_644.png',
     description:
       "La presenza di un fanale verde a destra (lato dritta) e di un fanale rosso a sinistra (lato sinistra), insieme a un fanale bianco in alto (fanale di testa d'albero), indica che l'unità è a motore e mostra la prora. L'assenza di una seconda luce bianca più bassa (che rappresenterebbe una nave a motore di lunghezza superiore a 50 metri) e la configurazione standard di uno, due o tre fanali luminosi in una sequenza che segue il codice internazionale rendono chiara l'identificazione di un'unità a motore di lunghezza inferiore ai 50 metri. L'opzione corretta è quindi \"a motore, di lunghezza inferiore a 50 metri, che mostra la prora\".",
   },
@@ -7747,7 +7747,7 @@ export const QUIZZES: QuizInterface[] = [
       'condizionata dalla propria immersione.',
       'a vela con fanali facoltativi, che mostra la poppa.',
     ],
-    image: 'image_row_645.png',
+    image: '/quiz-base-images/image_row_645.png',
     description:
       "I fanali rappresentati indicano una nave condizionata dalla propria immersione. Questo tipo di imbarcazione è caratterizzato dall'avere delle difficoltà di manovra legate alla sua profondità di pescaggio, rendendo quindi essenziale che altre navi nelle vicinanze ne siano consapevoli per adottare le precauzioni necessarie ed evitare collisioni.\n\nI fanali specifici per un'imbarcazione condizionata dalla propria immersione comprendono tipicamente una luce rossa, una bianca e una verde, disposte in una certa maniera che segnala chiaramente agli altri naviganti la sua condizione speciale. Pertanto, questi fanali indicano chiaramente che l'imbarcazione ha limitazioni di movimento dovute alla profondità dell'acqua, piuttosto che essere semplicemente una nave a vela o a propulsione meccanica con fanali facoltativi.",
   },
@@ -7772,7 +7772,7 @@ export const QUIZZES: QuizInterface[] = [
       'nave pilota, senza abbrivio.',
       'nave a vela che mostra la sinistra.',
     ],
-    image: 'image_row_647.png',
+    image: '/quiz-base-images/image_row_647.png',
     description:
       'La nave pilota senza abbrivio è quella corretta perché i fanali rappresentati mostrano una configurazione luminosa specifica per questa tipologia di imbarcazione. In base al Regolamento internazionale per prevenire gli abbordi in mare (COLREGS), una nave pilota deve esibire due fanali verticali, con il fanale bianco sopra il rosso. Questo schema di segnalazione è universalmente riconosciuto per indicare la presenza e la posizione di una nave pilota, indipendentemente dal fatto che essa sia in movimento o ferma. In questo caso, "senza abbrivio" significa che la nave è ferma o non in movimento per effetto della propulsione. Questo differisce notevolmente dai fanali delle altre imbarcazioni nominate nelle opzioni di risposta, le quali seguono altri schemi di segnalazione nautica riconosciuti internazionalmente.',
   },
@@ -7785,7 +7785,7 @@ export const QUIZZES: QuizInterface[] = [
       'nave da pesca non a strascico, senza abbrivio.',
       'nave pilota, senza abbrivio.',
     ],
-    image: 'image_row_648.png',
+    image: '/quiz-base-images/image_row_648.png',
     description:
       'I fanali rappresentati indicano una nave da pesca a strascico, senza abbrivio. Questo perché i fanali di navigazione possono fornire informazioni specifiche sul tipo di nave e sulla sua attività corrente. Nel caso della nave da pesca a strascico, i fanali devono comprendere una luce verde sopra una luce bianca per indicare che è impegnata nella pesca a strascico. La presenza di queste luci senza altre luci di navigazione come quella di via o la luce di poppa, indica che la nave è ferma e quindi senza abbrivio. Questo sistema di luci è regolamentato dalla normativa internazionale per prevenire collisioni in mare e fornire una chiara distinzione delle attività delle varie imbarcazioni.',
   },
@@ -7798,7 +7798,7 @@ export const QUIZZES: QuizInterface[] = [
       'unità navale pilota in navigazione che mostra il suo lato dritto.',
       'nave da pesca non a strascico, con abbrivio, avente un attrezzo esterno che si estende orizzontalmente fuoribordo per una distanza superiore a 150 metri.',
     ],
-    image: 'image_row_649.png',
+    image: '/quiz-base-images/image_row_649.png',
     description:
       "La visualizzazione dei fanali permette di identificare le caratteristiche e le attività di una nave specifica. Nel contesto della navigazione notturna o con scarsa visibilità, i fanali svolgono un ruolo cruciale per la sicurezza e l'identificazione.\n\nNel caso specifico:\n1. **Fanale Rosso sopra Bianco:** Questo combinazione è utilizzata dalle navi da pesca che non stanno pescando a strascico. Indica una nave da pesca con attrezzi in uso che non sono trainati attraverso l'acqua (non a strascico), ma che possono essere dragati, gettati o altrimenti dispiegati.\n2. **Fanale Verde:** Indica il lato dritto (dritta) della nave.\n\nQuando una nave mostra questa combinazione di fanali – rosso sopra bianco con verde (a dritta) – sta comunicando che è una nave da pesca non a strascico in movimento con abbrivio, vista dal suo lato destro (dritto). L'informazione relativa all'attrezzo esterno che si estende orizzontalmente fuoribordo per oltre 150 metri non è indicata in questa precisa configurazione di fanali, che rappresenterebbe normalmente una situazione un po' diversa.\n\nPertanto, riconoscendo i colori e le loro posizioni, possiamo determinare che la risposta corretta è che questa è una nave da pesca non a strascico, con abbrivio, vista sul suo lato dritto.",
   },
@@ -7811,7 +7811,7 @@ export const QUIZZES: QuizInterface[] = [
       "un peschereccio, intento alla pesca non a strascico, con le reti fuoribordo per meno di 150 metri e che dirige a dritta dell'osservatore.",
       "un peschereccio, intento alla pesca non a strascico, con le reti fuoribordo per più di 150 metri e che dirige a dritta dell'osservatore.",
     ],
-    image: 'image_row_650.png',
+    image: '/quiz-base-images/image_row_650.png',
     description:
       "Un peschereccio intento alla pesca non a strascico con le reti fuoribordo si riconosce dai fanali che emette. In questo caso, l'indicazione che dirige a dritta dell'osservatore viene data dal fanale verde (dritta) visibile sulla fiancata destra della nave in movimento rispetto all'osservatore. La questione delle reti fuoribordo per meno di 150 metri è indicata dalla mancanza di specifici segnali addizionali che altrimenti contraddistinguerebbero le reti più lunghe. Questo insieme di segnali identificatori assicura che l'osservatore possa correttamente riconoscere lo stato operativo e l'intenzione in navigazione del peschereccio, garantendo interpretazioni corrette e prevenzione di eventuali collisioni in mare.",
   },
@@ -7824,7 +7824,7 @@ export const QUIZZES: QuizInterface[] = [
       "un'unità da pesca a strascico senza abbrivio.",
       "un'unità a vela che mostra la dritta.",
     ],
-    image: 'image_row_651.png',
+    image: '/quiz-base-images/image_row_651.png',
     description:
       "L’indicazione di un’unità da pesca a strascico senza abbrivio è corretta perché i fanali rappresentati mostrano una combinazione di luci specifiche per questo tipo di unità. In particolare, queste unità, quando sono impegnate in operazioni di pesca con attrezzi trainati che limitano la loro capacità di manovra, devono esporre dei fanali specifici per segnalare la loro condizione ai naviganti. Questa segnalazione viene fatta tramite l'uso di luci colorate e posizionamenti particolari. Un comune schema di fanali per queste unità include una luce rossa sopra una luce verde quando sono fermi, indicando che sono senza abbrivio. Queste luci permettono agli altri naviganti di riconoscere la situazione operativa dell'unità e di agire di conseguenza per evitare collisioni o interferenze con le operazioni di pesca.",
   },
@@ -7837,7 +7837,7 @@ export const QUIZZES: QuizInterface[] = [
       'da pesca a strascico, che mostra la sinistra.',
       'a vela, con fanali ripetitori, che mostra la sinistra.',
     ],
-    image: 'image_row_652.png',
+    image: '/quiz-base-images/image_row_652.png',
     description:
       "I fanali rappresentati nella figura indicano una nave da pesca a strascico, che mostra la sinistra. La nave da pesca a strascico è identificata dai fanali specifici che include: due luci in linea verticale, con quella superiore di colore verde e quella inferiore di colore bianco. Questa combinazione di fanali è esclusiva per le navi da pesca che stanno esercitando l'attività di pesca a strascico. Inoltre, mostra anche i fanali di via che indicano la prua, consentendo di determinare il lato sinistro della nave (bordo di sinistra). Le navi rimorchiate o a vela utilizzano configurazioni diverse, non presentando i fanali verde e bianco in verticale caratteristici delle navi da pesca a strascico.",
   },
@@ -7850,7 +7850,7 @@ export const QUIZZES: QuizInterface[] = [
       'una nave con manovrabilità limitata, con un lato ostruito.',
       'una nave da pesca che opera con attrezzi non a strascico estesi fuori bordo per più di 150 metri.',
     ],
-    image: 'image_row_653.png',
+    image: '/quiz-base-images/image_row_653.png',
     description:
       "Il segnale diurno rappresentato in figura consiste di un cono con la punta in alto sopra un'asta. Questo segnale viene utilizzato in mare per identificare una nave da pesca che opera con attrezzi non a strascico estesi fuori bordo per più di 150 metri. Gli attrezzi di pesca non a strascico, come le reti da posta fisse, le lenze lunghe e i palamiti, estendendosi più di 150 metri fuori bordo, possono creare situazioni di pericolo per altre imbarcazioni che potrebbero avvicinarsi troppo senza essere consapevoli della presenza degli attrezzi. Pertanto, è necessario che tali navi indichino chiaramente la loro condizione operativa di pesca mediante l'uso di questo segnale per avvertire le altre navi e prevenire possibili collisioni o danni agli attrezzi.",
   },
@@ -7863,7 +7863,7 @@ export const QUIZZES: QuizInterface[] = [
       'una unità  alla fonda.',
       'una unità che non governa.',
     ],
-    image: 'image_row_654.png',
+    image: '/quiz-base-images/image_row_654.png',
     description:
       "Il segnale diurno rappresentato indica un'unità incagliata. Questo segnale è costituito da tre palloni neri disposti in verticale, uno sopra l'altro. Secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), le unità incagliate devono esporre di giorno questi tre segnali in modo da essere chiaramente visibili alle altre navi. Questi segnali servono a fornire informazioni vitali ai naviganti sulla condizione dell'unità in questione, in modo da evitare collisioni e garantire la sicurezza della navigazione. I segnali rimangono visibili anche durante eventuali operazioni di soccorso o di disincaglio.",
   },
@@ -7901,7 +7901,7 @@ export const QUIZZES: QuizInterface[] = [
       "un'unità  a propulsione meccanica di lunghezza inferiore a 50 metri  in navigazione.",
       "un'unità alla fonda di lunghezza superiore a 50 metri.",
     ],
-    image: 'image_row_657.png',
+    image: '/quiz-base-images/image_row_657.png',
     description:
       "La figura mostra una luce bianca continua, visibile a 360 gradi, situata sulla parte superiore dell'albero. Questo tipo di segnalazione luminosa si riferisce ad un'unità alla fonda. La luce bianca continua indica che l'unità è alla fonda, mentre la posizione della luce in cima all'albero suggerisce che si tratta di un'unità con una lunghezza inferiore a 50 metri. Se l'unità fosse più lunga di 50 metri, sarebbe richiesta un'ulteriore luce bianca situata nella parte più a poppa, più bassa rispetto alla luce principale, per incrementare la visibilità. Pertanto, la risposta corretta è che si tratta di una unità alla fonda di lunghezza inferiore a 50 metri.",
   },
@@ -7914,7 +7914,7 @@ export const QUIZZES: QuizInterface[] = [
       "un'unita navale da pesca intenta allo strascico vista di prua.",
       "un'unità a vela in navigazione, di lunghezza inferiore a 20 metri, vista di prua.",
     ],
-    image: 'image_row_658.png',
+    image: '/quiz-base-images/image_row_658.png',
     description:
       "L’unità rappresentata nella figura è un'unità navale da pesca intenta allo strascico vista di prua. Il motivo per cui questa è la risposta corretta deriva dalla conoscenza dei segnali diurni e notturni specifici per le diverse tipologie di imbarcazioni secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG). Le navi da pesca, quando sono impegnate in operazioni di pesca che limitano la loro manovrabilità, devono esporre specifici segnali per avvertire le altre unità navali. \n\nNella figura, la presenza delle due luci disposte verticalmente con una luce verde sopra una luce bianca indica un'unità intenta allo strascico. Questo è un segnale diurnio che rende evidente la natura delle attività della nave, segnalando che è impegnata in operazioni che limitano la sua capacità di governare. Le luci di posizione dell’unità (rossa a sinistra, verde a dritta e bianca in torre) indicano inoltre che la figura mostra un'imbarcazione vista di prua.\n\nQuesta rappresentazione è diversa dalle luci caratteristiche di altre tipologie di navi, come una nave con pilota a bordo o un'unità a vela. La nave con pilota a bordo utilizza luci differenti (bianca e rossa verticalmente allineate), e un'unità a vela ha una configurazione di luci completamente diversa (normali luci di navigazione verde e rossa senza particolari segnali ausiliari).\n\nQuindi, la corretta identificazione che combina luci verdi e bianche verticalmente per indicare un’attività di pesca (strascico) è fondamentale per rispondere correttamente.",
   },
@@ -7927,7 +7927,7 @@ export const QUIZZES: QuizInterface[] = [
       "un'unità a motore in navigazione, di lunghezza pari o superiore a 50 metri, vista di prua.",
       "un'unità a motore in navigazione, di lunghezza inferiore a 50 metri, vista di prua.",
     ],
-    image: 'image_row_659.png',
+    image: '/quiz-base-images/image_row_659.png',
     description:
       "La figura mostra una barca con due luci di bordo (verde e rossa) e una luce di testa d'albero, posizionata al di sopra delle luci laterali. Questo schema di luci è tipico di un'unità a motore. La presenza di due luci di testa d'albero sovrapposte indica che si tratta di un'unità di lunghezza pari o superiore a 50 metri. Le luci di prua, verde a dritta e rossa a sinistra, confermano che l'unità è vista di prua. Pertanto, la risposta corretta è che si tratta di un'unità a motore in navigazione, di lunghezza pari o superiore a 50 metri, vista di prua.",
   },
@@ -7978,7 +7978,7 @@ export const QUIZZES: QuizInterface[] = [
       "da pesca, di lunghezza inferiore a 50 metri, che è intenta alla pesca non a strascico che dirige a dritta dell'osservatore.",
       "a motore, di lunghezza uguale o superiore a 50 metri, che sta dirigendo a sinistra dell'osservatore.",
     ],
-    image: 'image_row_663.png',
+    image: '/quiz-base-images/image_row_663.png',
     description:
       "La corretta identificazione della nave dai fanali mostrati in figura si basa sulle regole stabilite dal sistema di fanali di navigazione. I fanali di navigazione sono luci specifiche che forniscono informazioni cruciali sul tipo e sull'attività della nave, oltre alla sua direzione rispetto all'osservatore.\n\nNel caso di una nave da pesca di lunghezza inferiore a 50 metri che è intenta alla pesca non a strascico, il codice dei fanali prescrive che la nave mostri le seguenti luci:\n- Un fanale verde sopra un fanale bianco, visibili a 360 gradi. Questi fanali identificano la nave come impegnata nella pesca non a strascico.\n- Un fanale rosso a sinistra (babordo) e un fanale verde a destra (dritta) che indicano la direzione della nave.\n\nLe specifiche luci verdi e rosse laterali ci indicano la direzione verso cui è orientata la nave. In questo caso, se l'osservatore vede un fanale verde a destra, significa che la nave sta dirigendo a dritta dell'osservatore. Inoltre, l'assenza del secondo fanale bianco alto dietro (che richiede una lunghezza uguale o superiore a 50 metri e una motrice in direzione sinistra) conferma che la nave è inferiore a 50 metri. Pertanto, la descrizione corrisponde esattamente all'attività e alla direzione della nave rispetto all'osservatore, rendendo questa risposta corretta per i fanali rappresentati in figura.",
   },
@@ -7992,7 +7992,7 @@ export const QUIZZES: QuizInterface[] = [
       'l’unità di sinistra accosta a dritta, cedendo il passo all’altra nave.',
       'accostano dallo stesso lato per compiere un giro intero e ritornare sulla propria rotta.',
     ],
-    image: 'image_row_664.png',
+    image: '/quiz-base-images/image_row_664.png',
     description:
       "Quando due unità a propulsione meccanica si trovano in rotta di collisione frontale, entrambe devono accostare a dritta. Questo comportamento è stabilito dalle norme internazionali per prevenire abbordaggi in mare, specificatamente dalla Regola 14 del Regolamento Internazionale per Prevenire gli Abbordaggi in Mare (COLREG). Questa regola richiede che entrambe le unità modifichino la propria rotta per passare a destra l'una dell'altra, minimizzando così il rischio di collisione. Questo tipo di manovra permette di mantenere una chiara separazione tra le due unità, facilitando una gestione sicura del traffico marittimo.",
   },
@@ -8186,7 +8186,7 @@ export const QUIZZES: QuizInterface[] = [
       'entrambe mantengono la rotta inalterata.',
       "l'unità A, che ha il vento sulla sinistra, deve lasciare libera la rotta all'unità B.",
     ],
-    image: 'image_row_679.png',
+    image: '/quiz-base-images/image_row_679.png',
     description:
       "Nel mondo della navigazione a vela, le regole per determinare quale imbarcazione deve dare precedenza all'altra sono stabilite principalmente dagli articoli del COLREG (Regolamento Internazionale per Prevenire gli Abbordi in Mare). Secondo queste regole, se due barche a vela si avvicinano in modo da rischiare una collisione, quella con il vento proveniente da sinistra deve dare precedenza a quella con il vento proveniente da destra. Questo perché chi riceve il vento sulla sinistra trova più difficile manovrare rispetto a chi lo riceve sulla destra. Per chiarire ulteriormente, il vento a dritta (destra) indica che il vento soffia sulla destra del navigante mentre per chi ha il vento a sinistra, soffia sulla sinistra. Quindi, nella situazione descritta, l'unità A, che ha il vento sulla sinistra, deve cedere il passo all'unità B, che riceve il vento sulla destra. Questo meccanismo serve a evitare manovre brusche o pericolose e garantisce la sicurezza in mare.",
   },
@@ -8200,7 +8200,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'unità B, che è sopravvento, deve lasciare libera la rotta all'unità A, che è sottovento.",
       'entrambe mantengono la rotta inalterata.',
     ],
-    image: 'image_row_680.png',
+    image: '/quiz-base-images/image_row_680.png',
     description:
       "La navigazione a vela richiede di seguire regole specifiche per evitare collisioni. Una di queste regole riguarda le precedenze tra unità a vela che prendono il vento dallo stesso lato. In questo scenario, l'unità che è sopravvento deve cedere il passo all'unità sottovento. La ragione è che l'unità sopravvento di solito ha una maggiore capacità di manovra perché il vento la spinge controvento, favorendo il controllo della barca. Inoltre, l'unità sottovento è più vulnerabile poiché subisce l'effetto del vento in maniera più diretta e ha meno spazio di manovra. Quindi, è la barca sopravvento che deve cambiare rotta per evitare la collisione e lasciare libera la rotta alla barca sottovento.",
   },
@@ -8303,7 +8303,7 @@ export const QUIZZES: QuizInterface[] = [
       "all'unità propulsa a vela.",
       'a una nave con manovrabilità limitata.',
     ],
-    image: 'image_row_688.png',
+    image: '/quiz-base-images/image_row_688.png',
     description:
       "Le unità intente alla pesca hanno restrizioni di manovrabilità a causa dell'attrezzatura di pesca che può essere estesa o operativa in acqua. Tuttavia, quando sono in navigazione, non hanno tali restrizioni e devono quindi cedere la precedenza alle navi con manovrabilità limitata, che sono considerate più difficili da manovrare rispetto alle altre imbarcazioni. Una nave con manovrabilità limitata include tutte quelle che a causa della natura del loro lavoro non possono deviare facilmente dal proprio percorso, come navi che eseguono operazioni di dragaggio o cavi sottomarini. Pertanto, in linea con le regole internazionali per prevenire gli abbordi in mare (COLREG), la priorità è data alla nave con manovrabilità limitata.",
   },
@@ -8394,7 +8394,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'unità B.",
       "l'unità A, se proviene da dritta.",
     ],
-    image: 'image_row_695.png',
+    image: '/quiz-base-images/image_row_695.png',
     description:
       "L'unità B ha diritto di precedenza perché l'unità A espone un cono nero con il vertice rivolto verso il basso, indicando che sta navigando a motore (anche se potrebbe avere anche le vele alzate, è comunque considerata una imbarcazione a motore). Secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), le unità a motore devono cedere il passo alle unità a vela quando queste ultime navigano esclusivamente con la forza del vento. Poiché l'unità A è considerata a motore, deve dare precedenza all'unità B, che è a vela e manovra senza l'ausilio del motore.",
   },
@@ -8408,7 +8408,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'unità B, perchè ha il vento sulla sinistra.",
       "l'unità B, perché è mure a dritta.",
     ],
-    image: 'image_row_696.png',
+    image: '/quiz-base-images/image_row_696.png',
     description:
       "Secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), quando due unità a vela con rotte che si incrociano si stanno avvicinando e c'è il rischio di collisione, la regola di precedenza è determinata dalla posizione del vento rispetto alle unità. L'unità con il vento sulla sinistra deve cedere il passo a quella con il vento sulla destra. Nel contesto della domanda, se l'unità B ha il vento sulla sinistra, allora deve cedere il passo all'unità A, che ha il vento sulla destra. Pertanto, l'unità A ha diritto di precedenza.",
   },
@@ -8793,7 +8793,7 @@ export const QUIZZES: QuizInterface[] = [
       "l'unità B, che è sopravvento, deve lasciare libera la rotta all'unità A, che è sottovento.",
       'entrambe mantengono la rotta inalterata.',
     ],
-    image: 'image_row_727.png',
+    image: '/quiz-base-images/image_row_727.png',
     description:
       "Quando due unità a vela si trovano a navigare prendendo il vento dallo stesso lato, la Regola 12 del Regolamento Internazionale per prevenire gli abbordi in mare (COLREG) stabilisce la priorità di manovra. Secondo questa regola, l'unità sopravvento deve cedere il passo all'unità sottovento. Questo perché l'unità sopravvento, trovandosi nella posizione più esposta al vento, ha maggiore manovrabilità e capacità di controllo rispetto all'unità sottovento, che potrebbe avere capacità di manovra limitate. Inoltre, le barche a vela in posizione sopravvento possono spesso godere di una migliore visibilità degli altri velieri sottovento, facilitando l'adozione di opportune misure preventive per evitare collisioni. Pertanto, è corretto affermare che l'unità A, essendo sopravvento, deve lasciare libera la rotta all'unità B, che è sottovento.",
   },
@@ -8942,7 +8942,7 @@ export const QUIZZES: QuizInterface[] = [
       'è un "segnale speciale" utilizzato per indicare particolari configurazioni o situazioni della costa non riportate sulla carta nautica.',
       'è un il segnale cardinale che indicala zona posta a sud di un pericolo isolato.',
     ],
-    image: 'image_row_739.png',
+    image: '/quiz-base-images/image_row_739.png',
     description:
       "Il sistema di segnalamento AISM-IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities) è utilizzato per garantire la sicurezza della navigazione marittima tramite l'uso di segnali visivi. Nel segnalamento AISM-IALA, il segnale di fianco è utilizzato per indicare particolari configurazioni o situazioni della costa non riportate sulla carta nautica. Questi sono noti come \"segnali speciali\" e non servono necessariamente a indicare un pericolo o una zona sicura per la navigazione. Piuttosto, hanno l'obiettivo di attirare l'attenzione dei navigatori su specifiche informazioni locali che potrebbero non essere immediatamente evidenti dalla cartografia standard, quindi hanno un impiego molto specifico e contestuale.",
   },
@@ -8956,7 +8956,7 @@ export const QUIZZES: QuizInterface[] = [
       'è un radio segnalamento marittimo costituto da una "boa con apparato radar- risponditore".',
       'è un segnale da nebbia costituito da una "boa con campana azionata dalle onde ".',
     ],
-    image: 'image_row_740.png',
+    image: '/quiz-base-images/image_row_740.png',
     description:
       'Il simbolo rappresentato indica un radio segnalamento marittimo costituito da una "boa con apparato radar-risponditore". Questo tipo di boa, conosciuta anche come Racon, è fondamentale per la navigazione moderna perché emette un segnale radar in risposta a una trasmissione radar ricevuta da una nave. Una volta che il radar della nave colpisce la boa, il Racon risponde ritrasmettendo un segnale che appare sullo schermo radar della nave, tipicamente sotto forma di un carattere Morse. Questa funzione è particolarmente utile per confermare la posizione della boa e, di conseguenza, per la navigazione sicura, specialmente in condizioni di visibilità limitata come nebbia o pioggia intensa, dove la visibilità visiva è ridotta e l\'uso del radar è cruciale.',
   },
@@ -8970,7 +8970,7 @@ export const QUIZZES: QuizInterface[] = [
       'che la boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, emette luci scintillanti a gruppi di 9 ogni 15 secondi, ed è visibile a una portata nominale di 5 miglia\nnautiche.',
       'che la boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, emette 15 lampi ogni 5 minuti, ed è visibile a una portata geografica di 9 miglia nautiche.',
     ],
-    image: 'image_row_741.png',
+    image: '/quiz-base-images/image_row_741.png',
     description:
       'La sigla alfanumerica posta lateralmente alla boa luminosa indica specifiche caratteristiche della luce che la boa emette, come il tipo di segnale luminoso, il periodo di emissione dei segnali e la portata nominale.\n\nNel sistema AISM-IALA, le boe luminose adottano diversi schemi di lampeggio per comunicare informazioni importanti relative alla navigazione. Ad esempio, un segnale che emette 15 lampi in 9 secondi (15 L 9s) descrive il ritmo con cui la boa emette la luce, utile per identificare di quale boa si tratti e quale direzione o pericolo segnala. La portata nominale, indicata in miglia nautiche, determina la distanza alla quale la luce della boa è visibile in condizioni meteo ottimali.\n\nLa sigla "15 lampi ogni 9 secondi" (15 L 9s) con portata nominale di 5 miglia nautiche descrive esattamente questo tipo di segnale, dove in 9 secondi la boa emette 15 lampi di luce e risulta visibile fino a 5 miglia nautiche. Essere visibili fino a una certa distanza è cruciale per garantire la sicurezza della navigazione, consentendo ai marinai di riconoscere la posizione della boa e prendere le dovute precauzioni in anticipo.\n\nLa comprensione delle sigle e simboli riportati nelle carte nautiche è essenziale per una navigazione sicura ed efficace, dato che consente di decifrare le segnalazioni e orientarsi correttamente lungo le rotte marine.',
   },
@@ -8983,7 +8983,7 @@ export const QUIZZES: QuizInterface[] = [
       'un segnale cardinale del sistema di segnalamento marittimo AISM- IALA.',
       'un segnale di pericolo isolato del sistema di segnalamento marittimo AISM-IALA.',
     ],
-    image: 'image_row_742.png',
+    image: '/quiz-base-images/image_row_742.png',
     description:
       'Il segnale indicato rappresenta un segnale di pericolo isolato del sistema di segnalamento marittimo AISM-IALA. Questo tipo di segnale è usato per indicare la presenza di un pericolo localizzato, come una roccia o un relitto, ma che è circondato da acque sicure. Solitamente è costituito da una boa o struttura visibile con bande nere e rosse orizzontali e una parte superiore con due sfere nere sovrapposte.\n\nIl sistema di segnalamento marittimo AISM-IALA è un sistema internazionale che aiuta i navigatori a identificare pericoli e aree sicure. I segnali cardinali e di acque sicure servono a scopi diversi: i segnali cardinali indicano i punti cardinali attorno a un pericolo e le direzioni sicure per passare, mentre i segnali di acque sicure identificano aree prive di pericoli.\n\nLe caratteristiche del segnale di pericolo isolato sono specifiche e riconoscibili immediatamente ai navigatori, garantendo che le imbarcazioni possano prendere prontamente le misure necessarie per evitare il pericolo localizzato.',
   },
@@ -8997,7 +8997,7 @@ export const QUIZZES: QuizInterface[] = [
       'colore nero con banda(e) orizzontale rossa.',
       'colore rosso con banda(e) orizzontale nera.',
     ],
-    image: 'image_row_743.png',
+    image: '/quiz-base-images/image_row_743.png',
     description:
       "Il segnale marittimo rappresentato nella figura ha il corpo di colore bianco con una o più bande orizzontali rosse. Questo tipo di segnalamento è comunemente utilizzato per indicare segnali speciali e viene conosciuto come \"segnale laterale\" del sistema IALA (Associazione Internazionale di Segnalamento Marittimo). Nel sistema IALA Region A, che copre la maggior parte del mondo incluso l'Europa e parte dell'Asia, i segnali laterali utilizzano specifici schemi di colore per indicare i lati dei canali di navigazione. Le boe e i segnali laterali di colore bianco con bande rosse indicano un'area pericolosa o speciale, come le zone di ancoraggio sicure, le aree di esercitazione o altre zone speciali non destinate alla navigazione normale.",
   },
@@ -9010,7 +9010,7 @@ export const QUIZZES: QuizInterface[] = [
       'un risponditore radar con corno che emette un segnale sonoro da nebbia.',
       "un trasmettitore con sistema automatico d'identificazione.",
     ],
-    image: 'image_row_744.png',
+    image: '/quiz-base-images/image_row_744.png',
     description:
       'Il segnale marittimo rappresentato in figura è un risponditore radar, noto anche come racone. Questo strumento si attiva quando riceve un impulso radar da una nave in avvicinamento e risponde con un segnale che appare sul radar della nave come una serie di anelli concentrici. La rappresentazione grafica tipica di questo segnale, infatti, include un elemento che richiama questo effetto di ritorno radar. È spesso associato a strutture fisse, come boe o fari, per permettere una maggiore accuratezza nella navigazione, specialmente in condizioni di scarsa visibilità. La corretta identificazione di tali segnali è cruciale per evitare collisioni e garantire una navigazione sicura.',
   },
@@ -9023,7 +9023,7 @@ export const QUIZZES: QuizInterface[] = [
       'una boa conica luminosa.',
       'una boa cilindrica luminosa.',
     ],
-    image: 'image_row_745.png',
+    image: '/quiz-base-images/image_row_745.png',
     description:
       "Il segnale marittimo rappresentato in figura indica una boa conica luminosa. I segnali marittimi hanno forme caratteristiche che permettono di identificarli facilmente. Tra queste, vi sono boe sferiche, cilindriche e coniche. \n\nUna boa conica si distingue per la sua forma a cono, con la punta rivolta verso l'alto. Questo tipo di segnalazione viene utilizzato per modalità specifiche di navigazione e delimitazione. Le boe luminose sono dotate di luci che le rendono visibili anche di notte o in condizioni di scarsa visibilità, garantendo una maggiore sicurezza nella navigazione.\n\nPer distinguerla correttamente dagli altri tipi di boa, è essenziale riconoscere la sua forma e sapere che può essere luminosa. Queste boe sono spesso parte di un sistema più ampio di segnalazioni marittime, che include anche boe sferiche (a forma di sfera) e cilindriche (a forma di cilindro), con ciascuna che ha una funzione specifica nella navigazione e nella delimitazione delle acque.",
   },
@@ -9033,7 +9033,7 @@ export const QUIZZES: QuizInterface[] = [
       'Di che colore è il corpo del segnale marittimo rappresentato in figura?',
     answer: 2,
     choiches: ['bianco.', 'rosso.', 'giallo.'],
-    image: 'image_row_746.png',
+    image: '/quiz-base-images/image_row_746.png',
     description:
       'Il segnale marittimo in questione si riferisce probabilmente a una boa o a un segnale galleggiante utilizzato per segnalare determinate condizioni o direttive nel mare. I segnali marittimi sono regolati da un sistema internazionale di colori e forme per garantire una navigazione sicura. Nel sistema internazionale IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities), diversi colori indicano diverse tipologie di segnali.\n\nIn questo caso, il colore giallo è specificamente associato ai segnali utilizzati per indicare aree speciali o situazioni specifiche che non rientrano nelle normali attività di navigazione. Questo può includere, per esempio, aree di esercitazioni militari, zone riservate, lavori subacquei, zone di ricreazione o altro. \n\nQuindi, il colore giallo del corpo del segnale marittimo è quello corretto perché è il colore standard per segnalare situazioni speciali che i naviganti devono essere in grado di identificare e comprendere per navigare in sicurezza e rispettare le restrizioni o le attenzioni particolari imposte dalla presenza di tali segnali.',
   },
@@ -9047,7 +9047,7 @@ export const QUIZZES: QuizInterface[] = [
       '5 lampi gialli ogni 20 secondi con portata nominale di 3 miglia nautiche.',
       '1 lampo giallo ogni 5 secondi con portata geografica di 3 miglia nautiche.',
     ],
-    image: 'image_row_747.png',
+    image: '/quiz-base-images/image_row_747.png',
     description:
       'La caratteristica di un segnale marittimo descrive il suo modello di lampeggio, colore, periodo e portata della luce emessa. La risposta "5 lampi gialli ogni 20 secondi con portata nominale di 3 miglia nautiche" è corretta perché:\n\n- "5 lampi gialli" indica che il segnale emette una sequenza di cinque lampi di luce gialla.\n- "Ogni 20 secondi" fornisce il periodo del ciclo completo dei lampeggi, definendo così la frequenza con cui si ripete la sequenza.\n- "Portata nominale di 3 miglia nautiche" specifica la distanza alla quale la luce del segnale è visibile in condizioni di visibilità standard (l\'apparenza luminosa sotto condizioni atmosferiche favorevoli).\n\nLa portata nominale è un valore indicativo usato per stabilire quanto lontano la luce del segnale sarà visibile, senza considerare le variazioni delle condizioni atmosferiche. La descrizione accurata di un segnale marittimo è cruciale per la navigazione sicura, poiché gli utenti devono poter identificare i segnali correttamente per evitare ostacoli, identificare le posizioni esatte, e ottenere altre informazioni necessarie per la navigazione.',
   },
@@ -9060,7 +9060,7 @@ export const QUIZZES: QuizInterface[] = [
       'boa luminosa ad asta.',
       'boa luminosa cilindrica.',
     ],
-    image: 'image_row_748.png',
+    image: '/quiz-base-images/image_row_748.png',
     description:
       'Il segnale marittimo rappresentato in figura indica una boa luminosa a fuso. Questa tipologia di boa si riconosce per la sua forma allungata e affusolata, che ricorda un fuso da filatura. Le boe luminose di solito sono impiegate per segnalare la presenza di un ostacolo, un pericolo o per indicare specifiche traiettorie di navigazione notturna. La forma e la luminosità della boa aiutano i navigatori a identificarne la natura e ad adottare le dovute misure di sicurezza, contribuendo alla sicurezza della navigazione marittima.',
   },
@@ -9070,7 +9070,7 @@ export const QUIZZES: QuizInterface[] = [
       'Di che colore è il corpo del segnale marittimo rappresentato in figura?',
     answer: 2,
     choiches: ['bianco.', 'nero.', 'giallo.'],
-    image: 'image_row_749.png',
+    image: '/quiz-base-images/image_row_749.png',
     description:
       'Il colore giallo rappresenta un segnale marittimo che identifica una boa di pericolo speciale. Questo tipo di segnale viene utilizzato per indicare zone particolari, come aree di esercitazioni militari, cavi sottomarini, aree di lavori subacquei o di fronte a secche isolate. Secondo il sistema IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities), i segnali di pericolo speciale hanno un corpo giallo così da essere facilmente riconoscibili e distinguibili da altri tipi di segnali marittimi come boe cardinali o laterali, che hanno diverse combinazioni di colori principalmente nero, rosso, verde e bianco. Quindi, il colore corretto del corpo del segnale descritto è il giallo.',
   },
@@ -9084,7 +9084,7 @@ export const QUIZZES: QuizInterface[] = [
       '1 lampo giallo ogni 20 secondi con visibilità di 3 miglia nautiche.',
       '5 lampi gialli ogni 3 secondi con portata geografica di 20 miglia nautiche.',
     ],
-    image: 'image_row_750.png',
+    image: '/quiz-base-images/image_row_750.png',
     description:
       "La caratteristica di un segnale marittimo, rappresentata dal numero di lampi, dalla loro frequenza e dal colore, fornisce informazioni cruciali per la navigazione notturna o in condizioni di scarsa visibilità. Il segnale marittimo in esame, caratterizzato da 5 lampi gialli ogni 20 secondi con portata nominale di 3 miglia nautiche, può essere identificato in questo modo:\n\n- **Numero di lampi**: L'identificazione di un segnalamento luminoso include il conteggio preciso dei lampi prodotti in un ciclo. In questo caso, 5 lampi sono distribuiti uniformemente all'interno di un ciclo di 20 secondi.\n  \n- **Colore**: I lampi di colore giallo sono spesso usati per segnalare aree di particolare attenzione o pericoli specifici.\n\n- **Portata nominale**: La portata nominale (3 miglia nautiche) indica la distanza alla quale il segnale è visibile in condizioni di visibilità ottimale, solitamente determinata in base a fattori come la curvatura terrestre e la geometria del fascio luminoso.\n\nLa caratteristica di 5 lampi ogni 20 secondi è una sequenza predefinita che aiuta i marinai a distinguere questo segnalamento specifico da altri nella zona, contribuiendo a una navigazione sicura riconoscendo esattamente il pericolo o l'area di navigazione limitata che il segnale rappresenta.",
   },
@@ -9097,7 +9097,7 @@ export const QUIZZES: QuizInterface[] = [
       'una boa luminosa ad asta avente come miraglio un Racon.',
       'una boa luminosa a fuso avente come miraglio un Racon.',
     ],
-    image: 'image_row_751.png',
+    image: '/quiz-base-images/image_row_751.png',
     description:
       "Il segnale marittimo rappresentato in figura è una boa luminosa a fuso avente come miraglio un riflettore radar, il cui scopo è fornire un riferimento visibile anche di notte o in condizioni di visibilità ridotta e consentire ai radar delle navi di individuarlo. \n\nIl segnale combina una caratteristica galleggiante (la boa a fuso) e un componente che permette di riflettere le onde radar (il riflettore radar). Questa configurazione è tipicamente usata per segnalare specifici punti di navigazione, come canali di entrata o ostacoli, migliorando la sicurezza in mare. \n\nUn'asta come miraglio o un Racon (Radar Beacon) non corrispondono alla descrizione perché il miraglio è specificamente un segnale fisico che si distingue visivamente (come nel caso del riflettore radar) e il Racon è un dispositivo elettronico che risponde ai segnali radar emettendo un segnale standardizzato utile per identificazione e posizionamento elettronico.",
   },
@@ -9107,7 +9107,7 @@ export const QUIZZES: QuizInterface[] = [
       'Con riferimento allo stralcio di carta nautica Q11, di che colore è la luce del segnale marittimo rappresentato in figura?',
     answer: 2,
     choiches: ['rosso.', 'giallo.', 'bianco.'],
-    image: 'image_row_752.png',
+    image: '/quiz-base-images/image_row_752.png',
     description:
       'Nelle carte nautiche, i segnali luminosi dei fari e delle boe sono rappresentati con simboli specifici e colori codificati. La luce bianca è comunemente utilizzata per un ampio raggio di situazioni, sia costiere che off-shore, poiché offre la massima visibilità. Analizzando lo stralcio di carta nautica, si nota che il colore della luce del segnale marittimo è indicato in bianco per rappresentare un faro o una boa con luce bianca. Questa scelta permette ai navigatori di identificare immediatamente la tipologia di segnale e la sua portata utile nelle condizioni operative notturne o di visibilità ridotta, facilitando così la navigazione sicura.',
   },
@@ -9194,7 +9194,7 @@ export const QUIZZES: QuizInterface[] = [
       'il Sistema B (rosso a dx).',
       'il Sistema C (bianco a dx e a sx).',
     ],
-    image: 'image_row_759.png',
+    image: '/quiz-base-images/image_row_759.png',
     description:
       "Il sistema di segnalamento marittimo IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities) è suddiviso in due regioni principali: il Sistema A e il Sistema B. Il Sistema A è adottato in Europa, Africa, Medio Oriente e gran parte dell'Asia, incluso il Mar Mediterraneo. Questo sistema prevede che le boe laterali rosse si trovino sul lato sinistro (sinistra) e le boe verdi sul lato destro (destra) quando si entra in porto o si segue la direzione convenzionale. Il motivo per cui il Mediterraneo adotta il Sistema A risale a decisioni storiche e alla necessità di uniformità nel segnalamento marittimo di queste regioni, garantendo sicurezza e chiarezza nella navigazione. Il Sistema B, contrario al Sistema A, è utilizzato principalmente nelle Americhe, in Corea e nelle Filippine, dove le boe rosse sono posizionate a destra e quelle verdi a sinistra. Non esiste un Sistema C nel segnalamento marittimo IALA.",
   },
@@ -9289,7 +9289,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Il segnale AISM - IALA regione A, in figura, è un segnale:',
     answer: 2,
     choiches: ['di acque sicure.', 'speciale.', 'di pericolo isolato.'],
-    image: 'image_row_767.png',
+    image: '/quiz-base-images/image_row_767.png',
     description:
       "Il segnale mostrato è un segnale di pericolo isolato, ed è identificato in questo modo per diversi motivi specifici riconducibili alle norme del sistema AISM (IALA) per la Regione A. Innanzitutto, il segnale di pericolo isolato è utilizzato per indicare la presenza di un ostacolo o pericolo specifico che si trova circondato da acque navigabili su tutti i lati. Questo tipo di segnaletica è cruciale per garantire la sicurezza della navigazione, avvertendo i marinai della necessità di aggirare l'ostacolo identificato.\n\nIl segnale di pericolo isolato è caratterizzato da alcune caratteristiche distintive, tra cui:\n1. **Colore:** È tipicamente nero con una o più fasce orizzontali rosse ben visibili.\n2. **Topmark:** Il segnale è munito di due sfere nere sovrapposte posizionate in cima al segnale.\n3. **Luce:** Se questo segnale è dotato di una luce, questa sarà bianca e potrà avere un gruppo di due lampi, come indicato dalle norme.\n\nQuesti elementi visivi sono universali nel sistema IALA per la Regione A, il che significa che seguendo il colore, il topmark e il pattern di luce, i navigatori possono facilmente identificare e comprendere il tipo di pericolo che il segnale rappresenta. In assenza di tali indicazioni, la sicurezza della navigazione potrebbe essere compromessa, rendendo queste norme vitali per prevenire incidenti.",
   },
@@ -9441,7 +9441,7 @@ export const QUIZZES: QuizInterface[] = [
       'cardinale che indica di passare a Ovest dello stesso perché il pericolo è ad Est.',
       'cardinale che indica di passare a Sud dello stesso perché il pericolo è a Nord.',
     ],
-    image: 'image_row_779.png',
+    image: '/quiz-base-images/image_row_779.png',
     description:
       "Il segnale rappresentato con i due coni neri sovrapposti con le punte rivolte una verso l'altra è un segnale cardinale Est secondo il sistema di segnalamento marittimo AISM - IALA Regione A. Questo tipo di segnale indica il punto corretto rispetto al quale i naviganti devono passare per evitare un pericolo. Il segnale cardinale Est segnala di passare a Est dello stesso, poiché identifica che il pericolo è situato a Ovest del segnale. La corretta interpretazione della forma e della posizione dei coni, insieme alla colorazione gialla e nera del segnale, fornisce questa informazione chiave ai marinai per una navigazione sicura.",
   },
@@ -9466,7 +9466,7 @@ export const QUIZZES: QuizInterface[] = [
       'cardinale che indica di passare a Est dello stesso perché il pericolo è ad Ovest.',
       'cardinale che indica di passare a Ovest dello stesso perché il pericolo è ad Est.',
     ],
-    image: 'image_row_781.png',
+    image: '/quiz-base-images/image_row_781.png',
     description:
       "Il segnale AISM - IALA regione A rappresentato è un segnale cardinale di tipo Est. Questo si riconosce perché è costituito da una combinazione di bande nere e gialle, con la parte nera sia in alto sia in basso (disegnate a forma di 'sandwich' con il giallo al centro), e da due coni neri con punte opposte (un cono con la punta in alto e uno con la punta in basso), che è l'indicazione standard per questo tipo di segnale. I segnali cardinali indicano una direzione sicura in cui navigare rispetto al pericolo segnalato, basandosi sui punti cardinali.\n\nNel caso del segnale cardinale di tipo Est, indica agli utenti di navigare a Est del segnale stesso perché l'area di pericolo è situata a Ovest. È fondamentale saper leggere correttamente questi segnali per navigare in sicurezza, evitando aree pericolose come secche, scogli o altre ostruzioni subacquee. I segnali cardine sono essenziali negli spostamenti marittimi per garantire la sicurezza della navigazione, specialmente in condizioni di visibilità ridotta o in acque strette e complicate.",
   },
@@ -9479,7 +9479,7 @@ export const QUIZZES: QuizInterface[] = [
       'cardinale che indica di passare a Sud dello stesso perché il pericolo è a Nord.',
       'cardinale che indica di passare a Ovest dello stesso perché il pericolo è ad Est.',
     ],
-    image: 'image_row_782.png',
+    image: '/quiz-base-images/image_row_782.png',
     description:
       "Il segnale AISM - IALA regione A in figura è un segnale cardinale che indica di passare a Ovest dello stesso perché il pericolo è ad Est. Secondo il sistema IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities), i segnali cardinali sono utilizzati per indicare la posizione di un pericolo rispetto ai quattro punti cardinali. Un segnale cardinale Ovest presenta due coni neri sovrapposti con le punte verso l'alto e verso il basso, ed è colorato in bande nere e gialle. Questo segnale indica che l'area di sicurezza per la navigazione si trova a Ovest del segnale stesso, implicando che il pericolo da evitare è situato ad Est.",
   },
@@ -9760,7 +9760,7 @@ export const QUIZZES: QuizInterface[] = [
       'la sua luce si vede da nord a sud, cioè da 000° a 180°',
       'è un faro spento poiché guasto.',
     ],
-    image: 'image_row_805.png',
+    image: '/quiz-base-images/image_row_805.png',
     description:
       "Un faro può avere un settore di visibilità limitato per diverse ragioni, tra cui esigenze di navigazione sicura e specificità geografiche. Nel caso di un faro che è visibile da est verso ovest, la sua visibilità copre un arco di 180°. Traducendo questa visibilità in gradi, considerando che l'angolo 0° è a nord, otteniamo un settore di visibilità che va da 90° (est) a 270° (ovest). Questo significa che le imbarcazioni che navigano in questo settore possono vedere la luce del faro, aiutandosi nella navigazione e nell'evitare ostacoli o coste.\n\nSul piano tecnico, i settori di visibilità dei fari sono spesso studiati per evitare di illuminare aree non necessarie o per essere visibili soltanto in alcune direzioni ben precise, facilitando così il riconoscimento e l’identificazione del faro stesso. Questa visibilità a 180° è una configurazione piuttosto comune per i fari che devono coprire un’ampia zona orizzontale, garantendo che le navi in approccio possano avvistare il faro con largo anticipo e regolarsi di conseguenza nei movimenti di navigazione.",
   },
@@ -10000,7 +10000,7 @@ export const QUIZZES: QuizInterface[] = [
       'passare ad ovest della boa, essendo questa un segnale cardinale del sistema AISM-IALA.',
       'passare a est della boa, essendo questa un segnale cardinale del sistema AISM-IALA.',
     ],
-    image: 'image_row_824.png',
+    image: '/quiz-base-images/image_row_824.png',
     description:
       "Nel sistema AISM-IALA (Associazione Internazionale dei Segnalamenti Marittimi), i segnali cardinali indicano ai navigatori il lato sicuro da tenere rispetto all'ostacolo o alla zona pericolosa. La boa nella figura è un esempio di segnale cardinale ovest, caratterizzato da due coni neri sovrapposti con le punte rivolte una verso l'altra e da un aspetto specifico di colori nero e giallo. Questo tipo di segnale suggerisce che la zona sicura si trova ad ovest della boa. Pertanto, la corretta precauzione è passare ad ovest della boa per evitare l'ostacolo o la zona pericolosa ad est.",
   },
@@ -10014,7 +10014,7 @@ export const QUIZZES: QuizInterface[] = [
       'che la luce della boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, ha una colorazione gialla intermittente.',
       'che la struttura della boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, ha una colorazione gialla con banda nera.',
     ],
-    image: 'image_row_825.png',
+    image: '/quiz-base-images/image_row_825.png',
     description:
       'La risposta corretta è che la luce della boa luminosa facente parte dei segnali cardinali del sistema AISM-IALA ha una colorazione gialla intermittente. Nella navigazione, i segnali cardinali del sistema AISM-IALA utilizzano boe luminose con specifiche caratteristiche per garantire la sicurezza in mare, indicare pericoli e segnalare la via sicura. La sigla alfabetica posta sotto la rappresentazione grafica di una boa luminosa indica la caratteristica della luce emessa dalla boa stessa. Le boe cardinali con luci gialle intermittenti sono progettate per essere facilmente riconoscibili dai naviganti e indicare precise direzioni di pericolo in base alla loro posizione cardinal (Nord, Est, Sud, Ovest). Questo sistema di segnalazione, adottato a livello internazionale, standardizza le indicazioni fornite dalle boe luminose per ridurre il rischio di collisioni e garantire una navigazione sicura.',
   },
@@ -10027,7 +10027,7 @@ export const QUIZZES: QuizInterface[] = [
       'un segnale cardinale del sistema di segnalamento marittimo AISM- IALA.',
       'un segnale di pericolo isolato del sistema di segnalamento marittimo AISM-IALA.',
     ],
-    image: 'image_row_826.png',
+    image: '/quiz-base-images/image_row_826.png',
     description:
       "Il segnale marittimo rappresentato nella figura indica un segnale di acque sicure del sistema di segnalamento marittimo AISM-IALA. I segnali di acque sicure vengono utilizzati per indicare che attorno a essi l'acqua è libera da pericoli ed è navigabile in sicurezza. Sono caratterizzati da specifici colori e forme: tipicamente presentano strisce verticali bianche e rosse e una sfera rossa sulla sommità. Questi segnali non indicano la direzione ma solo la presenza di acque sicure, a differenza dei segnali cardinali che forniscono indicazioni direzionali basate sui punti cardinali o dei segnali di pericolo isolato che segnalano un pericolo circoscritto dalla presenza di acque sicure tutt'intorno.",
   },
@@ -10041,7 +10041,7 @@ export const QUIZZES: QuizInterface[] = [
       'boa luminosa ad asta indicante un segnale di acque sicure del sistema di segnalamento marittimo AISM-IALA.',
       'boa luminosa ad asta indicante un segnale cardinale del sistema di segnalamento marittimo AISM- IALA.',
     ],
-    image: 'image_row_827.png',
+    image: '/quiz-base-images/image_row_827.png',
     description:
       "Il segnalamento marittimo del sistema AISM-IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities) include vari tipi di boe per garantire la sicurezza della navigazione. La boa luminosa ad asta indicante un segnale speciale è caratterizzata da un colore giallo con una cima a forma di X e può emettere una luce gialla intermittente. Il colore giallo e la cima a X sono peculiari delle boe di segnalazione speciale, utilizzate per denotare aree o avvisi particolari come aree di esercitazione militare, aree di lavori subacquei o installazioni speciali. Le boe di segnalazione di acque sicure, d'altro canto, sono generalmente caratterizzate da fasce verticali rosse e bianche e offrono un riferimento di navigazione sicura, mentre le boe cardinali segnalano la direzione di pericolo rispetto alla posizione della boa stessa, utilizzando combinazioni di colori gialli e neri e particolari segnali diurni di forma diversa a seconda del quadrante cardinale. In questo caso, il segnale rappresentato corrisponde a una boa luminosa ad asta di segnale speciale, identificabile attraverso il colore giallo e la cima a X.",
   },
@@ -10051,7 +10051,7 @@ export const QUIZZES: QuizInterface[] = [
       'Di che colore è il corpo del segnale marittimo rappresentato in figura, posto in prossimità (S) del porto di Piombino?',
     answer: 2,
     choiches: ['nero.', 'bianco.', 'giallo.'],
-    image: 'image_row_828.png',
+    image: '/quiz-base-images/image_row_828.png',
     description:
       'Il segnale marittimo rappresentato nella figura è un segnale cardinale, specificamente un segnale cardinale sud. I segnali cardinali sono utilizzati per indicare le acque sicure intorno ad una determinata area e sono suddivisi in quattro categorie: nord, est, sud e ovest, ciascuna delle quali è associata a un diverso colore e configurazione della boa o del segnale.\n\nUn segnale cardinale sud è caratterizzato da un corpo di colore giallo nella parte superiore e nero nella parte inferiore. Inoltre, le due punte del segnale (se rappresentate) sono orientate verso il basso, formando una forma a "V" rovesciata. Questo specifico schema di colori e configurazione permette ai navigatori di riconoscere il segnale e sapere che per navigare in sicurezza, devono passare a sud del segnale.\n\nLa scelta corretta, quindi, è "giallo" perché i segnali cardinali sud hanno un corpo di questi colori per indicare la posizione sicura a sud del pericolo indicato.',
   },
@@ -10065,7 +10065,7 @@ export const QUIZZES: QuizInterface[] = [
       '3 lampi gialli ogni 3 secondi con visibilità di 4 miglia nautiche.',
       'un lampo giallo ogni 4 secondi con portata geografica di 3 miglia nautiche.',
     ],
-    image: 'image_row_829.png',
+    image: '/quiz-base-images/image_row_829.png',
     description:
       "La caratteristica del segnale marittimo indicato in figura descrive specificamente un fanale cardinale; in questo caso, si tratta di un segnale cardinale Sud. I segnali cardinali servono a indicare la direzione di navigazione sicura rispetto al segnale. La corretta identificazione della caratteristica luminosa del fanale è cruciale per la navigazione notturna e in condizioni di scarsa visibilità. \n\nUn fanale cardinale Sud emette un lampo giallo singolo ogni 3 secondi. Questa caratteristica luminosa è standardizzata a livello internazionale per garantire che i naviganti possano identificare correttamente i segnali e prendere decisioni di navigazione sicure. La portata nominale di un fanale si riferisce alla distanza alla quale la luce del segnale è visibile in condizioni atmosferiche normali. Una portata nominale di 4 miglia nautiche significa che, sotto condizioni atmosferiche favorevoli, la luce del segnale può essere vista fino a 4 miglia nautiche di distanza. \n\nLa portata geografica, menzionata in una delle scelte errate, è un concetto diverso che tiene conto della curvatura della Terra e dell'altezza del fanale rispetto al livello del mare; non è l'attributo che si usa comunemente per descrivere la caratteristica di visibilità delle luci dei segnali marittimi.\n\nComprendere queste caratteristiche permette di navigare in sicurezza, identificare correttamente i segnali cardinali e mantenere la rotta appropriata rispetto agli ostacoli subacquei o alle coste pericolose.",
   },
@@ -10079,7 +10079,7 @@ export const QUIZZES: QuizInterface[] = [
       'che la boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, emette luci scintillanti a gruppi di 3 ogni 10 secondi, ed è visibile a una\nportata nominale di 5 miglia',
       'che la boa luminosa, facente parte dei segnali cardinali del sistema AISM-IALA, emette 10 lampi ogni 5 minuti , ed è visibile ad una portata geografica di 3 miglia nautiche.',
     ],
-    image: 'image_row_830.png',
+    image: '/quiz-base-images/image_row_830.png',
     description:
       'La sigla alfanumerica rappresentata accanto a una boa luminosa sulla carta nautica fornisce informazioni cruciali riguardanti il carattere e la visibilità della luce emessa dalla boa. Solitamente, queste sigle comprendono una sequenza di lettere e numeri che codificano la frequenza, la durata e la gamma della luce emessa.\n\nNel contesto della sigla alfanumerica, la frequenza e il pattern della luce sono indicati per aiutare i navigatori a riconoscere e identificare correttamente il tipo di segnale dalla distanza. Per esempio, la sigla potrebbe indicare che la luce è emessa come una serie di lampi (flash) o luci scintillanti (quick flash), seguiti da periodi di buio, e la sequenza potrebbe essere descritta in termini di secondi o minuti.\n\nIl sistema AISM-IALA (Associazione Internazionale di Segnalamento Marittimo - International Association of Lighthouse Authorities) utilizza boe luminose con caratteristiche specifiche per segnalare punti cardinali, pericoli isolati, canali navigabili, ecc. Un esempio è il segnale cardinale, che utilizza evidentemente una configurazione di luci per indicare in quale direzione rispetto alla boa il navigante deve passare (nord, sud, est, ovest).\n\nLa durata indicata nelle sigle si riferisce spesso ai secondi necessari per completare un ciclo di lampi o scintillii, e la portata nominale, espressa in miglia nautiche, rappresenta la massima distanza alla quale la luce è visibile in condizioni di chiaro.\n\nPerciò, la correttezza della risposta dipende dalla decodificazione corretta della sigla alfanumerica che descrive il numero di lampi, la durata del ciclo luminoso e la portata visiva, nonché dalla consapevolezza del sistema AISM-IALA utilizzato per gestire la segnaletica marittima.',
   },
@@ -10093,7 +10093,7 @@ export const QUIZZES: QuizInterface[] = [
       "che l'area navigabile è posta a levante del segnale stesso.",
       "che l'area navigabile è posta a sud del segnale stesso.",
     ],
-    image: 'image_row_831.png',
+    image: '/quiz-base-images/image_row_831.png',
     description:
       "Il miraglio rappresentato in figura indica un segnale cardinale Est. Questo si distingue per i due coni soprapposti con le punte rivolte una verso l'altra (uno verso l'alto e uno verso il basso). Un segnale cardinale Est specifica che l'area sicura e navigabile si trova a est del segnale stesso. I segnali cardinali sono utilizzati nella navigazione per indicare i lati sicuri da cui passare rispetto a un pericolo marittimo, come un'isola, una secca, o un relitto. Nello specifico, la segnaletica cardinale si divide in quattro categorie: Nord, Est, Sud e Ovest, ciascuna indicando la direzione relativa in cui si trova la zona sicura. In questo contesto, essendo il miraglio un segnale cardinale Est, la risposta corretta è che \"l'area navigabile è posta a levante del segnale stesso.\"",
   },
@@ -10120,7 +10120,7 @@ export const QUIZZES: QuizInterface[] = [
       'colore nero sopra il giallo.',
       'colore bianco sopra il giallo.',
     ],
-    image: 'image_row_833.png',
+    image: '/quiz-base-images/image_row_833.png',
     description:
       'Il segnale marittimo in questione è un segnale cardinale utilizzato per indicare la direzione sicura rispetto a un pericolo. I segnali cardinali sono distinti da colori e forme specifiche per indicare le direzioni nord (N), sud (S), est (E) e ovest (W). \n\nIl segnale rappresentato in prossimità di P.ta della Volpe è un segnale cardinale nord. I segnali cardinali nord sono caratterizzati da una colorazione specifica: il corpo del segnale è colorato con una fascia nera sopra una fascia gialla. Questa disposizione dei colori permette ai navigatori di identificare rapidamente il segnale e sapere che devono navigare a nord del segnale per evitare il pericolo.\n\nIn sintesi, il corpo del segnale cardinale nord ha la parte superiore nera e la parte inferiore gialla, quindi la risposta corretta è che il colore è nero sopra il giallo.',
   },
@@ -10134,7 +10134,7 @@ export const QUIZZES: QuizInterface[] = [
       'scintillante a gruppi di 4 lampi.',
       'scintillante continua e una portata nominale di 4 miglia nautiche.',
     ],
-    image: 'image_row_834.png',
+    image: '/quiz-base-images/image_row_834.png',
     description:
       'Il segnale marittimo rappresentato in figura indica un segnale scintillante a gruppi di 4 lampi. Un segnale marittimo "scintillante" (o "Q" dai termini inglesi "quick-flashing") è caratterizzato da flash molto rapidi, generalmente a una frequenza di almeno 60 lampi al minuto. Quando viene specificato "a gruppi di 4 lampi", significa che i flash sono emessi in gruppi distinti di quattro. Questo tipo di segnalazione può essere utilizzato per distinguere particolari caratteristiche di fari o boe, come la loro posizione relativa ad altri punti di navigazione o per marcare un pericolo isolato, un passaggio sicuro, o una specifica rotta di navigazione. L\'alternativa "scintillante continua" indicherebbe una frequenza costante di lampi senza interruzioni specifiche, mentre "lampeggiante" (o "Flashing") generalmente implica una frequenza inferiore rispetto al "scintillante" e non richiede gruppi distinti.',
   },
@@ -10148,7 +10148,7 @@ export const QUIZZES: QuizInterface[] = [
       'boa non luminosa ad asta indicante un segnale cardinale Sud del sistema di segnalamento marittimo AISM-IALA.',
       'boa luminosa a fuso indicante un pericolo isolato.',
     ],
-    image: 'image_row_835.png',
+    image: '/quiz-base-images/image_row_835.png',
     description:
       "Il segnale marittimo descritto è parte del sistema di segnalamento marittimo AISM-IALA e, nello specifico, un segnale cardinale Sud. Questo tipo di segnale viene utilizzato per indicare che le acque sicure si trovano a Sud del segnale stesso. Le boe cardinali sono cruciali per la navigazione sicura, in quanto indicano la direzione da seguire rispetto alla posizione di un pericolo, come una secca, uno scoglio o un'area di basso fondale. I segnali cardinali si distinguono per la forma della boa, i colori, il numero e la disposizione delle bande e per la luce ritmica, se luminosa. Nel caso del segnale cardinale Sud, la boa ha una colorazione specifica con una combinazione di bande nere e gialle: due bande nere sopra e sotto, con una banda gialla centrale. Anche i coni, quando presenti, puntano entrambi verso il basso, indicando chiaramente la direzione Sud. Il sistema AISM-IALA è adottato a livello internazionale per garantire uniformità e comprensibilità nella segnalazione marittima, facilitando la sicurezza in mare per tutti i naviganti.",
   },
@@ -10162,7 +10162,7 @@ export const QUIZZES: QuizInterface[] = [
       "che l'area navigabile è posta a Ovest del segnale stesso.",
       "che l'area navigabile è posta a Sud del segnale stesso.",
     ],
-    image: 'image_row_836.png',
+    image: '/quiz-base-images/image_row_836.png',
     description:
       "Il miraglio rappresentato in figura indica una boa cardinale sud. Le boe cardinali sono utilizzate per segnalare ai naviganti le acque sicure rispetto alla posizione della boa stessa. In questo caso specifico, una boa cardinale sud è contraddistinta da un miraglio con due coni neri disposti con i vertici verso il basso. Questo tipo di segnalazione indica che l'area navigabile sicura è posta a sud della boa. Pertanto, la presenza della boa cardinale sud in prossimità dell'Isola Mortorio indica che per navigare in sicurezza, l'imbarcazione deve mantenersi a sud del segnale. Questa disposizione permette ai naviganti di evitare secche, scogli o altre pericolosità che si trovano a nord del segnale.",
   },
@@ -10175,7 +10175,7 @@ export const QUIZZES: QuizInterface[] = [
       'il segnale di dritta (zona A) entrando nei porti o nei canali.',
       'il segnale di pericolo isolato.',
     ],
-    image: 'image_row_837.png',
+    image: '/quiz-base-images/image_row_837.png',
     description:
       'Il segnale raffigurato nella figura è noto come "segnale di dritta (zona A)". Questo tipo di segnalazione è utilizzato nelle acque interne e nei canali per guidare la navigazione sicura delle imbarcazioni. Nel sistema di segnalazione marittima IALA (International Association of Lighthouse Authorities), usato nella zona A (che include Europa, Africa ed Asia), i segnali di dritta sono generalmente di colore rosso e portano un cono con punta verso l\'alto. In Italia e negli altri paesi della zona A, questi segnali indicano il lato destro (dritta) del canale quando un\'imbarcazione sta entrando in un porto o navigando in direzione del fiume. Questo sistema di segnalazione aiuta i naviganti a evitare ostacoli e a seguire percorsi sicuri, prevenendo incidenti e collisioni in acque ad alto traffico.',
   },
@@ -10188,7 +10188,7 @@ export const QUIZZES: QuizInterface[] = [
       'il segnale di dritta (zona A) entrando nei porti o nei canali.',
       'il segnale di acque libere.',
     ],
-    image: 'image_row_838.png',
+    image: '/quiz-base-images/image_row_838.png',
     description:
       'Il segnale rappresentato nella figura corrisponde al segnale di dritta (zona A) entrando nei porti o nei canali. Questo tipo di segnalazione è conforme al sistema IALA (International Association of Marine Aids to Navigation and Lighthouse Authorities), che stabilisce standard internazionali per le boe di navigazione. Nella "zona A", che comprende Europa, Africa e alcune altre regioni, i segnali di dritta sono identificati da boe coniche di colore verde. Questo segnale guida le imbarcazioni a mantenere la boa di dritta (destra) quando entrano in un porto o in un canale, facilitando la corretta navigazione e prevenendo collisioni.',
   },
@@ -10202,7 +10202,7 @@ export const QUIZZES: QuizInterface[] = [
       'segnale di chiamata e rimando; dobbiamo proseguire lungo la sponda dove si trova il segnale sino ad avviso successivo.',
       "segnale di chiamata e rimando; l'unità deve dirigersi verso la sponda e fare marcia indietro.",
     ],
-    image: 'image_row_839.png',
+    image: '/quiz-base-images/image_row_839.png',
     description:
       "Il segnale di chiamata e rimando indica all'unità di dirigersi verso la sponda dove è collocato il segnale e poi abbandonarla immediatamente dopo averla raggiunta, senza procedere lungo la sponda o fare marcia indietro. Questo va compreso nel contesto della navigazione fluviale, dove è fondamentale evitare collisioni e rispettare i segnali per garantire un flusso ordinato del traffico. La risposta corretta sottolinea che dopo aver raggiunto la sponda, l'unità deve allontanarsene subito perché il segnale funziona sia come una richiesta di avvicinamento per eventuali controlli o comunicazioni urgenti, sia come un avviso di rimando per non interferire con altre imbarcazioni. Gli altri opzioni non rispettano questa duplice funzione di avvicinarsi e poi allontanarsi, che è essenziale per la gestione sicura del traffico fluviale.",
   },
@@ -10268,7 +10268,7 @@ export const QUIZZES: QuizInterface[] = [
       'se presente sulla sponda destra, indica che dobbiamo dirigere verso la sponda dove si trova il segnale.',
       'indica che dobbiamo invertire il senso di marcia.',
     ],
-    image: 'image_row_844.png',
+    image: '/quiz-base-images/image_row_844.png',
     description:
       "Il segnale rappresentato è un segnale di navigazione fluviale che, se presente sulla sponda destra del fiume, indica che dobbiamo abbandonare la sponda dove si trova il segnale e dirigere la navigazione verso la sponda opposta. I segnali di questo tipo sono utilizzati per guidare il traffico fluviale, assicurando che le imbarcazioni seguano correttamente il percorso navigabile ed evitino le secche o altri ostacoli sul lato in cui è esposto il segnale. Questo sistema di segnaletica è parte integrante delle norme di sicurezza e regolamentazione nella navigazione interna e serve a mantenere l'ordine e prevenire incidenti.",
   },
@@ -10282,7 +10282,7 @@ export const QUIZZES: QuizInterface[] = [
       'se presente sulla sponda sinistra, indica che dobbiamo abbandonare la sponda dove si trova il segnale.',
       'indica che dobbiamo invertire il senso di marcia.',
     ],
-    image: 'image_row_845.png',
+    image: '/quiz-base-images/image_row_845.png',
     description:
       "Nella navigazione fluviale, il corretto riconoscimento dei segnali è di vitale importanza per la sicurezza e la gestione del traffico. Il segnale in figura è specificamente progettato per guidare il traffico lungo il corso d'acqua. In questo caso, il segnale indica che, se presente sulla sponda sinistra, l'imbarcazione deve dirigersi verso quella sponda.\n\nQuesto segnale nautico è parte del sistema di segnali di navigazione che comunicano chiare istruzioni agli operatori riguardo la direzione di marcia da intraprendere. La presenza di segnali sulle sponde fornisce un riferimento visivo costante che aiuta a mantenere una navigazione sicura, evitando aree pericolose, secche, o ostacoli sommersi che spesso non sono visibili dall'imbarcazione. In particolare, questo segnale riesce a regolare il traffico anche in condizioni di visibilità limitata, come in caso di nebbia o oscurità.\n\nLa logica dietro questo segnale si basa sul fatto che le acque interne, come fiumi e canali, possono avere correnti e condizioni variabili. Dirigendosi verso la sponda indicata dal segnale, l’imbarcazione può navigare nelle acque più sicure e profonde, riducendo il rischio di incagliamento o collisione.\n\nIn sintesi, questo segnale impone all'operatore di seguire una direzione specifica, migliorando così la sicurezza della navigazione e garantendo un flusso ordinato del traffico fluviale.",
   },
@@ -10296,7 +10296,7 @@ export const QUIZZES: QuizInterface[] = [
       "segnale di prosecuzione; devo aumentare la velocità della mia unità perché c'è una forte corrente.",
       'segnale di prosecuzione; devo proseguire lungo la sponda dove si trova il segnale sino ad avviso successivo.',
     ],
-    image: 'image_row_846.png',
+    image: '/quiz-base-images/image_row_846.png',
     description:
       "Il segnale di prosecuzione indica la via da seguire lungo il corso d'acqua, che in questo caso è fino a nuovo avviso. Nella navigazione fluviale, segnali simili sono cruciali per la sicurezza, poiché i fiumi possono avere percorsi pericolosi, stimolati anche dalla forte corrente. Indicare di proseguire lungo la sponda dove si trova il segnale garantisce che l'unità rimanga nel canale navigabile appropriato e eviti ostacoli subacquei o aree di bassa profondità. Questo tipo di segnale guida i navigatori mantenendo un percorso sicuro fino a che ulteriori segnali non indichino eventuali cambiamenti o nuovi avvisi, pertanto è vitale seguire esattamente le indicazioni date per garantire una navigazione senza incidenti.",
   },
@@ -10699,7 +10699,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Che tipo di fronte è rappresentato in figura?',
     answer: 1,
     choiches: ['fronte caldo.', 'fronte freddo.', 'fronte occluso.'],
-    image: 'image_row_879.png',
+    image: '/quiz-base-images/image_row_879.png',
     description:
       "Un fronte occluso si forma quando un fronte freddo raggiunge un fronte caldo, sollevando l'aria calda tra i due. Questo tipo di fronti si verifica comunemente nelle fasi mature o finali di una perturbazione, quando l'aria fredda, più veloce e densa, spinge e solleva l'aria calda del fronte caldo, situato davanti al fronte freddo. L'immagine solitamente rappresenta un fronte occluso con una combinazione di simboli: mezzi cerchi e triangoli posti sulla stessa linea nella stessa direzione. I mezzi cerchi indicano un fronte caldo e i triangoli un fronte freddo, mostrando come l'aria fredda stia avanzando e sollevando l'aria sia calda che temperata. Questo processo comporta una riduzione del calore a livello del suolo e la formazione di nuvole di vario tipo, che possono comprendere strati, cumuli, nembostrati e forti precipitazioni variabili.",
   },
@@ -10708,7 +10708,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Che tipo di fronte è rappresentato in figura?',
     answer: 2,
     choiches: ['fronte freddo.', 'fronte occluso.', 'fronte caldo.'],
-    image: 'image_row_880.png',
+    image: '/quiz-base-images/image_row_880.png',
     description:
       "Un fronte caldo è rappresentato in figura quando l'aria calda avanza sopra un'area precedentemente occupata da aria più fredda e densa. Questo processo crea un'area di incontro tra le due masse d'aria, con la calda che solleva gradualmente quella fredda, generando una pendenza meno ripida rispetto a un fronte freddo. Questo tipo di fronte è indicato simbolicamente da una linea rossa con semicerchi che puntano nella direzione del movimento del fronte stesso. I semicerchi ci suggeriscono che l'aria calda, più leggera, scorre sopra l'aria fredda, portando a nubi stratificate e piogge leggere e continue. Tutti questi elementi portano alla conclusione che la figura rappresenta un fronte caldo.",
   },
@@ -10717,7 +10717,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Che tipo di fronte è rappresentato in figura?',
     answer: 1,
     choiches: ['fronte freddo.', 'fronte stazionario.', 'fronte caldo.'],
-    image: 'image_row_881.png',
+    image: '/quiz-base-images/image_row_881.png',
     description:
       "La figura rappresenta un fronte freddo, che è uno degli elementi fondamentali nel campo della meteorologia marittima. Un fronte freddo si verifica quando una massa di aria fredda, che è più densa e ha un maggior peso specifico, avanza in una zona occupata da una massa di aria più calda e meno densa. La caratteristica principale di questo tipo di fronte è il modo in cui la massa d'aria fredda spinge sotto quella calda, sollevandola rapidamente. Questo sollevamento causa una rapida condensazione del vapore acqueo presente nell'aria calda, portando alla formazione di nubi cumulonembi e a una probabile instabilità atmosferica.\n\nVisivamente, un fronte freddo viene rappresentato con una linea blu con triangoli rivolti nella direzione di movimento del fronte, indicando la direzione in cui l'aria fredda sta avanzando. I segni triangolari sono posti sulla linea frontale per indicare con esattezza la posizione del fronte stesso. \n\nQuesta configurazione meteorologica è associata a un rapido cambiamento delle condizioni atmosferiche, come un improvviso abbassamento della temperatura, aumento del vento, e talvolta forti precipitazioni e temporali. La comprensione e l'identificazione dei fronti freddi sono essenziali per la navigazione in quanto permettono ai marinai di prevedere questi cambiamenti e prepararsi adeguatamente per affrontarli.",
   },
@@ -10726,7 +10726,7 @@ export const QUIZZES: QuizInterface[] = [
     question: 'Che tipo di fronte è rappresentato in figura?',
     answer: 0,
     choiches: ['fronte occluso', 'fronte stazionario.', 'fronte caldo.'],
-    image: 'image_row_882.png',
+    image: '/quiz-base-images/image_row_882.png',
     description:
       "La rappresentazione in figura è un fronte occluso, che si verifica quando una massa d'aria fredda supera una massa d'aria calda, sollevando quest'ultima e provocando la formazione di nubi e spesso precipitazioni. Questo tipo di fronte è caratterizzato in meteorologia dalla combinazione di simboli usati per il fronte freddo e il fronte caldo: triangoli e semicirconferenze alternati che puntano nella direzione del movimento. Nel fronte occluso, poiché la massa d'aria calda è sollevata dal suolo, l'aria fredda dietro il fronte freddo si muove più rapidamente dell'aria calda, intrappolando e sollevando ulteriormente l'aria calda. Questo processo porta spesso a cieli coperti e a condizioni meteorologiche instabili, con una possibilità significativa di precipitazioni moderate o intense.",
   },
@@ -12707,7 +12707,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di una tonnara.',
       'fondo sporco.',
     ],
-    image: 'image_row_1052.png',
+    image: '/quiz-base-images/image_row_1052.png',
     description:
       'Il simbolo in figura indica i limiti di una zona regolamentata. Nelle carte nautiche, le zone regolamentate sono spesso rappresentate con una linea tratteggiata o con simboli specifici che delimitano aree particolari, come riserve marine, aree in cui sono presenti restrizioni alla navigazione, zone di pesca regolamentata, o altre aree con regolamentazioni specifiche. Questi simboli sono cruciali per i navigatori perché forniscono informazioni vitali sulle restrizioni o sugli obblighi presenti in determinate aree, garantendo la sicurezza della navigazione e il rispetto delle normative locali. Dettagli come il colore, la forma e il contesto del simbolo aiutano a distinguerlo da altri simboli che indicano caratteristiche del fondale o strutture come tonnare.',
   },
@@ -12720,7 +12720,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di uno scoglio affiorante.',
       'la presenza di un campanile.',
     ],
-    image: 'image_row_1053.png',
+    image: '/quiz-base-images/image_row_1053.png',
     description:
       'Il simbolo rappresentato nella figura è caratteristico per indicare la presenza di un campanile su una carta nautica. Nella simbologia delle carte nautiche, un segno grafico di questo tipo viene utilizzato per contrassegnare una struttura alta e ben visibile, come un campanile. I campanili sono punti di riferimento molto utili per la navigazione costiera perché sono generalmente visibili da lunga distanza, il che li rende ottimi per determinare la posizione esatta della nave rispetto alla costa. Questo è particolarmente utile per la navigazione a vista quando non si dispone di strumenti elettronici, ma è utile anche come controllo incrociato delle informazioni di navigazione elettronica. Differisce da altri simboli che potrebbero indicare pericoli come scogli affioranti, i quali solitamente sono rappresentati con simboli diversi e più evidenti per avvisare immediatamente il navigante del pericolo alla navigazione.',
   },
@@ -12733,7 +12733,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di scogli sommersi non pericolosi per la navigazione.',
       'reti da pesca.',
     ],
-    image: 'image_row_1054.png',
+    image: '/quiz-base-images/image_row_1054.png',
     description:
       "Il simbolo rappresentato in figura, secondo la cartografia nautica standard e in base alle norme internazionali dell'Organizzazione Idrografica Internazionale (IHO), identifica gli scogli sommersi pericolosi per la navigazione. Questi scogli non affiorano alla superficie, ma possono trovarsi a profondità ridotte sotto il livello dell'acqua, costituendo un rischio significativo per le imbarcazioni, specialmente per quelle con pescaggio profondo. Il simbolo serve quindi come avvertimento agli operatori di navigazione per adottare le misure necessarie a evitare collisioni o incagli. La corretta interpretazione di tali simboli è essenziale per la sicurezza della navigazione e per la pianificazione delle rotte sicure, evitando potenziali pericoli nascosti sotto la superficie dell'acqua.",
   },
@@ -12747,7 +12747,7 @@ export const QUIZZES: QuizInterface[] = [
       'sottomarino non più in funzione o abbandonato.',
       'per reti da pesca.',
     ],
-    image: 'image_row_1055.png',
+    image: '/quiz-base-images/image_row_1055.png',
     description:
       'Il simbolo nella figura a fianco indicato sulla carta nautica serve per rappresentare la presenza di un cavo sottomarino. Questo viene utilizzato per identificare cavi che, benché non trasmettano energia o dati, possono ancora costituire un ostacolo fisico e un pericolo per la navigazione e le operazioni subacquee. La risposta corretta è la seconda opzione: "sottomarino non più in funzione o abbandonato." Non è corretto perché indichi la presenza di un cavo elettrico attivo (prima risposta), o per reti da pesca (terza risposta). La normativa marittima prevede che tutti i cavi, inclusi quelli non più in uso, devono essere segnalati per evitare potenziali rischi, come per esempio l\'incaglio di ancore o altri strumenti di immersione.',
   },
@@ -12774,7 +12774,7 @@ export const QUIZZES: QuizInterface[] = [
       "è possibile l'ancoraggio con ancora dotata di una sola marra.",
       "è probabile che l'ancora s'incastri sul fondo.",
     ],
-    image: 'image_row_1057.png',
+    image: '/quiz-base-images/image_row_1057.png',
     description:
       "Il simbolo raffigurato indica un'area in cui è probabile che l'ancora s'incastri sul fondo. Questo avvertimento è essenziale per evitare situazioni in cui l'ancora diventa difficile da recuperare, potenzialmente danneggiando sia l'ancora stessa che il fondo marino. Inoltre, l'incastro dell'ancora può causare problemi di sicurezza e manovrabilità della nave. Questo è particolarmente rilevante in aree con fondali rocciosi o corallini, dove è più comune che un'ancora rimanga bloccata tra rocce o altre strutture sottomarine. L'avviso permette ai naviganti di prendere precauzioni, come scegliere un ancoraggio alternativo o utilizzare tecniche specifiche per ridurre il rischio di incastro.",
   },
@@ -12831,7 +12831,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di uno schema di separazione del traffico, diviso da una zona di separazione.',
       'la presenza di una zona di traffico costiero senza limiti definiti.',
     ],
-    image: 'image_row_1062.png',
+    image: '/quiz-base-images/image_row_1062.png',
     description:
       "Il simbolo rappresentato in figura indica la presenza e la direzione di correnti marine particolarmente intense, tra schemi di separazione del traffico. Gli schemi di separazione del traffico sono sistemi utilizzati per organizzare il flusso delle navi nei mari più trafficati, creando corsie separate per diverse direzioni di navigazione. Le correnti marine, rappresentate nel simbolo, influenzano la navigazione in queste aree, poiché possono deviare la rotta delle imbarcazioni e rendere la navigazione più impegnativa. È essenziale per i navigatori sapere dove si trovano queste correnti intense per pianificare adeguatamente la rotta, mantenere il controllo dell'imbarcazione e garantire la sicurezza della navigazione.",
   },
@@ -12844,7 +12844,7 @@ export const QUIZZES: QuizInterface[] = [
       'il divieto di pesca a strascico.',
       "l'ancoraggio vietato.",
     ],
-    image: 'image_row_1063.png',
+    image: '/quiz-base-images/image_row_1063.png',
     description:
       "Il simbolo rappresentato in figura è un cerchio con una barra obliqua che attraversa un'ancora. Questo simbolo, universalmente riconosciuto, indica un divieto di ancoraggio. La barra obliqua, combinata con l'icona dell'ancora, è un elemento di segnaletica marittima utilizzata per comunicare ai naviganti che è vietato gettare l'ancora in quell'area specifica. Questo può essere necessario per proteggere aree marine sensibili, evitare danni a infrastrutture sott'acqua come cavi e tubature o per mantenere libere le rotte di navigazione e prevenire incidenti. Le altre risposte, ossia il porto turistico non più in uso e il divieto di pesca a strascico, non corrispondono al simbolo con l'ancora barrata, che è inequivocabilmente associato al divieto di ancoraggio.",
   },
@@ -12857,7 +12857,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di una boa di ormeggio.',
       'la presenza di un relitto in parte emergente.',
     ],
-    image: 'image_row_1064.png',
+    image: '/quiz-base-images/image_row_1064.png',
     description:
       "Il simbolo rappresentato in figura è standardizzato dall'Organizzazione Marittima Internazionale (IMO) e dai regolamenti locali di navigazione per indicare specifici pericoli e oggetti rilevanti per la sicurezza della navigazione. La presenza di una boa di ormeggio è segnalata da una specifica boa di colore giallo, spesso accompagnata da un simbolo che rappresenta un anello. Questo simbolo è per facilitare l'ormeggio delle imbarcazioni in aree designate, evitando di danneggiare i fondali marini o di occupare zone di traffico intenso. La corretta interpretazione dei segnali nautici è essenziale per evitare collisioni, arenamenti e altri incidenti marittimi, garantendo una navigazione sicura e responsabile.",
   },
@@ -12870,7 +12870,7 @@ export const QUIZZES: QuizInterface[] = [
       'la presenza di una condotta non specificata.',
       'la presenza di un cavo elettrico sottomarino.',
     ],
-    image: 'image_row_1065.png',
+    image: '/quiz-base-images/image_row_1065.png',
     description:
       "Il simbolo mostrato, che consiste di una singola linea con delle crocette sopra, rappresenta un cavo elettrico sottomarino. Questo simbolo è utilizzato nelle carte nautiche per avvisare i naviganti della presenza di cavidotti sul fondale marino, che possono costituire un pericolo per l'ancoraggio o altre operazioni subacquee. La corretta identificazione dei simboli sulle carte è cruciale per evitare danni ai cavi stessi e per garantire la sicurezza della navigazione, prevenendo problemi di corrente elettrica causati da danni ai cavi sottomarini. Rispetto agli altri tipi di condotte o cavi su carta nautica, i cavi telefonici sottomarini e altre condotte sottomarine hanno rappresentazioni differenti, specificamente progettate per evitare confusione e garantire l'accurata interpretazione dei dati.",
   },
@@ -12883,7 +12883,7 @@ export const QUIZZES: QuizInterface[] = [
       'un punto di fonda.',
       'la presenza di corpi morti di categoria A.',
     ],
-    image: 'image_row_1066.png',
+    image: '/quiz-base-images/image_row_1066.png',
     description:
       "Il simbolo rappresentato in figura è un'ancora, che indica un punto di fonda. In cartografia nautica, questo simbolo è comunemente utilizzato per segnalare un'area designata dove è sicuro e approvato ancorare una nave. La scelta di fondare in un punto designato permette di evitare la presenza di ostacoli sommergibili, assicurare adeguata protezione da condizioni meteorologiche avverse e garantire che il fondale abbia le caratteristiche appropriate per l'ancoraggio (come la giusta consistenza del fondale). Le altre opzioni esercitano un significato diverso: il fondale di natura argillosa dovrebbe avere un simbolo specifico che ne rappresenta la natura, mentre la presenza di corpi morti di categoria A non è rappresentata da un'ancora, ma da un diverso simbolo secondo le convenzioni dell'Organizzazione Marittima Internazionale (IMO).",
   },
@@ -17748,5 +17748,1988 @@ export const QUIZZES: QuizInterface[] = [
     ],
     description:
       "Nelle aree marine protette, l'ormeggio è regolamentato per preservare l'ambiente, in particolare i fondali marini e la vita marina. I campi boe sono installati per facilitare l'ormeggio delle imbarcazioni senza l'uso delle ancore, che possono danneggiare i fondali e la flora marina. Pertanto, l'ancoraggio è solitamente vietato in tali zone per evitare questo tipo di danno ambientale. Le boe forniscono un punto sicuro per ormeggiare le imbarcazioni senza interferire con l'integrità dell'ecosistema sottomarino.",
+  },
+];
+
+export const VELAQUIZZES: QuizVelaInterface[] = [
+  {
+    id: 1,
+    question:
+      "Lo scafo di un'unità navale a vela è la parte immersa della deriva.",
+    answer: 0,
+    description:
+      "Lo scafo di un'unità navale a vela è il corpo principale della barca che galleggia sull'acqua. Esso comprende sia la parte immersa (il volume che si trova sotto la linea di galleggiamento) che la parte emersa (il volume sopra la linea di galleggiamento). La deriva, invece, è una componente specifica di alcune barche a vela progettata per stabilizzare la barca e migliorare la sua capacità di navigare controvento, evitando lo scarroccio laterale. La deriva è generalmente una lama o una pinna montata sul fondo della barca, e non si confonde con l'intero scafo. Perciò, dire che lo scafo è la parte immersa della deriva è errato perché implica una confusione tra le due parti distinte della struttura della barca.",
+  },
+  {
+    id: 2,
+    question:
+      "Lo scafo di un'unità a vela è la struttura galleggiante e portante della stessa.",
+    answer: 1,
+    description:
+      "Lo scafo di un'unità a vela è considerato la struttura galleggiante e portante perché è il componente principale che fornisce la galleggiabilità e la stabilità necessarie per navigare. Lo scafo è progettato per interagire con l'acqua, riducendo la resistenza e aumentando l'efficienza della navigazione. Inoltre, è costruito per sopportare le forze dinamiche e statiche esercitate dalle vele, dal vento e dal mare. Un design adeguato dello scafo include una forma idrodinamica che ottimizza le prestazioni, permettendo alla barca di raggiungere velocità migliori e migliorando la manovrabilità. Essa deve inoltre essere strutturalmente robusta per supportare il carico derivante dall'attrezzatura di bordo e dagli eventuali occupanti.",
+  },
+  {
+    id: 3,
+    question:
+      "La presenza del bulbo zavorrato in un'unità navale a vela ha la funzione di fornire alla stessa una maggiore stabilità per contrastare le azioni esterne (vento).",
+    answer: 1,
+    description:
+      "Il bulbo zavorrato, posizionato nella parte inferiore della chiglia di una barca a vela, ha il principale scopo di abbassare il centro di gravità dell'unità navale. Questo accorgimento aumenta significativamente la stabilità dell'imbarcazione. Quando viene colpita dal vento, la vela genera una forza trasversale che tende a inclinare l'imbarcazione. Il bulbo zavorrato agisce come un contrappeso, bilanciando questa forza e riducendo l'inclinazione laterale (sbandamento). Inoltre, la forma e la posizione del bulbo possono anche migliorare l’idrodinamica e ridurre la deriva laterale, contribuendo ulteriormente alla stabilità e all'efficienza della navigazione.",
+  },
+  {
+    id: 4,
+    question:
+      "La presenza del bulbo zavorrato in un'unità navale a vela ha la funzione di offrire alla stessa una maggior penetrazione alla prua, tale da farle raggiungere velocità più elevate.",
+    answer: 0,
+    description:
+      "Il bulbo zavorrato in un'unità navale a vela non ha la funzione primaria di migliorare la penetrazione della prua per raggiungere velocità più elevate, ma serve principalmente a stabilizzare l'imbarcazione e a migliorare la sicurezza e la navigabilità. Il bulbo fornisce un centro di gravità basso, aumentando la stabilità laterale e riducendo il rischio di capovolgimento. Questo componente permette alla barca di resistere meglio alle forze laterali del vento sulle vele, consentendo alla chiglia di contrastare il momento di sbandamento. Inoltre, il bulbo zavorrato permette una migliore distribuzione dei pesi, così che l'imbarcazione mantenga un assetto corretto in navigazione. Quindi, l'affermazione è falsa perché il bulbo non è progettato per migliorare la penetrazione della prua, bensì per migliorare la stabilità e la sicurezza della barca.",
+  },
+  {
+    id: 5,
+    question: 'La vela si orienta in relazione al flusso del vento.',
+    answer: 1,
+    description:
+      'Le vele funzionano catturando il vento in modo da creare una forza che spinge o tira la barca in avanti. La loro orientazione rispetto al vento è cruciale, perché influisce direttamente sulla capacità di navigare efficacemente. Quando si parla di "orientare la vela in relazione al flusso del vento", si fa riferimento a come la vela viene posizionata per ottimizzare l\'uso del vento che soffia su di essa.\n\nCi sono due modalità principali di orientamento della vela:\n\n1. **Sottovento (vento in poppa)**: In questa situazione, il vento soffia direttamente da poppa (dietro la barca). La vela viene aperta per raccogliere la maggior quantità di vento possibile. Questo crea una pressione sul lato della vela rivolto a poppa, che spinge la barca in avanti. \n\n2. **Sopravento (vento traverso o bolina)**: In queste configurazioni, il vento soffia diagonalmente o frontalmente rispetto alla barca. Le vele sono orientate in modo da formare un angolo specifico con il vento. Questo crea una differenza di pressione tra i due lati della vela, generando una forza che tira la barca lateralmente e in avanti. Questo è il principio aerodinamico simile a come le ali di un aeroplano generano portanza.\n\nLa corretta orientazione della vela richiede un continuo adattamento per sfruttare al meglio il vento, considerando che la direzione e l\'intensità del vento possono variare. Per massimizzare l\'efficacia della propulsione, i marinai utilizzano strumenti e tecniche come il "trimming" delle vele, regolando la tensione e l\'inclinazione della vela per ottimizzare la forza del vento.\n\nCapire come e perché la vela si orienta in relazione al vento è fondamentale per una navigazione efficiente e sicura.',
+  },
+  {
+    id: 6,
+    question:
+      'Per andatura si intende la direzione verso cui la stessa procede rispetto alla direzione di provenienza del vento.',
+    answer: 1,
+    description:
+      "La risposta è corretta perché nel contesto della navigazione a vela, l'andatura descrive la rotta che la barca segue rispetto alla direzione del vento. A seconda della direzione del vento e dell'orientamento della barca, si classificano diverse andature, ciascuna delle quali implica un diverso assetto delle vele e una diversa strategia di navigazione. Le principali andature includono: bolina (vento che arriva di prua, tra i 30° e i 45° rispetto alla direzione di provenienza), traverso (vento che arriva di traverso, a 90°), lasco (vento che arriva di poppa ma non completamente dietro) e poppa (vento che arriva direttamente da dietro). Queste distinzioni sono fondamentali per manovrare correttamente la barca e ottenere prestazioni ottimali dalla vela in funzione del vento disponibile.",
+  },
+  {
+    id: 7,
+    question:
+      "Per andatura si intende la velocità riaggiunta dall'unità navale a vela rispetto alla direzione di provenienza del vento",
+    answer: 0,
+    description:
+      'In ambito nautico, il termine "andatura" non si riferisce alla velocità della barca, bensì alla direzione in cui essa naviga rispetto alla direzione di provenienza del vento. Le andature principali per un\'imbarcazione a vela includono: bolina stretta (navigazione con un\'angolazione stretta rispetto al vento), traverso (navigazione perpendicolare al vento), lasco (navigazione con il vento che arriva da poppa quasi perpendicolarmente) e poppa piena (navigazione con il vento che arriva direttamente da poppa). La velocità raggiunta dalla barca è descritta invece come "velocità della barca" o "velocità al suolo" e può essere influenzata da vari fattori come il vento, le correnti e la resistenza dell\'acqua.',
+  },
+  {
+    id: 8,
+    question:
+      "Quando l'unità a vela si muove a favore di vento, il vento apparente equivale alla differenza tra il vento reale e quello di velocità dell'unità navale stessa.",
+    answer: 1,
+    description:
+      "Il vento apparente è il risultato vettoriale del vento reale e della velocità dell'imbarcazione. Quando un'unità a vela si muove a favore di vento, significa che sta navigando nella stessa direzione del vento. In questo caso, il vento reale (cioè il vento che soffierebbe se l'imbarcazione fosse ferma) ed il vento di velocità (il vento che viene percepito a causa dello spostamento dell'imbarcazione) si sommano vettorialmente. Tuttavia, poiché si muovono nella stessa direzione, il vento di velocità \"sottrae\" forza dal vento reale, ovvero riduce l'effetto percepito da bordo. Pertanto, il vento apparente percepito sarà la differenza tra il vento reale e la velocità dell'unità navale. Questo concetto è cruciale perché influisce direttamente sulla navigazione a vela e sulla regolazione delle vele, poiché la velocità e la direzione del vento apparente determinano l'angolo ottimale per le vele e l'efficienza del moto dell'unità a vela.",
+  },
+  {
+    id: 9,
+    question:
+      "Quando l'unità a vela si muove a favore di vento, il vento apparente,  corrisponde alla somma tra il vento reale e quello di velocità dell'unità navale",
+    answer: 0,
+    description:
+      "Il vento apparente è il vento che si percepisce su un'imbarcazione in movimento, risultante dalla combinazione del vento reale e dalla velocità dell'imbarcazione stessa. Quando un'unità a vela si muove a favore di vento, ossia ha il vento che soffia direttamente da poppa, il vento apparente è la differenza tra il vento reale e la velocità di navigazione dell'imbarcazione, non la somma. Questo perché il vento reale e la velocità di navigazione dell'imbarcazione sono in direzioni opposte: il vento soffia verso poppa mentre l'imbarcazione avanza. Se si sommasse il vento reale e quello di velocità, si otterrebbe un risultato erroneo. Ad esempio, se il vento reale soffia a 10 nodi e l'imbarcazione avanza a 5 nodi, il vento apparente sarà percepito come un vento di 5 nodi (10 nodi di vento reale meno 5 nodi di velocità dell'imbarcazione).",
+  },
+  {
+    id: 10,
+    question:
+      "Quando l'unità a vela si muove controvento, il vento apparente corrisponde alla somma tra il vento reale e quello di velocità dell'unità navale.",
+    answer: 1,
+    description:
+      "Il vento apparente è la combinazione tra il vento reale, che è il vento percepito quando l'unità è ferma rispetto alla superficie terrestre, e il vento di velocità, che è il vento generato dal movimento dell'unità stessa. Quando l'unità a vela si muove controvento, il vento reale proviene dalla direzione opposta rispetto al movimento dell'unità. Pertanto, l'unità percepisce un vento apparente che è il risultato della somma vettoriale del vento reale e del vento di velocità. Essendo entrambi i venti orientati in direzioni opposte rispetto al movimento dell'unità, la loro combinazione risulta in un intensificazione del vento percepito. Questa situazione è tipica quando si naviga controvento (di bolina), e risulta in una velocità del vento apparente maggiore di quella del vento reale.",
+  },
+  {
+    id: 11,
+    question:
+      "Quando l'unità a vela si muove controvento, il vento apparente è pari al vento di velocità dell'unità navale stessa.",
+    answer: 0,
+    description:
+      "Il vento apparente è il vento percepito a bordo di una nave in movimento ed è una combinazione vettoriale del vento reale e del vento generato dal movimento dell'imbarcazione stessa. Quando un'unità a vela si muove controvento (di bolina), l'effetto combinato del vento reale (quello che soffia indipendentemente dal movimento della nave) e del vento di velocità (il vento creato dal movimento della nave) determina il vento apparente. In questo caso, il vento apparente risulta essere una somma vettoriale in direzione contraria al vento reale e quindi non può essere pari al solo vento di velocità. \n\nSe l'unità navale si muove controvento, il vento apparente sarà maggiore del vento reale perché si somma al vento di velocità generato dal movimento. È proprio questa interazione tra vento reale e vento di velocità che consente alla vela di generare portanza e spingere l'imbarcazione anche \"contro\" il vento reale. \n\nPer un'unità navale in movimento, in qualsiasi direzione, il vento apparente sarà determinato sia dalla velocità e direzione del vento reale sia dalla velocità e direzione del movimento dell'unità stessa. Il vento apparente non corrisponde al solo vento di velocità dell’unità perché deve considerare anche il contributo del vento reale, quindi la risposta è falsa.",
+  },
+  {
+    id: 12,
+    question:
+      'Durante la navigazione di una unità a vela, il vento apparente è sempre orientato più a proravia rispetto al vento reale.',
+    answer: 1,
+    description:
+      "Il concetto di vento apparente è cruciale per la navigazione a vela. Esso rappresenta la combinazione tra il vento reale (quello che soffia effettivamente nell'area) e il vento generato dal movimento dell'imbarcazione stessa. Quando un'imbarcazione a vela si muove, crea un flusso d'aria opposto al suo spostamento che si somma vettorialmente al vento reale, risultando nel vento apparente.\n\nIl vento apparente è generalmente percepito come proveniente da una direzione più avanti rispetto al vento reale (più a proravia) a causa dell'effetto del moto dell'imbarcazione. Ad esempio, se la barca sta navigando con un vento reale al traverso (cioè proveniente dal lato), il movimento della barca aggiunge una componente di vento dal davanti, spostando così la direzione percepita del vento apparente ancor più verso la prua.\n\nIn pratica, il vento apparente sarà sempre più orientato verso la parte anteriore della barca (proravia) rispetto al vento reale. Questo è fondamentale per la regolazione delle vele, poiché l'angolo d'incidenza del vento apparente sulle vele determina la loro efficienza e la capacità di avanzare dell'imbarcazione.",
+  },
+  {
+    id: 13,
+    question:
+      'Durante la navigazione di una unità a vela, il vento apparente, è sempre orientato ortogonalmente rispetto al vento reale.',
+    answer: 0,
+    description:
+      "Il vento apparente è il vento percepito da un osservatore in movimento, come l'equipaggio di un'imbarcazione in navigazione. Esso è il risultato della combinazione del vento reale (che è il vento effettivo che soffia) e del vento generato dal movimento dell'unità stessa. Questa combinazione avviene attraverso la somma vettoriale del vento reale e della velocità dell'imbarcazione.\n\nSe il vento apparente fosse sempre ortogonale (perpendicolare) al vento reale, significherebbe che vi sarebbe una relazione fissa e specifica tra la direzione del vento reale e il movimento dell'imbarcazione, il che non rispecchia le diverse situazioni di navigazione. In realtà, il vento apparente può variare notevolmente di direzione e intensità in base alla rotta e alla velocità dell'imbarcazione. Ad esempio, quando l'imbarcazione naviga controvento (con vento reale di prua), il vento apparente sarà più forte del vento reale e apparirà provenire quasi direttamente dalla prua. Quando l'imbarcazione naviga con il vento in poppa, il vento apparente sarà più debole del vento reale e apparirà provenire da dietro.\n\nL'affermazione quindi è falsa perché il vento apparente non è sempre ortogonale al vento reale; cambia direzione e intensità a seconda della velocità e della direzione dell’imbarcazione.",
+  },
+  {
+    id: 14,
+    question:
+      "Durante la navigazione a vela, il vento apparente ha un'intensità tanto maggiore quanto più l'unità navale procede verso la direzione da cui proviene il vento.",
+    answer: 1,
+    description:
+      "Il vento apparente è il vento percepito da un'unità navale in movimento, risultante dalla combinazione del vento reale (che soffia nell'ambiente) e della velocità della barca stessa. Quando una barca procede verso la direzione da cui proviene il vento (ovvero naviga di bolina o controvento), la velocità della barca si somma alla velocità del vento reale. Questo porta a un incremento dell'intensità del vento apparente. Ad esempio, se il vento reale soffia a 10 nodi e la barca viaggia a una velocità di 5 nodi direttamente contro il vento, il vento apparente percepito dall'equipaggio sarà maggiore di 10 nodi. Questo concetto è cruciale per i velisti poiché influisce sulle prestazioni della barca e sulle decisioni tattiche durante la navigazione.",
+  },
+  {
+    id: 15,
+    question:
+      "Durante la navigazione di una navale a vela, il vento apparente ha un'intensità tanto maggiore quanto più l'unità navale si discosta dalla direzione da cui proviene il vento.",
+    answer: 0,
+    description:
+      "In navigazione a vela, il concetto di vento apparente è fondamentale. Il vento apparente è la combinazione del vento reale (che soffia naturalmente nell'ambiente) e del vento generato dal movimento della barca stessa. Quando una barca a vela si muove, essa percepisce un vento che è la somma vettoriale del vento reale e del vento di velocità. Man mano che l'imbarcazione si sposta rispetto alla direzione del vento, l'intensità del vento apparente può cambiare significativamente.\n\nSe l'unità navale si muove direttamente contro il vento (cioè in bolina stretta), la velocità relativa tra il vento e la barca è elevata, risultando in un forte vento apparente. Tuttavia, quando l'imbarcazione si discosta maggiormente dalla direzione del vento reale (navigando per esempio al traverso o al gran lasco), l'effetto combinato dei due venti cambia, e spesso questo può causare una riduzione nell'intensità del vento apparente rispetto alla navigazione in bolina stretta.\n\nQuindi, l'idea che il vento apparente aumenti tanto più quanto ci si discosta dalla direzione del vento reale è errata. In grave lasco o poppa piena, il vento apparente può addirittura risultare minore del vento reale, poiché l'imbarcazione sta viaggiando nella stessa direzione del vento.",
+  },
+  {
+    id: 16,
+    question:
+      'Per andatura di "bolina" si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di circa 135° rispetto alla direzione del vento reale.',
+    answer: 0,
+    description:
+      'L\'andatura di "bolina" si verifica quando un\'unità a vela procede con una direzione di rotta che forma un angolo molto più stretto rispetto alla direzione del vento, tipicamente tra i 30° e i 45°. La definizione data nella domanda, ovvero un angolo di 135°, corrisponde all\'andatura di "poppa", dove il vento proviene da dietro lo scafo. Nella bolina, la barca si muove controvento con un angolo acuto rispetto alla direzione del vento, sfruttando le forze aerodinamiche generate dalle vele per avanzare in modo efficientemente obliquo rispetto alla provenienza del vento. Quindi la risposta corretta è falsa perché l’angolo menzionato nella domanda non corrisponde all’effettiva andatura di bolina.',
+  },
+  {
+    id: 17,
+    question:
+      'Per andatura al "traverso" si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di 45° rispetto alla direzione del vento reale.',
+    answer: 0,
+    description:
+      'L\'andatura al "traverso" si riferisce a una direzione di rotta in cui un\'imbarcazione a vela naviga perpendicolare alla direzione del vento reale, ossia con un angolo di 90° rispetto al vento. L\'affermazione indicata è quindi errata perché un angolo di 45° rispetto alla direzione del vento reale identifica l\'andatura al "lasco" o "mezzovento", ma non al traverso. In questa configurazione, il vento colpisce la barca lateralmente, rendendo necessario un diverso assetto delle vele rispetto a quando la barca naviga al traverso. Questo comporta differenti tecniche di equilibrio e di regolazione delle vele.',
+  },
+  {
+    id: 18,
+    question:
+      'Per andatura di lasco si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di circa 45° rispetto alla direzione del vento reale.',
+    answer: 0,
+    description:
+      "L'andatura di lasco si verifica quando una barca a vela naviga con il vento che proviene da una direzione compresa tra circa 120° e 160° rispetto alla prua dell'imbarcazione. Questo significa che il vento proviene da una posizione posteriore rispetto all'asse longitudinale dell'unità. La definizione contenuta nella domanda, che indica un angolo di circa 45° rispetto alla direzione del vento reale, è corretta per l'andatura al traverso o bolina larga, non per il lasco. Pertanto, l'affermazione è falsa poiché mal definisce l'andatura di lasco.",
+  },
+  {
+    id: 19,
+    question:
+      'Per andatura di poppa si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di 90° rispetto alla direzione del vento reale.',
+    answer: 0,
+    description:
+      "L'andatura di poppa si verifica quando una barca a vela procede con il vento che soffia direttamente da dietro, ovvero con un angolo di 180° rispetto alla direzione del vento reale. In questa situazione, la barca è letteralmente portata dal vento che soffia nella stessa direzione del suo avanzamento, permettendo alle vele di dispiegarsi completamente e sfruttare al massimo la spinta. Un'andatura con un angolo di 90° rispetto al vento è invece conosciuta come andatura di traverso, dove la barca procede perpendicolarmente alla direzione del vento, quindi la descrizione proposta nella domanda è errata.",
+  },
+  {
+    id: 20,
+    question:
+      "Procedendo di bolina, la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta superiore rispetto a quella reale.",
+    answer: 1,
+    description:
+      "Procedendo di bolina, una barca a vela naviga controvento con un angolo solitamente compreso tra i 30° e i 45°. In questa condizione, si verifica il fenomeno del vento apparente, che è la combinazione vettoriale del vento reale e del vento prodotto dal movimento dell'imbarcazione stessa. Poiché la barca si muove verso il vento, la sua velocità si somma a quella del vento reale, facendo sì che l'intensità del vento percepito sia maggiore rispetto a quella rilevata a imbarcazione ferma. Questa maggiore intensità del vento apparente aumenta l’efficienza delle vele, producendo più portanza e di conseguenza una maggiore velocità percepita dell'imbarcazione. Di conseguenza, i velisti percepiscono un’accelerazione superiore e una sensazione di velocità più elevata rispetto ad altre andature meno tese.",
+  },
+  {
+    id: 21,
+    question:
+      "Procedendo di bolina, la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta inferiore rispetto a quella reale.",
+    answer: 0,
+    description:
+      "Nella navigazione a vela, quando si procede di bolina, ovvero con un angolo compreso tra i 30 e i 45 gradi rispetto alla direzione del vento, la velocità percepita dell'unità a vela sembra maggiore a causa dell'effetto combinato del vento reale e del vento apparente. Il vento reale è quello che soffia realmente sull'acqua, mentre il vento apparente è il risultato della combinazione della velocità del vento reale e della velocità della barca. \n\nQuando la barca procede di bolina, aumenta la componente del vento apparente derivante dalla propria velocità di avanzamento. Questa combinazione conduce a un vento apparente che è più forte e inclinato rispetto al vento reale. Di conseguenza, i velisti avvertono una sensazione di maggiore velocità a causa dell'aumento del vento apparente. Questo fenomeno si traduce in una percezione di navigazione più rapida, nonostante l'intensità del vento reale rimanga invariata o addirittura sembri più forte rispetto a quella apparente. \n\nQuindi la risposta corretta è “false” perché la sensazione di velocità maggiore è dovuta all'intensità più alta del vento apparente e non perché l'intensità del vento percepito è inferiore.",
+  },
+  {
+    id: 22,
+    question:
+      "Procedendo di poppa, la velocita avvertita dell'unità a vela sembra minore perché l'intensità del vento percepita risulta inferiore rispetto a quella reale.",
+    answer: 1,
+    description:
+      "Quando un'unità a vela procede con il vento di poppa, o in poppa piena, si trova a navigare nella stessa direzione del vento. In questo caso, l'imbarcazione sperimenta una riduzione dell'impressione del vento che soffia su di essa, fenomeno che è influenzato dal concetto di \"vento apparente\". Il vento percepito a bordo dell'imbarcazione, noto appunto come vento apparente, è il risultato della combinazione vettoriale del vento reale (quello che soffia effettivamente) e della velocità dell'imbarcazione stessa.\n\nQuando si procede di poppa, la velocità dell'unità a vela sottrae una parte della forza del vento reale perché entrambi viaggiano nella stessa direzione. Questo si traduce in una diminuzione della velocità del vento apparente. Il vento apparente influenzerà direttamente la sensazione di velocità percepita dall'equipaggio: con una minore intensità del vento apparente, la velocità sembrerà ridotta.\n\nIn sintesi, con il vento di poppa, l'intensità del vento percepita (vento apparente) è inferiore rispetto a quella reale perché la velocità dell'imbarcazione riduce l'effetto del vento reale nella stessa direzione, facendo sembrare la navigazione a vela meno veloce di quanto lo sia effettivamente in termini assoluti.",
+  },
+  {
+    id: 23,
+    question:
+      "Procedendo di poppa, la velocita avvertita dell'unità navale a vela sembra minore perché l'intensità del vento percepita risulta superiore rispetto a quella reale.",
+    answer: 0,
+    description:
+      "La velocità avvertita di un'unità navale a vela che procede di poppa sembra minore perché l'intensità del vento apparente è inferiore a quella reale. Il vento apparente è la combinazione del vento reale con il vento generato dal movimento dell'imbarcazione. Quando si naviga di poppa, il vento reale spinge l'imbarcazione nella stessa direzione del moto, causando una riduzione della velocità del vento apparente. Questo dà l'impressione di una velocità di navigazione inferiore, sebbene la barca stia procedendo alla stessa o maggiore velocità rispetto ad altre andature.",
+  },
+  {
+    id: 24,
+    question:
+      'Per "settore di bordeggio", o "angolo morto", si intende quel settore controvento entro il quale una unità a vela non può indirizzare la sua prua per mancanza di portanza delle vele.',
+    answer: 1,
+    description:
+      'Il termine "settore di bordeggio" o "angolo morto" si riferisce alla zona direttamente sopravvento, generalmente compresa tra i 30 e i 45 gradi da entrambe le parti del vento relativo, in cui una barca a vela non può navigare efficacemente. In questa angolazione, le vele non riescono a creare una portanza sufficiente a spingere la barca in avanti, perché il vento incide su di esse in modo troppo frontale. In altre parole, le vele perdono la loro capacità di fungere da ali per sfruttare il vento e trasformare l\'energia eolica in movimento propulsivo. \n\nQuando una barca a vela si trova all\'interno di questo angolo morto, l\'unico modo per avanzare verso una destinazione diretta controvento è effettuare una serie di manovre a zig-zag chiamate "bordeggio" o "bolina stretta", navigando ad angoli relativamente stretti rispetto al vento, ma comunque sufficientemente fuori dall\'angolo morto da permettere alle vele di funzionare correttamente. Questo concetto è fondamentale per la navigazione a vela, poiché indica i limiti strutturali e aerodinamici della barca in termini di capacità di risalire il vento.',
+  },
+  {
+    id: 25,
+    question:
+      'Per "settore di bordeggio", o "angolo morto", si intende quel settore entro il quale una unità a vela può navigare al fine di aumentare la velocità per raggiungere una determinata destinazione.',
+    answer: 0,
+    description:
+      'Il "settore di bordeggio" o "angolo morto" in realtà si riferisce a quell\'angolo rispetto al vento entro il quale un\'imbarcazione a vela non può navigare direttamente nella direzione desiderata. Questo angolo è tipicamente di circa 45° su entrambi i lati del vento di prua, ma può variare leggermente a seconda del tipo di imbarcazione e delle condizioni. Quando una barca a vela si trova all\'interno di questo settore, il flusso d\'aria sulle vele non è più favorevole per il movimento efficiente e l\'imbarcazione non riesce a mantenere una buona velocità o una rotta diretta nella direzione del vento. Per procedere verso una destinazione che si trova in questa direzione, l\'imbarcazione deve utilizzare una tecnica chiamata "bordeggio" o "bolinare", che implica navigare con una serie di angoli acuti, tendenzialmente di bolina stretta tra i 45° e i 90°, zigzagando di lato in lato rispetto alla rotta diretta. Quindi, l\'affermazione è falsa perché il settore di bordeggio non è un settore in cui la barca può navigare per aumentare la velocità, ma piuttosto un settore in cui la barca deve evitare di navigare direttamente per raggiungere una destinazione.',
+  },
+  {
+    id: 26,
+    question:
+      "Un temporaneo aumento dell'intensità del vento reale (raffica) comporta una favorevole variazione della direzione del vento apparente per assumere un migliore angolo di bolina.",
+    answer: 1,
+    description:
+      "Le raffiche di vento sono variazioni improvvise e temporanee dell'intensità del vento reale. Quando si verifica una raffica, non solo l'intensità del vento aumenta, ma spesso anche la sua direzione può subire delle lievi variazioni transitorie. Questo cambiamento può causare una modifica nella direzione del vento apparente, che è il vento percepito sull'unità in movimento risultante dalla combinazione del vento reale e della velocità dell'imbarcazione.\n\nIn navigazione a vela, la manovra di bolina consiste nel navigare in direzione opposta a quella del vento reale, ma con un angolo inferiore ai 45 gradi rispetto alla direzione del vento apparente. Un angolo di bolina più efficace permette all'imbarcazione di progredire meglio controvento, riducendo la deriva laterale e migliorando la velocità e il controllo.\n\nQuando si verifica una raffica, l'aumento della velocità del vento reale può causare una variazione favorevole della direzione del vento apparente. Se la raffica cambia momentaneamente la direzione del vento reale in modo tale che il vento apparente diventi più favorevole rispetto alla direzione di bolina, l'imbarcazione può navigare con un angolo migliore rispetto al vento. Ciò consente di migliorare l'efficienza della navigazione controvento, poiché l'imbarcazione sfrutta meglio la forza del vento apparente e mantiene una rotta più efficiente.\n\nQuindi, la corretta interpretazione di una raffica e la sua gestione possono avere un impatto positivo sulla capacità di navigare efficacemente in bolina, rendendo conveniente la variazione temporanea della direzione del vento apparente.",
+  },
+  {
+    id: 27,
+    question:
+      "Una temporanea attenuazione dell'intensità del vento reale comporta una favorevole variazione della direzione del vento apparente per assumere un migliore angolo di bolina.",
+    answer: 0,
+    description:
+      "La risposta è falsa perché l'intensità del vento reale e la direzione del vento apparente sono correlate in modo complesso. Il vento apparente risulta dall'interazione tra il vento reale e la velocità di avanzamento della barca. Una diminuzione dell'intensità del vento reale comporta generalmente una riduzione della componente del vento apparente che proviene dalla direzione del vento reale. \n\nIn condizioni di bolina (navigazione contro vento), l'angolo di bolina è influenzato dalla forza del vento reale. Se quest'ultimo diminuisce, la barca rallenta e l'angolo di bolina potrebbe non migliorare, anzi, potrebbe peggiorare, perché la barca sarà meno capace di contrastare il vento. Un buon angolo di bolina si ottiene con una combinazione ottimale di vento reale e velocità della barca, che si traduce in un vento apparente favorevole. Quindi, una temporanea riduzione dell'intensità del vento reale non garantisce una migliore condizione per la bolina, poiché potrebbe ridurre l'efficacia della vela e la velocità della barca, peggiorando la prestazione complessiva rispetto al vento.",
+  },
+  {
+    id: 28,
+    question:
+      "L'angolo di incidenza risulta essere l'angolo formato tra la direzione del vento apparente e quella verso cui è orientata la vela.",
+    answer: 1,
+    description:
+      "In ambito nautico, l'angolo di incidenza è un concetto cruciale nella navigazione a vela. Questo angolo è definito come l'angolo che si forma tra la direzione del vento apparente e il piano della vela. Il vento apparente è il risultato della combinazione del vento reale con il vento generato dal movimento dell'imbarcazione. Un corretto angolo di incidenza permette alla vela di generare portanza, che è la forza necessaria per far avanzare la barca. Se l'angolo è troppo piccolo, la vela può stallare, riducendo significativamente l'efficacia e la velocità dell'imbarcazione. Al contrario, se l'angolo è troppo grande, la vela non sarà in grado di catturare il vento in maniera efficiente, causando anche in questo caso una perdita di prestazione. Per questi motivi, è corretto dire che l'angolo di incidenza è l’angolo formato tra la direzione del vento apparente e quella verso cui è orientata la vela.",
+  },
+  {
+    id: 29,
+    question:
+      "Il centro velico risulta essere il punto di applicazione della forza del vento apparente sulle vele e sull'opera morta.",
+    answer: 0,
+    description:
+      "Il centro velico è il punto di applicazione della forza del vento sulle vele, ma non include l'opera morta (parte dello scafo sopra la linea di galleggiamento). Il vento apparente, che è la risultante della velocità reale del vento e della velocità dell'imbarcazione, agisce principalmente sulle vele. L'opera morta può essere soggetta alla pressione del vento, ma questo effetto viene considerato in modo diverso e non contribuisce al centro velico. La forza del vento sulle vele crea un momento di rotazione che equilibra la barca e influisce sulla sua conduzione, mentre sull'opera morta la forza del vento causa una deriva o uno sbandamento che non ha la stessa influenza diretta sul comportamento velico dell'imbarcazione.",
+  },
+  {
+    id: 30,
+    question:
+      "Il centro di deriva risulta essere il centro geometrico della superficie di deriva posto sotto la chiglia dell'unità a vela.",
+    answer: 0,
+    description:
+      "Il centro di deriva non è esattamente il centro geometrico della superficie di deriva sotto la chiglia, ma piuttosto il punto in cui sono considerate applicate tutte le forze laterali dovute all'effetto del vento e dell'acqua sulla carena della barca. Il centro di deriva è un concetto fondamentale nella gestione e nella conduzione delle unità a vela, perché influenza il comportamento dinamico dell'imbarcazione. In combinazione con il centro velico (il punto in cui sono applicate tutte le forze del vento sulle vele), determina lo sbandamento e la rotta dell'unità. Una corretta comprensione e gestione del centro di deriva permette di ottimizzare le performance navigative, l'equilibrio e la stabilità della barca. Quindi, affermare che è semplicemente il centro geometrico della superficie sotto la chiglia non è corretto perché non riflette la complessa interazione delle forze in gioco.",
+  },
+  {
+    id: 31,
+    question:
+      'Il centro velico e il centro di deriva si influenzano tra loro generando effetti che sono individuabili e prevedibili per ogni unità a vela.',
+    answer: 1,
+    description:
+      'Il centro velico e il centro di deriva sono due concetti fondamentali nella nautica a vela. Il centro velico è il punto in cui si può considerare applicata la forza risultante del vento sulle vele, mentre il centro di deriva è il punto in cui si applica la resistenza dell’acqua alla deriva dello scafo.\n\nQuesti due centri influenzano il comportamento della barca in navigazione. Quando il centro velico è avanti rispetto al centro di deriva, la barca tende a orzare, ossia girare la prua al vento. Al contrario, se il centro velico è a poppa del centro di deriva, la barca tende a poggiare, cioè a girare la prua lontano dal vento. \n\nIl rapporto tra questi due centri determina la stabilità direzionale e la capacità della barca di mantenere una rotta desiderata senza eccessive correzioni con il timone. Un corretto bilanciamento tra centro velico e centro di deriva permette una navigazione più efficiente e sicura, facilitando il controllo della barca e riducendo lo sforzo richiesto al timonierie.\n\nQuesti effetti sono prevedibili e individuabili per ogni barca a vela, consentendo ai marinai di effettuare le regolazioni necessarie sulle vele e sul rigging per ottenere il miglior assetto possibile in varie condizioni di vento e di mare. La combinazione ottimale di questi centri porta ad un miglioramento delle prestazioni e della manovrabilità della barca.',
+  },
+  {
+    id: 32,
+    question:
+      'In condizioni di timone al centro, quando il centro velico è allineato con il centro di deriva, l\'unità  a vela si definisce "neutra" (né poggiera né orziera).',
+    answer: 1,
+    description:
+      "Nel contesto della navigazione a vela, il centro velico rappresenta il punto di applicazione della risultante delle forze aerodinamiche generate dalle vele, mentre il centro di deriva è il punto di applicazione della risultante delle forze idrodinamiche generate dalla carena e dal timone che agiscono lateralmente su uno scafo. Quando il centro velico è perfettamente allineato con il centro di deriva e il timone è mantenuto al centro, i momenti generati dalle due forze sono equilibrati. Questo significa che non c'è nessuna tendenza a far ruotare l'imbarcazione né verso il vento (orzare) né in direzione opposta (poggiare), rendendo l'unità a vela neutra dal punto di vista del comportamento alla conduzione. Il bilanciamento ottenuto semplifica il mantenimento della rotta senza necessitare di correzioni continue con il timone.",
+  },
+  {
+    id: 33,
+    question:
+      "In condizioni di timone al centro, quando il centro velico è allineato con il centro di deriva, l'unità a vela si avvicina alla direzione del vento (orziera).",
+    answer: 0,
+    description:
+      "Quando il timone è al centro, e quindi non è utilizzato per modificare la rotta della barca, l'equilibrio tra il centro velico e il centro di deriva determina se l'imbarcazione tende a orzare (avvicinarsi alla direzione del vento) o a puggiare (allontanarsi dalla direzione del vento). Quando il centro velico, punto sul piano delle vele dove si può considerare applicata la forza del vento, è allineato longitudinalmente con il centro di deriva, punto sulla carena dove si può considerare applicata la resistenza idrodinamica, la barca è in equilibrio neutro. In altre parole, non c'è una forza laterale predominante che spinge la prua verso o contro il vento, pertanto la barca mantiene la sua rotta senza avvicinarsi né allontanarsi dal vento. Una vera tendenza a orzare o puggiare si manifesta quando il centro velico non è allineato con il centro di deriva, creando un momento torcente che modifica l'angolazione dell'imbarcazione rispetto al vento.",
+  },
+  {
+    id: 34,
+    question:
+      "La posizione del centro velico nelle unità a vela dipende dalla superficie e dalla forma delle vele, dalla reciproca influenza tra le vele bordate e dalla messa a punto dell'attrezzatura.",
+    answer: 1,
+    description:
+      "Il centro velico rappresenta il punto ideale in cui si può considerare applicata la forza risultante delle azioni del vento sulle vele. La sua posizione è fondamentale per garantire una veleggiata equilibrata e sicura.\n\nLa superficie e la forma delle vele influenzano direttamente la distribuzione dei carichi aerodinamici. Vele più grandi o con forme differenti comportano variazioni nei punti di applicazione delle forze del vento, spostando il centro velico.\n\nLa reciproca influenza tra le vele bordate, come il fiocco e la randa, è un altro fattore chiave. Bordando o regolando le vele in modo specifico, è possibile modificare come interagiscono tra loro e con il vento, influenzando così la posizione del centro velico.\n\nInfine, la messa a punto dell'attrezzatura, che include regolazioni delle vele, dell'albero e delle drizze, permette di ottimizzare l'assetto della barca. Anche piccoli cambiamenti in queste regolazioni possono alterare significativamente la posizione del centro velico, migliorando la performance e la stabilità dell'imbarcazione.\n\nQuesti elementi combinati determinano esattamente dove si trova il centro velico e come esso varia in base alle condizioni di navigazione e alle regolazioni delle vele e dell'attrezzatura.",
+  },
+  {
+    id: 35,
+    question:
+      'Per "planata" si intende lo stato in cui viene a trovarsi l\'unità a vela navigando in condizioni di equilibrio dinamico sulla cresta dell\'onda generato dal suo medesimo avanzamento.',
+    answer: 1,
+    description:
+      "Nella nautica, la planata è una condizione in cui un'imbarcazione si trova in equilibrio dinamico sopra l'acqua, generando una situazione in cui la forza di sollevamento idrodinamica diventa predominante rispetto alla forza di galleggiamento. Questo stato è raggiunto grazie all'aumento della velocità dell'unità, che permette allo scafo di sollevarsi parzialmente o completamente dall'acqua, riducendo la resistenza idrodinamica e permettendo di scivolare sulla superficie dell'acqua.\n\nPer quanto riguarda le barche a vela, la planata avviene quando l'imbarcazione sfrutta la forza del vento per raggiungere una velocità sufficientemente alta. In queste condizioni, la barca si trova spesso sulla cresta delle onde che essa stessa ha generato. Questo fenomeno è comune in barche leggere e con un design dello scafo idoneo a permettere questa modalità di navigazione ad alte velocità. La referenza all'equilibrio dinamico indica che le forze in gioco – sollevamento idrodinamico, resistenza e peso dell'imbarcazione – sono bilanciate in un modo che consente uno scivolamento rapido ed efficiente.\n\nPertanto, \"planata\" è correttamente definita come lo stato di un'unità a vela che, in condizioni di equilibrio dinamico, naviga sulla cresta dell'onda generata dal proprio avanzamento, poiché tale descrizione sottolinea l'essenza del fenomeno e le condizioni specifiche che lo caratterizzano.",
+  },
+  {
+    id: 36,
+    question:
+      'La "messa a segno" delle vele è generata dal vento apparente durante la navigazione.',
+    answer: 1,
+    description:
+      'La "messa a segno" delle vele si riferisce all\'operazione di regolare le vele in modo che sfruttino al meglio il vento apparente per generare la massima portanza ed efficienza. Il vento apparente è la risultante del vento reale e del vento creato dal movimento della barca stessa. In navigazione, questo vento apparente è il vento percepito dal velista e varia in direzione e intensità a seconda della velocità della barca e della direzione del vento reale. La corretta messa a segno delle vele consente di adattare l\'angolo e la forma delle vele affinché captino in modo ottimale il vento apparente, migliorando così la velocità e il controllo della barca. Di conseguenza, il vento apparente svolge un ruolo cruciale nella regolazione delle vele durante la navigazione.',
+  },
+  {
+    id: 37,
+    question:
+      "La pressione esercitata dal vento sulle vele dipende dall'angolo di incidenza.",
+    answer: 1,
+    description:
+      "La pressione esercitata dal vento sulle vele dipende dall'angolo di incidenza perché l'angolo influenza la superficie esposta e la distribuzione delle forze aerodinamiche. Quando il vento colpisce una vela con un angolo di incidenza adeguato, parte dell'energia del vento viene convertita in pressione dinamica che spinge la vela e, conseguentemente, la barca in movimento. Se l'angolo è troppo piccolo, il vento tende a scivolare lungo la vela senza esercitare molta pressione. Se l'angolo è troppo grande, può generare turbolenze e stall, riducendo l'efficienza della vela. Pertanto, per massimizzare la pressione e l'efficienza, il periclitarsi deve essere attentamente regolato per adeguare l'angolo di incidenza alle condizioni del vento.",
+  },
+  {
+    id: 38,
+    question:
+      "La pressione esercitata dal vento sulle vele dipende esclusivamente dal valore della prora assunta dall'unità.",
+    answer: 0,
+    description:
+      "La pressione esercitata dal vento sulle vele non dipende esclusivamente dalla prora assunta dall'unità, ma da molteplici fattori. Questi includono la velocità del vento, la superficie velica, l'angolo di incidenza del vento sulle vele e l'efficienza con cui le vele sono regolate. La prora, ovvero la direzione verso cui la prua dell'imbarcazione è rivolta, è solo uno dei vari elementi che influenzano la dinamica del vento sulle vele. La velocità del vento è direttamente proporzionale alla pressione esercitata; maggiore è la velocità del vento, maggiore sarà la pressione. La superficie velica determina quanta forza viene catturata dal vento; più ampia è la superficie, maggiore sarà la forza. L'angolo d'incidenza è critico per l'efficienza aerodinamica delle vele: angoli troppo acuti o troppo ottusi riducono l'efficienza del veleggiare. Infine, anche la regolazione delle vele (come le cime e i bozzelli) incide sull'efficacia con cui la pressione del vento viene trasformata in movimento.",
+  },
+  {
+    id: 39,
+    question:
+      "La forza di scarroccio risulta perpendicolare all'asse longitudinale dell'unità a vela.",
+    answer: 1,
+    description:
+      "Lo scarroccio è il movimento laterale di un'imbarcazione rispetto alla direzione desiderata della navigazione, principalmente causato dall'azione del vento laterale. Nelle unità a vela, quando il vento è traverso, agisce con una componente laterale notevole, generando una forza perpendicolare all'asse longitudinale della barca. Questa forza spinge l'imbarcazione lateralmente, provocando lo scarroccio. A meno che non esistano forze addizionali o la configurazione specifica dell'imbarcazione non introduca componenti direzionali diverse, la forza dovuta allo scarroccio mantiene questa direzione perpendicolare rispetto alla linea centrale della barca perché è proprio la risultante della spinta aerodinamica laterale.",
+  },
+  {
+    id: 40,
+    question:
+      "La forza di propulsione risulta perpendicolare all'asse longitudinale dell'unità a vela.",
+    answer: 0,
+    description:
+      "La forza di propulsione di un'unità a vela non risulta perpendicolare all'asse longitudinale dell'imbarcazione, ma è composta da due componenti: una parallela all'asse longitudinale, che permette il movimento in avanti, e una perpendicolare all'asse longitudinale, che induce una forza laterale (leeway) bilanciata dalla deriva o dalla chiglia. L'orientamento e l'inclinazione della vela rispetto al vento generano una forza risultante che può essere scomposta in queste due componenti, favorendo così la navigazione in direzione desiderata tramite l'uso combinato delle vele e delle superfici immerse.",
+  },
+  {
+    id: 41,
+    question:
+      "l'albero di un'unità a vela  inclinato verso poppa rende la stessa tendenzialmente orziera.",
+    answer: 1,
+    description:
+      "L'inclinazione dell'albero di un'unità a vela verso poppa influenza la manovrabilità della barca, rendendola tendenzialmente orziera. Questo effetto si verifica perché un albero inclinato all'indietro sposta il centro velico, ovvero il punto in cui si esercita la forza del vento sulle vele, verso poppa. Quando il centro velico si trova più a poppa rispetto al centro di deriva, cioè il punto in cui le resistenze idrodinamiche della deriva e della chiglia si concentrano, si crea un momento di forza che tende a fare orzare la barca. \"Orzare\" significa che la prua della barca tende a puntare verso il vento, rendendo necessaria una continua correzione del timone per mantenere la rotta desiderata. Questa configurazione aumenta così la necessità di azioni correttive da parte del timoniere.",
+  },
+  {
+    id: 42,
+    question:
+      "L'albero di un'unità a vela  inclinato verso prua rende la stessa tendenzialmente poggiera.",
+    answer: 1,
+    description:
+      "L'albero di un'unità a vela inclinato verso prua, una situazione conosciuta come \"rake negativo,\" influisce sul comportamento dell'imbarcazione. Nella nautica, il \"rake\" è l'inclinazione dell'albero rispetto ad un asse verticale immaginario. Normalmente, un lieve rake negativo (inclinazione verso prua) può causare una variazione nell'equilibrio della barca, influendo su come il vento interagisce con le vele e il loro centro velico.\n\nQuando l'albero è inclinato verso prua, il centro velico, che è il punto dove si può considerare che agisca la forza del vento sulle vele, si sposta verso prua rispetto al centro di deriva, che è il punto in cui agiscono le forze idrodinamiche opposte a quelle del vento. Questa nuova disposizione fa sì che l'equilibrio della barca cambi, generando un momento convesso che tende a ruotare la prua della barca sopravvento.\n\nQuesto effetto fa sì che la barca abbia una naturale tendenza a girare verso il vento, una condizione nota come \"poggiere\" in termini nautici. Un'imbarcazione poggiera è generalmente più facile da manovrare perché tende automaticamente a correggere la rotta verso il vento in caso di vento in aumento, ma può richiedere una maggiore attenzione per mantenere una rotta precisa sotto certe condizioni.\n\nDal punto di vista dell'esame per la patente nautica, è importante comprendere come le forze aerodinamiche e idrodinamiche si bilanciano e come le variazioni nell'assetto dell'albero influenzano il comportamento dell'imbarcazione. L'inclinazione dell'albero è pertanto un elemento cruciale nella gestione e nella regolazione della barca a vela.",
+  },
+  {
+    id: 43,
+    question:
+      'La funzione delle stecche poste sulla randa è quella di conservare inalterata la forma della vela in qualsiasi condizione meteomarina.',
+    answer: 1,
+    description:
+      "Le stecche sulla randa sono dispositivi rigidi inseriti nelle tasche della vela con lo scopo di mantenere la forma aerodinamica della vela stessa. In condizioni normali, servono a prevenire che la vela si pieghi o sventoli in modo irregolare. Questo è fondamentale per il corretto funzionamento della vela, poiché una forma aerodinamica stabile ottimizza la conversione del vento in spinta propulsiva, migliorando le prestazioni della barca. In condizioni meteomarine variabili, le stecche aiutano a distribuire uniformemente le forze del vento sulla superficie della vela, riducendo l'usura e aumentando l'efficienza. Senza le stecche, la randa potrebbe deformarsi sotto la pressione del vento, perdendo la sua configurazione ottimale e quindi la sua efficacia.",
+  },
+  {
+    id: 44,
+    question:
+      "La funzione delle stecche poste sulla randa è quella di garantire l'ottimale indicazione della direzione del vento sulla vela?",
+    answer: 0,
+    description:
+      'Le stecche poste sulla randa non hanno la funzione di indicare la direzione del vento. Le stecche sono elementi rigidi inseriti nella vela per mantenerla tesa e conferire una forma aerodinamica migliore, migliorando così le prestazioni della vela. Aiutano a ridurre lo sventolio della vela e ad allungare la vita della stessa prevenendo usura e deformazioni. La direzione del vento è generalmente indicata da strumenti come le banderuole segnavento (o anemometri) situati sull’albero o su altri elementi della barca, non dalle stecche della randa.',
+  },
+  {
+    id: 45,
+    question:
+      'Con riguardo alla teoria della vela, il multiscafo ha una maggiore stabilità.',
+    answer: 1,
+    description:
+      "Il multiscafo presenta una maggiore stabilità rispetto ai monoscafi grazie alla disposizione di più scafi che gli conferiscono un'ampia base di appoggio sull'acqua. Questa configurazione riduce significativamente la tendenza dell'imbarcazione a inclinarsi sotto l'azione del vento, aumentando la sicurezza e rendendola meno soggetta al ribaltamento. \n\nInoltre, nei multiscafo, la distribuzione dei volumi immersi in più scafi riduce la resistenza iniziale all'avanzamento, permettendo una navigazione più rapida e stabile. I due o più scafi lavorano sinergicamente per bilanciarsi, distribuendo il peso e le forze aerodinamiche in modo più efficiente. Questo vantaggio è particolarmente evidente nelle alte velocità e in condizioni di mare mosso, dove la stabilità aggiuntiva aiuta a mantenere una rotta più rettilinea e a evitare movimenti bruschi. \n\nInfine, la configurazione del multiscafo riduce l'effetto di scarroccio (il movimento laterale non desiderato dovuto alla forza del vento), migliorando il controllo dell'imbarcazione. Queste caratteristiche fanno dei multiscafi le imbarcazioni preferite per chi cerca stabilità sia in navigazione che all'ancora.",
+  },
+  {
+    id: 46,
+    question:
+      "Il bulbo zavorrato di un'unità a vela fornisce maggiore stabilità per contrastare l'azione esterna del vento.",
+    answer: 1,
+    description:
+      "Il bulbo zavorrato di un'unità a vela, spesso posizionato nella parte inferiore della chiglia, è progettato per abbassare il centro di gravità dell'imbarcazione. Questo componente è fondamentale per la stabilità dell'unità poiché il peso aggiunto nella parte inferiore contrasta le forze laterali del vento che agiscono sulle vele e tendono a inclinare il natante. Quando il vento spinge lateralmente sulle vele, causando un aumento dell'angolo di sbandamento, il bulbo zavorrato genera un momento di stabilità opposto, ripristinando l'equilibrio dell'imbarcazione. La funzione del bulbo zavorrato è quindi di creare una forza di contrappeso, aumentando la capacità della barca di mantenersi diritta e di navigare in sicurezza anche in condizioni di vento forte. Questa azione di contrasto riduce il rischio di ribaltamento e migliora le performance generali della barca a vela, rendendo il bulbo zavorrato un elemento cruciale per la navigazione velica.",
+  },
+  {
+    id: 47,
+    question:
+      "La stabilità di un'imbarcazione a vela è assicurata dal bulbo zavorrato.",
+    answer: 1,
+    description:
+      "La stabilità di un'imbarcazione a vela è fortemente influenzata dalla presenza del bulbo zavorrato, che si trova attaccato all'estremità inferiore della chiglia. Questo componente pesante e situato in basso abbassa il centro di gravità dell'imbarcazione, contribuendo a mantenere l'equilibrio e a contrastare le forze che tendono a inclinare la barca. Quando il vento esercita una forza laterale sulle vele, il momento generato dalle vele tende a inclinare l'imbarcazione. Il bulbo zavorrato produce un momento di raddrizzamento opponendosi a questa inclinazione, aiutando così a mantenere la barca in una posizione più verticale. Questa maggiore stabilità riduce il rischio di capovolgimento e migliora la sicurezza durante la navigazione.",
+  },
+  {
+    id: 48,
+    question:
+      'La vela tende, per sua natura, ad assumere una posizione neutra di 45° rispetto al flusso del vento e a ricevere una spinta in tale direzione.',
+    answer: 0,
+    description:
+      "Una vela non tende naturalmente ad assumere una posizione di 45 gradi rispetto al flusso del vento. La posizione della vela rispetto al vento dipende dall'angolo di incidenza, che è l'angolo tra la direzione del vento apparente e il piano della vela. La regolazione delle vele viene effettuata dagli operatori della barca per massimizzare l'efficienza e le prestazioni in base alle condizioni del vento. Una vela può assumere diverse posizioni relative al vento apparente per manovrare la barca nella direzione desiderata e ottenere la spinta ottimale. In sintesi, la posizione di 45 gradi non è una configurazione neutra naturale per una vela; piuttosto, è il risultato di un controllo e di una regolazione accurata per adattarsi alle condizioni specifiche del vento.",
+  },
+  {
+    id: 49,
+    question:
+      "Per andatura si intende la direzione verso cui procede un'unità  a vela rispetto alla direzione di provenienza del vento.",
+    answer: 1,
+    description:
+      'Il termine "andatura" si riferisce specificamente alla direzione che un\'imbarcazione a vela prende rispetto alla direzione di provenienza del vento. In pratica, questo concetto aiuta a determinare l\'angolo formato tra la direzione del vento e la prua della barca. Esistono diverse andature, ciascuna con caratteristiche e tecniche di navigazione proprie, che vanno dal "vento in poppa" (vento proveniente da dietro l\'imbarcazione) fino alla "bolina stretta" (vento proveniente quasi di fronte), passando per intermedie come il traverso e il lasco. Comprendere le andature è fondamentale per una navigazione efficace e sicura, poiché influisce direttamente sulla velocità e sulla stabilità della barca, nonché sulla gestione delle vele e del timone.',
+  },
+  {
+    id: 50,
+    question:
+      'Si chiama "bolina" l\'andatura in cui l\'unità a vela procede con una direzione di rotta che forma un angolo di circa 45° rispetto alla direzione del vento reale.',
+    answer: 1,
+    description:
+      'Nella navigazione a vela, "bolina" si riferisce all\'andatura in cui la barca procede controvento ad un angolo di circa 45° rispetto alla direzione del vento. Questo angolo permette alla barca di avanzare sfruttando il principio di portanza generato dall\'interazione tra il vento e le vele. La bolina rappresenta una delle andature più difficili da gestire, poiché richiede una corretta regolazione delle vele per mantenere efficienza e velocità, minimizzando al contempo la resistenza dovuta allo scafo. Il principio aerodinamico alla base della bolina è simile a quello delle ali di un aereo: l\'aria che scorre sopra la vela crea una zona di pressione più bassa rispetto a quella sotto la vela, generando una forza che "tira" la barca in avanti controvento. Manovrare in bolina è cruciale per la navigazione a vela, specialmente in regate o in situazioni in cui è necessario risalire il vento per raggiungere la destinazione desiderata.',
+  },
+  {
+    id: 51,
+    question:
+      'Si chiama "lasco" l\'andatura in cui l\'unità  a vela procede con una direzione di rotta che forma un angolo di circa 135° rispetto alla direzione del vento reale.',
+    answer: 1,
+    description:
+      "Il termine \"lasco\" si riferisce a una specifica andatura della barca a vela in cui il vento proviene da una direzione che forma un angolo compreso tra 120° e 150° rispetto alla prua della barca. Questo significa che la barca procede con il vento a poppa, ma non direttamente alle sue spalle; piuttosto, il vento soffia da un angolo compreso tra la traversa e la poppa. La definizione fornita nella domanda, ossia un angolo di circa 135°, rientra esattamente in questo intervallo, giustificando pertanto la correttezza della risposta.\n\nNel dettaglio, il lasco è considerato un'andatura relativamente comoda e stabile perché le vele possono essere issate con un angolo ampio, riducendo le forze laterali che tenderebbero a inclinare la barca. Questo angolo di vento permette alle vele di sfruttare al meglio la portanza e la trazione risultante è efficace sia per avanzare che per mantenere una buona stabilità. Le andature comprese tra i 120° e i 180° rispetto alla direzione del vento includono il lasco, gran lasco e la poppa, con il gran lasco che è l'andatura più vicina al lasco, ma con un angolo poco più ampio rispetto al lasco stretto.\n\nComprendere le andature e i relativi angoli rispetto alla direzione del vento è fondamentale per la navigazione a vela, poiché permette di ottimizzare la velocità e la rotta dell'imbarcazione attraverso l'uso appropriato delle vele e delle manovre.",
+  },
+  {
+    id: 52,
+    question:
+      'Si chiama "traverso" l\'andatura in cui l\'unità  a vela procede con una direzione di rotta che forma un angolo di 90° rispetto alla direzione del vento reale.',
+    answer: 1,
+    description:
+      "Il \"traverso\" rappresenta una delle andature fondamentali nella navigazione a vela e si verifica quando l'imbarcazione si muove perpendicolarmente rispetto alla direzione del vento. In termini più tecnici, l'angolo tra la rotta dell'imbarcazione e la direzione del vento reale è di 90°. \n\nQuesta andatura è notevolmente importante perché si distingue per un equilibrio tra forza del vento e capacità di controllo della vela, permettendo di sfruttare al meglio la potenza del vento senza eccessivo sbandamento dell’imbarcazione. A differenza di altre andature come il lasco o la bolina, il traverso generalmente offre una navigazione veloce e stabile, sfruttando efficacemente l'energia eolica. La terminologia e gli angoli di incidenza del vento sono aspetti fondamentali della teoria della vela, poiché determinano le prestazioni e le modalità di navigazione che un velista deve conoscere per condurre l'imbarcazione in modo efficiente e sicuro.",
+  },
+  {
+    id: 53,
+    question:
+      'Si chiama "lasco" l\'andatura in cui l\'unità  a vela procede con una direzione di rotta che forma un angolo di circa 90° rispetto alla direzione del vento reale.',
+    answer: 0,
+    description:
+      "La risposta è corretta perché in navigazione a vela, l'andatura al lasco si riferisce a una rotta che forma un angolo tra 110° e 160° rispetto alla direzione del vento. Quando un'unità a vela procede con una direzione di rotta che forma un angolo di circa 90° rispetto al vento, si dice che sta navigando al traverso. Nell'andatura al traverso, il vento colpisce la barca perpendicolarmente al lato, permettendo generalmente una navigazione più veloce e stabile. L'andatura al lasco invece comporta un angolo maggiore rispetto al traverso, con il vento che spira più da poppa rispetto alla barca, rendendo la navigazione più confortevole e meno soggetta a sbandamenti. Essere precisi nelle definizioni delle andature è cruciale per la navigazione sicura ed efficiente, poiché influisce sul controllo della barca, sulla velocità e sulla stabilità.",
+  },
+  {
+    id: 54,
+    question:
+      'Si chiama "poppa" o "fil di ruota" l\'andatura in cui l\'unità a vela procede con una direzione di rotta che forma un angolo di 180° rispetto alla direzione del vento reale.',
+    answer: 1,
+    description:
+      'L\'andatura denominata "poppa" rappresenta una situazione in cui l\'imbarcazione a vela si muove con il vento proveniente direttamente da dietro, cioè con un angolo di 180° rispetto alla direzione del vento reale. In questa configurazione, le vele si gonfiano nel loro massimo, a pieno beneficio della forza propulsiva del vento. La dicitura "fil di ruota" si utilizza anch\'essa per indicare la stessa condizione di andatura poppiera. Questo è il caso in cui l\'unità sfrutta la spinta del vento nella maniera più diretta possibile, senza dover orientare le vele angolarmente rispetto al vento. La navigazione a poppa è una delle andature più stabili, ma deve essere condotta con attenzione per evitare la "straorzata" o perdita di controllo derivante da eventuali sbandate laterali potenzialmente destabilizzanti.',
+  },
+  {
+    id: 55,
+    question:
+      "Procedendo di bolina, a bordo il vento percepito risulta d'intensità superiore a quella reale.",
+    answer: 1,
+    description:
+      "Quando una barca a vela procede di bolina, naviga controvento con un angolo compreso tra i 30° e i 45° rispetto alla direzione del vento reale. Il movimento della barca genera un vento apparente che è il risultato della combinazione vettoriale del vento reale e del vento relativo alla velocità della barca stessa. Questo vento apparente risulta di intensità maggiore rispetto al vento reale perché alla velocità del vento reale si somma quella della barca. In altre parole, più velocemente la barca si muove controvento, maggiore sarà l'intensità del vento apparente che si percepisce a bordo. Tale fenomeno risulta particolarmente evidente in navigazione di bolina, poiché la velocità della barca è tale da incrementare significativamente l'intensità del vento percepito.",
+  },
+  {
+    id: 56,
+    question:
+      "Procedendo di poppa la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta superiore rispetto a quella reale.",
+    answer: 0,
+    description:
+      "La velocità avvertita dell'unità a vela procede di poppa, quindi con il vento in poppa, spesso sembra elevata perché viene confusa l'esperienza di avanzamento con la reale forza del vento. Tuttavia, in questa situazione, il vento percepito a bordo risulta inferiore a quello reale. Questo fenomeno accade perché il vento apparente è il risultato della combinazione del vento reale e del vento generato dal movimento stesso della barca. Di poppa, il vento apparente è dato dalla differenza tra il vento reale e la velocità dell’imbarcazione, riducendo così la sensazione di intensità del vento. Quindi, la sensazione di velocità non è dovuta a un aumento del vento percepito, ma al miglioramento delle performance della barca stessa nel vento favorevole, pur percependo un vento minore.",
+  },
+  {
+    id: 57,
+    question:
+      "Il settore di bordeggio è la zona dello scafo di un'unità navale a vela che concorre a fornire la spinta velica e quindi ad incrementare la velocità della stessa in funzione della direzione del vento.",
+    answer: 0,
+    description:
+      "Il settore di bordeggio non è una zona dello scafo di un'unità navale a vela. Il termine corretto per descrivere la zona dello scafo che contribuisce alla spinta velica e alla velocità dell'unità in funzione della direzione del vento è il sistema velico (che include vele e albero). Il bordeggio si riferisce invece alla manovra che un'imbarcazione a vela effettua per risalire il vento facendo vela su un lato e poi sull'altro, cambiando direzione. Questo processo è noto come virata da un bordo all'altro e non implica specificamente una zona dello scafo, ma piuttosto una tecnica di navigazione utilizzata per avanzare controvento.",
+  },
+  {
+    id: 58,
+    question:
+      'Si intende per lato sottovento, la superficie sopravvento della vela che è sottoposta a una depressione.',
+    answer: 0,
+    description:
+      "Per capire perché questa affermazione è falsa, dobbiamo comprendere i concetti di lato sopravvento e lato sottovento e come il vento interagisce con una vela. Il lato sopravvento è quello da cui proviene il vento relativo, quindi è la superficie della vela che riceve direttamente il flusso d'aria. In contrasto, il lato sottovento è dalla parte opposta, cioè quella che si trova dietro rispetto alla direzione del vento. Quando il vento colpisce la vela, provoca una pressione maggiore sul lato sopravvento e una depressione (o pressione ridotta) sul lato sottovento. L'affermazione è quindi sbagliata perché il lato sottovento è quello che si trova sotto l'influenza della depressione, non il lato sopravvento.",
+  },
+  {
+    id: 59,
+    question:
+      "Il centro velico è il punto di applicazione della risultante delle forze dovute all'azione del vento sulle vele.",
+    answer: 1,
+    description:
+      "Il centro velico è effettivamente il punto di applicazione della risultante delle forze generate dal vento che agisce sulle vele di una barca a vela. Questo punto rappresenta il baricentro aerodinamico del sistema velico e viene determinato dalla combinazione delle forze e dei momenti creati dal vento sulle varie vele. La posizione del centro velico è cruciale per l'equilibrio della barca, poiché influisce sul comportamento dell'imbarcazione in navigazione. Un corretto posizionamento rispetto allo scafo e al centro di deriva (il punto dove si applica la risultante delle forze idrodinamiche opposte dal movimento dell'acqua sulla chiglia) è fondamentale per mantenere la stabilità e il controllo della barca. Pertanto, conoscere e regolare il centro velico aiuta a ottimizzare le prestazioni e a gestire al meglio la navigazione.",
+  },
+  {
+    id: 60,
+    question:
+      "E' il centro velico il punto di applicazione delle forza idrodinamica sullo scafo dovuta allo scarroccio.",
+    answer: 0,
+    description:
+      "Il centro velico è il punto in cui si suppone che agisca la forza risultante del vento sulle vele. Non ha nulla a che vedere con le forze idrodinamiche sullo scafo. La forza idrodinamica dovuta allo scarroccio, ovvero lo scivolamento laterale involontario della barca causato dal vento e dalla corrente sull'acqua, agisce sull'opera viva, cioè sulla parte immersa dello scafo. Il punto di applicazione di questa forza idrodinamica si chiama centro di deriva. Dunque, l'affermazione è falsa poiché confonde il centro velico con il centro di deriva, e attribuisce erroneamente al centro velico il ruolo di resistenza idrodinamica allo scarroccio, che invece è del centro di deriva.",
+  },
+  {
+    id: 61,
+    question:
+      'Il centro di deriva è il centro dello scafo a vela di piccole dimensioni.',
+    answer: 0,
+    description:
+      "Il centro di deriva non è il centro geometrico dello scafo, ma piuttosto il punto teorico dove si considera che le forze resistive laterali dell'acqua si concentrano. Nello specifico, la deriva è l'appendice immersa della barca (come la chiglia o i timoni) che oppone resistenza allo scarroccio, cioè al movimento laterale indesiderato causato dal vento. Il centro di deriva è quindi ubicato nella zona associata alla deriva stessa, che solitamente è al di sotto della linea di galleggiamento e non al centro geometrico dello scafo. Questo concetto è importante per comprendere la stabilità e la manovrabilità della barca a vela, poiché il centro di deriva interagisce con il centro velico, che è il punto di applicazione delle forze generate dal vento sulle vele, influenzando così l'equilibrio e la capacità di governare l’imbarcazione.",
+  },
+  {
+    id: 62,
+    question:
+      "Il centro di deriva è il punto di applicazione della resistenza laterale che si oppone alle forze idrodinamiche esercitate sull'opera viva.",
+    answer: 1,
+    description:
+      "Il centro di deriva è un concetto fondamentale nella nautica poiché rappresenta il punto dove agiscono le forze idrodinamiche di resistenza laterale sullo scafo di una barca. Queste forze equilibrano la tendenza della barca a scivolare lateralmente (deriva) quando è esposta a venti trasversali o correnti. Visitando il centro di deriva, è possibile comprendere come la distribuzione delle forme della carena influenzi la stabilità e la manovrabilità dell'imbarcazione. In pratica, il design dello scafo e la posizione del centro di deriva sono progettati per minimizzare la deriva laterale, garantendo una navigazione più efficiente e stabile.",
+  },
+  {
+    id: 63,
+    question:
+      'Il centro velico e il centro di deriva servono per determinare il punto nave a vela.',
+    answer: 0,
+    description:
+      "Il centro velico e il centro di deriva non si usano per determinare il punto nave a vela, bensì servono per comprendere e gestire l'equilibrio e la stabilità della barca a vela. Il centro velico è il punto in cui si può considerare concentrata la forza del vento che agisce sulle vele, mentre il centro di deriva è il punto in cui si concentra la resistenza idrodinamica dell'acqua contro lo scafo e la chiglia. Questi due centri vengono studiati per bilanciare la barca, ottimizzare le prestazioni e garantire una navigazione sicura e stabile, evitando eccessivi sbandamenti o deviazioni dalla rotta. La determinazione del punto nave, invece, riguarda la posizione geografica della barca e si effettua attraverso strumenti di navigazione e tecniche di rilevamento come il GPS, i calcoli di posizione stimata e l'uso di carte nautiche.",
+  },
+  {
+    id: 64,
+    question:
+      "In condizioni di timone neutro (al centro), quando il centro velico è collocato a proravia del centro di deriva, l'unità navale a vela si allontanata dalla direzione del vento (è poggiera).",
+    answer: 1,
+    description:
+      "Il centro velico rappresenta il punto di applicazione della risultante delle forze aerodinamiche generate dalle vele, mentre il centro di deriva è il punto di applicazione della risultante delle forze idrodinamiche generate dalla chiglia o dalla deriva. Quando il centro velico si trova a proravia del centro di deriva, si determina un momento di coppia che fa ruotare l'unità navale in modo che la prua si allontani dalla direzione del vento. Questo fenomeno è chiamato poggiare. In condizioni di timone neutro, non c'è alcuna correzione attiva per contrastare questo momento, quindi l'unità navale tenderà spontaneamente a poggiare, cioè a scendere sottovento. Questo principio è essenziale per la comprensione dell'equilibrio della nave e della navigazione a vela, in quanto la disposizione relativa di questi due centri influenza il comportamento della barca rispetto alla direzione del vento.",
+  },
+  {
+    id: 65,
+    question:
+      "In condizioni di timone neutro (al centro), quando il centro velico è allineato con il centro di deriva, l'unità navale a vela si definisce equilibrata (né poggiera né orziera).",
+    answer: 1,
+    description:
+      "Questo concetto riflette l'equilibrio aerodinamico e idrodinamico dell'imbarcazione a vela. Il centro velico è il punto di applicazione della risultante delle forze aerodinamiche generate dalle vele, mentre il centro di deriva è il punto di applicazione della risultante delle forze idrodinamiche che agiscono sulla chiglia e sul timone. Quando questi due centri sono allineati verticalmente, le forze generate dalle vele e dalla resistenza dell'acqua sono in equilibrio. In questa condizione, l'imbarcazione naviga in modo rettilineo senza la necessità di correzioni con il timone, e quindi è definita né poggiera (tende a deviare verso sotttovento) né orziera (tende a deviare verso sopravvento). Il timone neutro, ovvero posizionato al centro, è un indicatore di questo stato di equilibrio, in cui l'imbarcazione si muove in maniera bilanciata rispetto al vento e all'acqua.",
+  },
+  {
+    id: 66,
+    question:
+      "La posizione del centro velico per le unità navali a vela dipende dalla forma della vela, dalla reciproca influenza tra le vele bordate e dalla messa a punto dell'attrezzatura.",
+    answer: 1,
+    description:
+      "Il centro velico è il punto in cui si considera concentrata l'azione del vento sulle vele di una barca a vela. La sua posizione è determinata da diversi fattori:\n\n1. **Forma della vela:** Vele diverse producono forze diverse in base alla loro geometria e superficie esposta al vento. Vele più grandi o con una forma più efficiente possono spostare il centro velico.\n\n2. **Reciproca influenza tra le vele bordate:** Quando si utilizzano più di una vela, la loro interazione modifica il flusso del vento e, di conseguenza, la forza esercitata su ciascuna vela. La combinazione di queste forze influenza la posizione complessiva del centro velico.\n\n3. **Messa a punto dell'attrezzatura:** La regolazione delle vele (bordatura) e altre regolazioni dell'attrezzatura (come lo sbandamento) influiscono sull'efficienza e sull'effettiva azione delle vele. Queste regolazioni possono quindi spostare il centro velico per ottimizzare la navigazione e il bilanciamento dell’unità navale.\n\nIn sintesi, la complessità della vela e l'interazione tra questi fattori determinano la posizione del centro velico, il quale è cruciale per il corretto bilanciamento e la navigabilità dell'imbarcazione.",
+  },
+  {
+    id: 67,
+    question:
+      'La posizione del centro di deriva delle unità a vela dipende dalla forma delle vele.',
+    answer: 0,
+    description:
+      "Il centro di deriva, o centro velico, di un'imbarcazione a vela è determinato dalla superficie totale delle vele e dalla loro distribuzione. Tuttavia, esso non riguarda la forma delle vele, ma piuttosto la posizione geometrica delle superfici veliche rispetto allo scafo. Esso rappresenta il punto dove si concentra idealmente l'azione del vento sull'intero piano velico. È importante considerare che la forma delle vele può influenzare la prestazione e la manovrabilità della barca, ma non cambia la posizione del centro di deriva, che rimane un concetto legato alla distribuzione delle superfici veliche.",
+  },
+  {
+    id: 68,
+    question:
+      "Si intende per sopravento, il lato dell'unità ubicato al di sotto del punto di applicazione del vento apparente.",
+    answer: 0,
+    description:
+      "Il lato sopravento di un'unità è quello esposto alla direzione da cui proviene il vento. Pertanto, è il lato che è \"sotto\" il vento rispetto all'unità stessa. In altre parole, sopravento indica la parte dell'imbarcazione che si trova dalla parte del vento, cioè quella da cui il vento arriva. Il punto di applicazione del vento apparente, invece, rappresenta la direzione e la forza del vento percepiti sull'imbarcazione considerando sia il vento reale sia il movimento dell'imbarcazione stessa. Poiché sopravento è la parte che riceve il vento in faccia, non può essere situata sotto il punto di applicazione del vento apparente, il quale rappresenta il risultato netto di tali influenze.",
+  },
+  {
+    id: 69,
+    question:
+      "Si intende per sottovento, il lato dell'unità opposto rispetto a quello su cui batte il vento.",
+    answer: 1,
+    description:
+      "Nel contesto della navigazione, il termine \"sottovento\" si riferisce al lato dell'imbarcazione che si trova dalla parte opposta rispetto alla direzione da cui proviene il vento. Questo è un concetto fondamentale per capire la navigazione a vela e la gestione delle manovre. Quando il vento colpisce un lato della nave (detto “sopravento”), l'altro lato, che è riparato dal vento, è definito “sottovento”. Questa definizione è cruciale, soprattutto nelle manovre di virata e strambata, dove è importante conoscere la provenienza del vento per mantenere la corretta rotta e stabilità dell'imbarcazione. Capire la differenza tra sopravento e sottovento aiuta anche a determinare le aree di turbolenza dietro le vele e a gestire meglio le vele per una navigazione efficiente.",
+  },
+  {
+    id: 70,
+    question:
+      'La dizione di "mure a dritta/mure a sinistra" indica la parte prodiera dello scafo sulla quale si infrangono le onde.',
+    answer: 0,
+    description:
+      '"Mure a dritta" e "mure a sinistra" sono espressioni della terminologia nautica che si riferiscono alla direzione da cui proviene il vento rispetto alla barca a vela. \n\nQuando una barca è "mure a dritta", significa che il vento colpisce la barca sul lato destro (dritta) e quindi le vele sono orientate sul lato sinistro (sinistra). Invece, quando una barca è "mure a sinistra", il vento proviene dal lato sinistro e le vele sono orientate sul lato destro. \n\nQuesta terminologia è essenziale durante le regate e nelle situazioni di waypointing per determinare chi ha il diritto di precedenza. Secondo le regole di precedenza marittima, una barca mure a dritta ha normalmente la priorità rispetto a una barca mure a sinistra.\n\nLa dizione non si riferisce affatto alla parte dello scafo dove si infrangono le onde, che peraltro dipende dalla direzione delle onde stesse e dalla posizione e dall\'assetto della barca, ma specificamente alla relazione tra le vele, la barca, e il vento.',
+  },
+  {
+    id: 71,
+    question:
+      'Per grasso della vela si intende la parte della vela più prossima alla tensione della drizza.',
+    answer: 0,
+    description:
+      'Il "grasso della vela" si riferisce alla parte più piena o panciosa della vela, ovvero la zona che presenta la maggiore curvatura quando la vela è spiegata. Ciò non ha nulla a che vedere con la tensione della drizza. La drizza è la cima utilizzata per issare la vela e regolarne l\'altezza sull\'albero. La parte della vela più vicina alla tensione della drizza sarebbe piuttosto la testa o l\'angolo di penna della vela (il punto superiore). Il "grasso" o "pancia" della vela è invece una caratteristica che riguarda la forma e la regolazione aerodinamica della vela per ottimizzare le sue prestazioni in base alle condizioni di vento. Gli strumenti per modificare la posizione del grasso della vela includono il cunningham o il vang che regolano la tensione lungo l\'inferitura e la balumina.',
+  },
+  {
+    id: 72,
+    question:
+      "Il piano velico è l'organizzazione delle vele di un'imbarcazione come da progetto ed è essenzialmente caratterizzato dal numero di alberi e dal tipo di vele a disposizione.",
+    answer: 1,
+    description:
+      "Il piano velico di un'imbarcazione rappresenta l'insieme delle vele e la loro disposizione secondo il progetto dell'imbarcazione stessa. Questo piano è determinato da due elementi principali: il numero di alberi presenti e il tipo di vele utilizzate. \n\nIl numero di alberi è un elemento fondamentale perché ogni albero può supportare uno o più tipi di vele (ad esempio, rande, fiocchi, gennaker, ecc.). Il tipo di vele determina come viene suddivisa la superficie velica tra le varie vele e come queste sono configurate per ottimizzare le prestazioni della barca in diverse condizioni di vento. \n\nIl progetto del piano velico deve bilanciare vari fattori, tra cui la stabilità dell'imbarcazione, la facilità di manovra e l'efficienza nella navigazione. Questo include considerazioni sul centro velico, che è il punto teorico dove si concentra la forza aerodinamica esercitata dal vento sulle vele, e il centro di deriva, che è il punto dove si applica la resistenza dell'acqua sulla carena e sulle appendici.\n\nPertanto, il piano velico non solo definisce l'aspetto e la disposizione delle vele, ma influisce direttamente sulle performance dell'imbarcazione e sul modo in cui deve essere gestita durante la navigazione.",
+  },
+  {
+    id: 73,
+    question:
+      "Per portanza si intende il peso complessivo di tutte le attrezzature veliche imbarcate su un'unità a vela.",
+    answer: 0,
+    description:
+      'La portanza, in termini nautici, si riferisce alla forza aerodinamica generata dalle vele che permette alla barca di avanzare contro il vento. Non ha nulla a che fare con il peso delle attrezzature veliche. La definizione corretta del termine è invece associata alla capacità delle vele di produrre una spinta propulsiva che supera la resistenza al movimento dell\'imbarcazione. Essa è quindi un concetto più legato alle performance di navigazione piuttosto che al peso materiale delle attrezzature. Pertanto, la risposta "false" è corretta.',
+  },
+  {
+    id: 74,
+    question:
+      "Lo svergolamento della vela dipende dalla velocità del vento reale che aumenta in funzione dell'altezza da cui spira rispetto alla superficie del mare.",
+    answer: 1,
+    description:
+      "Lo svergolamento della vela, noto anche come twist, si verifica quando la parte alta della vela si apre maggiormente rispetto alla parte bassa. Questo fenomeno dipende dalla variazione della velocità del vento reale con l'altezza. Il vento reale tende ad essere più intenso man mano che si sale in altezza rispetto alla superficie del mare, a causa della minore resistenza offerta dall'acqua. Questo incremento di velocità modifica l'angolo di incidenza del vento sulla vela alle diverse altezze, causando una differenza nella tensione e nell'angolosità della vela stessa. Una corretta regolazione dello svergolamento è essenziale per ottimizzare le prestazioni della barca a vela, garantendo che la vela catturi efficacemente il vento in modo uniforme lungo tutta la sua superficie.",
+  },
+  {
+    id: 75,
+    question:
+      'Per "straorza" si intende l\'improvviso cambio di prua verso la direzione di provenienza del vento, causato da una raffica  o da un\'onda particolarmente intensa.',
+    answer: 1,
+    description:
+      "Il termine \"straorza\" definisce una condizione critica nella navigazione a vela in cui l'imbarcazione subisce un'improvvisa deviazione della prua verso la direzione da cui proviene il vento. Questo fenomeno è innescato da eventi esterni, come raffiche di vento improvvise o onde di particolare intensità, che agiscono sulla stabilità della barca. La straorza può verificarsi quando il timoniere perde temporaneamente il controllo sulla rotta a causa della forza esterna che spinge l'imbarcazione verso il vento, rendendo più difficile mantenere la navigazione desiderata e aumentando il rischio di virate incontrollate. Questo evento può comportare seri problemi di sicurezza, richiedendo manovre correttive e pronte reazioni da parte dell'equipaggio per ristabilire l'assetto e la rotta. La profonda comprensione di questi fenomeni e la capacità di gestirli rapidamente sono essenziali per garantire la sicurezza e il controllo dell'imbarcazione in mare.",
+  },
+  {
+    id: 76,
+    question:
+      'Per "strapoggia" si intende l\'improvviso allontanarsi della prua dalla direzione del vento tale anche da causare una strambata.',
+    answer: 1,
+    description:
+      "La strapoggia è una manovra involontaria nella navigazione a vela, dove la prua dell'imbarcazione si allontana bruscamente dalla direzione del vento, provocando un cambio di lato dell'imbarcazione rispetto al vento. Questo può accadere in situazioni di mare agitato o per una manovra errata del timoniere. Quando si verifica una strapoggia, la vela principale, o randa, può passare improvvisamente da un lato all'altro dell'imbarcazione, causando una strambata, che è un cambiamento repentino dell'orientamento delle vele rispetto al vento. Questo può essere pericoloso perché può danneggiare l'attrezzatura di bordo, creare situazioni di rischio per l'equipaggio e, in casi estremi, portare alla perdita di controllo dell'imbarcazione. La risposta è dunque corretta, in quanto la definizione di strapoggia comprende l'allontanamento improvviso della prua dal vento, potenzialmente causando una strambata.",
+  },
+  {
+    id: 77,
+    question:
+      'Per "raffica" si intende una particolare tipologia di venti, di rilevante intensità, che spirano prevalentemente da levante o da ponente.',
+    answer: 0,
+    description:
+      'La risposta è corretta perché il termine "raffica" descrive una caratteristica specifica del vento, ma non si riferisce a una direzione prevalente. Una raffica è un improvviso aumento di velocità del vento, di breve durata, che può avvenire con qualsiasi direzione del vento. Una raffica può verificarsi in qualsiasi momento e non è collegata a un punto cardinale specifico come levante (est) o ponente (ovest). È importante distinguere il concetto di raffica dalla direzione del vento per non confondere le condizioni meteorologiche locali con fenomeni atmosferici più generali.',
+  },
+  {
+    id: 78,
+    question:
+      'Per "scarroccio" si intende la traslazione laterale dell\'unità a vela per effetto del vento esercitato sullo scafo durante la navigazione.',
+    answer: 1,
+    description:
+      "Il termine \"scarroccio\" si riferisce alla deviazione laterale dell'imbarcazione causata dall'azione del vento. Quando una barca a vela naviga, il vento colpisce lo scafo e le vele da un lato, generando una forza che non solo spinge l'imbarcazione in avanti ma tende anche a spostarla lateralmente rispetto alla rotta desiderata. Questa forza laterale, che causa lo scarroccio, è una questione centrale nella navigazione a vela perché può portare l'imbarcazione fuori rotta. \n\nL'equipaggio dovrà compensare questo effetto regolando la posizione delle vele e l'angolo del timone. L'abilità nel minimizzare lo scarroccio è fondamentale per mantenere una rotta precisa e per migliorare l'efficienza della navigazione. Strumenti come la deriva o il bulbo della chiglia sono progettati per ridurre questo fenomeno, offrendo resistenza contro la traslazione laterale e aiutando l'imbarcazione a mantenere una traiettoria più stabile.",
+  },
+  {
+    id: 79,
+    question:
+      "Un'unità a vela scuffia quando si ribalta, immergendo l'albero anche fino a 180° rispetto alla posizione iniziale.",
+    answer: 1,
+    description:
+      "Una barca a vela scuffia quando, a causa di un forte vento, errate manovre o altre circostanze, si inclina troppo e si ribalta, arrivando a immergere l'albero nell'acqua, in alcuni casi fino a 180° rispetto alla posizione originaria. Questa condizione è chiamata \"scuffiare”. Le forze dinamiche esercitate dal vento sulle vele e dall'acqua sullo scafo possono capovolgere l'imbarcazione. Tuttavia, molte barche a vela sono progettate per essere automobili e hanno caratteristiche come una deriva o un bulbo di chiglia che aiutano a stabilizzare l'imbarcazione e facilitare un ritorno alla posizione normale. È importante comprendere le dinamiche del vento e le tecniche di manovra per prevenire questo tipo di incidente.",
+  },
+  {
+    id: 80,
+    question:
+      'Si intende per "smagrire" la vela il variare della superficie portante della stessa riducendone la sua concavità.',
+    answer: 1,
+    description:
+      'Il termine "smagrire" una vela si riferisce alla regolazione che rende la vela più piatta, riducendo la sua concavità o curvatura. Questa operazione è utile soprattutto in condizioni di vento forte per diminuire la resistenza aerodinamica e migliorare la stabilità dell\'imbarcazione. \n\nIn dettaglio, la concavità della vela è data dalla sua curvatura, e una vela molto bombata crea maggiore portanza, ma anche maggiore resistenza allo scorrimento dell’aria. In condizioni di vento forte, una vela molto curvata può diventare difficile da gestire e aumentare il rischio di sbandamenti o di perdita di controllo dell’imbarcazione. Smagrendo la vela, si ottiene una superficie più piatta, che permette di mantenere un migliore controllo della barca e riduce l’angolo di sbandamento.\n\nPer smagrire una vela, si possono utilizzare vari metodi come regolare la tensione della drizza, cazzare la scotta o utilizzare il cunningham e il vang per modificare la forma della randa. L’effetto finale è una vela con minore pancia (concavità), che permette alla barca di navigare più rilassata e direzionale in acque mosse o sotto raffiche di vento forti.',
+  },
+  {
+    id: 81,
+    question:
+      'Si dice "stringere il vento" il condurre l\'unità a vela lascando quanto più possibile le vele, allontanando la prua dalla direzione dalla quale proviene il vento.',
+    answer: 0,
+    description:
+      'Il termine "stringere il vento" si riferisce a una manovra in cui l\'unità a vela viene condotta il più possibile controvento, ovvero nella direzione da cui proviene il vento. In questo caso, le vele vengono cazzate, cioè tirate e regolate in modo tale da utilizzare al massimo il vento che arriva quasi di fronte. Stringere il vento permette di navigare il più vicino possibile alla direzione del vento, solitamente a un angolo di circa 30-45 gradi rispetto alla direzione del vento apparente.\n\nQuindi, l\'affermazione nella domanda è errata perché lascare le vele, ovvero allentarle, ha l\'effetto opposto: si allontana la prua dalla direzione del vento per consentire un\'andatura più larga, come il traverso o il lasco. Pertanto, stringere il vento implica cazzare le vele e non lascarle, e allontanare la prua dalla direzione del vento si dice "scadere dal vento" o "andare alle portanti", il contrario di "stringere il vento".',
+  },
+  {
+    id: 82,
+    question:
+      'Si dice "poggiare" il condurre l\'unità a vela lascando quanto più possibile le vele, allontanando la prua dalla direzione dalla quale proviene il vento.',
+    answer: 1,
+    description:
+      '"Poggiare" è il termine nautico che indica la manovra di allontanare la prua della barca dalla direzione del vento. Questo si ottiene rilasciando (lascando) le vele, cioè allentando le scotte, per permettere alle vele di aprirsi e di ricevere il vento in maniera più ampia. Così facendo, l\'angolo tra la direzione della prua e la direzione del vento aumenta, avvicinandosi a un\'andatura di poppa o al lasco. Questo è il contrario della manovra di "orza", dove invece si avvicina la prua alla direzione del vento serrando le vele. La risposta è corretta perché il concetto descritto corrisponde esattamente alla definizione della manovra di poggiare.',
+  },
+  {
+    id: 83,
+    question:
+      "La forza di propulsione risulta parallela all'asse longitudinale dell'unità navale a vela.",
+    answer: 1,
+    description:
+      "Le unità navali a vela utilizzano il vento per generare la forza di propulsione tramite le vele. Quando il vento colpisce le vele, si genera una forza che può essere scomposta in due componenti: una perpendicolare alla direzione del vento (portanza) e una parallela alla direzione del vento (resistenza). La combinazione di queste forze determina la forza totale che agisce sulla barca. \n\nPer ottimizzare la navigazione, le vele vengono regolate in modo da orientare la forza risultante nella direzione desiderata. Anche se il vento può arrivare da molte angolazioni diverse, la somma delle forze generate dalle varie vele viene indirizzata per risultare complessivamente parallela all'asse longitudinale dell'imbarcazione, che coincide con la direzione di avanzamento desiderata.\n\nQuindi, in condizioni operative normali e con la regolazione adeguata delle vele, la forza di propulsione risultante viene allineata lungo l'asse longitudinale dell'unità navale per garantire un movimento efficace in avanti senza deviazioni indesiderate.",
+  },
+  {
+    id: 84,
+    question:
+      'La forza di scarroccio e la forza di propulsione danno origine alla forza risultante generata dal vento sulla superificie velica.',
+    answer: 1,
+    description:
+      "Quando si parla di scarroccio, ci si riferisce alla forza laterale generata dal vento che spinge lateralmente una barca a vela. La propulsione, invece, è la forza in avanti che la vela riceve dal vento. Queste due forze non agiscono in modo indipendente; piuttosto, si combinano per formare una forza risultante. Questa forza risultante è una combinazione vettoriale di entrambe le componenti di scarroccio e di propulsione. La forza risultante è ciò che effettivamente determina il movimento della barca sotto l'azione del vento, tenendo conto della direzione e della componente di ciascuna forza. Questo concetto è fondamentale nella navigazione a vela poiché permette di comprendere come ottimizzare l'assetto delle vele per navigare in maniera efficiente rispetto alla direzione del vento. Quindi, affermare che la forza di scarroccio e la forza di propulsione originano la forza risultante è corretto perché rappresentano le componenti principali che, combinate vettorialmente, determinano il comportamento della barca rispetto al vento.",
+  },
+  {
+    id: 85,
+    question:
+      'Si intende per "corda" della vela la linea idealmente tracciata per unire le due estremità del profilo della vela.',
+    answer: 1,
+    description:
+      'La "corda" di una vela è un concetto aerodinamico fondamentale che si usa per descrivere e analizzare il comportamento al vento della vela stessa. Viene definita come la linea retta immaginaria che collega il punto d\'attacco (inferiore) e il punto di caduta (superiore) del bordo di una vela. Questa linea è cruciale per comprendere come il vento interagisce con la vela, permettendo di analizzare l\'angolo di incidenza del vento e la portanza generata. È un termine molto utilizzato non solo nella nautica ma anche nell\'aerodinamica in generale, per descrivere superfici portanti come le ali degli aerei. Comprendere il concetto di "corda" è essenziale per poter regolare correttamente le vele, ottimizzando la navigazione e la velocità dell’imbarcazione.',
+  },
+  {
+    id: 86,
+    question:
+      "La concavità della vela assolve alla funzione di diminuire la resistenza all'avanzamento dell'unità.",
+    answer: 0,
+    description:
+      "La concavità della vela, nota come \"cunning\" o \"shape\", è fondamentale per l'efficienza aerodinamica della vela stessa. La forma tridimensionale della vela, con la sua curvatura, è progettata per massimizzare la portanza e minimizzare la resistenza indotta. Questo permette alla vela di generare una forza propulsiva maggiore rispetto a una vela piatta. La concavità ottimizza il flusso dell'aria lungo la superficie della vela, creando una differenza di pressione tra il lato sopravento (convesse) e sottovento (concave). Questa differenza di pressione è ciò che genera la portanza aerodinamica, che spinge la barca in avanti.\n\nUna vela piatta, al contrario, non sarebbe altrettanto efficiente nel generare questa portanza e potrebbe aumentare la resistenza aerodinamica. Infatti, una vela troppo piatta avrebbe una maggiore tendenza a stallo, dove il flusso d'aria si separa dalla superficie della vela causando una drastica diminuzione della forza propulsiva e un aumento della resistenza.\n\nPertanto, la concavità della vela non serve a diminuire la resistenza all'avanzamento dell'unità, ma piuttosto a migliorare l'efficienza aerodinamica complessiva della vela, generando una forza propulsiva maggiore e più efficace rispetto a una vela meno concava o piatta.",
+  },
+  {
+    id: 87,
+    question:
+      "Lo spostamento del peso dell'equipaggio a bordo durante la navigazione a vela può servire a contrastare l'azione sbandante generata dallo scarroccio e dalla forza propulsiva.",
+    answer: 0,
+    description:
+      "Spostare il peso dell'equipaggio a bordo durante la navigazione a vela è una tecnica utilizzata principalmente per contrastare l'azione sbandante generata dalla forza propulsiva del vento sulle vele, non dallo scarroccio. Lo sbandamento è l'inclinazione della barca sotto la spinta del vento, e il posizionamento del peso dell'equipaggio in toeloop aumenta la stabilità riducendo questa inclinazione.\n\nLo scarroccio, d'altra parte, è un fenomeno diverso: rappresenta la deviazione laterale della barca rispetto alla sua rotta ideale a causa della spinta laterale del vento e dell'azione della corrente. Per contrastare lo scarroccio, si agisce prevalentemente sull'orientamento delle vele e della deriva, non sul peso dell'equipaggio. Quindi, la risposta corretta è \"falso\" perché lo spostamento del peso dell’equipaggio non ha diretta influenza sullo scarroccio ma piuttosto sull’inclinazione (sbandamento) dovuta alla forza propulsiva del vento.",
+  },
+  {
+    id: 88,
+    question:
+      "Per contrastare la tendenza poggera dell'unità a vela è utile spostare i pesi verso prua.",
+    answer: 1,
+    description:
+      "La tendenza poggera di un'unità a vela si verifica quando la barca tende a girare la prua sottovento, allontanandosi dalla direzione del vento. Questa caratteristica può essere influenzata dall'equilibrio dei pesi a bordo. Spostare i pesi verso prua aumenta l’immersione della prua e la resistenza al movimento laterale, influenzando l'assetto della barca. Un maggiore peso a prua tende a stabilizzare la direzione in cui la prua è rivolta, riducendo la tendenza a girare sottovento (poggera). Questo effetto si ottiene perché un peso maggiore a prua rende la barca più stabile in termini di direzione e trasforma parte della forza del vento in avanzamento piuttosto che in rotazione. In sintesi, per ogni manovra velica, la distribuzione del peso a bordo è cruciale per mantenere l'assetto desiderato e migliorare la governabilità dell’imbarcazione.",
+  },
+  {
+    id: 89,
+    question:
+      "Per contrastare la tendenza orziera dell'unità a vela è utile spostare i pesi verso l'albero.",
+    answer: 0,
+    description:
+      "La tendenza orziera di un'unità a vela si riferisce alla tendenza dell'imbarcazione a girarsi verso il vento, aumentando così l'angolo di prua rispetto alla direzione del vento. Per contrastare questa tendenza, è necessario bilanciare meglio l'imbarcazione. Spostare i pesi verso l'albero non è la soluzione corretta, perché ciò non influisce significativamente sull'equilibrio tra le forze aerodinamiche (generate dalle vele) e idrodinamiche (generate dallo scafo e dal timone) che causano l'orza. Piuttosto, la soluzione corretta per contrastare la tendenza orziera è regolare la posizione del centro velico rispetto al centro di deriva. Questo può essere fatto, per esempio, riducendo la superficie della vela di prua (fiocco o genoa) e aumentando quella della randa, o viceversa, a seconda delle condizioni. L'obiettivo è mantenere il centro velico più spostato verso poppa rispetto al centro di deriva, riducendo la tendenza orziera. Altre tecniche includono l'uso del timone per bilanciare l'imbarcazione e regolare accuratamente la tensione delle vele.",
+  },
+  {
+    id: 90,
+    question:
+      "E' meglio evitare un'impostazione troppo poggera di un'unità perché tale impostazione limita notevolmente l'azione del timone.",
+    answer: 0,
+    description:
+      'Un’impostazione troppo poggera di un’unità si riferisce a un assetto con la prua troppo sottovento, causato da un eccesso di lasco nelle vele. In questa situazione, il centro velico si sposta troppo verso poppa rispetto al centro di deriva, causando sbilanciamento e una tendenza della barca ad orzare spontaneamente.\n\nQuesto sbilanciamento non necessariamente limita l’azione del timone. In realtà, un’impostazione troppo poggera può rendere la barca difficile da manovrare perché il timone deve lavorare costantemente per correggere la rotta e contrastare la tendenza ad orzare. Il timone rimane comunque efficace, ma necessita di correzioni continue che possono rendere la conduzione stancante e meno efficiente.\n\nQuindi, affermare che un\'impostazione troppo poggera limita "notevolmente" l\'azione del timone è incorretto. Il vero problema è che rende la barca più difficile da governare e può comportare una navigazione meno efficiente e più faticosa.',
+  },
+  {
+    id: 91,
+    question:
+      "Un'unità in navigazione a vela con andatura di bolina, se eccessivamente sbandata sottovento, subisce un aumento della velocità e una miglior performance delle vele bordate.",
+    answer: 0,
+    description:
+      "Nell’andatura di bolina, l’obiettivo è risalire il vento il più vicino possibile alla direzione da cui soffia. Quando un’imbarcazione a vela è eccessivamente sbandata sottovento, il degrado delle performance è notevole. Uno sbandamento eccessivo aumenta la resistenza idrodinamica della carena, compromettendo l'efficienza della navigazione e rendendo più difficile il mantenimento della rotta desiderata. Inoltre, lo sbandamento riduce la superficie effettiva delle vele esposte al vento e altera l'angolo di incidenza del vento sulle vele, causando una perdita di portanza e aumento della deriva laterale. Questo a sua volta diminuisce la velocità complessiva dell’unità e peggiora le performance delle vele. L'ideale è mantenere l’imbarcazione il più possibile diritta per massimizzare l'efficienza aerodinamica delle vele e la stabilità della rotta.",
+  },
+  {
+    id: 92,
+    question:
+      "E' meglio preferire un'impostazione orziera di un'unità a vela perché tale impostazione favorisce le prestazioni.",
+    answer: 1,
+    description:
+      "In navigazione a vela, l'impostazione orziera dell'unità, ovvero il posizionamento della barca con la prua rivolta verso il vento, è spesso preferibile per ottimizzare le prestazioni. Questo perché navigare con un angolo di bolina (ossia con il vento proveniente da prua) permette di raggiungere una maggiore velocità di avanzamento rispetto ad altre andature. Inoltre, in tale configurazione, le vele sono più tese e la portanza generata è maggiore, migliorando l'efficienza aerodinamica.\n\nIn condizioni ottimali, una barca ben orzata avrà un equilibrio migliore tra forza propulsiva e resistenza, permettendo un controllo più preciso della direzione e una stabilità superiore. Questa impostazione è cruciale nelle regate, dove la velocità e la manovrabilità sono fattori determinanti per il successo. La capacità di risalire il vento efficacemente riduce anche la necessità di compiere lunghi bordi controvento, rendendo la navigazione complessivamente più efficiente.",
+  },
+  {
+    id: 93,
+    question:
+      "L'inclinazione verso la prua dell'albero di un'unità a vela rende la stessa tendenzialmente poggera.",
+    answer: 1,
+    description:
+      "L'inclinazione verso la prua dell'albero (denominata \"rake\" in inglese) influisce significativamente sul bilanciamento e sulla manovrabilità di un'unità a vela. Quando l'albero è inclinato verso la prua, il centro velico (centro di spinta delle vele) si sposta in avanti rispetto al centro di deriva (punto attorno al quale l'unità tende a ruotare). Questo spostamento del centro velico crea un momento torcente che tende a far poggiare l'unità, cioè a farla allontanare dal vento. Al contrario, se l'albero fosse inclinato verso poppa, il centro velico si sposterebbe verso poppa, creando un momento torcente che tenderebbe a far orzare l'unità, cioè avvicinarsi al vento. Questo comportamento è coerente con le nozioni di stabilità e bilanciamento delle forze aerodinamiche sulle vele, che sono fondamentali per la navigazione a vela. Pertanto, l'affermazione è corretta.",
+  },
+  {
+    id: 94,
+    question:
+      "L'inclinazione verso la poppa dell'albero di un'unità a vela rende la stessa tendenzialmente poggera.",
+    answer: 0,
+    description:
+      "L'inclinazione dell'albero verso la poppa, chiamata \"arretramento dell'albero\" o \"rake\", tende a far sì che l'unità navale abbia una tendenza all'orza, non alla poggia. Orzare significa che la barca tende ad avvicinarsi alla direzione del vento, mentre poggiare significa che la barca tende ad allontanarsi dal vento. Un albero inclinato verso poppa sposta il centro velico più a poppa rispetto al centro di deriva, creando un momento che porta la prua verso il vento, inducendo una tendenza all'orza.",
+  },
+  {
+    id: 95,
+    question:
+      "Lascare la drizza e la base della randa aumenta la concavità della vela (grasso) e le fa  assumere una configurazione adatta all'andatura in fil di ruota.",
+    answer: 1,
+    description:
+      'Lascare la drizza e la base della randa significa allentare le cime che tendono la vela dall\'alto (drizza) e dalla parte inferiore (base o inferitura). Questa azione permette alla vela di avere più libertà e quindi di gonfiarsi maggiormente, aumentando la sua concavità o "grasso". Una vela con maggiore concavità è più efficiente per andature con il vento in poppa, come nel caso dell\'andatura in fil di ruota, perché riesce a catturare e sfruttare meglio il flusso del vento che proviene direttamente da poppa, generando una maggiore spinta propulsiva.',
+  },
+  {
+    id: 96,
+    question:
+      "L'angolo di incidenza è quello formato tra la direzione del vento apparente e quella verso cui è orientata la vela, in pratica l'angolo con cui il profilo fende l'aria.",
+    answer: 1,
+    description:
+      "L'angolo di incidenza rappresenta la misura dell'angolo tra la direzione del vento apparente e la corda che unisce il punto di attacco della vela all'albero (o al boma) con il punto d'uscita della vela stessa. Questo concetto è cruciale per comprendere come le vele generano portanza, simile a quanto avviene nelle ali degli aeroplani. \n\nQuando il vento apparente colpisce la vela con un certo angolo, il flusso d'aria si divide: una parte passa sopra la superficie della vela e l'altra sotto. Questa differenza di velocità tra i due flussi crea una differenza di pressione, che a sua volta genera una forza perpendicolare alla direzione del vento. \n\nModificando l'angolo di incidenza, si può ottimizzare l'efficienza della vela, migliorando la capacità di risalire il vento (navigare bolina) o di avanzare più velocemente in altre andature. Per esempio, un angolo di incidenza troppo piccolo può ridurre drasticamente la portanza, mentre un angolo troppo grande può portare allo stallo, con conseguente perdita di efficienza. Quindi l'angolo di incidenza effettivamente comprende la direzione del vento apparente e quella verso cui è orientata la vela, determinando l'angolo con cui il profilo della vela fende l'aria.",
+  },
+  {
+    id: 97,
+    question:
+      'La spinta della randa è principalmente orziera, quella del genoa o del fiocco tendenzialmente poggiera.',
+    answer: 1,
+    description:
+      "La distribuzione delle forze sulle vele di una barca a vela è determinata dalla posizione delle vele rispetto all'asse longitudinale dell'imbarcazione e dal loro punto di attacco rispetto al centro velico. La randa è posizionata dietro l'albero e quando è esposta al vento, tende a spingere la parte posteriore della barca verso sopravvento (arzare), causando un orzamento verso il vento.\n\nIl genoa o il fiocco sono vele di prua, posizionate davanti all'albero, e tendono a spingere la prua dell'imbarcazione lontano dal vento (poggiare), contribuendo al poggio della barca. Questa differenza di comportamento tra le due vele è dovuta alla loro posizione relative al baricentro velico e ha un effetto sulla manovrabilità e sull'equilibrio dell'imbarcazione sotto vela. \n\nQueste forze opposte tra la randa e il genoa/fiocco possono essere utilizzate per bilanciare l'imbarcazione e ottimizzare la navigazione, permettendo, tramite regolazioni adeguate, di mantenere una rotta desiderata.",
+  },
+  {
+    id: 98,
+    question:
+      'Al crescere del vento si cazzano cunningham (o la drizza randa), il tesabase, la drizza genova.',
+    answer: 1,
+    description:
+      "Al crescere del vento è necessario effettuare delle regolazioni alle vele per mantenere un assetto equilibrato e ottimizzare il rendimento della barca. Cazzare il cunningham (o la drizza randa), il tesabase e la drizza genoa permette di ridurre la pancia delle vele, ovvero renderle più piatte. Con vento forte, vele più piatte offrono meno resistenza e riducono l'inclinazione della barca, migliorando il controllo e la stabilità. \n\nIl cunningham, o la drizza della randa, permette di regolare la tensione sulla parte anteriore della randa, influenzando la camberatura della vela. Il tesabase regola l’estremità inferiore della randa, controllando la forma della vela soprattutto nella sua parte bassa. La drizza del genoa, similmente, tensiona la vela di prua influenzandone la forma. Questi aggiustamenti sono cruciali per mantenere un equilibrio ottimale e navigare in sicurezza con vento intenso.",
+  },
+  {
+    id: 99,
+    question:
+      'Al crescere del vento è utile spostare verso prua il carrello del genoa.',
+    answer: 0,
+    description:
+      "Quando il vento aumenta, spostare il carrello del genoa verso prua non è consigliabile perché questo movimento provoca un cambiamento nell'angolo del genoa rispetto al vento, causando un aumento dello sbandamento della barca e una diminuzione dell'efficacia della vela. Con l'aumento del vento, si desidera decongestionare la zona di prua e spostare il carrello del genoa verso poppa. Questo permette alla vela di aprirsi nella parte superiore, riducendo così l'area esposta al vento e minimizzando lo sbandamento. Inoltre, spostando il carrello verso poppa, si ottiene un migliore controllo del profilo della vela, facilitando il passaggio dell'aria e migliorando l'assetto e la performance della barca.",
+  },
+  {
+    id: 100,
+    question:
+      "Negli armamenti frazionati, le sartie volanti servono a sostenere l'albero, controbilanciando lo sforzo trasmesso dalle vele allo strallo.",
+    answer: 1,
+    description:
+      "Negli armamenti frazionati, le sartie volanti (stays) sono utilizzi specifici per mantenere l'integrità strutturale dell'albero frazionato controbilanciando gli sforzi generati dalle vele. L'albero frazionato è un tipo di albero in cui lo strallo di prua è fissato ad una altezza intermedia dell'albero stesso e non alla sua sommità. Questo design permette un'ampia regolarità nella distribuzione del carico, migliorando la performance della barca a vela.\n\nLe sartie volanti hanno il compito di sostenere l'albero in determinati punti dove le forze sono particolarmente intense. Ad esempio, nello sbandamento causato dal vento, lo strallo di prua che trattiene il fiocco (vela di prua) o il genoa (una vela più grande del fiocco) esercita una spinta significativa sull'albero. Senza un adeguato supporto fornito dalle sartie volanti, l'albero potrebbe flettersi o addirittura incrinarsi sotto questo sforzo.\n\nLe sartie volanti possono essere regolate per ottimizzare la tensione nei punti critici, migliorando sia la tenuta che la velocità della barca. Possono essere spostate a seconda dell'andatura della barca: per esempio, con il vento di bolina, si possono regolare per sostenere maggiormente l'albero e consentire una migliore performance di bolina, mentre con il vento al traverso possono essere allentate per consentire un maggiore sbandamento.\n\nQuesto rende chiara la risposta: le sartie volanti sono essenziali per mantenere l'equilibrio e la stabilità dell'albero frazionato, contrastando efficacemente le forze generate dalle vele.",
+  },
+  {
+    id: 101,
+    question:
+      "Negli armamenti frazionati con crocette acquartierate verso poppa e paterazzo, le sartie volanti possono dare supporto all'albero ma non sono strutturali.",
+    answer: 1,
+    description:
+      "Negli armamenti frazionati con crocette acquartierate verso poppa e un paterazzo, le sartie volanti sono utilizzate principalmente per raddrizzare e stabilizzare l'albero, ma non fanno parte della struttura portante principale del sartiame. Le crocette acquartierate, orientate verso poppa, già contribuiscono notevolmente alla stabilità dell'albero, creando una triangolazione efficace con le sartie superiori e il paterazzo che regge l'albero all'indietro.\n\nQuesto modo di configurare l'armamento trasferisce gran parte delle forze esercitate sul sartiame direttamente sulla struttura dell'albero attraverso un sistema più rigido e stabile. Le sartie volanti entrano in gioco principalmente per rafforzare l'albero in certe condizioni di vento forte o modificare la sua curvatura per ottimizzare le prestazioni veliche. Tuttavia, esse non sono assolutamente necessarie a garantire la stabilità strutturale primaria dell'albero; questa funzione spetta invece alle sartie fisse, alle crocette e al paterazzo. Di conseguenza, le sartie volanti sono considerate un supporto aggiuntivo e non un componente strutturale fondamentale.",
+  },
+  {
+    id: 102,
+    question:
+      'Si intende per unità attrezzata con armo frazionato quella in cui lo strallo non è "incappellato" in testa d\'albero.',
+    answer: 1,
+    description:
+      "L'armo frazionato è una configurazione del piano velico di una barca a vela in cui lo strallo di prua, ovvero il cavo che collega l'albero di prua alla prua stessa, non raggiunge la sommità dell'albero, ma si arresta a una certa altezza lungo l'albero. Questa configurazione consente di mantenere una maggiore tensione nella vela di prua (genoa o fiocco) e permette un miglior controllo della forma della randa attraverso il boma e le manovre di regolazione. In un armo frazionato, la maggiore parte della forza di rigging esercitata sulle vele è concentrata più in basso sull'albero, rendendo l'intera struttura più robusta e versatile. Al contrario, nella configurazione dell'armo in testa (o masthead rig), lo strallo arriva fino alla sommità dell'albero. Quindi, l'affermazione secondo cui una unità attrezzata con armo frazionato è quella in cui lo strallo non è \"incappellato\" in testa d'albero è corretta.",
+  },
+  {
+    id: 103,
+    question:
+      'Si intende per unità attrezzata con armo frazionato quella il cui scafo è suddiviso in almeno tre compartimenti.',
+    answer: 0,
+    description:
+      "L'armo frazionato non ha nulla a che vedere con la suddivisione dello scafo in compartimenti; si riferisce invece all'attrezzatura velica di un'imbarcazione. Più specificamente, l'armo frazionato descrive un tipo di armo velico nel quale il punto di attacco della randa sull'albero (ovvero il punto in cui l'albero si alza) si trova a una frazione della lunghezza dell'albero al di sopra della barca. Questo tipo di armo consente un miglior equilibrio della barca e un controllo più preciso delle vele. La suddivisione dello scafo in compartimenti è invece una caratteristica strutturale della barca e non ha relazione con il tipo di armo velico.",
+  },
+  {
+    id: 104,
+    question:
+      "Le crocette garantiscono  un'adeguato punto di forza e ritenuta delle scotte sul piano di coperta.",
+    answer: 0,
+    description:
+      "Le crocette non hanno alcuna relazione diretta con le scotte. Esse sono strutture montate sui lati dell'albero di una barca a vela che sporgono trasversalmente e hanno la funzione di fornire supporto aggiuntivo e aumentare la stabilità dell'albero allungando il punto di attacco delle sartie (cavi di sostegno laterali). Le scotte, invece, sono cime usate per regolare la posizione delle vele. L'adeguata ritenuta delle scotte sul piano di coperta è garantita da sistemi come winch, stopper e bozzelli. Pertanto, attribuire alle crocette la funzione di supporto delle scotte è errato.",
+  },
+  {
+    id: 105,
+    question:
+      "Le crocette servono a tensionare le sartie che sorreggono l'albero lateralmente.",
+    answer: 1,
+    description:
+      "Le crocette sono strutture orizzontali o quasi, che sporgono dall'albero di una barca a vela. La loro funzione primaria è quella di aumentare lo sbraccio delle sartie, che sono i cavi o le fune in acciaio utilizzate per mantenere l'albero in posizione. Aumentando lo sbraccio delle sartie, le crocette permettono una maggiore stabilità laterale dell'albero, proteggendolo dalle forti sollecitazioni trasversali che potrebbero piegarlo o danneggiarlo. Le sartie, passanti sulle crocette, migliorano la tensione e distribuiscono meglio il carico, impedendo all'albero di flettersi lateralmente. Questo contribuisce non solo alla sicurezza della navigazione, ma anche alle prestazioni della barca a vela stessa, consentendo un migliore trim delle vele e una più efficiente navigazione.",
+  },
+  {
+    id: 106,
+    question:
+      "La regolazione delle sartie si attua attraverso l'utilizzo del carrello della scotta.",
+    answer: 0,
+    description:
+      "La regolazione delle sartie non si attua attraverso l'utilizzo del carrello della scotta. Le sartie sono cavi metallici che servono a sostenere l'albero, prevenendo il suo piegamento o caduta laterale. La loro tensione viene regolata mediante tenditori o arridatoi posti alla base delle sartie stesse per garantire la corretta tenuta dell'albero.\n\nIl carrello della scotta è un dispositivo utilizzato per regolare l'angolo della scotta rispetto all'asse longitudinale dell'imbarcazione e quindi l'angolo del fiocco o della randa rispetto al vento. Questo permette di ottimizzare l'assetto delle vele per diverse andature, ma non ha alcuna funzione nella regolazione delle sartie.\n\nIn sintesi, mentre i tenditori o arridatoi sono strumenti specifici per regolare la tensione delle sartie, il carrello della scotta è utilizzato per l'assetto delle vele, quindi la risposta è corretta poiché si tratta di due meccanismi distinti con funzioni diverse.",
+  },
+  {
+    id: 107,
+    question:
+      "L'avvolgifiocco è una particolare galloccia dove viene avvolta la scotta sottovento del fiocco.",
+    answer: 0,
+    description:
+      "L'avvolgifiocco non è una galloccia, ma un sistema meccanico utilizzato per arrotolare e srotolare rapidamente la vela di prua, conosciuta come fiocco. Le gallocce sono invece delle attrezzature utilizzate per fissare le cime e le scotte. La scotta del fiocco viene regolata attraverso le gallocce per aggiustare l'angolo al vento della vela, ma l'avvolgifiocco si riferisce alla movimentazione della vela stessa. Esso permette di ridurre o aumentare la superficie velica del fiocco senza dover ammainare la vela interamente, rendendo la gestione della vela più sicura e pratica, soprattutto in condizioni di vento crescente o variabile.",
+  },
+  {
+    id: 108,
+    question:
+      "La  balumina è il lato più corto della randa, che si introduce all'interno della canaletta del boma.",
+    answer: 0,
+    description:
+      "La balumina è effettivamente una parte della randa, ma non è il lato che si introduce nella canaletta del boma. La balumina è il lato posteriore (o libera) della randa, che corre dall'angolo di penna all'angolo di scotta. Questo lato è caratterizzato da una forma spesso leggermente curva per ottimizzare l'aerodinamica della vela. Il lato della randa che si introduce nella canaletta del boma è chiamato inferitura. Questa è la parte inferiore della vela, che corre dall'angolo di mura all'angolo di scotta e che serve a fissare la vela al boma, consentendo di regolare e mantenere la corretta tensione e forma della vela.",
+  },
+  {
+    id: 109,
+    question:
+      "La ralinga della randa è il cavo cucito nel lato di inferitura per essere introdotto all'interno della canaletta dell'albero.",
+    answer: 1,
+    description:
+      "La ralinga della randa è un cavo, spesso realizzato in materiale resistente come il dacron o altre fibre sintetiche, che viene cucito lungo il bordo d'inferitura della randa, ovvero il lato della vela che corre lungo l'albero. Questo cavo ha la funzione di rinforzare la vela e di mantenerla in posizione quando viene issata. \n\nLa canaletta dell'albero è una scanalatura che corre lungo l'albero stesso, destinata a ricevere l'inferitura della randa. La ralinga serve quindi come guida e supporto in questa scanalatura, facilitando l'operazione d'issata e garantendo che la randa resti adiacente all'albero durante la navigazione.\n\nLa ralinga è essenziale non solo per l'issata e la gestione della vela senza strappi, ma anche per la distribuzione uniforme delle sollecitazioni lungo tutta l'inferitura. Limitando il rischio di danni localizzati, contribuisce ad aumentare la durata e l'efficienza della vela.",
+  },
+  {
+    id: 110,
+    question:
+      'Per "base" della randa si intende il lato libero della vela dove sono ricavate le tasche per poter introdurre le stecche.',
+    answer: 0,
+    description:
+      'La risposta è corretta perché la "base" della randa è effettivamente il lato inferiore della vela, quello che corre parallelo al boma. Questo lato è denominato "base" poiché rappresenta la parte più vicina alla coperta della barca. Le tasche per le stecche, tuttavia, sono situate lungo il lato posteriore della vela, chiamato "balumina." Le stecche sono elementi rigidi inseriti nelle tasche lungo la balumina per mantenere la forma corretta della vela, migliorare il flusso dell\'aria e aumentare l\'efficienza aerodinamica. In sintesi, "base" e "balumina" sono termini distinti con funzioni specifiche nella struttura della randa, e confondere i due concetti porta a un\'interpretazione errata della terminologia nautica.',
+  },
+  {
+    id: 111,
+    question:
+      'Per "angolo di scotta" della randa si intende quello compreso tra la base e la balumina, dove è agganciato il tesabase.',
+    answer: 1,
+    description:
+      'L\'angolo di scotta della randa è effettivamente quello compreso tra la base (il lato inferiore della vela) e la balumina (il lato posteriore della vela), definito come il punto in cui è fissata la scotta della randa. Questo collegamento è cruciale per il controllo della forma e della tensione della vela. La dicitura "dove è agganciato il tesabase" può creare confusione, in quanto il tesabase, o "outhaul", è la regolazione utilizzata per tendere la base della vela tirando verso poppa. Tuttavia, l\'angolo di scotta si riferisce precisamente al punto di congiunzione di base e balumina, quindi la descrizione data è comunque corretta in senso lato, sebbene potrebbe essere migliorata per maggiore precisione.',
+  },
+  {
+    id: 112,
+    question:
+      'Per "angolo di penna" della randa si intende l\'angolo compreso tra la base e la ralinga ove è agganciata la trozza del boma.',
+    answer: 0,
+    description:
+      "L'angolo di penna della randa è un termine che si riferisce all'angolo superiore della vela, formato tra la balumina (il lato posteriore della vela) e la ralinga dell'inferitura (il lato anteriore della vela, che corre lungo l'albero). L'errore nella domanda proposta riguarda la definizione e il posizionamento dell'angolo di penna. La descrizione fornita nella domanda avrebbe infatti descritto l'angolo di mura, che è l'angolo inferiore anteriore della vela, dove la base incontra la ralinga (l'inferitura) all'attacco con l'albero. Quest'ultimo è il punto ove è agganciata la trozza del boma, e non ha a che fare con l'angolo di penna. Questa imprecisione rende la risposta alla domanda specifica corretta nel dichiarare falso il quesito.",
+  },
+  {
+    id: 113,
+    question:
+      'Per "angolo di mura" della randa si intende l\'angolo compreso tra la balumina e la ralinga, posto all\'estremità superiore della vela, ove è agganciata la drizza.',
+    answer: 0,
+    description:
+      'Il termine "mura" in ambito nautico si riferisce al punto della vela, generalmente una randa o una vela di prua, più vicino all\'albero al quale è collegata. L\'angolo di mura della randa è l\'angolo inferiore-antecedente e non quello superiore. Questo angolo è il punto in cui la vela è attaccata al boma o alla barca stessa. Nella randa, il punto superiore dove la vela è attaccata alla drizza è chiamato "angolo di penna" o "penna", mentre il punto all\'estremità posteriore della vela è detto "angolo di bugna". Pertanto, l\'affermazione che l\'angolo di mura sia "compreso tra la balumina e la ralinga, posto all\'estremità superiore della vela, ove è agganciata la drizza" è errata perché confonde l\'angolo di mura con l\'angolo di penna.',
+  },
+  {
+    id: 114,
+    question:
+      "Il fiocco consente all'unità a vela di navigare esclusivamente con angoli compresi tra i 40° e i 70° rispetto alla direzione da cui spira il vento.",
+    answer: 0,
+    description:
+      "Il fiocco è una vela di prua che funziona in combinazione con la randa, e insieme permettono alla barca a vela di navigare efficacemente in varie direzioni rispetto al vento. \n\nIl range indicato nella domanda, tra i 40° e i 70° rispetto alla direzione del vento, si riferisce alla navigazione con il vento di bolina stretta, che è una condizione in cui la barca naviga il più vicino possibile al vento. Tuttavia, questa non è l'unica condizione in cui il fiocco può essere utilizzato.\n\nIl fiocco può infatti funzionare correttamente in varie andature, come il traverso (vento a 90°), la bolina (tra 40° e 45°), il lasco (tra 90° e 135°) e persino la poppa (vento in coda, generalmente meno efficiente con il solo fiocco). Quindi, il fiocco non è limitato solo alla navigazione con angoli tra i 40° e i 70° rispetto alla direzione del vento.\n\nInoltre, molte barche a vela sono capaci di navigare anche più vicine al vento di bolina, con angoli che possono arrivare fino a 30° o addirittura meno, a seconda della configurazione della vele e delle condizioni del mare.\n\nPertanto, la dichiarazione è errata perché limita ingiustamente la versatilità del fiocco, che invece può essere utilizzato efficacemente in un ampio spettro di angoli rispetto alla direzione del vento.",
+  },
+  {
+    id: 115,
+    question:
+      "La randa rappresenta la vela principale di un'unità a vela, ubicata a poppavia dell'albero, e di forma triangolare.",
+    answer: 1,
+    description:
+      'La randa è effettivamente la vela principale di un\'unità a vela, posizionata a poppavia dell\'albero. Questo significa che la randa si trova dietro l\'albero rispetto alla direzione di marcia dell\'imbarcazione. Di solito ha una forma triangolare, con il lato inferiore (base) orizzontale chiamato "base" o "inferitura", il lato verticale (ad albero) che va dall\'angolo in basso fino alla cima del triangolo chiamato "inferitura", e il lato inclinato in alto (da base alla cima) chiamato "balumina". Quando issata correttamente, la randa cattura il vento che spinge l\'imbarcazione in avanti. Essendo la vela più grande e centrale, la randa gioca un ruolo cruciale nel controllo e nella navigazione dell\'unità, influenzando significativamente la velocità e la direzione del moto.',
+  },
+  {
+    id: 116,
+    question:
+      'Il genoa o genova rappresenta una particolare tipologia di vela prodiera avente una superficie ridotta utilizzata in caso di condizioni meteo marine avverse.',
+    answer: 0,
+    description:
+      'Il genoa, o genova, è una tipologia di vela prodiera che, al contrario di quanto affermato nella domanda, ha una superficie più grande del fiocco normale. Viene utilizzata principalmente per migliorare le prestazioni della barca con venti leggeri o moderati, grazie alla sua ampiezza che permette di catturare una maggiore quantità di vento. In condizioni meteo marine avverse, solitamente si preferiscono vele con una superficie ridotta per diminuire la spinta del vento sulla barca e mantenere un controllo migliore. Per questo motivo, in presenza di venti forti si tende a sostituire il genoa con vele come il fiocco o altri tipi di vele di tempesta che offrono una stabilità maggiore in condizioni di burrasca.',
+  },
+  {
+    id: 117,
+    question:
+      'Il genoa o genova è la vela prodiera avente una superficie che non si sovrappone a quella della randa.',
+    answer: 0,
+    description:
+      "Il genoa, noto anche come genova, è una vela di prua utilizzata comunemente sugli yacht da regata e da crociera. Diversamente dalla definizione fornita nella domanda, il genoa è caratterizzato dal fatto che la sua superficie si sovrappone alla vela principale, chiamata randa. Questa sovrapposizione aumenta l'area velica totale disponibile, migliorando così le prestazioni complessive della barca, specialmente con vento di bolina. La randa si trova dietro all'albero principale, mentre il genoa si estende dalla prua dell'imbarcazione verso poppa, andando spesso oltre l'albero principale. La definizione corretta del genoa implica quindi una sovrapposizione della sua superficie con la randa, contrariamente a quanto suggerito nella risposta errata della domanda proposta.",
+  },
+  {
+    id: 118,
+    question:
+      "Il genoa (o genova) oltrepassa l'albero verso poppa fino a una lunghezza generalmente pari al 50% della distanza fra l'albero e il punto di mura .",
+    answer: 1,
+    description:
+      "Il genoa (o genova) è una particolare tipologia di vela di prua che si estende oltre l'albero verso poppa, sovrapponendosi parzialmente alla randa. La caratteristica distintiva del genoa è la lunghezza della sua base (cioè la distanza tra il punto di mura e il punto di scotta). Questa lunghezza è generalmente pari o superiore al 50% della distanza tra l'albero e il punto di mura. A differenza del fiocco, che ha una base più corta e rimane davanti o a filo dell'albero, il genoa ha una base che si prolunga oltre l'albero fino a una estensione significativa verso poppa, il che gli permette di catturare più vento, aumentando il rendimento dell'imbarcazione in termini di velocità, soprattutto in condizioni di vento leggero. Questa caratteristica strutturale permette alla vela di avere una maggiore superficie esposta, ottimizzando la potenza propulsiva. Per garantire che il genoa sia efficace, la sua dimensione deve essere tale da consentire una sovrapposizione sufficiente con la randa, senza però ostacolare eccessivamente la gestione della vela stessa o compromettere la manovrabilità dell'imbarcazione.",
+  },
+  {
+    id: 119,
+    question:
+      'Il fiocco è la vela prodiera avente una superficie che non si sovrappone a quella della randa.',
+    answer: 1,
+    description:
+      "Il fiocco è una delle vele di prua di una barca a vela, che si trova montata tra il bompresso o il musone di prua e l'albero di prua. La sua principale funzione è di contribuire alla spinta propulsiva della barca, lavorando in combinazione con la randa, che è posizionata invece sull'albero di poppa o sull'albero principale. A differenza del genoa, che è una vela di prua più grande e che normalmente si sovrappone alla randa, il fiocco ha una superficie minore che non si estende oltre l'albero principale, evitando così la sovrapposizione con la randa. Questo lo rende una vela più manovrabile, indicata per condizioni di vento forte o per barche più piccole, dove la sovrapposizione potrebbe creare problemi di gestione e di visibilità. La scelta del fiocco consente una navigazione più semplice nelle andature di bolina e richiede meno sforzo rispetto al genoa, che invece può offrire maggiori prestazioni in andature più portanti e in venti leggeri grazie alla sua maggiore superficie velica.",
+  },
+  {
+    id: 120,
+    question:
+      'Lo spinnaker rappresenta la vela principale, utilizzata in particolar modo nelle andature di bolina al fine di dare maggiore potenza e superficie velica.',
+    answer: 0,
+    description:
+      "Lo spinnaker non è la vela principale di una barca a vela, ma è una vela di prua utilizzata principalmente nelle andature portanti, come la poppa, il lasco e il traverso largo. È progettato per catturare il vento proveniente da dietro o quasi dietro la barca, per massimizzare la potenza e la superficie velica in queste condizioni. Nelle andature di bolina, dove il vento arriva dalla parte anteriore della barca, si utilizzano solitamente vele più piatte come il fiocco o il genova, in combinazione con la randa, per risalire il vento in modo più efficiente. Poiché lo spinnaker non è efficace nella bolina e non è la vela principale, la risposta data è corretta perché è falsa l'affermazione che descrive lo spinnaker in questo modo.",
+  },
+  {
+    id: 121,
+    question:
+      'Il gennaker è una vela asimmetrica adatta alle andature comprese tra il traverso e il lasco (60°- 120° dal vento).',
+    answer: 1,
+    description:
+      "Il gennaker è una vela da andature portanti, progettata principalmente per essere utilizzata con venti che provengono da angoli compresi tra 60° e 120° rispetto alla prua dell'imbarcazione. Si tratta di una vela asimmetrica, che differisce dallo spinnaker simmetrico, offrendo maggiori benefici in termini di maneggevolezza e prestazioni in specifiche condizioni di vento e rotta.\n\nLe andature comprese tra il traverso e il lasco sono quelle in cui il vento colpisce la barca formando un angolo compreso all'incirca tra i 60° e i 120° con la direzione di marcia. In queste situazioni, il gennaker è particolarmente efficace perché la sua forma asimmetrica permette di catturare meglio il vento e di generare più spinta rispetto ad altre vele come il genoa o lo spinnaker simmetrico.\n\nIn sintesi, la caratteristica forma asimmetrica del gennaker e il suo design specifico lo rendono ideale per navigare alle andature intermedie tra il traverso e il lasco, poiché massimizza l'efficienza della vela sfruttando al meglio la direzione e la forza del vento in questi angoli.",
+  },
+  {
+    id: 122,
+    question:
+      'Il code 0 è una vela asimmetrica adatta alle andature con poco vento comprese tra la bolina larga e il traverso.',
+    answer: 1,
+    description:
+      'Il Code 0 è una vela asimmetrica molto leggera, progettata specificamente per massimizzare le prestazioni in condizioni di vento leggero. La sua forma e struttura sono ottimizzate per generare portanza e offrire un angolo di attacco efficace quando il vento soffia tra i 50 e gli 85 gradi rispetto alla prua, cioè tra la bolina larga (circa 50-60 gradi dal vento) e il traverso (circa 90 gradi dal vento). Queste caratteristiche la rendono particolarmente efficace in una gamma di andature moderate, dove una vela tradizionale non sarebbe altrettanto performante. La sua asimmetria significa che è tagliata in modo da avere una curva più pronunciata su un lato, favorendo così il flusso del vento e massimizzando la velocità della barca in condizioni di vento leggero.',
+  },
+  {
+    id: 123,
+    question: 'Il code 0 è una vela inferita.',
+    answer: 0,
+    description:
+      'Il termine "vela inferita" si riferisce a una vela che viene inserita e mantenuta al suo posto tramite una guida o uno slot sull\'albero o sul boma, come avviene per il fiocco o la randa. Il code 0, invece, è una vela di prua molto leggera progettata per essere utilizzata con venti leggeri e con angoli prossimi al traverso o al lasco. Questa vela viene spesso utilizzata nelle competizioni per sfruttare al massimo le condizioni di vento leggero. A differenza delle vele inferite, il code 0 non viene inserito in alcuna guida; di norma è dotato di un arrotolatore e viene issato e ammainato liberamente, non fissato tramite una fessura nella barca. Questo tipo di vela è generalmente caratterizzato da una forma simile a una via di mezzo tra un genoa e uno spinnaker asimmetrico e offre una superficie velica aggiuntiva per migliorare le performance senza richiedere la complessità di un sistema di fissaggio come le vele inferite.',
+  },
+  {
+    id: 124,
+    question:
+      "Lo sloop è l'armo caratterizzato dalla presenza di un solo albero e la possibilità di issare una sola vela di prua alla volta.",
+    answer: 1,
+    description:
+      'Lo sloop è un tipo di armo velico caratterizzato dalla presenza di un solo albero e da una configurazione velica che prevede una randa, ossia la vela principale, e una o più vele di prua come il fiocco o il genoa. Tuttavia, un punto chiave della definizione dello sloop è che, nonostante possa avere più di una vela di prua a disposizione, in navigazione ne può essere issata solo una alla volta. Questo significa che, mentre in alcune configurazioni come la goletta ci possono essere più vele di prua spiegate simultaneamente, nello sloop la regolamentazione prevede una sola vela di prua operativa per volta. Questa caratteristica offre un equilibrio ideale tra semplicità di manovra e prestazioni, rendendo lo sloop una delle configurazioni veliche più comuni e apprezzate sia per la navigazione da diporto che per quella sportiva.',
+  },
+  {
+    id: 125,
+    question:
+      "Il cutter è l'armo caratterizzato dalla presenza di un solo albero, armato con due fiocchi contemporaneamente.",
+    answer: 1,
+    description:
+      "L'affermazione è corretta perché il cutter è un tipo di barca a vela caratterizzata da un armo velico con un singolo albero e due fiocchi issati simultaneamente. Questo significa che sullo strallo più lungo verso prua vengono montate contemporaneamente due vele triangolari chiamate fiocco e trinchetta. La configurazione del cutter consente una maggiore flessibilità nella gestione delle vele e una miglior distribuzione della superficie velica, utile soprattutto in condizioni di vento variabile. Questo armo si differenzia dal sloop, che ha un solo fiocco, e dal ketch o dallo yawl, che hanno due alberi. La disposizione dei due fiocchi permette al cutter di avere un centro velico più basso, facilitando il bilanciamento dell'imbarcazione e migliorando la sua capacità di navigare controvento.",
+  },
+  {
+    id: 126,
+    question:
+      "Il ketch è quell'armo caratterizzato dalla presenza dell'albero di mezzana a proravia dell'asse del timone.",
+    answer: 1,
+    description:
+      "Il ketch è effettivamente un tipo di imbarcazione a vela con due alberi: l'albero di maestra, che è l'albero principale e più alto, e l'albero di mezzana, che è più piccolo ed è collocato a poppavia dell'albero di maestra. Tuttavia, ciò che caratterizza un vero ketch è il posizionamento dell'albero di mezzana a proravia dell'asse del timone. Questo significa che l'albero di mezzana è situato davanti all'asse del timone e, di conseguenza, più vicino al centro dell'imbarcazione rispetto al timone. Questo posizionamento distingue il ketch da altre imbarcazioni a due alberi come il yawl, dove l'albero di mezzana è a poppavia dell'asse del timone. La configurazione del ketch è vantaggiosa per la navigazione poiché permette una migliore distribuzione delle vele e una maggiore flessibilità nel bilanciamento dell'imbarcazione, facilitando la manovra e il controllo soprattutto con condizioni di vento variabili.",
+  },
+  {
+    id: 127,
+    question: 'Tra le manovre fisse vi sono  drizze e scotte.',
+    answer: 0,
+    description:
+      "La risposta corretta è \"falso\" perché le manovre fisse e le manovre correnti sono due categorie distinte. Le manovre fisse sono costituite da elementi immobili o semi-permanenti utilizzati per sostenere l'albero e mantenere la stabilità dell'imbarcazione. Comprendono strutture come sartie, stralli e paterazzi. Le manovre correnti, invece, sono utilizzate per regolare le vele e altre parti mobili della barca durante la navigazione. Le drizze (utilizzate per alzare e abbassare le vele) e le scotte (utilizzate per regolare l'angolo delle vele rispetto al vento) fanno parte delle manovre correnti, non delle manovre fisse.",
+  },
+  {
+    id: 128,
+    question: 'Tra le manovre correnti vi sono stralli e sartie.',
+    answer: 0,
+    description:
+      "Gli stralli e le sartie non sono considerati manovre correnti, bensì appartengono alle manovre dormienti (o fisse). Le manovre fisse sono quelle che sostengono l'alberatura e forniscono stabilità alla barca, resistendo alle forze esercitate dal vento sulle vele. Gli stralli sono cavi che tengono l'albero verso prua e poppa, mentre le sartie lo sostengono lateralmente. Le manovre correnti, invece, sono quelle che vengono regolate frequentemente durante la navigazione, come scotte, drizze e bracci, utilizzate per issare, ammainare e regolare le vele. Il loro scopo principale è modificare la forma e la posizione delle vele per ottimizzare la navigazione in base alle condizioni del vento e della rotta.",
+  },
+  {
+    id: 129,
+    question:
+      'Il paranco di scotta assolve la funzione di demoltiplicare lo sforzo.',
+    answer: 1,
+    description:
+      "La funzione del paranco di scotta è quella di ridurre lo sforzo necessario per svolgere un determinato lavoro, come regolare le vele. Questo avviene grazie a un sistema di pulegge che modifica la direzione e la distribuzione della forza applicata. Quando si tira una cima collegata a un paranco, le pulegge redistribuiscono il carico su più tratti della cima, riducendo di conseguenza la forza che deve essere applicata dall'operatore. Questa riduzione della forza necessaria per sollevare o spostare un carico è nota come demoltiplicazione dello sforzo. Per esempio, un paranco con due pulegge raddoppia la lunghezza totale della cima, permettendo all'operatore di sollevare il carico con metà dello sforzo che sarebbe necessario senza il paranco. Questo principio fisico rende la navigazione più efficiente e meno faticosa.",
+  },
+  {
+    id: 130,
+    question: 'Quello rappresentato in figura è un paranco con un rapporto 6:1',
+    answer: 0,
+    image: '/quiz-vela-images/image_row_131.png',
+    description:
+      "Il rapporto di un paranco si determina contando il numero di tratti di corda che supportano il carico. Un paranco è un sistema di pulegge utilizzato per sollevare o spostare carichi pesanti con un minore sforzo. Ogni tratto di corda che sostiene il carico effettivo riduce in modo proporzionale la forza necessaria per sollevarlo. \n\nPer ottenere un rapporto 6:1, servono sei tratti di corda che sostengono il carico; questo significa che la forza applicata all'estremità libera della corda sarà sei volte inferiore alla forza esercitata sul carico. \n\nSe nell'immagine rappresentata il paranco non dispone di sei tratti di corda sotto carico ma, ad esempio, di posizione o configurazione di pulegge diverse, non può avere un rapporto 6:1. Contare esattamente i tratti di corda che reggono effettivamente il carico permetterà di confermare il rapporto del paranco. Se i tratti sono meno di sei, il rapporto è inferiore, rendendo la risposta 'falsa'.",
+  },
+  {
+    id: 131,
+    question:
+      'Quello rappresentato in figura è un paranco doppio con il rapporto più favorevole, il cosiddetto "fino" di 8:1.',
+    answer: 1,
+    image: '/quiz-vela-images/image_row_132.png',
+    description:
+      'Il "paranco doppio" è un sistema di pulegge utilizzato per ridurre lo sforzo necessario per sollevare un carico. Nel linguaggio nautico, il "paranco fino" si riferisce a un tipo di paranco che permette di ottenere il massimo vantaggio in termini di forza applicata. Il rapporto 8:1 significa che per ogni unità di forza esercitata sulla corda, si solleva una frazione otto volte più piccola del carico. Questo elevato rapporto di vantaggio meccanico è ottenuto utilizzando un maggiore numero di pulegge, sia fisse che mobili, che distribuiscono il peso del carico su più tratti di corda, riducendo così notevolmente lo sforzo necessario per sollevarlo. La figura rappresenta un sistema con le caratteristiche descritte, per cui il riconoscimento è corretto.',
+  },
+  {
+    id: 132,
+    question:
+      'Il cunningham assolve la funzione  di porre in tensione la parte prodiera bassa della randa, mediante un paranco verticale.',
+    answer: 1,
+    description:
+      "Il cunningham è un punto di regolazione della vela che permette di modificare la tensione della parte inferiore della randa, vicino al bordo d'attacco. Questo sistema consiste in un paranco che si collega alla parte inferiore della randa e tira verticalmente verso il basso. Aumentando la tensione, il cunningham spiana la vela, riducendo le pieghe e migliorando l'aerodinamica, specialmente in condizioni di vento forte. Specificamente, la funzione del cunningham è di alterare la curvatura (camber) della vela, spostando il grasso più in avanti e abbassando il punto di massima profondità, ciò consente una regolazione fine della forma della vela per ottimizzare le prestazioni e la propulsione. Questo tipo di controllo è fondamentale per mantenere la barca bilanciata e per garantire che la vela lavori efficacemente in diverse condizioni di vento.",
+  },
+  {
+    id: 133,
+    question:
+      'Il tangone è il pennone sul quale è fissata la base della randa.',
+    answer: 0,
+    description:
+      "Il tangone è un'asta utilizzata principalmente nelle barche a vela per tenere aperto il lato sopravento del fiocco o del gennaker, migliorando così l'efficienza della vela quando si naviga in poppa piena o al lasco. Al contrario, il termine corretto per indicare l'asta su cui è fissata la base della randa è boma. Il boma è orizzontale e collega l'albero all'angolo di scotta della randa, permettendo di regolare la forma della vela. Pertanto, il tangone e il boma hanno funzioni diverse e sono utilizzati per scopi differenti nella navigazione a vela.",
+  },
+  {
+    id: 134,
+    question:
+      'Il winch è un particolare meccanismo costituito da due bozzelli utilizzato per moltiplicare lo sforzo di trazione esercitato sulle cime.',
+    answer: 0,
+    description:
+      "Il winch è un meccanismo utilizzato a bordo di velieri per facilitare la gestione delle cime, ma non è composto da due bozzelli. È un dispositivo costituito da un tamburo rotante e una manovella. Il funzionamento del winch si basa sulla leva che la manovella fornisce per avvolgere le cime attorno al tamburo, moltiplicando così la forza applicata dall'operatore. Questo permette di trarre cime con maggiore facilità rispetto all'uso diretto della forza manuale. Pertanto, la descrizione fornita nella domanda è errata, poiché non corrisponde alle caratteristiche strutturali e funzionali del winch.",
+  },
+  {
+    id: 135,
+    question:
+      'Le scotte devono essere avvolte intorno al tamburo  del winch sempre in senso orario, ponendo particolare attenzione per evitare la sovrapposizione dei "colli".',
+    answer: 1,
+    description:
+      'Le scotte sono cime utilizzate per regolare le vele nelle imbarcazioni a vela. Avvolgere le scotte intorno al tamburo del winch in senso orario è fondamentale per vari motivi. Innanzitutto, i winch sono generalmente progettati per operare efficacemente con una rotazione oraria, offrendo la massima leva e potenza per la trazione quando si manovra la scotta. Ciò consente di ottenere una maggiore tensione sulla vela con uno sforzo minore.\n\nEvitare la sovrapposizione dei "colli" (giri di cima) è altrettanto importante. Quando una cima si sovrappone a un\'altra, può causare un inceppamento o un blocco del winch, rendendo difficile o impossibile regolare la scotta in modo efficace. Questo non solo compromette la capacità di controllo dell\'imbarcazione, ma può anche comportare rischi per la sicurezza durante manovre critiche, specialmente in condizioni di vento forte o mare agitato.\n\nIn sintesi, avvolgere le scotte in senso orario senza sovrapposizioni assicura un funzionamento ottimale del winch, migliorando il controllo delle vele e garantendo la sicurezza delle operazioni a bordo.',
+  },
+  {
+    id: 136,
+    question:
+      "La ferramenta di bordo è costituita dall'insieme di elementi come strozzascotte, winch, arridatori e galloccie.",
+    answer: 1,
+    description:
+      "La risposta è corretta perché la ferramenta di bordo include vari dispositivi e componenti meccanici utilizzati per controllare, manovrare e fissare le vele, le cime e altre attrezzature su una barca. Gli strozzascotte servono a bloccare le scotte, impedendo che scivolino; i winch aumentano la forza applicata permettendo di regolare le vele con maggiore facilità; gli arridatori regolano la tensione delle sartie, che sono i cavi che sostengono l'albero; e le gallocce sono utilizzate per fissare le cime e le scotte in modo sicuro. Questi elementi sono fondamentali per la navigazione e la gestione sicura della barca, rendendoli parte integrante della ferramenta di bordo.",
+  },
+  {
+    id: 137,
+    question:
+      'Il polipropilene è utilizzato solo per sagole galleggianti utilizzate per il salvataggio.',
+    answer: 1,
+    description:
+      "Il polipropilene è un materiale sintetico ampiamente utilizzato nella nautica, soprattutto per la sua capacità di galleggiare. Questa caratteristica lo rende particolarmente adatto per sagole utilizzate in operazioni di salvataggio, dove è essenziale che la corda rimanga sulla superficie dell'acqua per essere facilmente individuabile e recuperabile.\n\nInoltre, il polipropilene è resistente agli agenti atmosferici, alle sostanze chimiche e all'acqua salata, caratteristiche che ne aumentano la durata e l’affidabilità nelle condizioni marine. La combinazione di leggerezza e galleggiabilità rende il polipropilene meno soggetto all’affondamento e quindi più sicuro da usare in situazioni di emergenza.\n\nL'affermazione, quindi, è corretta perché il polipropilene è specificamente scelto per applicazioni dove è necessario che la sagola galleggi e sia visibile in superficie per facilitare il recupero rapido, rendendo queste corde particolarmente efficaci ed efficienti nelle manovre di salvataggio.",
+  },
+  {
+    id: 138,
+    question:
+      'I grilli assumono la funzione di ridurre o sforzo di trazione sui cavi.',
+    answer: 0,
+    description:
+      'I grilli sono dispositivi metallici utilizzati per collegare parti di cavi, catene o altri elementi nei sistemi di ormeggio, sollevamento e altri usi in nautica. Non sono progettati per ridurre lo sforzo di trazione sui cavi; questa funzione è svolta da accessori diversi, come paranchi o moltiplicatori di forza. I grilli garantiscono una connessione sicura e stabile tra elementi, ma non intervenendo sulla distribuzione o riduzione dello sforzo. Hanno la forma di un anello con un perno removibile, permettendo un facile collegamento e scollegamento, ma il loro compito principale resta quello di connessione e sicurezza, non di distribuzione della tensione.',
+  },
+  {
+    id: 139,
+    question:
+      'Il carrello di randa (o trasto) è il congegno sul quale vengono date volta e bloccate le scotte della randa.',
+    answer: 0,
+    description:
+      "Il carrello di randa, o trasto, non è il congegno dove vengono date volta e bloccate le scotte della randa. Il carrello di randa è, infatti, un dispositivo montato trasversalmente alla barca, che permette di regolare la posizione orizzontale della base della randa mediante un sistema di scorrimento. Questa regolazione è cruciale per ottimizzare l'assetto della vela a seconda delle condizioni di navigazione e del vento. Le scotte della randa, invece, vengono generalmente date volta e bloccate su un sistema di bozzelli e strozzascotte situati solitamente nei pressi della barra del timone o in pozzetto. Quindi, la funzione del carrello di randa è di consentire regolazioni orizzontali precise della vela e non di bloccare la scotta della randa.",
+  },
+  {
+    id: 140,
+    question: 'La galloccia è il dispositivo con cui si fissano le draglie.',
+    answer: 0,
+    description:
+      "La galloccia è in realtà un apparecchio nautico utilizzato per fissare o avvolgere cime, soprattutto su un'imbarcazione. È costituita da un pezzo di metallo o legno con due 'corna' intorno a cui si avvolge la cima per bloccarla in posizione. Le draglie, d'altra parte, sono cavi o barrette che vengono utilizzati come parapetti di sicurezza sulle murate delle imbarcazioni, per impedire alle persone di cadere fuori bordo. Sono generalmente fissate alla struttura dello scafo attraverso supporti chiamati candelieri e non hanno alcuna correlazione diretta con l'uso delle gallocce. Quindi, la risposta corretta è \"falso\" poiché la funzione della galloccia non è quella di fissare le draglie.",
+  },
+  {
+    id: 141,
+    question:
+      'La landa è il cavallotto o la piastra collocata in coperta utilizzata per fissare le sartie e gli stralli.',
+    answer: 1,
+    description:
+      "La landa è un componente cruciale nella struttura di una barca a vela. Si presenta come un cavallotto o una piastra solida, generalmente realizzata in acciaio inossidabile per resistere alle sollecitazioni meccaniche e all'ambiente marino corrosivo. Viene fissata solidamente alla coperta o, in alcune costruzioni, all'interno dello scafo stesso. La sua funzione principale è quella di ancorare le sartie e gli stralli, che sono cavi tesi che stabilizzano l'albero della barca, prevenendo il suo movimento in laterale e longitudinale. Le sartie sono quelle che forniscono supporto laterale, mentre gli stralli danno supporto frontale e posteriore. Essendo componenti critici per la sicurezza e l'efficienza della navigazione, le lande devono essere installate con estrema precisione e mantenute in condizioni impeccabili, in quanto qualsiasi cedimento potrebbe comportare la perdita dell'albero, con conseguenze potenzialmente disastrose per l'imbarcazione.",
+  },
+  {
+    id: 142,
+    question: 'Il golfare è il carrello del boma dove si innesta la randa.',
+    answer: 0,
+    description:
+      'Il termine "golfare" si riferisce in realtà a un anello metallico fissato alla barca, utilizzato come punto di attacco per cime, drizze, scotte o per il fissaggio di attrezzature. È un componente essenziale per garantire la tenuta e la sicurezza dei carichi applicati tramite funi o altri elementi di fissaggio.\n\nIl "carrello del boma", invece, è un dispositivo che scorre lungo la randa mediante un binario sul boma. Permette l\'aggiustamento della posizione della randa stessa e facilita il controllo delle vele. Quindi, il "carrello del boma" non ha nulla a che fare con il "golfare" perché servono a scopi differenti ed hanno forme e funzioni diverse. Pertanto, la risposta corretta è "falso" perché confonde due componenti nautici distinti con usi e definizioni diversi.',
+  },
+  {
+    id: 143,
+    question: "La varea del tangone è l'anello di attacco del mantiglio.",
+    answer: 0,
+    description:
+      "Il tangone è un'asta utilizzata in navigazione a vela per mantenere il fiocco o il gennaker discosto dalla barca, permettendo così una migliore esposizione al vento e una maggiore propulsione. La varea è l'estremità del tangone. Il mantiglio, invece, è una drizza o una cavo utilizzato per sollevare le vele o per altre manovre. L'affermazione asserisce che la varea del tangone è l'anello di attacco del mantiglio, ma questa è errata per due motivi principali: primo, la varea non è specificamente un anello di attacco ma un termine che indica una parte del tangone, ovvero la sua estremità; secondo, il mantiglio non viene attaccato alla varea, perché esso ha altri punti di attacco specifici, come l'albero o la vela stessa. Invece, alla varea può essere attaccato il bozzello del fiocco o la scotta del gennaker, tra le altre cose. Pertanto, la risposta è falsa.",
+  },
+  {
+    id: 144,
+    question: "La trozza è lo snodo che unisce il boma all'albero.",
+    answer: 1,
+    description:
+      "La trozza, nel contesto nautico, è effettivamente lo snodo che unisce il boma all'albero. Questa componente è cruciale per la manovrabilità della vela, in quanto permette al boma di ruotare e consentire l'orientamento della vela in direzioni diverse rispetto all'asse longitudinale dell'imbarcazione. La trozza opera come una cerniera, facilitando il movimento verticale e orizzontale del boma, essenziale per adeguare la superficie velica alle condizioni del vento. Senza la trozza, infatti, il boma sarebbe fissato rigidamente all'albero, impedendo le regolazioni necessarie per una navigazione efficiente e sicura. Quindi, la risposta è corretta quando si afferma che la trozza è lo snodo che unisce il boma all'albero.",
+  },
+  {
+    id: 145,
+    question:
+      'La resistenza alla trazione rappresenta una qualità importante nelle fibre del tessuto di una vela, determinandone la stabilità trasversale.',
+    answer: 1,
+    description:
+      "La resistenza alla trazione è una proprietà fondamentale delle fibre di un tessuto utilizzato per la realizzazione di vele. Essa descrive la capacità del materiale di sostenere carichi senza rompersi o deformarsi eccessivamente. In un contesto nautico, le vele sono sottoposte a notevoli forze provocate dal vento e dal movimento della barca sull'acqua. La resistenza alla trazione permette al tessuto della vela di mantenere la sua integrità e forma sotto tale stress.\n\nLa stabilità trasversale di una vela si riferisce alla capacità di mantenere la sua forma e dimensione laterali, riducendo al minimo le deformazioni. Una buona stabilità trasversale è essenziale per l'efficacia e la durabilità della vela, poiché influisce direttamente sulle prestazioni della barca e sulla maneggevolezza del timone. La resistenza alla trazione delle fibre del tessuto della vela contribuisce significativamente a questa stabilità, poiché un materiale più resistente sarà meno portato a stirarsi o lacerarsi sotto tensione. In breve, senza una considerevole resistenza alla trazione, il tessuto della vela potrebbe allungarsi, deformarsi o persino strappare, compromettendo sia l’efficienza della navigazione che la sicurezza dell'imbarcazione.",
+  },
+  {
+    id: 146,
+    question:
+      'Il dacron non è un materiale correntemente diffuso per la realizzazione di vele da crociera.',
+    answer: 0,
+    description:
+      'Il Dacron è un materiale ampiamente utilizzato per la realizzazione di vele da crociera grazie alle sue eccellenti proprietà. È un tipo di poliestere che offre una combinazione ideale di resistenza, durabilità e stabilità dimensionale, che sono caratteristiche essenziali per le vele destinate alla crociera. La resistenza alla trazione del Dacron permette alle vele di mantenere la loro forma sotto carico, garantendo prestazioni costanti e affidabili. Inoltre, la sua durabilità riduce la necessità di frequenti sostituzioni, un aspetto cruciale per i naviganti che percorrono lunghe distanze e desiderano minimizzare i costi di manutenzione. La stabilità dimensionale del Dacron contribuisce a evitare deformazioni significative, mantenendo la performance della vela nel tempo. Per tutte queste ragioni, il Dacron è uno dei materiali preferiti e più diffusi per le vele da crociera, rendendo la risposta "false" corretta.',
+  },
+  {
+    id: 147,
+    question:
+      "L'esposizione molto prolungata delle vele ai raggi solari ne determina il decadimento delle sue caratteristiche meccaniche di resistenza.",
+    answer: 1,
+    description:
+      "Le vele nautiche sono generalmente costruite con materiali sintetici come dacron, nylon o kevlar, scelti per la loro leggerezza, resistenza e durabilità. Tuttavia, questi materiali sono soggetti a degradazione quando esposti ai raggi ultravioletti (UV) del sole per lunghi periodi. I raggi UV rompono le catene polimeriche all'interno del tessuto, indebolendo la struttura molecolare e causando una perdita di resistenza meccanica. Questo processo si traduce in una minore capacità del materiale di sopportare tensioni e stress, fattori critici durante la navigazione. Per ridurre l'effetto dell'esposizione solare, le vele vengono spesso trattate con rivestimenti UV protettivi, ma anche questi trattamenti hanno una durata limitata. Pertanto, è raccomandato riparare e proteggere le vele quando non sono in uso.",
+  },
+  {
+    id: 148,
+    question:
+      'Il set di vele standard di un catamarano è formato da  randa, fiocco e gennaker.',
+    answer: 1,
+    description:
+      "I catamarani da diporto e da regata sono spesso dotati di un set di vele standard che include la randa, il fiocco e il gennaker. La randa è la vela principale, posizionata sull'albero principale, e fornisce gran parte della forza propulsiva. Il fiocco è la vela di prua che lavora in combinazione con la randa per ottimizzare le prestazioni complessive dell'imbarcazione, migliorando il bilanciamento e la manovrabilità, specialmente con il vento al traverso o al lasco. Il gennaker è una vela asimmetrica utilizzata prevalentemente nelle andature portanti (dal lasco alla poppa), fornendo un'ulteriore spinta grazie alla sua grande superficie e alla capacità di sfruttare meglio il vento nelle andature più ampie. La combinazione di queste tre vele permette di affrontare una vasta gamma di condizioni di vento, rendendo il set versatile ed efficiente per le diverse necessità di navigazione.",
+  },
+  {
+    id: 149,
+    question:
+      'Il set di vele base di uno scafo armato a sloop è formato da randa e genoa (o genova).',
+    answer: 1,
+    description:
+      "Lo sloop è un tipo di imbarcazione a vela caratterizzato da un solo albero e da un set di vele che include principalmente la randa e la vela di prua. La randa è la vela principale posizionata dietro l'albero e rappresenta la fonte primaria di propulsione della barca. Il genoa, o genova, è una vela di prua sovrapposta, più grande rispetto al fiocco, che si estende oltre l'albero. Questa configurazione è ottimale per la navigazione in diverse condizioni di vento, permettendo di sfruttare al meglio il potenziale aerodinamico delle vele. La combinazione di randa e genoa consente un buon equilibrio tra facilità di manovra e prestazioni, rendendo questo assetto ideale sia per crociere che per competizioni. Pertanto, è corretto affermare che il set di vele base di uno scafo armato a sloop è formato da randa e genoa.",
+  },
+  {
+    id: 150,
+    question:
+      'I garrocci sono gli specifici moschettoni che consentono di fissare il lato prodiero del genoa e del fiocco  allo strallo di prua.',
+    answer: 1,
+    description:
+      "I garrocci sono dispositivi che vengono utilizzati per fissare il lato prodiero delle vele di prua, come il genoa e il fiocco, allo strallo di prua. Lo strallo di prua è un cavo teso tra la prua della barca e la parte superiore dell'albero per stabilizzare l'alberatura e fornire supporto per le vele di prua. I garrocci sono generalmente piccoli moschettoni o anelli metallici che scivolano lungo questo cavo, permettendo di issare e ammainare la vela facilmente. Utilizzando i garrocci, si assicura che la vela sia ben fissata allo strallo, migliorando la manovrabilità e la sicurezza durante la navigazione. Questo meccanismo permette un'adeguata distribuzione delle forze che agiscono sulla vela e contribuisce alla tenuta del rigging complessivo dell'imbarcazione.",
+  },
+  {
+    id: 151,
+    question: 'La funzione del paterazzo è di regolare il vang.',
+    answer: 0,
+    description:
+      "Il paterazzo è una componente essenziale dell'albero di una barca a vela. La sua funzione principale è quella di sostenere e stabilizzare l'albero, agendo come un supporto posteriore che contrasta le forze che tendono a far piegare l'albero in avanti a causa del vento sulle vele. Regolando la tensione del paterazzo, si può controllare la curvatura dell'albero (detta \"messa a punto dell'albero\"), il che influisce direttamente sulla forma e sull'efficienza delle vele.\n\nIl vang, invece, è un'altra attrezzatura utilizzata per regolare la tensione della randa (la vela principale). Il vang controlla l'angolo della boma (il braccio orizzontale attaccato alla base dell'albero e alla vela principale) e, di conseguenza, la forma della randa. Può essere utilizzato per impedire che la boma si sollevi quando la vela è sventata o per cambiare la forma della vela in condizione di veleggiata.\n\nPertanto, il paterazzo non ha alcuna funzione diretta nel regolare il vang. Le due attrezzature servono a scopi distinti: il paterazzo stabilizza l'albero e controlla la sua curvatura, mentre il vang regola la forma della randa.",
+  },
+  {
+    id: 152,
+    question:
+      'Cazzando il paterazzo si determina un rilevante smagrimento della parte centrale della randa.',
+    answer: 1,
+    description:
+      "Cazzando il paterazzo si aumenta la tensione dello strallo di prua e questo influisce sulla forma della vela. La maggiore tensione tende a tirare indietro l'albero, riducendo la flessibilità della sezione centrale della randa. Ciò provoca un effetto di “appiattimento” della vela, chiamato smagrimento, soprattutto nella parte centrale. Questo perché la tensione aggiuntiva riduce il bordo d’ingresso della vela, facendola diventare meno profonda e più affilata. Questo è utile soprattutto quando c'è molto vento, perché una vela più piatta riduce la resistenza aerodinamica e migliora la navigazione contro vento.",
+  },
+  {
+    id: 153,
+    question: "La gassa d'amante è un nodo che tende a sciogliersi facilmente.",
+    answer: 0,
+    description:
+      "La gassa d'amante è un nodo a occhio molto utilizzato in nautica per la sua capacità di formare un anello fisso che non si stringe né si deforma sotto tensione. Questo nodo è altamente affidabile e facile da sciogliere anche dopo essere stato sottoposto a carichi elevati, il che lo rende particolarmente utile in situazioni in cui è necessario legare o fissare un cavo a un oggetto. A differenza di altri nodi che tendono a stringersi e diventare difficili da sciogliere, la gassa d'amante mantiene la sua forma senza allentarsi o sciogliersi accidentalmente. Il fatto che non si sciolga facilmente sotto tensione è uno dei motivi principali per cui è considerato uno dei nodi più sicuri e versatili in ambito nautico.",
+  },
+  {
+    id: 154,
+    question: "La gassa d'amante si usa per accorciare una cima.",
+    answer: 0,
+    description:
+      "La gassa d'amante è un nodo marinaro utilizzato principalmente per formare un'asola fissa su una cima, non per accorciarla. Si tratta di un nodo molto versatile, usato in svariate situazioni a bordo di un'imbarcazione, come ad esempio per assicurare una cima a un palo o a un oggetto, per legare una cima a un anello o per creare una maniglia d'emergenza. La stabilità e la sicurezza della gassa d'amante la rendono uno dei nodi più affidabili, ma non modifica la lunghezza complessiva della cima. Se si desidera accorciare una cima, si usano altri metodi o nodi, come ad esempio il nodo di accorciamento o il nodo di bandiera. Quindi, affermare che si usa per accorciare una cima è errato.",
+  },
+  {
+    id: 155,
+    question:
+      "E' opportuno utilizzare il nodo piano per unire due cavi aventi diverso diametro.",
+    answer: 0,
+    description:
+      "Il nodo piano, noto anche come nodo di bandiera o nodo quadrato, è ideale per unire due cavi dello stesso diametro. Questo nodo si basa sull'attrito simmetrico tra le corde per mantenere la tenuta. Quando i cavi hanno diametri diversi, il nodo piano tende a scivolare e a sciogliersi facilmente sotto tensione, perché la presa non è uniforme. Per unire cavi di diverso diametro, è più appropriato utilizzare nodi come il doppio nodo di bandiera o il nodo di scotta, che sono progettati per compensare le differenze di spessore e garantire una maggiore sicurezza e stabilità.",
+  },
+  {
+    id: 156,
+    question:
+      "La funzione di un nodo savoia è impedire che l'estremità di un cavo si sfili da un passacavo.",
+    answer: 1,
+    description:
+      "Il nodo savoia, noto anche come nodo ad otto, è essenzialmente un nodo d'arresto che viene utilizzato per impedire che l'estremità libera di un cavo scorra attraverso un'apertura o un passacavo. La sua struttura a forma di otto crea una massa più grande e più robusta rispetto a un semplice nodo, rendendolo particolarmente efficace per questa funzione. Questo tipo di nodo è ampiamente apprezzato in ambito nautico per la sua semplicità di esecuzione, affidabilità e capacità di essere sciolto facilmente anche dopo essere stato sottoposto a tensione. Inoltre, il nodo savoia non danneggia il cavo perché distribuisce il carico in modo uniforme, riducendo il rischio di sfilacciamenti o altri deterioramenti. Per queste ragioni, la risposta alla domanda è corretta.",
+  },
+  {
+    id: 157,
+    question: 'Il nodo parlato è utile per fissare i parabordi alle draglie.',
+    answer: 1,
+    description:
+      "Il nodo parlato è un nodo marinaresco molto utilizzato per la sua facilità di esecuzione e la sua capacità di non sciogliersi sotto carico e di essere facilmente sciolto quando non è più necessario. I parabordi sono dispositivi utilizzati sulle imbarcazioni per proteggere lo scafo dagli urti contro le banchine o altre barche. Le draglie sono cavi tesi che corrono lungo i bordi della coperta di un'imbarcazione, utilizzate per fissare vari oggetti e per consentire una maggiore sicurezza per l'equipaggio. Il nodo parlato si presta perfettamente per fissare i parabordi alle draglie perché può essere realizzato rapidamente, anche in situazioni di emergenza, e può essere regolabile in modo che i parabordi possano essere posizionati alla giusta altezza per proteggere adeguatamente lo scafo. Inoltre, essendo un nodo che non si stringe troppo sotto tensione, consente di essere facilmente sciolto anche dopo aver sostenuto un carico significativo.",
+  },
+  {
+    id: 158,
+    question: 'Il nodo margherita si usa per accorciare una cima.',
+    answer: 1,
+    description:
+      "Il nodo margherita è effettivamente un nodo utilizzato soprattutto per l'accorciamento di una cima. Questo nodo è molto utile quando si ha la necessità di ridurre la lunghezza di una fune senza doverla tagliare. La struttura del nodo margherita crea una serie di anelli intrecciati che non solo riducono la lunghezza della cima, ma offrono anche una distribuzione equilibrata dello stress su tutta la lunghezza ridotta, contribuendo alla resistenza complessiva della fune. Inoltre, il nodo margherita può essere temporaneamente sciolto e rifatto rapidamente, il che lo rende versatile in diverse situazioni nautiche dove la flessibilità e l'adattabilità della lunghezza della corda sono essenziali.",
+  },
+  {
+    id: 159,
+    question:
+      'Per lazy jack si intende una particolare drizza utilizzata per issare le vele in condizioni di emergenza.',
+    answer: 0,
+    description:
+      "Il lazy jack non è una drizza, bensì un sistema di cime e carrucole installato su entrambi i lati della randa (vela principale) per facilitare l'abbassamento e la sistemazione della vela stessa. Serve soprattutto per contenere e guidare la randa quando viene ammainata, evitando che si sparga sul ponte o che finisca in mare. La funzione di un lazy jack è correlata alla facilità di gestione della vela, specialmente per equipaggi ridotti, poiché mantiene la vela ordinata e pronta per essere legata rapidamente. Una drizza, invece, è una cima utilizzata per issare una vela, e non ha alcuna relazione con il sistema di lazy jack.",
+  },
+  {
+    id: 160,
+    question:
+      'Per lazy jack si intende il sistema di sagole che aiuta a raccogliere la randa in fase di ammainata.',
+    answer: 1,
+    description:
+      'Il lazy jack è un sistema molto utile nella gestione della randa, composto da una serie di sagole (corde) che vengono fissate all\'albero e al boma della barca a vela. Questo sistema aiuta a guidare la vela mentre viene ammainata, impedendole di cadere sul ponte in modo disordinato e facilitando in generale la manovra. Le sagole del lazy jack creato una sorta di "rete" ai lati della vela, che la contenimento e la guida nella corretta posizione. Questo sistema è particolarmente utile per equipaggi ridotti o per naviganti solitari, poiché semplifica notevolmente le operazioni di gestione della randa, migliorando anche la sicurezza durante la manovra.',
+  },
+  {
+    id: 161,
+    question:
+      "Il feeder è il dispositivo utilizzato al fine di facilitare l'introduzione dell'inferitura del fiocco o del genoa all'interno della canaletta dello strallo cavo.",
+    answer: 1,
+    description:
+      "Il feeder è uno strumento essenziale per l'introduzione dell'inferitura (il bordo anteriore della vela) del fiocco o del genoa nella canaletta dello strallo cavo (il cavo metallico che collega la prua della barca alla sommità dell'albero). La canaletta è la guida attraverso cui la vela viene issata. Senza il feeder, il rischio di incagliare o danneggiare la vela aumenterebbe notevolmente, rendendo l'issata meno efficiente e potenzialmente dannosa per il materiale della vela stessa. Il feeder guida l’inferitura in maniera fluida e sicura nella canaletta, assicurando che la vela si issi senza intoppi o strappi. Questa funzione è crucialmente importante non solo per preservare l'integrità della vela ma anche per permettere un'operazione veloce e sicura, aspetto cruciale in condizioni variabili di vento e mare. Inoltre, l'utilizzo di un feeder è particolarmente importante quando si utilizza un genoa, poiché queste vele sono spesso di dimensioni significativamente maggiori rispetto a un fiocco normale e gestirle manualmente senza l'ausilio di dispositivi appropriati può essere molto difficile.",
+  },
+  {
+    id: 162,
+    question:
+      'Il tesabase è il dispositivo finalizzato a mantenere tesata la base del fiocco.',
+    answer: 0,
+    description:
+      "In un'imbarcazione a vela, il tesabase è un dispositivo che si usa per regolare la tensione della base della randa, e non del fiocco. La randa è la vela principale fissata all'albero e al boma, mentre il fiocco è una vela triangolare che si trova normalmente a prua dell'albero. La funzione del tesabase è quella di aggiustare la tensione lungo la base della randa, migliorando così la forma aerodinamica della vela per ottimizzare la sua efficienza e la performance della barca. Per quanto riguarda il fiocco, i dispositivi di regolazione includono le scotte e i sistemi di tesatura del tamburo dello strallo di prua. Quindi, l'affermazione è falsa perché il tesabase non riguarda il fiocco, ma specificamente la randa.",
+  },
+  {
+    id: 163,
+    question:
+      "Le manovre necessarie all'uso dello spinnaker sono scotta, spring, vang, borosa e  meolo del tangone.",
+    answer: 0,
+    description:
+      "Lo spinnaker è una vela utilizzata soprattutto per la navigazione di poppa e di traverso, in condizioni di vento favorevole. Le manovre necessarie per il corretto utilizzo dello spinnaker includono specifici cavi e attrezzature che non coincidono esattamente con quelli citati nella domanda. \n\nIn dettaglio, le vere manovre per lo spinnaker sono:\n- **Scotta dello spinnaker**: cavo utilizzato per regolare la tensione e l'angolazione della vela rispetto al vento.\n- **Drizza dello spinnaker**: cavo che serve per sollevare e abbassare lo spinnaker dall'albero.\n- **Braccio dello spinnaker**: cavo che aiuta a posizionare e stabilizzare la vela dal lato del tangone.\n- **Tangone**: asta che tiene aperto lo spinnaker, fissata all'albero e al braccio dello spinnaker.\n- **Borose**: cavi che potrebbero far parte della regolazione del tangone, ma sono più spesso associati alla regolazione della randa.\n- **Meolo del tangone**: spesso viene chiamato punto di aggancio del tangone all'albero o alla barca.\n\nSpring e vang non sono direttamente utilizzati per lo spinnaker. Lo spring è usualmente un cavo di ormeggio per compensare il tiro su vari punti della barca, mentre il vang è un cavo/macchinario utilizzato per regolare l'altezza del boma della randa, non dello spinnaker.\n\nPertanto, dire che le manovre per l'uso dello spinnaker includono scotta, spring, vang, borosa e meolo del tangone è errato perché non completa e specifica le attrezzi e cavi principali realmente coinvolti nelle operazioni con lo spinnaker.",
+  },
+  {
+    id: 164,
+    question:
+      'Per braccio si intende il cavo utilizzato per manovrare e, quindi, regolare la mura dello spinnaker.',
+    answer: 1,
+    description:
+      'Il termine "braccio" nel contesto della nautica fa riferimento effettivamente al cavo utilizzato per manovrare la mura dello spinnaker. Lo spinnaker è una vela di prua molto grande e leggera, utilizzata principalmente per la navigazione con vento a favore. La "mura" di una vela è il punto inferiore della vela che è fissato all\'imbarcazione. Nel caso dello spinnaker, il braccio è il cavo che controlla la posizione del punto di mura, consentendo alla vela di catturare efficacemente il vento e di mantenere la forma corretta per massimizzare le prestazioni durante la navigazione. Utilizzando il braccio insieme alla "scotta" (che controlla il punto di bugna della vela), è possibile regolare la forma e l\'orientamento dello spinnaker in modo preciso.',
+  },
+  {
+    id: 165,
+    question:
+      'Il matafione è un fiocco di rispetto utilizzato in condizioni meteo marine avverse.',
+    answer: 0,
+    description:
+      "Il matafione non è un tipo di vela, ma una cima o una fettuccia utilizzata per assicurare le vele quando sono avvolte e non devono essere utilizzate. Il termine può anche riferirsi alle cime utilizzate per legare attrezzature o oggetti sul ponte per evitare che si muovano in caso di mare mosso. Invece, un fiocco di rispetto è un tipo di vela supplementare o di riserva che può essere utilizzata in caso di emergenza o quando le condizioni meteo marine sono particolarmente avverse e necessitano di vele più piccole o più robuste. Pertanto, l'affermazione che il matafione sia un fiocco di rispetto è falsa poiché sono due cose completamente diverse sia nella funzione sia nell'utilizzo.",
+  },
+  {
+    id: 166,
+    question:
+      "Per impiombatura si intende l'intreccio dei trefoli delle estremità di cavi tessili o in acciaio, al fine di unirli tra di loro o per realizzare un anello fisso a cui agganciare le ferramenta o le manovre.",
+    answer: 1,
+    description:
+      "L'impiombatura è una tecnica utilizzata nel mondo nautico per creare un'unione solida e duratura tra due estremità di cavi, siano essi tessili o in acciaio. Questa tecnica prevede l'intreccio dei trefoli (le fibre che compongono il cavo) in modo tale da formare una giunzione sicura. L'impiombatura è preferita rispetto ad altri metodi di giunzione, come i nodi, perché conserva gran parte della resistenza originale del cavo e risulta meno ingombrante. \n\nQuando si realizza un anello fisso tramite impiombatura, la stessa affidabilità della giunzione si applica anche all’anello, che può essere utilizzato per agganciare con sicurezza le ferramenta o le manovre, come moschettoni, ganci o grilli. Questo è particolarmente importante in contesti nautici dove la sicurezza e la robustezza delle connessioni sono fondamentali per evitare incidenti e garantire il buon funzionamento delle operazioni a bordo. \n\nL'impiombatura richiede abilità e conoscenze specifiche, ma una volta eseguita correttamente, costituisce un metodo insuperabile per unire cavi o crearne delle terminazioni efficaci e resistenti.",
+  },
+  {
+    id: 167,
+    question:
+      "Per borosa si intende la parte terminale superiore dello strallo cavo che lo collega all'albero.",
+    answer: 0,
+    description:
+      "Borosa è un termine marinaro che si riferisce a un cavo, generalmente una cima o una fune, utilizzato a bordo delle imbarcazioni. Comunemente, la borosa è una fune addetta al sollevamento o alla regolazione di vele, come ad esempio quelle dei fiocchi o delle drizze. Non è, quindi, correttamente definita come \"la parte terminale superiore dello strallo cavo che lo collega all'albero\". Lo strallo è effettivamente un cavo, spesso metallico, che sostiene l'albero in direzione longitudinale, ma la sua parte terminale superiore che si collega all'albero ha altre denominazioni, come cappio o brodo del cavo. Quindi, la definizione data è errata riguardo alla funzione e alla posizione della borosa.",
+  },
+  {
+    id: 168,
+    question:
+      "Le sartie, sono i cavi generalmente in acciaio (ma anche in fibre tessili particolarmente tenaci), che sostengono l'albero.",
+    answer: 1,
+    description:
+      "Le sartie sono cavi che fanno parte dell'attrezzatura di sostegno dell'albero di una barca a vela. Questi cavi sono fondamentali per la stabilità e la sicurezza dell'albero, che è il pilastro verticale a cui sono fissate le vele. Le sartie sono disposte in modo simmetrico e sono ancorate ai bordi laterali dell'imbarcazione; il loro scopo principale è quello di contrastare le forze laterali esercitate dal vento sulle vele, mantenendo l'albero in posizione verticale. Utilizzare materiali particolarmente resistenti come l'acciaio o fibre sintetiche ad alta tenacità è cruciale per garantire che le sartie possano sopportare le enormi tensioni a cui sono sottoposte durante la navigazione. Questo sistema di cavi è essenziale per evitare che l'albero subisca oscillazioni o piegamenti che potrebbero comprometterne la stabilità e, di conseguenza, la sicurezza dell'imbarcazione stessa.",
+  },
+  {
+    id: 169,
+    question:
+      'Il tornichetto è un congegno utilizzato per unire due cime di diverso materiale.',
+    answer: 0,
+    description:
+      'Il tornichetto è un dispositivo meccanico che viene utilizzato per tendere o stringere. Nella nautica, il tornichetto (in inglese "turnbuckle") è comunemente usato per regolare la tensione di cavi, fili o sartie e non per unire due cime di diverso materiale. Le cime sono generalmente unite con nodi, legature o altri connettori specifici progettati per quest\'uso. Pertanto, la risposta è corretta perché il tornichetto non ha la funzione di collegare cime di diverso materiale, ma piuttosto di regolarne la tensione.',
+  },
+  {
+    id: 170,
+    question:
+      "Il vang è un sistema di ritenuta del boma di tipo regolabile che assolve a due funzioni principali: regola la flessione longitudinale dell'albero e influenza la superficie portante della vela.",
+    answer: 1,
+    description:
+      "Il vang, noto anche come \"vang rigido\" in alcune imbarcazioni, è un attrezzo utilizzato per controllare la posizione verticale del boma, ossia il braccio orizzontale al quale viene fissata la base della randa. Esso è ancorato alla parte inferiore del boma e all'albero o alla coperta, permettendo di applicare una forza che regola l'angolazione del boma.\n\nLa prima funzione del vang è quella di regolare la flessione longitudinale dell'albero. Applicando tensione al vang, si può ridurre lo svergolamento del boma quando la vela è completamente spiegata, ottenendo un profilo aerodinamico più efficiente e migliorando la stabilità della vela. \n\nLa seconda funzione del vang è quella di influenzare la forma della vela. Quando si applica tensione al vang, si abbassa la parte posteriore del boma, rendendo la vela più piatta nella sezione centrale, riducendo lo sfrontamento e migliorando così la capacità di conduzione di bolina (andatura controvento). Di contro, allentando il vang, si permette al boma di salire, rendendo la vela più piena e aumentando la superficie portante, ideale per andature portanti (con vento al traverso o al giardinetto).\n\nQuesti aggiustamenti sono cruciali per ottimizzare la performance della barca a vela nelle varie condizioni di vento e andatura. Pertanto, il vang svolge un ruolo essenziale nel controllo dinamico della vela e nell'ottimizzazione della navigazione.",
+  },
+  {
+    id: 171,
+    question:
+      "All'interno dell'albero si possono far passare le manovre fisse come sartie e stralli.",
+    answer: 0,
+    description:
+      "Le sartie e gli stralli sono componenti delle manovre fisse di una barca a vela, che servono a mantenere l'albero in posizione e a garantirne la stabilità. Le sartie sono cavi tesi lateralmente dall'albero fino alle fiancate della barca, mentre gli stralli sono cavi tesi in direzione longitudinale, solitamente dalla parte superiore dell'albero alla prua (strallo di prua) o alla poppa (strallo di poppa).\n\nEssendo progettate per stabilizzare e sostenere l'albero dall'esterno, sartie e stralli non possono passare all'interno dell'albero. L'inserimento di tali cavi all'interno dell'albero comprometterebbe la loro capacità di distribuire adeguatamente le forze e garantire l'integrità strutturale dell'albero stesso e della barca.\n\nInfatti, la loro funzione è di opporsi alle forze che tenderebbero a piegare o abbattere l'albero, quindi necessitano di essere fissate ai punti di attacco sopra il ponte per creare un triangolo di forze e sostenere l'albero esternamente. Le manovre interne all'albero possono includere solo cavi destinati al controllo delle vele (come drizze e borose), che non hanno la stessa funzione strutturale delle sartie e degli stralli.",
+  },
+  {
+    id: 172,
+    question:
+      "L'avvolgiranda è un'attrezzatura che permette di riporre la randa in un gavone una volta terminata la navigazione.",
+    answer: 0,
+    description:
+      "L'avvolgiranda è un attrezzo che consente di avvolgere la randa all'interno di un albero cavo (o talvolta all'interno di un boma), facilitando la riduzione della superficie velica e la regolazione della vela durante la navigazione. Questo sistema è utile per ridurre la vela senza doverla completamente ammainare e piegare, ma non ha la funzione di riporre la randa in un gavone. La randa, una volta avvolta, rimane all'interno del suo sistema di avvolgimento, pronta per essere distesa nuovamente quando necessario. Pertanto, la descrizione fornita nella domanda non è corretta, poiché l'avvolgiranda non serve per riporre la randa in un gavone, ma per gestirla direttamente sull'albero o sul boma.",
+  },
+  {
+    id: 173,
+    question:
+      "La regolazione dell'albero viene effettuata con l'unità all'ormeggio agendo su ogni singola manovra corrente in stretta aderenza a quanto indicato dal costruttore.",
+    answer: 0,
+    description:
+      "La regolazione dell'albero di una barca a vela non viene effettuata con l'imbarcazione all'ormeggio agendo sulle manovre correnti, bensì sulle manovre dormienti. Le manovre dormienti comprendono cavi e sartie che mantengono la struttura stabile e in posizione, e queste regolazioni vengono effettuate considerando il tensionamento necessario per la sicurezza e le prestazioni veliche. Le manovre correnti, invece, sono quelle che si regolano frequentemente e includono scotte, drizze e altri cavi utilizzati per controllare le vele durante la navigazione. Inoltre, sebbene le specifiche del costruttore siano importanti, l'albero potrebbe richiedere aggiustamenti in base a condizioni reali di utilizzo, tensionamenti e flessioni che non possono essere interamente previste da indicazioni generiche.",
+  },
+  {
+    id: 174,
+    question:
+      'Le manovre correnti sono quelle che servono a manovrare le vele, come le scotte, drizze, wang, tesa base ecc.',
+    answer: 1,
+    description:
+      "Le manovre correnti sono effettivamente quelle che servono a manovrare e regolare le vele su un'imbarcazione a vela. Queste manovre includono una serie di cavi e dispositivi che sono utilizzati in modo dinamico durante la navigazione. \n\nLe scotte servono a regolare l'angolo delle vele rispetto al vento. Ogni vela ha una sua scotta dedicata (es. scotta della randa, scotta del fiocco).\n\nLe drizze sono utilizzate per issare e ammainare le vele. Ogni vela viene alzata lungo l'albero o il sartiame tramite una drizza specifica.\n\nIl vang (o vang di boma) è un dispositivo che aiuta a controllare la posizione verticale del boma, evitando che si sollevi troppo sotto l'azione del vento, e può influenzare la forma della randa.\n\nLa tesabase è il cavo o sistema di regolazione che tende la base della randa, permettendo di modificare la sua forma per adattarsi meglio alle condizioni del vento.\n\nQueste manovre sono essenziali perché permettono di ottimizzare la velocità e la sicurezza della navigazione, regolando la forma e la posizione delle vele in base alle diverse condizioni di vento e direzione di navigazione. In sintesi, le manovre correnti sono tutti quei cavi e dispositivi che sono necessari per le regolazioni frequenti e rapide delle vele, contrastando con le manovre dormienti, che invece sono utilizzate per la tenuta strutturale dell'alberatura e non vengono regolate frequentemente.",
+  },
+  {
+    id: 175,
+    question:
+      "Un winch self-tailing è un verricello elettronico comandato dalla timoneria per il quale non è necessario l'uso della maniglia.",
+    answer: 0,
+    description:
+      "Il winch self-tailing è un tipo di verricello meccanico utilizzato comunemente nelle imbarcazioni a vela per facilitare la gestione delle vele. La caratteristica distintiva di un winch self-tailing è la presenza di una sorta di ganascia o gola che trattiene automaticamente la cima, consentendo all'utilizzatore di manovrarla da solo senza doverla tenere costantemente in mano. Questo elimina la necessità di un secondo operatore per mantenere la tensione sulla cima mentre si gira il winch. Tuttavia, il concetto chiave è che, nonostante questa funzione auto-bloccante, si ha comunque bisogno di una maniglia per azionarlo manualmente. Pertanto, a differenza di un winch elettronico, che effettivamente potrebbe essere azionato senza una maniglia fisica e potrebbe essere integrato con la timoneria elettronica, il winch self-tailing richiede ancora l'uso manuale della manovella per girare il tamburo.\n\nIn sintesi, un winch self-tailing non è un verricello elettronico; è meccanico e richiede l'uso di una maniglia. La risposta \"false\" è corretta perché smentisce la descrizione errata del dispositivo come elettronico e comandato dalla timoneria.",
+  },
+  {
+    id: 176,
+    question: 'Stralli e sartie sono manovre fisse.',
+    answer: 1,
+    description:
+      "Gli stralli e le sartie sono definiti come \"manovre fisse\" perché sono cavi o tiranti che restano continuamente sotto tensione per sostenere l'albero di una barca a vela. Gli stralli sono generalmente cavi che vanno dalla testa dell'albero verso prua (come lo strallo di prua o il paterazzo), mentre le sartie corrono lateralmente dall'albero verso le murate della barca. La loro funzione è fondamentale per mantenere l'albero in posizione verticale e stabile durante la navigazione, contrastando le forze del vento sulle vele. A differenza delle manovre correnti, che possono essere regolate frequentemente durante la navigazione (come le scotte e le drizze), le manovre fisse vengono regolate e tensionate prima della navigazione e rimangono costanti durante l'uso. La loro robustezza e stabilità sono cruciali per la sicurezza e l'efficienza della navigazione.",
+  },
+  {
+    id: 177,
+    question:
+      'Girando la maniglia in senso orario il winch sostiene una migliore trazione e potenza.',
+    answer: 1,
+    description:
+      "Il winch è un dispositivo meccanico utilizzato nelle imbarcazioni per tendere o allentare le vele con maggiore facilità, sfruttando il principio della leva e del riduttore di velocità. Quando si gira la maniglia in senso orario, il movimento è generalmente progettato per incrementare la trazione e la potenza applicata alla corda o alla cima avvolta attorno al tamburo del winch. Questo è dovuto al design del meccanismo interno del winch, che è composto da ingranaggi e leve studiati per amplificare la forza applicata dalla mano del marinaio. In termini tecnici, la rotazione in senso orario aziona gli ingranaggi in modo tale da migliorare l'efficienza meccanica, permettendo di applicare una forza maggiore sulla vela o sulla cima con meno sforzo fisico. Questo facilita le operazioni di regolazione delle vele, soprattutto in condizioni di forte vento o durante manovre complesse.",
+  },
+  {
+    id: 178,
+    question:
+      'Il motivo per cui il grillo della penna di randa è del tipo con perno di blocco è per consentire di sganciare la vela evitando che lo stesso cada in mare.',
+    answer: 1,
+    description:
+      "Il grillo della penna di randa è del tipo con perno di blocco per garantire che, durante le operazioni di sgancio della vela, il grillo non cada accidentalmente in mare. Il perno di blocco assicura che il grillo rimanga fissato alla sua sede anche quando viene aperto per sganciare la randa. Questo è particolarmente utile in condizioni di mare mosso o ventoso, dove perdere materiali in mare può significare dover rinunciare a operazioni cruciali. Inoltre, il sistema di blocco aiuta a mantenere la sicurezza e l'efficienza delle manovre a bordo, riducendo il rischio di incidenti o ritardi.",
+  },
+  {
+    id: 179,
+    question:
+      'La calza è una sorta di tubo di tela con il quale si raccoglie lo spinnaker o il gennaker prima di ammainarlo.',
+    answer: 1,
+    description:
+      "La calza è un attrezzo utilizzato per facilitare la gestione delle vele asimmetriche come lo spinnaker o il gennaker. Questo dispositivo è essenzialmente un tubo di tela che permette di controllare e raccogliere la vela in modo ordinato e sicuro. La calza è attaccata alla parte superiore della vela e, attraverso un sistema di cordini, può essere tirata verso il basso per coprire e raccogliere la vela, riducendola in un pacchetto compatto. Questa operazione rende più semplice l'ammainamento della vela, particolarmente utile in condizioni di vento forte o quando si ha un equipaggio ridotto. Inoltre, la calza aiuta a prevenire il rischio che la vela si incastri o si danneggi durante le manovre. Utilizzare una calza rappresenta quindi una scelta pratica e sicura per semplificare la gestione delle vele asimmetriche a bordo delle imbarcazioni a vela.",
+  },
+  {
+    id: 180,
+    question:
+      'Con il fiocco autovirante è necessario cazzare la scotta in virata.',
+    answer: 0,
+    description:
+      "In una barca a vela, il fiocco autovirante è una vela di prua montata su un meccanismo che permette di cambiare lato automaticamente durante una virata senza bisogno di intervenire manualmente sulle scotte. \n\nQuando una barca vira, la prua passa attraverso il vento, e le vele di prua, come il fiocco, devono essere riposizionate per adattarsi al nuovo bordo. Normalmente, questo richiede che le scotte del fiocco siano lascate da un lato e cazzate dall'altro. Tuttavia, un fiocco autovirante, avendo un meccanismo come un carrello su un binario curvo, si sposta automaticamente da un lato all'altro del piano velico.\n\nLa caratteristica principale del fiocco autovirante è che la scotta resta attaccata a un solo punto fisso e il carrello sul binario gestisce la regolazione della vela durante la virata, eliminando la necessità di cazzare manualmente le scotte. Pertanto, la risposta corretta è ‘falso’ perché l'azione di cazzare la scotta non è necessaria con un fiocco autovirante.",
+  },
+  {
+    id: 181,
+    question:
+      "Con il fiocco autovirante la scotta è generalmente rinviata a una puleggia sull'albero.",
+    answer: 1,
+    description:
+      "Il fiocco autovirante è un tipo di vela di prua progettata per semplificare le manovre, specialmente durante le virate. Una caratteristica chiave di questo sistema è che non richiede di rilasciare e riprendere le scotte manualmente durante la virata. Invece, la scotta del fiocco passa attraverso una puleggia montata sull'albero, che permette al fiocco di spostarsi da un lato all’altro automaticamente quando la barca cambia direzione. Questo arrangiamento riduce il carico di lavoro per l'equipaggio e rende le manovre più veloci ed efficienti. Pertanto, l'affermazione è corretta poiché il rinvio della scotta a una puleggia sull'albero è una caratteristica distintiva del fiocco autovirante.",
+  },
+  {
+    id: 182,
+    question:
+      'Con il genoa avvolgibile ridotto oltre il 30% della superficie si ha una sensibile riduzione di efficienza del profilo.',
+    answer: 1,
+    description:
+      "Il genoa è una vela di prua di grandi dimensioni utilizzata sulle imbarcazioni a vela. Quando si dice che è avvolgibile, significa che può essere parzialmente o completamente avvolto attorno allo strallo di prua mediante un sistema di avvolgimento. Ridurre l'area del genoa avvolgendolo potrebbe essere necessario in caso di aumento del vento per mantenere un migliore controllo dell'imbarcazione. Tuttavia, avvolgendo oltre il 30% della superficie del genoa, il profilo aerodinamico della vela risulta significativamente alterato. Questo perché il bordo d’attacco della vela divienta meno definito e la forma della vela non è più ottimale per generare il massimo rendimento aerodinamico. La vela parzialmente avvolta tende a formare delle pieghe e a presentare un bordo di uscita irregolare, compromettendo così la sua capacità di generare portanza e trasformare il vento in forza propulsiva. Inoltre, l'efficienza della vela deteriora ulteriormente perché la tensione lungo il bordo d’inferitura e l’intera trama del tessuto della vela va fuori assetto, creando turbolenze e resistenze aggiuntive. Le vele sono progettate per lavorare al meglio con una certa configurazione, e riduzioni estreme come quelle oltre il 30% risultano in una prestazione notevolmente inferiore.",
+  },
+  {
+    id: 183,
+    question:
+      "L'avvolgifiocco e il moderno sistema che consente di ridurre la vela di prua senza ammainarla.",
+    answer: 1,
+    description:
+      "L'avvolgifiocco è un meccanismo che consente di avvolgere o ridurre la vela di prua (spesso detta fiocco) attorno al proprio strallo, senza doverla ammainare completamente. Questo sistema è particolarmente utile quando le condizioni atmosferiche richiedono una riduzione della superficie velica per migliorare la manovrabilità della barca e garantirne la sicurezza. Il funzionamento dell'avvolgifiocco si basa su un tamburo avvolgitore posto alla base dello strallo o su un sistema integrato nel profilo del fiocco stesso. Utilizzando una cima dedicata, l'equipaggio può avvolgere parzialmente o completamente la vela intorno al cavo, consentendo una regolazione precisa della superficie esposta al vento. Questo sistema è ampiamente utilizzato nella navigazione moderna grazie alla sua praticità e alla capacità di ridurre lo sforzo fisico necessario per gestire le vele, soprattutto in condizioni di mare agitato o vento forte. Inoltre, l'avvolgifiocco può migliorare la velocità delle manovre, aumentando l'efficienza complessiva della navigazione.",
+  },
+  {
+    id: 184,
+    question:
+      'Lo stopper è la manovra con cui si fissa il boma in posizione di riposo.',
+    answer: 0,
+    description:
+      'Il termine "stopper" in ambito nautico non si riferisce alla manovra che fissa il boma in posizione di riposo. Uno "stopper" è un dispositivo meccanico utilizzato per trattenere o bloccare una cima (corda) sotto tensione, spesso permettendo di liberare un verricello senza che la cima perda tensione. La specifica manovra per fissare il boma in posizione di riposo sui natanti a vela, generalmente, è chiamata "ferma boma" e può includere l\'uso di cime e bozzelli per mantenere il boma in una posizione stabile quando non è sotto vela. Quindi, la risposta corretta è "false" perché lo "stopper" non ha la funzione descritta nella domanda.',
+  },
+  {
+    id: 185,
+    question:
+      'Lo stopper è il sistema di bloccaggio che consente di strozzare una drizza.',
+    answer: 1,
+    description:
+      "Gli stopper sono strumenti cruciali per la gestione delle drizze a bordo di una barca a vela. Servono a bloccare e mantenere la tensione sulle cime senza l'utilizzo costante delle mani o di un winch. Questo dispositivo permette di fissare una drizza – una cima utilizzata per sollevare le vele – in una determinata posizione, impedendole di scorrere indietro. \n\nIl funzionamento di uno stopper si basa su una serie di camme o leve dentate che afferrano la cima quando viene tirata attraverso il dispositivo. Quando la leva dello stopper viene chiusa, i denti afferrano la cima e la mantengono in posizione. Questo consente all'equipaggio di regolare facilmente la tensione della vela attraverso il winch e poi fissare la drizza con lo stopper, permettendo l'uso del winch per altre manovre. Inoltre, gli stopper sono progettati per evitare l'usura delle cime, offrendo una presa salda senza danneggiarle.\n\nSaper utilizzare correttamente uno stopper è fondamentale per una navigazione sicura ed efficiente. Bloccando la drizza, si assicura che le vele rimangano nella posizione desiderata, contribuendo a mantenere la rotta e la velocità ottimale della barca.",
+  },
+  {
+    id: 186,
+    question:
+      'Per "sventare" si intende la manovra tesa a condurre l\'unità navale con la prua al vento o a mollare le scotte, in modo che le vele non siano portanti',
+    answer: 1,
+    description:
+      "La sventata è una manovra fondamentale nella navigazione a vela. Essa si riferisce all'azione di portare l'unità navale con la prua al vento, cioè nella direzione opposta a quella del vento. In questa posizione, le vele smettono di produrre forza propulsiva poiché il vento passa direttamente davanti ad esse, rendendole inefficaci dal punto di vista propulsivo. Mollare le scotte, cioè allentare le funi che controllano le vele, è una tecnica per far perdere loro il vento e quindi annullare la forza propulsiva. In sintesi, sventare è l'azione di condurre l'imbarcazione in una posizione in cui le vele non sono più portanti, e ciò è realizzabile sia portando la prua al vento sia mollando le scotte. Questo può essere utile in situazioni in cui è necessario fermare o rallentare l'imbarcazione rapidamente, ad esempio per evitare collisioni o per prepararsi all'ormeggio.",
+  },
+  {
+    id: 187,
+    question:
+      'Per "sventare" si intende la manovra tesa a condurre l\'unità navale con la poppa al vento.',
+    answer: 0,
+    description:
+      '"Sventare" è un termine nautico che si riferisce a una manovra in cui si mette la prua dell\'imbarcazione contro il vento. Questo è l\'opposto di quanto descritto nella domanda, dove si parla di condurre l\'unità navale con la poppa al vento, una manovra che in realtà sarebbe chiamata "cappottare" o "accostare col vento in poppa". Sventare è importante per ridurre al minimo l\'effetto del vento sulle vele o sull\'imbarcazione stessa e spesso viene utilizzato per fermarsi o per effettuare manovre di sicurezza in condizioni di vento forte. Poiché sventare non significa condurre l\'unità navale con la poppa al vento, la risposta corretta alla domanda è "falso".',
+  },
+  {
+    id: 188,
+    question:
+      'Per poggiare è necessario porre la barra del timone sopravento ossia dalla parte opposta rispetto alla randa.',
+    answer: 1,
+    description:
+      "Per poggiare, ovvero allontanarsi dalla direzione del vento, un'azione fondamentale che induce la barca a cambiare rotta avvicinandosi alla direzione del vento, è necessario spostare la barra del timone sopravento, ossia dalla parte opposta rispetto alla randa. Questo movimento fa sì che il timone sbilanci la poppa sottovento e indirizzi la prua della barca verso il lato opposto al vento. Il concetto chiave qui è che la barra del timone dirige la poppa nella direzione opposta rispetto al movimento desiderato della prua. In sostanza, spostando la barra del timone verso sopravento, si induce la poppa verso quella stessa direzione, facendo sì che la prua si muova sopravento. Questo è coerente con i principi della meccanica del timone e con le manovre di navigazione a vela, dove il controllo della direzione è ottenuto alterando l'equilibrio della forza del vento sulle vele e sul timone.",
+  },
+  {
+    id: 189,
+    question:
+      'Per poggiare è necessario porre la barra del timone sottovento ossia dallo stesso lato della randa.',
+    answer: 0,
+    description:
+      "La risposta è corretta perché quando si parla di poggiare, ci si riferisce a far girare la prua della barca verso una direzione più lontana dal vento, cioè fare un angolo maggiore con la direzione del vento. In questo caso, per ottenere questo effetto, la barra del timone deve essere posta sopravento, ossia dalla parte opposta alla randa. Ponendo la barra del timone sottovento, la poppa della barca si sposterà verso sottovento, facendo girare la prua sopravento e quindi orzando, che è l'azione opposta a poggiare. Questo accade perché il movimento della barra del timone crea una variazione nella direzione della forza di idrodinamica agendo sulla pala del timone, la quale influisce sulla direzione di marcia dello scafo della barca.",
+  },
+  {
+    id: 190,
+    question:
+      'Quando due unità navali a vela navigano di bolina con rotte convergenti, quella con le mure a sinistra poggierà per lasciare la rotta libera a quella con le mure a dritta, passandole di poppa.',
+    answer: 1,
+    description:
+      "Quando due unità navali a vela navigano di bolina con rotte convergenti, la regola generale di precedenza stabilisce che l'unità con le mure a sinistra deve cedere il passo a quella con le mure a dritta. Questo principio è fondamentale per evitare collisioni e garantire la sicurezza della navigazione.\n\nLe mure sono il lato dal quale il vento proviene rispetto all'asse longitudinale della barca. Nella navigazione a vela, conoscere e rispettare le regolazioni relative alle mure è essenziale. Quando si dice che una barca ha le mure a dritta, significa che il vento colpisce il lato destro della barca prima di attraversarla. Viceversa, le mure a sinistra indicano che il vento colpisce il lato sinistro della barca.\n\nIn condizioni di bolina, dove le barche stanno navigando controvento con un angolo acuto, la manovrabilità è limitata e l'attenzione alle regole di precedenza è cruciale. La barca con le mure a sinistra ha meno diritto di prelazione sulla rotta rispetto a quella con le mure a dritta. Pertanto, deve eseguire una manovra di poggiare, ovvero virare leggermente sottovento, per passare dietro l'altra imbarcazione. Questo riduce il rischio di collisione e consente a entrambe le unità di mantenere una rotta sicura.\n\nLa ragione di questa regola deriva dal fatto che la barca con le mure a sinistra può vedere la barca con le mure a dritta più facilmente ed è quindi in una posizione migliore per anticipare e reagire evitando lo scontro. Inoltre, questa regola è un principio condiviso internazionalmente, codificato nei Regolamenti Internazionali per Prevenire gli Abbordi in Mare (COLREGs), per garantire una comprensione uniforme e pratica delle precedenze in mare.",
+  },
+  {
+    id: 191,
+    question:
+      'Quando due unità navali a vela navigano di bolina con rotte convergenti, quella più lenta lascierà la rotta libera a quella più veloce, passandole di poppa.',
+    answer: 0,
+    description:
+      "Le regole della precedenza per le imbarcazioni a vela non si basano sulla velocità delle barche, ma sulla posizione delle vele rispetto al vento. Secondo le normative internazionali (Regolamento Internazionale per Prevenire gli Abbordi in Mare, COLREGS), nel caso in cui due imbarcazioni a vela si trovino su rotte convergenti:\n\n1. Se le imbarcazioni navigano con mura diverse (cioè il vento viene da direzioni opposte rispetto alla barca, ad esempio una è mura a sinistra e l'altra mura a dritta), quella con il vento dalla mura sinistra deve dare la precedenza all'altra.\n2. Se le imbarcazioni navigano con le stesse mura (cioè il vento proviene dalla stessa parte per entrambe), quella sopravento (più in alto rispetto alla direzione del vento) deve dare precedenza a quella sottovento (più in basso rispetto alla direzione del vento).\n\nQueste regole sono progettate per evitare situazioni di ambiguità e assicurare la sicurezza e prevedibilità delle manovre. In questo caso, la velocità delle imbarcazioni non influisce sulla precedenza.",
+  },
+  {
+    id: 192,
+    question:
+      'Quando due unità navali a vela navigano di bolina entrambe con le stesse mure, quella sopravento orzerà per lasciare la rotta libera a quella sottovento.',
+    answer: 1,
+    description:
+      "Nella navigazione a vela, il concetto di \"mure\" si riferisce al lato della barca da cui il vento proviene. Quando due imbarcazioni a vela navigano di bolina (cioè con il vento proveniente dalla prua), e hanno entrambe lo stesso lato sopravento (quindi stesse mure), le regole internazionali di prevenzione degli abbordi in mare (COLREG) stabiliscono che l'imbarcazione sopravento deve dare precedenza all'imbarcazione sottovento. \n\nQuesto principio è progettato per ridurre il rischio di collisione, tenendo conto del fatto che l'imbarcazione sottovento ha una manovrabilità limitata a causa della vicinanza dell'altra barca e della necessità di mantenere tensione sulle vele. Orzare significa spostare la prua della barca verso la direzione da cui proviene il vento, aumentando l'angolo tra la direzione della barca e la direzione del vento, consentendo così all'imbarcazione sopravento di allontanarsi e lasciando spazio a quella sottovento per procedere liberamente. Queste regole di precedenza sono essenziali per garantire la sicurezza e l'ordine in mare.",
+  },
+  {
+    id: 193,
+    question:
+      'Dopo aver tesato la drizza della randa, la base della stessa può essere cazzata, poco o molto, a seconda che si vogliano assumere rispettivamente andature larghe o di bolina.',
+    answer: 1,
+    description:
+      'Il termine "tesare" la drizza della randa si riferisce al processo di tensionare la drizza della vela maestra (randa) per garantirne la corretta altezza e stabilità. Cazzare la base della randa significa tirare il bordo inferiore della vela verso poppa per stenderla ulteriormente. Questa regolazione è cruciale per ottimizzare la forma della vela in funzione della direzione del vento e dell\'andatura desiderata.\n\nPer andature di bolina, dove la barca naviga quasi controvento ad un angolo stretto rispetto al vento, è importante avere una vela di forma piatta per ridurre la resistenza aerodinamica ed aumentare l\'efficienza. Questo si ottiene cazzando energicamente la base della randa, riducendo così la pancia della vela e permettendo un profilo più aerodinamico.\n\nInvece, per andature larghe, come il traverso o il lasco, dove la barca naviga con il vento proveniente dai lati o da poppa, si desidera una vela più piena. In questo caso, si può lasciare la base della randa relativamente più lasca, consentendo alla vela di avere una forma più "panciuta" e catturare più vento, aumentando così la propulsione.\n\nIn sintesi, la regolazione della base della randa è direttamente legata alla forma della vela che a sua volta dipende dall\'andatura scelta. Cazzare molto la base della randa è appropriato per la bolina, dove una vela piatta è necessaria, mentre una tensione minore è indicata per andature larghe, dove una vela più piena è vantaggiosa.',
+  },
+  {
+    id: 194,
+    question:
+      "L'abbattuta è la manovra mediante la quale l'unità a vela cambia mure attraversando con la poppa la direzione da cui proviene il vento.",
+    answer: 1,
+    description:
+      "L'abbattuta è la manovra in cui un'unità a vela cambia mure passando con la poppa attraverso la direzione del vento. Questo implica che durante l'abbattuta, la poppa dell'imbarcazione si muove attraverso la linea del vento, facendo sì che la vela principale cambi lato rispetto al vento. Questa manovra si differenzia dalla virata, in cui la prua attraversa la direzione del vento. Nella terminologia nautica, le \"mure\" si riferiscono al lato da cui il vento colpisce la barca: quindi in un'abbattuta, il lato che riceve il vento cambia. Di conseguenza, l'affermazione è corretta in quanto descrive accuratamente la dinamica del cambiamento di mure attraverso la poppa rispetto alla direzione del vento.",
+  },
+  {
+    id: 195,
+    question: 'La virata è  la manovra per evitare un ostacolo.',
+    answer: 0,
+    description:
+      "Nel contesto della navigazione, la virata è una manovra che implica cambiare la direzione dell'imbarcazione attraverso il movimento del timone o delle vele. Questa manovra viene solitamente eseguita per correggere la rotta, seguire un percorso specifico o navigare in direzioni diverse rispetto al vento. Al contrario, per evitare un ostacolo, si utilizzano manovre specifiche di evitamento, come la virata d'emergenza, che comporta un cambiamento di rotta rapido e significativo o la riduzione di velocità, piuttosto che una semplice virata. Pertanto, dire che la virata è la manovra principale per evitare un ostacolo è impreciso perché la virata è una manovra di routine utilizzata per molteplici scopi, non specificamente per l'evitamento di ostacoli.",
+  },
+  {
+    id: 196,
+    question:
+      'La virata è la manovra usata per raggiungere una meta navigando con il vento in fil di ruota.',
+    answer: 0,
+    description:
+      "La virata è una manovra utilizzata per cambiare direzione dell’imbarcazione portando la prua contro il vento. Questa manovra, anche nota come viramento di bordo, permette di passare da una andatura di bolina su un lato a una andatura di bolina sull'altro lato. La definizione di vento in fil di ruota, invece, si riferisce a una condizione in cui il vento soffia esattamente dalla poppa della barca. Per dirigersi verso una meta con il vento in fil di ruota, l'imbarcazione naviga in poppa piena (ossia con il vento totalmente alle spalle), il che è una condizione completamente diversa dalla virata. Pertanto, affermare che la virata è la manovra usata per navigare con il vento in fil di ruota è errato. La virata riguarda il cambio di direzione con vento da prua, non la navigazione con vento da poppa.",
+  },
+  {
+    id: 197,
+    question:
+      "L'abbattuta si esegue quando la barca è alla massima velocità e naviga con andatura al traverso o di bolina.",
+    answer: 0,
+    description:
+      "Il termine \"abbattuta\" in nautica si riferisce a una manovra in cui la prua della barca attraversa la direzione del vento stesso, passando dallo stare con il vento proveniente da una fiancata a quello provienente dall'altra. La manovra è solitamente eseguita in andature portanti, come il lasco e il gran lasco, e viene evitata quando la barca è in andature di bolina o traverso a causa di un maggiore rischio di sbandamento e difficoltà di controllo. La bolina è l'andatura in cui un'imbarcazione risale in modo molto acuto contro il vento, mentre il traverso è quando naviga con il vento proveniente perpendicolarmente. Questi stati richiedono maggiore attenzione alla stabilità e alla gestione del timone. Inoltre, l'abbattuta provoca uno spostamento rapido e potenzialmente violento del boma, il quale potrebbe essere pericoloso in velocità elevate. Per questi motivi, evitare l'abbattuta durante le andature di bolina o traverso è una pratica di sicurezza.",
+  },
+  {
+    id: 198,
+    question:
+      "Per armare la randa: si collega la borosa all'angolo di mura, si tesa la base e si chiude lo stopper della scotta.",
+    answer: 0,
+    description:
+      "L'affermazione è falsa perché descrive un procedimento inappropriato e incompleto per armare correttamente la randa. Il processo corretto per armare la randa su una barca a vela include diversi passaggi specifici:\n\n1. **Collegare la ralinga**: Innanzitutto, la ralinga della randa deve essere inserita nell'apposita canaletta sull'albero.\n\n2. **Collegare l'angolo di penna**: L'angolo di penna della randa deve essere attaccato al carrello di penna, se presente, o direttamente alla drizza.\n\n3. **Collegare la borosa all'angolo di mura**: La borosa deve essere collegata all'angolo di mura e il punto di mura deve essere saldamente fissato al boma.\n\n4. **Alzare la randa**: A questo punto si può iniziare a issare la randa tirando la drizza della randa attraverso il winch, se necessario, fino a che la randa è completamente issata e ben tesa.\n\n5. **Tendere la base (piedevante)**: Solo dopo che la randa è completamente issata, si agisce sulla base (piedevante) tirando la borosa di base per regolare la tensione desiderata sulla vela.\n\n6. **Regolare e fissare la scotta della randa**: La scotta della randa viene tesa e regolata per controllare l'angolo e la forma della vela rispetto al vento. Lo stopper della scotta viene chiuso per mantenere la tensione.\n\nDunque, l'affermazione è errata perché descrive una sequenza non corretta e incompleta delle operazioni. Il bloccare lo stopper della scotta della randa è un passo che deve essere eseguito solo dopo che la randa è stata completamente issata e regolata, non prima.",
+  },
+  {
+    id: 199,
+    question: 'Il punto di mura è posizionato sulla varea del boma.',
+    answer: 0,
+    description:
+      "Il punto di mura di una vela si riferisce all'angolo inferiore della vela più vicino all'albero, dove la vela è fissata al ponte o alla base dell'albero mediante una bugna o una forma di attacco simile. Questa è la posizione in cui la base della vela (la ralinga inferiore) e l'inferitura (la ralinga dritta) si uniscono. D'altra parte, la varea del boma si trova all'estremità opposta del boma, lontana dall'albero. La varea è la parte terminale del boma dove solitamente è fissato l’angolo inferiore della balumina della vela (detto anche \"punto di scotta\"). Pertanto, dire che il punto di mura è posizionato sulla varea del boma è errato, in quanto confonde due concetti differenti e due posizioni distinte della vela.",
+  },
+  {
+    id: 200,
+    question:
+      "Si arma la randa cazzando il meolo, inserendo la tavoletta all'interno dell'apposita tasca posta sulla parte più alta dell'albero.",
+    answer: 0,
+    description:
+      "La risposta è \"falso\" perché le operazioni descritte sono in parte errate e non collegate tra loro in modo coerente con l'armo della randa. \n\nCazzare il meolo si riferisce alla regolazione di una cima, generalmente alla tensione di cavi o drizze, non specificamente alla randa. Inserire la tavoletta (o stecca) nella tasca sulla parte più alta dell'albero è un errore: le stecche della vela, utilizzate per mantenerne la forma e migliorarne l'efficienza, sono inserite nelle apposite tasche lungo la randa stessa, non sull'albero. L'armo corretto della randa comporta l'inserimento del guinzaglio nel canale dell'albero e del boma, issando la vela con la drizza e successivamente cazzando la scotta per regolare la forma della vela.",
+  },
+  {
+    id: 201,
+    question:
+      'Dopo aver lascato la drizza della randa, la base della stessa può essere lascata, poco o molto, a seconda che si vogliano assumere andature in bolina o bolina larga.',
+    answer: 0,
+    description:
+      'La risposta è falsa perché la regolazione della base della randa (detta anche "ghinda" o "piede" della randa) è principalmente utilizzata per controllare la forma della vela e quindi ottimizzare le prestazioni in diverse condizioni di vento e andature. In bolina, che è l\'andatura più vicina al vento, è importante avere una randa ben cazzata (tesa) e con una forma piatta per ridurre la resistenza aerodinamica e migliorare la capacità di risalire il vento. Questo implica che la base della randa dovrebbe essere cazzata (tesa) per ottenere una vela più piatta.\n\nAllontanandosi dalla bolina (ad esempio, in bolina larga o al traverso), si desidera una vela con una forma più piena per migliorare la propulsione. Questo può essere ottenuto lascando la base della randa, il che introduce più pancia (convessità) nella vela, consentendo una maggiore cattura del vento. Tuttavia, la regolazione della base non è l\'unico fattore determinante per le diverse andature: l\'angolo del vento, la posizione del carrello, e la svergolatura della vela sono tutti componenti cruciali.\n\nPertanto, lascare la base della randa è una tecnica utilizzata principalmente per modificare la forma della vela in funzione del vento e non direttamente associata al solo scopo di passare da una bolina a una bolina larga.',
+  },
+  {
+    id: 202,
+    question:
+      'Genoa (o genova) e fiocco si armano allo stesso modo perché  hanno, in generale, lo stesso punto di mura nonché risultano inferiti al medesimo strallo.',
+    answer: 1,
+    description:
+      "Il Genoa (o genova) e il fiocco sono entrambi vele di prua che si utilizzano su una barca a vela e condividono alcune caratteristiche strutturali. Entrambe queste vele si armano, cioè si montano, sullo stesso punto di mura, che è la base anteriore della vela dove la vela viene fissata alla barca. Questo punto si trova generalmente sull'attacco dello strallo di prua, una linea tesa tra la prua e l'albero per fornire stabilità e supporto alle vele di prua. Inferire una vela significa fissarla in modo che segua un cavo o una guida, in questo caso lo strallo. Poiché sia il Genoa sia il fiocco utilizzano lo stesso punto di mura e vengono inferiti al medesimo strallo, il procedimento di armo è molto simile per entrambe le vele. La differenza principale tra il Genoa e il fiocco è la loro dimensione e forma: il Genoa è più grande e si estende oltre l'albero, mentre il fiocco è più ridotto in dimensioni. Tuttavia, queste differenze non incidono sul metodo di armo, che rimane sostanzialmente identico per entrambe le vele.",
+  },
+  {
+    id: 203,
+    question:
+      "La prima operazione necessaria per issare il fiocco o il genoa (o genova) munito di garocci è fissare l'occhiello di bugna nell'apposito attacco ubicato alla base dello strallo.",
+    answer: 0,
+    description:
+      "La prima operazione necessaria per issare il fiocco o il genoa munito di garocci è quella di agganciare l'inferitura (la parte anteriore della vela che corre lungo lo strallo) ai garrocci stessi, che sono piccoli moschettoni o ganci, facendoli scorrere lungo lo strallo. Questa procedura è fondamentale perché permette alla vela di alzarsi correttamente lungo lo strallo una volta che si tira su la drizza, che è la cima utilizzata per issare la vela. Successivamente, dopo che la vela è stata issata, si fissa l'occhiello di bugna nell'apposito attacco alla base dello strallo per tenere il bordo inferiore della vela in tensione. Iniziare fissando l'occhiello di bugna comprometterebbe la fluidità dell'operazione e potrebbe portare a difficoltà nel far scorrere i garrocci lungo lo strallo, rendendo l'operazione meno efficiente e sicura.",
+  },
+  {
+    id: 204,
+    question:
+      'I garrocci di cui è munito il fiocco vanno incocciati allo strallo partendo dal punto di penna e proseguendo verso il punto di scotta.',
+    answer: 0,
+    description:
+      "I garrocci del fiocco devono essere incocciati allo strallo a partire dal punto di mura, proseguendo verso il punto di penna. Questo processo permette di mantenere la vela correttamente allineata e tesa lungo lo strallo, consentendo una migliore aerodinamicità e un funzionamento efficiente. Il punto di mura è quello in cui la base della vela è fissata alla barca, mentre la penna rappresenta l'estremità superiore della vela. Incocciare i garrocci in questo ordine assicura che la vela sia ben posizionata e stabile, evitando problemi come pieghe o piegamenti inappropriati che possono compromettere la navigazione. Inoltre, questa procedura facilita la manovra di issata del fiocco, riducendo il rischio di incastri o disallineamenti che potrebbero verificarsi issando i garrocci dal punto di penna verso il punto di scotta.",
+  },
+  {
+    id: 205,
+    question:
+      'Il dispositivo solitamente utilizzato per agganciare la drizza alla penna è un moschettone impiombato alla sommità della drizza stessa.',
+    answer: 1,
+    description:
+      "La drizza è una cima utilizzata per issare vele, bandiere o altre attrezzature sull'albero di una barca a vela. La penna è l'estremità superiore della vela. Il termine \"impiombato\" si riferisce a una tecnica in cui una cima viene intrecciata o agganciata in modo sicuro per formare un occhio o un anello, consentendo un collegamento affidabile e resistente.\n\nUn moschettone è un dispositivo di chiusura con una molla, solitamente in metallo, che permette l'apertura e la chiusura rapida. È progettato per sopportare carichi notevoli, resistendo a trazioni elevate. Nella pratica nautica, questo tipo di dispositivo garantisce un aggancio rapido e sicuro tra la drizza e la penna, permettendo di issare o ammainare velocemente la vela senza il rischio che si sganci accidentalmente. Inoltre, il moschettone impiombato alla drizza facilita le operazioni rendendo meno probabile che la cima si attorcigli o si danneggi nel punto di ancoraggio.",
+  },
+  {
+    id: 206,
+    question:
+      'Il nodo utilizzato solitamente per fissare le due scotte alla bugna del fiocco, una per lato, è il parlato doppio.',
+    answer: 0,
+    description:
+      "Il nodo parlato doppio non è il nodo più comunemente utilizzato per fissare le scotte alla bugna del fiocco. Il nodo più adatto per questa operazione è il nodo di gassa (o gassa d'amante). La gassa d'amante è un nodo molto sicuro e non si scioglie facilmente, anche sotto forte tensione e continue sollecitazioni, caratteristiche essenziali per le scotte del fiocco che sono soggette a carichi elevati durante la navigazione e a ripetute manovre di apertura e chiusura della vela. Utilizzare il nodo parlato doppio non garantirebbe la stessa sicurezza, stabilità e facilità di regolazione che offre la gassa d'amante nelle condizioni operative di una vela di prua.",
+  },
+  {
+    id: 207,
+    question:
+      'La barca viene condotta con la prua al vento al fine di consentire che il fiocco non si gonfi mentre viene issato.',
+    answer: 1,
+    description:
+      "Isserare il fiocco con la barca condotta prua al vento è una tecnica utilizzata per facilitare l'operazione e minimizzare i rischi. Quando la prua è rivolta direttamente contro la direzione del vento, la forza del vento è distribuita simmetricamente sui due lati della barca, riducendo significativamente la pressione laterale che potrebbe causare difficoltà nell'issaggio del fiocco. Il fiocco, o vela di prua, deve essere issato senza che si gonfi prematuramente con il vento; ciò garantisce un controllo maggiore durante l'operazione, evitando strappi improvvisi o situazioni che potrebbero compromettere la sicurezza dell'equipaggio e danneggiare l'attrezzatura. Questa tecnica permette anche un'issatura più ordinata e precisa, riducendo il rischio che la vela si impigli o si attorcigli, il che richiederebbe ulteriori manovre per la correzione. Di conseguenza, è una pratica standard nella navigazione a vela utilizzare questa configurazione per favorire un issaggio agevole e sicuro delle vele.",
+  },
+  {
+    id: 208,
+    question:
+      'Lo strallo cavo offre il vantaggio di abbassare il centro velico del fiocco.',
+    answer: 0,
+    description:
+      'Lo strallo cavo è una parte essenziale dell\'alberatura di una barca a vela, ma il suo scopo principale non è abbassare il centro velico del fiocco. Lo strallo in sé è un cavo o una barra tesa tra la prua della barca e la sommità dell\'albero, e può essere fissato in modo da creare una curva (detta "sag") progettata per migliorare la forma della vela e la performance generale della barca a vela. Tuttavia, il concetto di "abbassare il centro velico" riguarda la riduzione dell\'altezza del centro di pressione della vela, che si ottiene modificando la dimensione o la disposizione della vela rispetto alla barca. Nel caso del fiocco, il centro velico può essere abbassato utilizzando una vela di forma inferiore, come una trinchetta o una vela di prua più piccola, non modificando lo strallo cavo. Di conseguenza, la dichiarazione è falsa, perché lo strallo cavo non ha la funzione di abbassare il centro velico del fiocco; il suo ruolo è piuttosto legato alla forma e alla tensione delle vele.',
+  },
+  {
+    id: 209,
+    question:
+      'La doppia canaletta di uno strallo cavo serve per facilitare la sostituzione di una vela di prua.',
+    answer: 1,
+    description:
+      "La doppia canaletta di uno strallo cavo è un sistema particolarmente utile nelle regate e nelle navigazioni dove si necessita di effettuare cambi di vele di prua in maniera rapida ed efficiente. Sullo strallo cavo, due canalette parallele consentono di issare una nuova vela mentre la vela corrente è ancora in uso. Ciò significa che è possibile preparare la nuova vela in una delle canalette mentre la vecchia vela viene ancora utilizzata nella seconda canaletta. Una volta pronta, la nuova vela può essere rapidamente sostituita con la vecchia, minimizzando il tempo in cui l'imbarcazione è senza vela di prua. Questo sistema è molto vantaggioso per migliorare la performance dell'imbarcazione durante manovre di cambio vela e per aumentare la sicurezza e l'efficienza della navigazione. Pertanto, la risposta è corretta.",
+  },
+  {
+    id: 210,
+    question:
+      'Issare la tormentina è la manovra che può essere adottata al fine di ridurre la velocità risalendo il vento',
+    answer: 0,
+    description:
+      "Issare la tormentina non è corretto come manovra per ridurre la velocità quando si risale il vento. La tormentina è una vela di piccole dimensioni progettata per essere utilizzata in condizioni di vento forte al posto della vela di prua più grande. Viene issata per mantenere il controllo dell'imbarcazione e garantire una navigazione sicura, ma non è specificamente destinata a ridurre la velocità. Per ridurre la velocità risalendo il vento, si potrebbero ridurre le vele principali o utilizzare tecniche come il ridurre la superficie velica o navigare con angoli di bolina più larghi. La tormentina è quindi uno strumento per affrontare condizioni meteo difficili, non per il semplice scopo di ridurre la velocità.",
+  },
+  {
+    id: 211,
+    question:
+      'La manovra che può essere adottata al fine di ridurre la velocità nelle andature portanti è far fileggiare la randa.',
+    answer: 0,
+    description:
+      "Nei contesti di navigazione a vela, la riduzione della velocità nelle andature portanti (quando il vento proviene da dietro o quasi) non si ottiene facendo fileggiare la randa. Far fileggiare la randa significa lasciare che la vela principale oscilli liberamente senza essere tesa, il che non è efficace per ridurre significativamente la velocità in queste condizioni di andatura. La velocità nelle andature portanti è meglio controllata attraverso altre tecniche, come la riduzione della superficie velica (ad esempio, riducendo o avvolgendo parte della vela) o cambiando l'angolo di rotta rispetto al vento (ad esempio, stringendo un po' il vento). Queste tecniche permettono di gestire la potenza del vento in modo più preciso, riducendo la velocità in modo controllato.",
+  },
+  {
+    id: 212,
+    question:
+      'La manovra denominata "mettersi in panna" serve per aumentare la velocità.',
+    answer: 0,
+    description:
+      "Mettersi in panna è una manovra utilizzata principalmente per stabilizzare un'imbarcazione a vela in situazioni di emergenza o durante condizioni meteorologiche avverse. Durante questa manovra, la barca viene messa in una configurazione in cui le vele sono regolate in modo tale da neutralizzare le forze del vento. Questo comporta generalmente lasciare il fiocco orzare e mettere la randa cazzata, in modo che la barca rimanga essenzialmente ferma o avanzi molto lentamente. Questo permette di mantenere un controllo maggiore sulla situazione e ridurre al minimo i danni potenziali. La manovra è quindi diametralmente opposta al concetto di aumentare la velocità, rappresentando invece una tecnica di fermo quasi completo in mare.",
+  },
+  {
+    id: 213,
+    question:
+      'La manovra denominata "mettersi in panna" consiste nel porre a collo la vela di prua lasciando la randa bordata per la bolina larga nonché ponendo il timone all\'orza.',
+    answer: 1,
+    description:
+      'La manovra "mettersi in panna" è una tecnica utilizzata per fermare o rallentare significativamente una barca a vela senza ancorarsi. Si esegue ponendo a collo la vela di prua, il che significa lascarla in modo che si riempia di vento sul lato opposto rispetto al lato usuale, impedendo così alla barca di avanzare. Nel contempo, si borda la randa per la bolina larga, una posizione che permette alla randa di generare un lieve avanzamento controbilanciato dalla vela di prua a collo, stabilizzando l\'imbarcazione. Infine, ponendo il timone all\'orza, la barca tende a girare in direzione del vento ma è contrastata dalla configurazione delle vele, rimanendo quindi pressoché stazionaria. Questo consente alla barca di mantenere una posizione stabile rispetto al vento e alle onde, rendendo la manovra utile in situazioni di emergenza o durante operazioni che richiedono una temporanea sospensione del moto.',
+  },
+  {
+    id: 214,
+    question:
+      'La manovra denominata "mettersi alla cappa" consiste in una particolare tecnica che consente di navigare a velocità ridotta utilizzando l\'ancora galleggiante.',
+    answer: 0,
+    description:
+      'Mettersi alla cappa è una manovra utilizzata principalmente nelle navigazioni a vela durante condizioni meteo avverse per stabilizzare l\'imbarcazione, ridurre la deriva e permettere di affrontare il mare in modo più sicuro. In questa manovra, la barca viene fatta avanzare lentamente contro il vento con la randa ridotta (o anche solo con il fiocco) mantenendo il timone controventato. Non si usa l\'ancora galleggiante per questa manovra. L’ancora galleggiante, che è una sorta di cono di tessuto o materiale resistente che si apre in acqua, viene invece usata per rallentare l’avanzamento dell’imbarcazione in condizioni estreme, ma non è parte della tecnica di "mettersi alla cappa". La risposta corretta è quindi "falso" perché l\'ancora galleggiante non è utilizzata nella manovra di mettersi alla cappa.',
+  },
+  {
+    id: 215,
+    question:
+      'Per "mano o presa di terzaroli" si intende la manovra per abbassare il tangone e smagrire lo spinnaker, passando dall\'andatura in fil di ruota al traverso.',
+    answer: 0,
+    description:
+      'Abbassare il tangone e smagrire lo spinnaker sono azioni che riguardano la gestione dello spinnaker, che è una vela utilizzata prevalentemente in andature portanti come il lasco e la poppa. Tuttavia, la manovra di "mano o presa di terzaroli" si riferisce alla regolazione della randa, riducendo la sua superficie esposta al vento per adattarsi meglio a condizioni di vento forte o per migliorare il controllo sull\'imbarcazione. Questa manovra non ha nulla a che fare con il passaggio dall\'andatura in fil di ruota al traverso, che descrive un cambio di direzione della nave piuttosto che una regolazione della vela. Pertanto, il concetto descritto nella domanda non rappresenta accuratamente cosa significhi la "mano o presa di terzaroli", rendendo la risposta falsa corretta.',
+  },
+  {
+    id: 216,
+    question:
+      'La "presa di terzaroli" consiste nell\'ammainare completamente la randa ed issare al suo posto la randa di rispetto denominata matafione.',
+    answer: 0,
+    description:
+      'La presa di terzaroli è una manovra utilizzata per ridurre la superficie esposta al vento della randa, cioè della vela principale. Quando le condizioni di vento diventano troppo forti, questa tecnica permette di rendere più gestibile l\'imbarcazione diminuendo la potenza della vela. Consiste nel ridurre l’altezza della randa stringendo specifici punti (detti terzaroli) della vela intorno all\'albero e alla boma. La randa non viene ammainata completamente; invece, parte della vela viene raccolta e fissata saldamente, tipicamente tramite cime dette matafioni, per ridurre la superficie esposta al vento. Questa operazione si effettua abbassando leggermente la vela e poi fissando le sue parti inferiori al boma con i matafioni. In sintesi, la presa di terzaroli modifica la configurazione della vela esistente e non consiste nel sostituirla con una "randa di rispetto".',
+  },
+  {
+    id: 217,
+    question:
+      'Per "mettere a segno" le vele si intende l\'avvolgerle correttamente dopo l\'utilizzo in navigazione per il loro successivo pronto impiego.',
+    answer: 0,
+    description:
+      'Mettere a segno le vele significa regolare l\'angolazione delle vele rispetto al vento e alla direzione della barca per ottenere la massima efficienza e velocità nella navigazione. Questo comporta l\'adeguato trim delle vele, cioè tirare o lascare le scotte, per fare in modo che le vele lavorino correttamente e spingano la barca nella direzione desiderata. Questo termine non si riferisce alla preparazione delle vele per il loro successivo utilizzo, ma alla loro regolazione durante la fase attiva della navigazione. Quando le vele vengono avvolte correttamente per essere pronte al prossimo impiego, si parla di una fase di stivaggio o ripiegamento delle vele, non di "mettere a segno".',
+  },
+  {
+    id: 218,
+    question:
+      "Il vantaggio della planata è l'aumento del dislocamento dell'unità.",
+    answer: 0,
+    description:
+      "La planata è una condizione di navigazione in cui l'imbarcazione, grazie alla velocità e alla sua forma, si solleva parzialmente sull'acqua riducendo la superficie bagnata e, di conseguenza, la resistenza idrodinamica. Questo permette alla barca di raggiungere velocità maggiori con minore potenza. Il dislocamento, invece, si riferisce al peso dell'acqua spostata da un'imbarcazione quando è immersa. Durante la fase di planata, il dislocamento dell'imbarcazione non aumenta; anzi, poiché la barca è parzialmente sollevata, il volume d'acqua spostato potrebbe essere inferiore rispetto a quando l'imbarcazione è completamente immersa. Pertanto, l'affermazione secondo cui il vantaggio della planata è l'aumento del dislocamento dell'unità è errata. Il reale vantaggio della planata è la riduzione della resistenza al galleggiamento, che consente di migliorare le prestazioni dell'imbarcazione in termini di velocità e consumo di carburante.",
+  },
+  {
+    id: 219,
+    question:
+      "Quando la barca si dispone con la prua al vento le vele smagriscono disponendosi trasversalmente all'asse longitudinale dell'unità e orientandosi nella direzione di provenienza del vento apparente.",
+    answer: 0,
+    description:
+      "Quando una barca si dispone con la prua al vento, le vele tendono a sventare, o \"luffare\", poiché il vento apparente colpisce le vele frontalmente. In questo caso, le vele non si dispongono trasversalmente all'asse longitudinale dell'unità, ma piuttosto fluttuano senza tensione e si collocano lungo l'asse della barca, verso il centro.\n\nIl fenomeno descritto nella domanda implica un assetto in cui le vele sono pienamente orientate al flusso di vento e iniziano a perdere il loro profilo aerodinamico, ossia diventano \"smagranti\" non perché si dispongono trasversalmente, ma perché perdono l'incidenza necessaria per creare portanza.\n\nLe vele trasversali o perpendicolari all'asse longitudinale dell'unità si verificano tipicamente durante navigazioni di traverso o alle andature di bolina piena, dove il vento proviene da angoli di circa 90° rispetto alla direzione in cui sta andando l'imbarcazione.\n\nQuando si è prua al vento, l'orientamento delle vele verso la direzione di provenienza del vento apparente non è possibile poiché il vento colpisce direttamente la prua e non permette una configurazione utile delle vele. Questo scenario porta a una condizione chiamata \"stallo\", dove la barca non ha propulsione attraverso le vele. Pertanto, l'affermazione fornita non può essere corretta in quanto la descrizione dei fenomeni aerodinamici e dell'orientamento delle vele non rispecchia la realtà pratica della navigazione a vela.",
+  },
+  {
+    id: 220,
+    question:
+      'La manovra denominata "strallare" consiste nel ruotare il tangone verso la parte prodiera dell\'unità navale conducendone l\'estremità libera in prossimità dello strallo.',
+    answer: 1,
+    description:
+      'La manovra denominata "strallare" è correttamente descritta come il movimento del tangone verso la prua dell\'unità navale fino a portare l\'estremità libera in prossimità dello strallo, che è la fune o cavo di acciaio che sostiene l\'albero in posizione verticale. Questo termine è spesso utilizzato in contesto velico, particolarmente durante le procedure di riduzione o regolazione delle vele, come nel caso del fiocco o del genoa. Il tangone serve a tenere aperto il lato di una vela per aumentarne l\'efficacia; durante la manovra di "strallare", la vela viene portata verso prua e maggiormente a contatto con lo strallo, diminuendo la superficie esposta al vento e riducendo così la forza aerodinamica sulla vela. Lo scopo principale di questa manovra è ottenere un miglior controllo della vela e della navigazione in situazioni in cui si richiede precisione, come cambi di rotta tunziosi o per allinearsi meglio al vento per navigare in poppa durante andature portanti.',
+  },
+  {
+    id: 221,
+    question:
+      'La manovra denominata "quadrare" consiste nel ruotare il tangone verso la parte prodiera dell\'unità navale conducendone l\'estremità libera in prossimità dello strallo.',
+    answer: 0,
+    description:
+      'La manovra denominata "quadrare" si riferisce alla regolazione delle vele per allinearle perpendicolarmente alla direzione del vento, al fine di ottimizzare la loro superficie esposta e massimizzare la propulsione del vento. Nel caso dello spinnaker, "quadrare" implica ruotare il tangone perpendicolarmente alla direzione del vento, in modo che le vele mantengano la massima area esposta al vento dietro di loro. Questo non implica portare l\'estremità libera del tangone in prossimità dello strallo (che è il cavo di sostegno dell\'albero fissato alla prua). Piuttosto, si tratta di ottimizzare l\'angolazione rispetto al vento per aumentare l\'efficienza della navigazione a vela. Di conseguenza, l\'affermazione nella domanda è falsa perché descrive un\'azione che non corrisponde alla corretta definizione di "quadrare".',
+  },
+  {
+    id: 222,
+    question:
+      "Per poggiare si intende variare la prua dell'unità, allontanando la prua della stessa rispetto alla direzione di provenienza del vento.",
+    answer: 1,
+    description:
+      "Poggiare è una manovra nautica che consiste nel variare la rotta dell'imbarcazione orientando la prua in modo da allontanarla dalla direzione di provenienza del vento. Questa modifica dell'assetto rispetto al vento comporta che il vento colpisca prima la poppa e poi le vele con un'angolazione maggiore rispetto alla direzione iniziale. Il termine è utilizzato per indicare una variazione della rotta che diminuisce l'angolo tra il vento e la direzione della barca stessa, portandosi verso un'andatura più portante (come il lasco o il gran lasco), rafforzando quindi l'affermazione secondo cui si intende allontanare la prua rispetto al vento.",
+  },
+  {
+    id: 223,
+    question:
+      "Per orzare si intende variare la rotta dell'unità navale assumendo un nuovo valore di rotta opposto a quello della direzione di provenienza del vento.",
+    answer: 0,
+    description:
+      'Nel linguaggio nautico, il termine "orzare" si riferisce al movimento della prua della barca verso la direzione del vento. In altre parole, una nave orza quando modifica la propria rotta avvicinandosi alla direzione da cui proviene il vento. Questo è l\'opposto di poggiare, che significa allontanarsi dalla direzione del vento. Pertanto, la definizione fornita nella domanda è errata perché confonde il concetto di orzare con quello di poggiare. La corretta descrizione di orzare è "variare la rotta dell\'unità navale avvicinandosi alla direzione di provenienza del vento", non "assumere un nuovo valore di rotta opposto a quello della direzione di provenienza del vento".',
+  },
+  {
+    id: 224,
+    question:
+      "Per sventare si intende la manovra tesa a condurre l'unità navale con la poppa al vento.",
+    answer: 0,
+    description:
+      'Il termine "sventare" è usato in ambito nautico per riferirsi alla manovra in cui un\'imbarcazione orienta la prua contro vento per diminuire la pressione del vento sulle vele, riducendo così la velocità o fermando l\'imbarcazione. Invece, condurre l\'unità navale con la poppa al vento si riferisce alla manovra di "portare in poppa" o "correre giù vento", che implica il vento che soffia direttamente da dietro la barca, facilitando una navigazione veloce in linea retta. Perciò, la definizione di "sventare" non corrisponde alla condotta dell\'unità con la poppa al vento poiché indica una direzione opposta rispetto al flusso del vento.',
+  },
+  {
+    id: 225,
+    question:
+      "La virata e l'abbattuta sono le manovre fondamentali per cambiare mure.",
+    answer: 1,
+    description:
+      'Quando si parla di virata e abbattuta in ambito nautico, ci si riferisce a due manovre fondamentali per cambiare direzione e il lato della barca che riceve il vento, ovvero le "mure." La virata, o virata in prua, consiste nel passare dalla navigazione con vento da una mure a quella con vento dall\'altra mure girando la prua attraverso il vento. Questo processo richiede che la barca diminuisca il proprio angolo rispetto al vento fino a superare il punto in cui il vento arriva direttamente dalla prua, rigirando le vele sul lato opposto.\n\nL\'abbattuta, o virata in poppa, è invece il passaggio delle mure con il vento che colpisce la poppa della barca. In questa manovra, la barca gira la poppa attraverso il vento, richiedendo che le vele si spostino violentemente dall\'altro lato della barca – si parla di "abbattere" la randa.\n\nEntrambe le manovre comportano un cambiamento delle mure — il bordo della barca che riceve il vento. In navigazione a vela, è essenziale cambiare mure per seguire una rotta ottimale e gestire correttamente le condizioni del vento. La "virata in prua" viene generalmente considerata una manovra più sicura e controllabile rispetto all\'abbattuta, che può essere piuttosto brusca e comporta rischi di collisione con la randa.\n\nQuindi, la risposta è vera perché virata e abbattuta sono effettivamente le due manovre principali impiegate per cambiare le mure di una barca a vela, fondamentale per la navigazione efficiente e sicura.',
+  },
+  {
+    id: 226,
+    question:
+      "La virata è la  manovra mediante la quale l'unità  a vela si appresta ad ammainare lo spinnaker.",
+    answer: 0,
+    description:
+      "La virata è una manovra in cui l'imbarcazione a vela cambia direzione portando la prua attraverso il vento, passando quindi da un bordo all'altro. Lo spinnaker, d'altro canto, è una vela specificamente progettata per la navigazione con il vento proveniente da poppa (dietro l'imbarcazione). Dato che lo spinnaker è utilizzato principalmente per andature portanti (come lasco e poppa), non ha una funzione diretta in una virata, che è una manovra associata a andature più prossime al vento (bolina). Di conseguenza, la manovra per ammainare (riporre) lo spinnaker non è direttamente correlata alla virata. Per ammainare lo spinnaker, l'equipaggio esegue una serie di azioni specifiche che non implicano necessariamente di cambiare il bordo mediante una virata.",
+  },
+  {
+    id: 227,
+    question: 'Per poggiare è necessario porre la barra al centro',
+    answer: 1,
+    description:
+      "Poggiare significa far allontanare la prua dell'imbarcazione dalla direzione del vento. Questo si ottiene muovendo il timone in modo che la poppa dell'imbarcazione si sposti verso il vento, il che fa spostare la prua in direzione opposta, ossia \"poggia\". Se la barra della timoneria è al centro in posizione neutrale, in un'imbarcazione con barra, per far poggiare l'imbarcazione, bisogna spostarla nella direzione opposta alla quale si vuole muovere la prua. In realtà, la barra dovrebbe essere spostata lateralmente e non semplicemente lasciata al centro.\n\nLa risposta \"vera\" in questo caso sembra basarsi su un concetto semplificato che potrebbe aver spinto l'utente a pensare che la condizione per poggiare sia mantenere la barra al centro, ma tecnicamente, per poggiare, la barra deve essere spostata. La posizione della barra centrale indica una direzione neutrale per il timone, mentre per poggiare bisogna spostarla lateralmente per indirizzare l'acqua verso la poppa e causare il movimento di allontanamento dal vento rivolto in prua.",
+  },
+  {
+    id: 228,
+    question:
+      'Quando due unità a vela navigano di bolina con rotte convergenti, quella più lenta lascerà la rotta libera a quella più veloce, passandole di poppa.',
+    answer: 0,
+    description:
+      "Le regole di precedenza tra barche a vela non si basano sulla loro velocità ma piuttosto sulla direzione del vento e sulla posizione relativa delle barche. Secondo il Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), quando due barche a vela hanno rotte che si incrociano, la barca che si trova mure a sinistra deve dare precedenza a quella mure a dritta. Inoltre, se entrambe sono mure a sinistra o mure a dritta, quella barca che è sottovento deve dare precedenza a quella sopravento. Non c'è nessuna menzione riguardo alla velocità delle imbarcazioni per determinare chi ha la precedenza.",
+  },
+  {
+    id: 229,
+    question:
+      'Se due unità a vela navigano entrambe con stesse mura, ha la precedenza quella che si trova sottovento.',
+    answer: 1,
+    description:
+      "Quando due unità a vela navigano con le stesse mura, significa che il vento colpisce entrambe le imbarcazioni sullo stesso lato. In questo caso specifico, la regola stabilisce che l’imbarcazione sottovento (quella più distante dalla direzione da cui proviene il vento) ha il diritto di precedenza. Questo perché la barca sottovento può subire maggiori turbolenze dal vento distorto (sia in intensità sia in direzione) generate dall'imbarcazione sopravvento (quella più vicina alla direzione del vento). Mantenendo la precedenza per l’imbarcazione sottovento, si garantisce che entrambe le imbarcazioni possano navigare con un flusso d’aria il più stabile possibile, migliorando la sicurezza di manovra e riducendo il rischio di collisione.",
+  },
+  {
+    id: 230,
+    question:
+      'Se due unità a vela navigano di bolina con rotte convergenti, quella con mure a sinistra ha la precedenza.',
+    answer: 0,
+    description:
+      "- La precedenza tra due unità a vela che navigano di bolina con rotte convergenti è regolata dalle Norme Internazionali per Prevenire gli Abbordi in Mare (COLREG). Queste norme stabiliscono che, quando due barche a vela hanno rotte convergenti, una deve cedere il passo all'altra per prevenire collisioni.\n\n- Quando entrambe le imbarcazioni sono di bolina, la regola specifica da applicare è la seguente: l'imbarcazione con il vento che soffia sul lato sinistro (mure a sinistra) deve cedere il passo all'imbarcazione con il vento che soffia sul lato destro (mure a dritta).\n\n- Questa regola viene applicata perché l'unità con le mure a sinistra solitamente ha una visibilità migliore sul lato opposto e può manovrare in modo più sicuro per evitare la collisione. Di conseguenza, ha l'obbligo di dare la precedenza all'unità con le mure a dritta.\n\n- Il principio di dare precedenza alle barche con mure a dritta è universale e ben consolidato nella navigazione a vela, in quanto aumenta la sicurezza e minimizza il rischio di incidenti durante la navigazione con vento contro.\n\nPertanto, la risposta \"Falso\" è corretta perché, in base alle regole, l'unità con mure a sinistra non ha la precedenza e deve cedere il passo all'unità con mure a dritta.",
+  },
+  {
+    id: 231,
+    question:
+      "Se due unità navigano a vela con mure diverse (una a sinistra e l'altra a dritta), ha la precedenza chi prende il vento a sinistra.",
+    answer: 0,
+    description:
+      "La risposta è corretta perché nel Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREG), quando due unità navigano a vela con mure diverse, l'unità che naviga con mure a dritta ha la precedenza. Questo significa che l'unità che prende il vento sulla sinistra (mure a dritta) ha il diritto di precedenza rispetto a quella che prende il vento sulla destra (mure a sinistra). La logica dietro questa regola è che l'unità con mure a dritta è solitamente in una posizione di vulnerabilità maggiore e difficilmente può cambiare rotta senza perdere la propria efficacia di navigazione. Di conseguenza, questa regola contribuisce a prevenire situazioni di rischio di collisione in mare, stabilendo chiaramente quale unità debba dare la precedenza.",
+  },
+  {
+    id: 232,
+    question:
+      "Se due unità navigano a vela  con mure diverse (una a sinistra e l'altra a dritta), ha la precedenza chi prende il vento a dritta.",
+    answer: 1,
+    description:
+      "In regata e durante la navigazione a vela, il diritto di precedenza tra due barche che navigano con mure diverse è regolato dalla Regola 10 del Regolamento Internazionale per Prevenire gli Abbordi in Mare (COLREGs). Secondo questa regola, quando due imbarcazioni a vela convergono con mure diverse, ha la precedenza l'imbarcazione che ha il vento sulla mure a dritta. La ragione dietro questa norma è che la barca con mure a sinistra ha una migliore visibilità dell'imbarcazione con mure a dritta, quindi è più semplice per essa evitare una possibile collisione. Mure a dritta significa che il vento proviene dalla parte destra dell'imbarcazione. Questa disposizione garantisce una chiara e semplice regola di precedenza che riduce i rischi di collisione e migliora la sicurezza della navigazione a vela.",
+  },
+  {
+    id: 233,
+    question:
+      "Se due unità navigano a vela su rotte opposte, quella che ha il vento sulla sinistra deve  lasciare libera la rotta all'altra.",
+    answer: 1,
+    description:
+      "Il regolamento internazionale per prevenire gli abbordi in mare (COLREG) stabilisce che due imbarcazioni a vela che navigano in rotta di collisione devono prendere delle misure per evitare l'abbordo. In particolare, se le due imbarcazioni provengono da direzioni opposte e hanno il vento da parti differente, l'imbarcazione che ha il vento proveniente dalla sinistra (babordo) deve cedere il passo all'imbarcazione che ha il vento da destra (dritta). Questo principio è stabilito per evitare confusioni e collisioni, fornendo una regola chiara e semplice da seguire. Avere il vento da babordo generalmente significa che l'imbarcazione potrebbe avere meno manovrabilità rispetto a quella che ha il vento da dritta, rendendo più sicuro per la prima cedere il passo.",
+  },
+  {
+    id: 234,
+    question:
+      "Se un'unità con il vento sulla sinistra vede un'altra unità a vela sopravento e non può stabilire con sicurezza se questa abbia il vento  sulla  sinistra o sulla dritta, deve  manovrare in modo da lasciare libera la rotta .",
+    answer: 1,
+    description:
+      "Nel navigare a vela, una delle regole fondamentali del Codice Internazionale dei Segnali è che un'unità a vela con il vento sulla sinistra deve cedere il passo a un'unità con il vento sulla destra. Questo perché l'unità con il vento sulla sinistra è considerata \"andare in mure a sinistra\" e deve dare precedenza a quella \"in mure a dritta\". Quando due imbarcazioni a vela si incrociano e una delle due non riesce a determinare con certezza se l'altra sta navigando con il vento sulla sinistra o sulla destra (ad esempio, a causa della distanza o delle condizioni di visibilità), la sicurezza e la prevenzione di collisioni impongono che l'unità con il vento sulla sinistra effettui una manovra per lasciare libera la rotta. Questa precauzione è fondamentale per evitare il rischio di collisioni e garantire la sicurezza sulla navigazione.",
+  },
+  {
+    id: 235,
+    question:
+      "Navigando di bolina stretta, si può ridurre temporaneamente la velocità stingendo il vento oltre l'angolo di bordeggio.",
+    answer: 1,
+    description:
+      "Navigando di bolina stretta, dunque con un angolo molto stretto rispetto alla direzione del vento, si possono effettuare alcune manovre per controllare la velocità dell'imbarcazione. Stinguersi al vento significa avvicinarsi ulteriormente alla direzione da dove proviene il vento, riducendo ancora di più l'angolo di attacco delle vele.\n\nOltre l'angolo di bordeggio (di solito attorno ai 30-40 gradi dal vento reale), l’efficienza delle vele diminuisce notevolmente. Questo porta a una riduzione temporanea della velocità dell'imbarcazione perché l'angolo troppo stretto fa sì che le vele non riescano più a sfruttare adeguatamente il flusso del vento per generare spinta. In pratica, superato un certo angolo di bolina, la parte superiore della vela comincia a 'stallare', perdendo pressione e portanza e quindi rallentando la barca.\n\nQuesta manovra può essere utile in situazioni specifiche dove è necessario rallentare temporaneamente senza cambiare rotta. Tuttavia, è importante fare attenzione perché un angolo troppo stretto può portare alla caduta in vento con conseguente perdita di controllo dell'imbarcazione.",
+  },
+  {
+    id: 236,
+    question: 'Poggiando da bolina stretta a bolina larga la barca accelera.',
+    answer: 1,
+    description:
+      "La risposta è corretta perché in navigazione a vela, quando si poggia passando da bolina stretta a bolina larga, l'angolo del vento apparente diminuisce e il flusso d'aria sulle vele cambia in modo da produrre una forza propulsiva maggiore. Nella bolina stretta, la barca naviga controvento con le vele molto sbandierate per ridurre al minimo la resistenza aerodinamica. Poggiando e passando alla bolina larga, il flusso d'aria sulle vele diventa più lamellare e meno turbolento, aumentando l'efficienza aerodinamica. Inoltre, la resistenza idrodinamica diminuisce man mano che la barca si allontana dal vento di prua, permettendo all'imbarcazione di sfruttare meglio la componente di portanza generata dalle vele. Questi fattori combinati portano ad una maggiore velocità dell'imbarcazione.",
+  },
+  {
+    id: 237,
+    question:
+      'Per ridurre lo sbandamento, si smagriscono le vele, cazzando il cunnincham e il tesabase della randa, la drizza del genoa e si arretra il punto di scotta del genoa (o genova).',
+    answer: 1,
+    description:
+      "Quando una barca a vela sbanda, vuol dire che è inclinata a causa del vento che spinge sulle vele. Smagrire le vele significa renderle più piatte, il che riduce la loro capacità di catturare il vento forte e quindi di provocare inclinazione. Cazzare il cunnincham (tendere la parte inferiore della vela) e il tesabase della randa (tendere la base della vela principale) aiuta a smagrire la randa, riducendo la potenza della vela. Allo stesso modo, cazzare la drizza del genoa tende la parte anteriore della vela di prua, smagrendola. Arretrare il punto di scotta del genoa cambia l'angolo della vela rispetto al vento, spostando la pressione verso la parte posteriore della vela e smagrendola ulteriormente. Queste regolazioni diminuiscono l'area esposta al vento o cambiano il profilo della vela, riducendo lo sbandamento e migliorando il controllo della barca.",
+  },
+  {
+    id: 238,
+    question:
+      'Per aumentare la potenza con vento debole si smagriscono le vele, cazzando il cunnincham e il tesabase della randa, la drizza del genoa e si arretra il punto di scotta del genoa (o genova).',
+    answer: 0,
+    description:
+      'Aumentare la potenza delle vele con vento debole implica aumentare la superficie esposta al vento e migliorare la forma aerodinamica delle vele per catturare più aria. Smagrire le vele, cioè ridurre la loro curvatura, è una tecnica utilizzata principalmente per venti più forti, al fine di ridurre la resistenza e migliorare il controllo.\n\nNel caso di vento debole, invece, si tende a ingrassare le vele, cioè ad aumentare la loro curvatura, per creare una portanza maggiore. \n\n- **Cazzare il cunnincham e il tesabase della randa**: Queste azioni tendono a ridurre la curvatura della randa, facendola risultare più piatta, e quindi meno potente in condizioni di vento debole.\n- **Cazzare la drizza del genoa**: Anche questa azione tende a rendere il genoa più piatto e più adatto ai venti forti.\n- **Arretrare il punto di scotta del genoa**: Questo fa sì che la vela sia più piatta e meno panciuta. \n\nDi conseguenza, per aumentare la potenza delle vele in condizioni di vento debole, l\'azione corretta sarebbe quella di lascare (allentare) queste regolazioni per una forma delle vele più "grassa" e più efficiente in condizioni di poco vento.',
+  },
+  {
+    id: 239,
+    question:
+      'La "messa a segno" delle vele si ottiene quando le vele sono completamente poste a riva.',
+    answer: 0,
+    description:
+      'La "messa a segno" delle vele si riferisce al corretto regolamento delle vele per ottimizzare la navigazione in base alle condizioni del vento e del mare. Non implica che le vele siano necessariamente "poste a riva". Nel linguaggio nautico, "posto a riva" significa che una vela è issata completamente, ma non necessariamente ottimizzata per la performance. Per regolare correttamente le vele ("messa a segno"), bisogna considerare l\'angolo del vento, la tensione delle scotte e dei patteggi e l\'adeguamento delle varie regolazioni come il vang, il carrello del fiocco o della randa, le drizze e i terzaroli. Quindi, la messa a segno implica un lavoro di fino e una serie di aggiustamenti per migliorare l\'efficienza e la velocità della barca, non semplicemente issare le vele completamente.',
+  },
+  {
+    id: 240,
+    question:
+      'Per ridurre lo sbandamento sotto raffica si muove il carrello (trasto) della randa sottovento o, in assenza del carrello, si lasca la scotta.',
+    answer: 1,
+    description:
+      "Il carrello (trasto) della randa permette di regolare la posizione della vela rispetto alla barca e alle raffiche di vento. Quando una raffica colpisce la vela, genera un forte sbandamento (inclinazione laterale) che può essere gestito, muovendo il carrello sottovento. Questo sposta il punto di attacco della randa verso sopravento, riducendo la superficie della vela esposta al vento e quindi la forza destabilizzante. In assenza del carrello, la stessa funzione può essere ottenuta lascando la scotta della randa, che consente alla vela di aprirsi e ridurre la pressione del vento. Ambedue le manovre diminuiscono l'angolo della vela rispetto al vento, migliorando la stabilità della barca e mantenendo il controllo sotto raffica. Questi concetti richiedono una buona comprensione della dinamica del vento e dell'equilibrio della navigazione a vela.",
+  },
+  {
+    id: 241,
+    question:
+      'Per assecondare una rapida poggiata per evitare un ostacolo devo lascare solo il fiocco.',
+    answer: 0,
+    description:
+      'La risposta corretta è "falso" perché, in una manovra di poggiata, si scontra il piano velico e si utilizza il governo del timone, nonché la regolazione delle vele, per modificare la rotta della barca e allontanarsi dall\'ostacolo. Lasciare solo il fiocco non sarebbe sufficiente poiché potresti causare un sovraccarico oppure una perdita di equilibrio nell\'assetto della barca. In una poggiata si deve invece rilasciare adeguatamente la randa (vela principale) per diminuire la forza propulsiva esercitata dalla parte poppiera e ridurre la potenza generale della barca, facilitando la virata verso sottovento. La gestione della randa e del timone è cruciale affinché la manovra risulti efficace e sicura.',
+  },
+  {
+    id: 242,
+    question:
+      'La ritenuta del boma è quella manovra che opportuno utilizzare per evitare la strambata nelle andature di granlasco e giardinetto.',
+    answer: 1,
+    description:
+      "Durante la navigazione a vela, evitare una strambata accidentale è cruciale per la sicurezza e il controllo dell'imbarcazione. La strambata è una manovra in cui la randa passa rapidamente da un lato all'altro dell'imbarcazione quando questa cambia rotta, attraversando il vento di poppa. Questo può essere pericoloso perché il boma (il braccio orizzontale al quale è fissata la base della randa) può spostarsi violentemente, causando danni all'imbarcazione o ferendo gli occupanti.\n\nLa ritenuta del boma è una manovra specifica che viene utilizzata per prevenire una strambata non intenzionale, tenendo il boma fermo e impedendo alla randa di spostarsi improvvisamente. Questa manovra è particolarmente importante durante le andature portanti come il granlasco e il giardinetto. Nella navigazione a vela, il granlasco è un'andatura in cui il vento soffia da dietro ma con un angolo rispetto alla poppa, mentre il giardinetto è un'andatura ancora più vicina al vento in poppa.\n\nPer eseguire la ritenuta del boma, si utilizza una cima, chiamata ritenuta, fissata all'estremità del boma e poi vincolata a un punto saldo sulla coperta della barca. In questo modo, si tiene il boma fermo in posizione, riducendo il rischio di una strambata accidentale. Utilizzare la ritenuta del boma è quindi altamente consigliato per mantenere la sicurezza e il controllo dell'imbarcazione in queste particolari andature.",
+  },
+  {
+    id: 243,
+    question:
+      'Tendenzialmente, in caso di aumento del vento, si riduce per primo il genoa (o genova) e poi a seguire la randa.',
+    answer: 1,
+    description:
+      "Quando si naviga a vela, la gestione delle vele è cruciale per mantenere il controllo dell'imbarcazione e garantire la sicurezza dell'equipaggio. In caso di aumento del vento, ridurre la superficie velica aiuta a evitare eccessivo sbandamento e, potenzialmente, situazioni pericolose.\n\nIl genoa, grazie alla sua grande superficie e alla sua posizione più avanzata rispetto alla randa, ha un'influenza significativa sul comportamento dell'imbarcazione. Ridurre per primo il genoa consente di abbattere la spinta propulsiva principale, contribuendo a stabilizzare l'imbarcazione in condizioni di vento crescenti. Questa azione permette di mantenere un miglior equilibrio tra la prua e la poppa ed evitare che il timone perda efficacia.\n\nLa riduzione della randa viene effettuata successivamente in quanto la randa, generalmente più piccola e posizionata più centralmente, ha un impatto minore sul bilanciamento laterale dell'imbarcazione. Ridurre prima il genoa e poi la randa consente anche di evitare il rischio di eccessivo orzamento (spostamento improvviso della prua verso il vento) o poggiare in modo incontrollato (spostamento della prua lontano dal vento).\n\nIn sintesi, la sequenza di riduzione delle vele descritta migliora la manovrabilità e la sicurezza dell'imbarcazione in caso di vento forte, rendendo questa pratica una buona norma di navigazione.",
+  },
+  {
+    id: 244,
+    question:
+      "Quando si comincia a pensare se sia il caso di ridurre la vela a causa dell'eccessivo sbandamento è probabilmente il momento di farlo.",
+    answer: 1,
+    description:
+      "Il motivo per cui questa affermazione è vera risiede nel principio della sicurezza e della gestione preventiva delle condizioni di navigazione. Il sbandamento eccessivo rappresenta un segnale che la barca sta ricevendo una quantità di forza dal vento che potrebbe superare la capacità ottimale di gestione del carico. Eccessivo sbandamento può compromettere la manovrabilità dell'imbarcazione, aumentare lo stress sulle vele e sull'albero, e rendere la navigazione meno sicura e piacevole.\n\nRidurre la vela, o \"rollare\" la vela, funziona per ridurre la superficie esposta al vento, consentendo di mantenere un equilibrio migliore e di controllare meglio l’imbarcazione. La decisione di ridurre la vela in anticipo è una pratica prudenziale che aiuta a evitare situazioni in cui la navigazione diventa difficile o pericolosa, poiché le condizioni meteorologiche possono peggiorare rapidamente.\n\nIn sintesi, la necessità di ridurre la vela non dovrebbe essere ignorata o procrastinata, e agire al primo segnale di problema aiuta a mantenere la sicurezza e la controllabilità dell'imbarcazione.",
+  },
+  {
+    id: 245,
+    question:
+      "E' certamente opportuno ridurre la vela se la barca ha stabilmente la falchetta in acqua.",
+    answer: 1,
+    description:
+      "La falchetta è il bordo superiore dello scafo, che corre lungo i lati della barca. Quando la barca è inclinata sotto l'effetto del vento, l'acqua può arrivare a toccare o addirittura superare la falchetta. Se la vela è mantenuta con la barca in questa posizione costantemente, si possono verificare diversi problemi. Innanzitutto, una barca stabilmente sbandata (inclinata) a tal punto può diventare difficile da manovrare. Questo perché l'azione del timone diventa meno efficace e il controllo generale della barca diminuisce. Inoltre, può aumentare il rischio di imbarcare acqua, compromettendo la sicurezza. Ridurre la superficie velica, ad esempio, riducendo il fiocco o arricciando la randa, permette di diminuire l'angolo di sbandamento. Questo migliora il controllo e la stabilità generale della barca, rendendo la navigazione più sicura e efficiente. Ridurre la vela adattandosi alle condizioni del vento è una pratica usuale e raccomandata per mantenere un'andatura bilanciata e sicura.",
+  },
+  {
+    id: 246,
+    question:
+      'La strambata è il rischio più grande che si corre navigando al gran lasco o in poppa (giardinetto).',
+    answer: 1,
+    description:
+      "Quando si naviga al gran lasco o in poppa (giardinetto), cioè con il vento che arriva da dietro la barca in direzione quasi parallela o leggermente di lato alla randa, il rischio principale è la strambata. Questo accade quando la randa, la vela principale della barca, passa improvvisamente da un lato all'altro dell'imbarcazione. Tale movimento improvviso può avvenire a causa di un cambio improvviso di rotta o di una raffica di vento e può risultare pericoloso per diverse ragioni.\n\nPrima di tutto, la strambata implica un trasferimento rapido e potente delle forze esercitate dal vento e dalle onde sulla vela e sull’albero maestro, che può causare danni strutturali alla barca, come la rottura del boma (l'asta orizzontale attaccata alla parte inferiore della randa). Per quanto riguarda la sicurezza dell'equipaggio, il movimento improvviso del boma può colpire chi si trova sul ponte, causando lesioni gravi. Inoltre, durante una strambata non controllata, la barca può perdere temporaneamente il controllo e rischiare di sbandare o girare in modo pericoloso.\n\nPer ridurre il rischio di strambate incontrollate si può utilizzare il tangone o il braccio del fiocco per stabilizzare la vela, e mettere in atto tecniche di manovra precise come la strambata sotto controllo, dove il timoniere e l'equipaggio coordinano attentamente il movimento della randa, assicurandosi che il processo avvenga in modo graduale e controllato.",
+  },
+  {
+    id: 247,
+    question: 'Strambata e abbattuta  sono la stessa cosa.',
+    answer: 0,
+    description:
+      "Strambata e abbattuta sono due manovre distinte nella navigazione a vela. La strambata, anche nota come gybe, è un’operazione intenzionale in cui si cambia la direzione della barca facendo passare la poppa attraverso il vento. Durante la strambata, il boma e le vele devono essere controllati attentamente per evitare movimenti bruschi e potenzialmente pericolosi. \n\nL’abbattuta, invece, si verifica quando la poppa della barca attraversa il vento in modo non intenzionale e, quindi, il boma e le vele passano violentemente da un lato all'altro. L’abbattuta può essere causata da una distrazione o da una raffica improvvisa di vento e può risultare molto pericolosa perché può far perdere il controllo dell’imbarcazione e danneggiare l’attrezzatura.\n\nNel contesto nautico, è fondamentale distinguere tra queste due manovre per la sicurezza e il controllo efficiente della barca. La strambata, se eseguita correttamente, è una manovra pianificata e sicura, mentre l’abbattuta rappresenta un errore o un evento accidentale.",
+  },
+  {
+    id: 248,
+    question: "La strambata è l'abbattuta involontaria e incontrollata.",
+    answer: 1,
+    description:
+      "La strambata si verifica quando una barca a vela cambia direzione passando l'angolo morto con il vento in poppa, con lo spostamento improvviso e spesso incontrollato della vela di prua e della randa da un lato all'altro. Questo può accadere involontariamente a causa di una raffica di vento o di un'imperfetta gestione delle manovre da parte dell'equipaggio, rendendo la strambata una manovra pericolosa perché la barra e la boma possono muoversi rapidamente e con grande forza, mettendo a rischio l'incolumità dei membri dell'equipaggio e la stabilità della barca. Una strambata non voluta è chiamata anche \"abbattuta involontaria\", poiché rappresenta un cambiamento di mure non intenzionale. È quindi vero che la strambata è un'abbattuta involontaria e incontrollata.",
+  },
+  {
+    id: 249,
+    question:
+      'Salvo le ordinanze locali, di norma è possibile entrare in un porto navigando a vela.',
+    answer: 0,
+    description:
+      "Navigare a vela in un porto può essere pericoloso e contro le normali regolamentazioni portuali. Le manovre necessarie per controllare una barca a vela richiedono spazio e condizioni di vento favorevoli, e in un porto congestionato e trafficato questo può essere estremamente rischioso. Per garantire sicurezza e ordine, i regolamenti generalmente richiedono che tutte le imbarcazioni utilizzino il motore quando entrano o escono da un porto. Questo permette una maggiore manovrabilità e controllo dell'imbarcazione, riducendo il rischio di collisioni con altre imbarcazioni, strutture portuali o persone. Le ordinanze locali possono eventualmente prevedere eccezioni o specifiche norme aggiuntive, ma di norma la navigazione a vela all’interno di un porto è vietata proprio per questi motivi di sicurezza.",
+  },
+  {
+    id: 250,
+    question: 'Lascare la randa agevola la poggiata.',
+    answer: 1,
+    description:
+      'Lascare la randa agevola la poggiata perché riduce la spinta laterale esercitata dalla vela maestra, diminuendo il momento raddrizzante e permettendo alla prua della barca di ruotare più facilmente sottovento. Quando si lasca la randa, la vela si slega parzialmente dal movimento del vento, riducendo la pressione esercitata su di essa. Questa riduzione di pressione diminuisce la tendenza della barca a orzare (virare controvento) e facilita invece la poggiata (virata sopravento). Inoltre, ridurre la tensione sulla randa fa sì che la barca perda parte della sua velocità laterale e inizia a muoversi più verso il basso, seguendo il cambiamento nella direzione del timone. Questi effetti combinati rendono più agevole e controllata la manovra di poggiata.',
   },
 ];
