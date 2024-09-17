@@ -27,7 +27,6 @@
       />
     </div>
   </q-page>
-  yo
 </template>
 
 <script setup lang="ts"></script>
