@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header reveal :class="'bg-blue'">
       <q-toolbar>
-        <q-btn flat :to="{ name: 'home' }" round dense icon="home" />
+        <q-btn flat :to="{ name: 'home' }" round dense icon="show_chart" />
         <q-toolbar-title>Nautiquiz</q-toolbar-title>
         <!-- <q-btn
           flat
