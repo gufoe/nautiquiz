@@ -1,41 +1,12 @@
-# Patente nautica (ui)
+# Nautiquiz
 
-Quiz di patente nautica
+Applicazione per esercitarsi a far ei quiz della Patente Nautica, con tutti i quiz ministeriali 2024. Available on [gufoe.it](https://nautiquiz.gufoe.it/)
 
-## Install the dependencies
+## Usage
+
+This is a fully client-side Vue application made with Quasar framework.
+Start the development server with:
+
 ```bash
-yarn
-# or
-npm install
+yarn dev
 ```
-
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
