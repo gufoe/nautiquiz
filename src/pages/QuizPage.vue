@@ -25,7 +25,7 @@
         "
       />
       <div
-        class="q-mt-md q-mb-xs text-bold row no-wrap cursor-pointer"
+        class="q-mt-md q-mb-xs row no-wrap cursor-pointer"
         style="gap: 5px; position: relative; z-index: 10"
         @click="quiz.favs.toggle(current_quiz.id)"
       >
@@ -36,9 +36,7 @@
           size="sm"
           style="margin-top: 3px"
         />
-        <div>
-          {{ current_quiz.question }}
-        </div>
+        <div style="white-space: pre-line" v-text="current_quiz.question" />
       </div>
       <template v-if="'choiches' in current_quiz">
         <ol type="a">
@@ -52,20 +50,37 @@
           />
         </ol>
       </template>
+      <div
+        v-else-if="current_quiz.solution && !show_answer"
+        class="row"
+        style="gap: 20px"
+      >
+        <q-btn
+          class="col"
+          color="blue"
+          @click="show_answer = true"
+          icon="o_lightbulb"
+          flat
+        >
+          Ho fatto!
+        </q-btn>
+      </div>
       <div v-else class="row" style="gap: 20px">
         <q-btn
           class="col"
           :color="optionColor(0)"
           @click="!is_answered && selectAnswer(0)"
           icon="close"
-          >FALSO</q-btn
+          flat
+          >{{ current_quiz.solution ? 'Altro' : 'Falso' }}</q-btn
         >
         <q-btn
           class="col"
           icon="done"
+          flat
           :color="optionColor(1)"
           @click="!is_answered && selectAnswer(1)"
-          >VERO</q-btn
+          >{{ current_quiz.solution ?? 'Vero' }}</q-btn
         >
       </div>
 
@@ -87,7 +102,7 @@
           &nbsp; Segnala un problema
         </div>
         <hr />
-        {{ current_quiz.description }}
+        <div v-text="current_quiz.description" style="white-space: pre-line" />
         <div
           v-if="is_answered"
           class="absolute"
@@ -96,7 +111,7 @@
             if (current_quiz_index + 1 < available_quizzes.length) {
               current_quiz_index++;
             } else {
-              $router.replace({ name: 'quiz-mode' });
+              $router.replace({ name: 'quiz-home', params: $route.params });
             }
           "
         ></div>
@@ -134,6 +149,7 @@ import { QuizMode } from '../utils.ts';
 
 import { getQuiz } from 'src/utils';
 import { useRoute } from 'vue-router';
+import { watch } from 'vue';
 const r = useRoute();
 const quiz = getQuiz(r.params.mode as 'base' | 'vela');
 
@@ -148,6 +164,10 @@ const current_quiz_index = ref(0);
 const current_quiz = computed(
   () => available_quizzes[current_quiz_index.value],
 );
+const show_answer = ref(false);
+watch(current_quiz, () => {
+  show_answer.value = false;
+});
 
 const session_answers = ref<Record<number, number>>({});
 

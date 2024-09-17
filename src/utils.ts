@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { QUIZZES, VELAQUIZZES } from './data/quiz';
+import { QUIZZES, QUIZZES_5D, VELAQUIZZES } from './data/quiz';
 
 export class Storage {
   static get<T>(name: string, def: () => T): T {
@@ -16,22 +16,22 @@ export type QuizHistory<T> = Record<number, T>;
 
 export interface QuizBase {
   id: number;
-  answer: number;
-}
-export interface QuizInterface {
-  id: number;
+  answer?: number;
+  image?: string;
   question: string;
   description?: string;
-  answer: number;
+  solution?: string;
+}
+export interface QuizInterface extends QuizBase {
   choiches: string[];
-  image?: string;
+  answer: number;
 }
-export interface QuizVelaInterface {
-  id: number;
-  question: string;
-  description?: string;
+export interface QuizVelaInterface extends QuizBase {
   answer: 0 | 1;
-  image?: string;
+}
+export interface QuizCarteggio extends QuizBase {
+  answer: 1;
+  solution: string;
 }
 
 export type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
@@ -76,10 +76,12 @@ export class Quiz<T extends QuizBase, Y> {
   }
 }
 
-export function getQuiz(name: 'base' | 'vela') {
+export function getQuiz(name: 'base' | 'vela' | '5d' | '42d') {
   return {
     base: BASE_QUIZ,
     vela: VELA_QUIZ,
+    '5d': CARTEGGIO_5D_QUIZ,
+    '42d': CARTEGGIO_42D_QUIZ,
   }[name];
 }
 
@@ -111,3 +113,5 @@ export class StoredQuestions {
 
 const BASE_QUIZ = new Quiz('', QUIZZES);
 const VELA_QUIZ = new Quiz('vela-', VELAQUIZZES);
+const CARTEGGIO_5D_QUIZ = new Quiz('5d-', QUIZZES_5D);
+const CARTEGGIO_42D_QUIZ = new Quiz('42d-', QUIZZES_5D);

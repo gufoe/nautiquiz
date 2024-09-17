@@ -15,8 +15,16 @@
       />
       <div class="q-mt-md q-mb-xs text-grey">Carteggioni</div>
       <q-btn flat label="Carteggio" />
-      <q-btn flat label="Carteggio 5D" />
-      <q-btn flat label="Carteggio 42D" />
+      <q-btn
+        flat
+        label="Carteggio 5D"
+        :to="{ name: 'quiz-home', params: { mode: '5d' } }"
+      />
+      <q-btn
+        flat
+        label="Carteggio 42D"
+        :to="{ name: 'quiz-home', params: { mode: '42d' } }"
+      />
     </div>
   </q-page>
   yo
