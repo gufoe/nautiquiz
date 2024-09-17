@@ -14,7 +14,7 @@
         :to="{ name: 'quiz-home', params: { mode: 'vela' } }"
       />
       <div class="q-mt-md q-mb-xs text-grey">Carteggioni</div>
-      <q-btn flat label="Carteggio" />
+      <!-- <q-btn flat label="Carteggio" /> -->
       <q-btn
         flat
         label="Carteggio 5D"
