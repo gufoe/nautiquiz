@@ -3,7 +3,7 @@
     <q-header reveal :class="'bg-blue'">
       <q-toolbar>
         <q-btn flat :to="{ name: 'home' }" round dense icon="home" />
-        <q-toolbar-title>SOS Patente Nautica</q-toolbar-title>
+        <q-toolbar-title>Nautiquiz</q-toolbar-title>
         <!-- <q-btn
           flat
           @click="drawerRight = !drawerRight"

@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-center">
-    <h4>SOS Patente Nautica</h4>
+    <h4>Nautiquiz</h4>
     <div class="column q-gap-1">
       <div class="q-mt-md q-mb-xs text-grey">Quizzoni</div>
       <q-btn
