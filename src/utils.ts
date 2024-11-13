@@ -115,3 +115,20 @@ const BASE_QUIZ = new Quiz('', QUIZZES);
 const VELA_QUIZ = new Quiz('vela-', VELAQUIZZES);
 const CARTEGGIO_5D_QUIZ = new Quiz('5d-', QUIZZES_5D);
 const CARTEGGIO_42D_QUIZ = new Quiz('42d-', QUIZZES_5D);
+
+export function shuffle<T>(array: T[]) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    const randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+}

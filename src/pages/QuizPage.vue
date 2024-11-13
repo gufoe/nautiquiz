@@ -145,7 +145,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { QuizMode } from '../utils.ts';
+import { QuizBase, QuizMode, shuffle } from '../utils.ts';
 
 import { getQuiz } from 'src/utils';
 import { useRoute } from 'vue-router';
@@ -157,7 +157,7 @@ const route = useRoute();
 const quiz_history = quiz.getQuizHistory();
 
 const available_quizzes = quiz.getQuizzes(route.query.mode as QuizMode);
-available_quizzes.sort(() => Math.random() - 0.5);
+shuffle(available_quizzes as QuizBase[]);
 available_quizzes.splice(20);
 
 const current_quiz_index = ref(0);

@@ -1,6 +1,9 @@
 <template>
   <q-page class="text-center">
-    <h4>Nautiquiz</h4>
+    <h4 class="q-mb-none">Patente Nautica</h4>
+    <div class="q-mb-md q-text-xs text-body2" style="opacity: 0.5">
+      Quiz ministeriali per la patente nautica
+    </div>
     <div class="column q-gap-1">
       <div class="q-mt-md q-mb-xs text-grey">Quizzoni</div>
       <q-btn
