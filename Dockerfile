@@ -14,12 +14,15 @@ RUN apk add --no-cache wget ca-certificates && \
     chmod +x /usr/local/bin/dumb-init
 
 RUN adduser --disabled-password noob
-USER noob
 WORKDIR /home/noob
 COPY --from=builder /home/node/app/dist/spa ./static
-RUN wget -O sfz.tar https://github.com/weihanglo/sfz/releases/download/v0.4.0/sfz-v0.4.0-x86_64-unknown-linux-musl.tar.gz \
-    && tar xf sfz.tar \
-    && rm -f sfz.tar
+RUN wget -O sfz.tar https://github.com/weihanglo/sfz/releases/download/v0.4.0/sfz-v0.4.0-x86_64-unknown-linux-musl.tar.gz && \
+    tar xf sfz.tar && \
+    rm -f sfz.tar
+
+RUN apk del wget
+
+USER noob
 
 
 EXPOSE 8080
