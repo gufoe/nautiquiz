@@ -1,4 +1,4 @@
-FROM node:20-alpine3.16 as builder
+FROM node:20-alpine3.16 AS builder
 
 USER node
 RUN mkdir /home/node/app
@@ -9,8 +9,9 @@ COPY --chmod=777 . .
 RUN yarn install && yarn build
 
 FROM alpine:3.16
-RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64
-RUN chmod +x /usr/local/bin/dumb-init
+RUN apk add --no-cache wget ca-certificates && \
+    wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64 && \
+    chmod +x /usr/local/bin/dumb-init
 
 RUN adduser --disabled-password noob
 USER noob
