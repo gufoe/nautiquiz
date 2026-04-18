@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { and, count, desc, eq, gt, gte, inArray, isNotNull, sql } from 'drizzle-orm';
+import { and, desc, eq, gte, isNotNull, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -13,6 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const migrationsFolder = `${__dirname}/../drizzle`;
 
 await migrate(db, { migrationsFolder });
+await seedQuestionAttemptsFromClientState();
 
 const PORT = Number(process.env.PORT ?? '3333');
 
@@ -87,19 +88,23 @@ function mergeClientState(
 
 type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
 
-const LEGACY_HISTORY_KEYS = [
-  'history',
-  'vela-history',
-  '5d-history',
-  '42d-history',
-] as const;
+type QuizKind = 'base' | 'vela' | '5d' | '42d';
+
+const LEGACY_STATE_KEY_BY_KIND: Record<QuizKind, string> = {
+  base: 'history',
+  vela: 'vela-history',
+  '5d': '5d-history',
+  '42d': '42d-history',
+};
+
+const LEGACY_SEEDED_MARKER = 'question-attempts-seeded-v1';
 
 type LeaderboardQueryRow = {
   userId: string;
   username: string | null;
   quizCount: number;
-  answeredSum: number;
-  correctSum: number;
+  correctKnown: number;
+  correctCount: number;
 };
 
 /** Serialized leaderboard row — never includes email or internal user ids. */
@@ -125,6 +130,53 @@ function sanitizeQuizMode(value: unknown): QuizMode {
     return mode;
   }
   return 'all';
+}
+
+function sanitizeQuizKind(value: unknown): QuizKind | null {
+  if (value === 'base' || value === 'vela' || value === '5d' || value === '42d') {
+    return value;
+  }
+  return null;
+}
+
+async function fetchLatestHistoryMap(
+  userId: string,
+  kind: QuizKind,
+): Promise<Record<string, number>> {
+  const attempts = await db
+    .select({
+      questionId: schema.questionAttempts.questionId,
+      selectedAnswer: schema.questionAttempts.selectedAnswer,
+      answeredAt: schema.questionAttempts.answeredAt,
+      id: schema.questionAttempts.id,
+    })
+    .from(schema.questionAttempts)
+    .where(
+      and(
+        eq(schema.questionAttempts.userId, userId),
+        eq(schema.questionAttempts.quizKind, kind),
+      ),
+    );
+
+  attempts.sort((a, b) => {
+    const at = a.answeredAt.getTime();
+    const bt = b.answeredAt.getTime();
+    if (at !== bt) return bt - at;
+    return b.id.localeCompare(a.id);
+  });
+
+  const latest = new Map<number, number>();
+  for (const row of attempts) {
+    if (!latest.has(row.questionId)) {
+      latest.set(row.questionId, row.selectedAnswer);
+    }
+  }
+  return Object.fromEntries(
+    Array.from(latest.entries()).map(([questionId, selectedAnswer]) => [
+      String(questionId),
+      selectedAnswer,
+    ]),
+  );
 }
 
 const LEADERBOARD_TIME_ZONE = 'Europe/Rome';
@@ -230,7 +282,7 @@ function toPublicLeaderboardRows(
     username: row.username,
     quizCount: row.quizCount,
     accuracy:
-      row.answeredSum > 0 ? row.correctSum / row.answeredSum : 0,
+      row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
     isCurrentUser: row.userId === currentUserId,
   }));
 }
@@ -241,20 +293,76 @@ function countHistoryEntries(value: unknown): number {
   return 0;
 }
 
-/**
- * Counts historical completed quiz entries from synced client state.
- * This preserves pre-quiz_sessions progress that was tracked only in local storage history maps.
- */
-function countLegacyCompletedFromClientState(dataJson: string | null | undefined): number {
-  if (!dataJson) return 0;
+function parseStateObject(dataJson: string | null | undefined): Record<string, unknown> {
+  if (!dataJson) return {};
   try {
-    const state = JSON.parse(dataJson) as Record<string, unknown>;
-    return LEGACY_HISTORY_KEYS.reduce(
-      (sum, key) => sum + countHistoryEntries(state[key]),
-      0,
-    );
+    return JSON.parse(dataJson) as Record<string, unknown>;
   } catch {
-    return 0;
+    return {};
+  }
+}
+
+function normalizeAttemptEntries(value: unknown): Array<[number, number]> {
+  if (!isPlainObject(value)) return [];
+  return Object.entries(value)
+    .map(([questionIdRaw, selectedRaw]) => {
+      const questionId = Number(questionIdRaw);
+      const selected = Number(selectedRaw);
+      return [questionId, selected] as [number, number];
+    })
+    .filter(([questionId, selected]) =>
+      Number.isInteger(questionId) && Number.isInteger(selected),
+    );
+}
+
+async function seedQuestionAttemptsFromClientState() {
+  const now = Date.now();
+  const gufoeLegacyTs = now - 365 * 24 * 60 * 60 * 1000;
+  const rows = await db
+    .select({
+      userId: schema.users.id,
+      username: schema.users.username,
+      dataJson: schema.userClientState.dataJson,
+      updatedAt: schema.userClientState.updatedAt,
+    })
+    .from(schema.users)
+    .leftJoin(
+      schema.userClientState,
+      eq(schema.userClientState.userId, schema.users.id),
+    );
+
+  for (const row of rows) {
+    const state = parseStateObject(row.dataJson);
+    if (state[LEGACY_SEEDED_MARKER] === true) continue;
+
+    const sourceTs = row.username === 'gufoe'
+      ? gufoeLegacyTs
+      : Math.max(now, row.updatedAt?.getTime() ?? now);
+    const inserts = (Object.keys(LEGACY_STATE_KEY_BY_KIND) as QuizKind[]).flatMap((kind) =>
+      normalizeAttemptEntries(state[LEGACY_STATE_KEY_BY_KIND[kind]]).map(
+        ([questionId, selectedAnswer]) => ({
+          id: crypto.randomUUID(),
+          userId: row.userId,
+          quizKind: kind,
+          questionId,
+          selectedAnswer,
+          isCorrect: null,
+          answeredAt: new Date(sourceTs),
+          source: 'legacy',
+        }),
+      ),
+    );
+
+    await db.transaction(async (tx) => {
+      if (inserts.length > 0) {
+        await tx.insert(schema.questionAttempts).values(inserts);
+      }
+      const nextState = { ...state, [LEGACY_SEEDED_MARKER]: true };
+      await tx
+        .update(schema.userClientState)
+        .set({ dataJson: JSON.stringify(nextState), updatedAt: new Date(now) })
+        .where(eq(schema.userClientState.userId, row.userId));
+    });
   }
 }
 
@@ -267,53 +375,27 @@ async function fetchLeaderboard(
   rows: PublicLeaderboardRow[];
 }> {
   const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
-
-  const quizCount = count(schema.quizSessions.id);
-  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
-  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
-
   const rows = await db
     .select({
       userId: schema.users.id,
       username: schema.users.username,
-      quizCount,
-      answeredSum: sumAnswered,
-      correctSum: sumCorrect,
+      quizCount: sql<number>`coalesce(count(${schema.questionAttempts.id}), 0)`,
+      correctKnown: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} is not null then 1 else 0 end), 0)`,
+      correctCount: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} = 1 then 1 else 0 end), 0)`,
     })
     .from(schema.users)
     .leftJoin(
-      schema.quizSessions,
-      scope === 'weekly' && weekStart
-        ? and(
-            eq(schema.quizSessions.userId, schema.users.id),
-            gte(schema.quizSessions.createdAt, weekStart),
-          )
-        : eq(schema.quizSessions.userId, schema.users.id),
+      schema.questionAttempts,
+      and(
+        eq(schema.questionAttempts.userId, schema.users.id),
+        scope === 'weekly' && weekStart
+          ? gte(schema.questionAttempts.answeredAt, weekStart)
+          : sql`1 = 1`,
+      ),
     )
     .groupBy(schema.users.id, schema.users.username);
 
-  let normalizedRows = rows;
-  if (scope === 'global' && rows.length > 0) {
-    const states = await db
-      .select({
-        userId: schema.userClientState.userId,
-        dataJson: schema.userClientState.dataJson,
-      })
-      .from(schema.userClientState)
-      .where(inArray(schema.userClientState.userId, rows.map((row) => row.userId)));
-    const legacyByUserId = new Map(
-      states.map((row) => [
-        row.userId,
-        countLegacyCompletedFromClientState(row.dataJson),
-      ]),
-    );
-    normalizedRows = rows.map((row) => ({
-      ...row,
-      quizCount: row.quizCount + (legacyByUserId.get(row.userId) ?? 0),
-    }));
-  }
-
-  const rankedRows = normalizedRows
+  const rankedRows = rows
     .filter((row) => row.quizCount > 0)
     .sort((a, b) => {
       if (a.quizCount !== b.quizCount) return b.quizCount - a.quizCount;
@@ -331,40 +413,42 @@ async function fetchLeaderboard(
 /** Public weekly snapshot: usernames only, no auth. Users without a username are omitted. */
 async function fetchWeeklyTopPublic(limit: number) {
   const weekStart = getWeekStartRome();
-  const quizCount = count(schema.quizSessions.id);
-  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
-  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
   const rows = await db
     .select({
       username: schema.users.username,
-      quizCount,
-      answeredSum: sumAnswered,
-      correctSum: sumCorrect,
+      quizCount: sql<number>`coalesce(count(${schema.questionAttempts.id}), 0)`,
+      correctKnown: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} is not null then 1 else 0 end), 0)`,
+      correctCount: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} = 1 then 1 else 0 end), 0)`,
     })
     .from(schema.users)
     .leftJoin(
-      schema.quizSessions,
+      schema.questionAttempts,
       and(
-        eq(schema.quizSessions.userId, schema.users.id),
-        gte(schema.quizSessions.createdAt, weekStart),
+        eq(schema.questionAttempts.userId, schema.users.id),
+        gte(schema.questionAttempts.answeredAt, weekStart),
       ),
     )
     .where(isNotNull(schema.users.username))
     .groupBy(schema.users.id, schema.users.username)
-    .having(gt(quizCount, 0))
-    .orderBy(desc(quizCount), schema.users.username)
+    .orderBy(
+      desc(sql`coalesce(count(${schema.questionAttempts.id}), 0)`),
+      schema.users.username,
+    )
     .limit(limit);
 
   return {
     scope: 'weekly' as const,
     weekStartsAt: weekStart.getTime(),
-    rows: rows.map((row, index) => ({
-      rank: index + 1,
-      username: row.username as string,
-      quizCount: row.quizCount,
-      accuracy:
-        row.answeredSum > 0 ? row.correctSum / row.answeredSum : 0,
-    })),
+    rows: rows
+      .filter((row) => row.quizCount > 0)
+      .slice(0, limit)
+      .map((row, index) => ({
+        rank: index + 1,
+        username: row.username as string,
+        quizCount: row.quizCount,
+        accuracy:
+          row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
+      })),
   };
 }
 
@@ -504,6 +588,8 @@ api.use('*', async (c, next) => {
   if (method === 'GET' && path === '/api/me') return next();
   if (method === 'PUT' && path === '/api/me/username') return next();
   if (method === 'PUT' && path === '/api/me/password') return next();
+  if (method === 'POST' && path === '/api/quiz-attempts/batch') return next();
+  if (method === 'GET' && path.startsWith('/api/quiz-progress/')) return next();
 
   const userId = c.get('userId');
   const urows = await db
@@ -694,12 +780,87 @@ api.put('/me/client-state', async (c) => {
   return c.json({ ok: true, clientState: nextData });
 });
 
+api.get('/quiz-progress/:kind', async (c) => {
+  const userId = c.get('userId');
+  const kind = sanitizeQuizKind(c.req.param('kind'));
+  if (!kind) {
+    return c.json({ error: 'Invalid quiz kind' }, 400);
+  }
+  const history = await fetchLatestHistoryMap(userId, kind);
+  return c.json({ quizKind: kind, history });
+});
+
+api.post('/quiz-attempts/batch', async (c) => {
+  const userId = c.get('userId');
+  const body = await c.req.json<{
+    attempts?: Array<{
+      id?: unknown;
+      quizKind?: unknown;
+      questionId?: unknown;
+      selectedAnswer?: unknown;
+      isCorrect?: unknown;
+      answeredAt?: unknown;
+    }>;
+  }>();
+
+  const raw = Array.isArray(body.attempts) ? body.attempts : [];
+  const attempts = raw
+    .map((entry) => {
+      const id = typeof entry.id === 'string' && entry.id ? entry.id : null;
+      const quizKind = sanitizeQuizKind(entry.quizKind);
+      const questionId = Number(entry.questionId);
+      const selectedAnswer = Number(entry.selectedAnswer);
+      const isCorrect =
+        typeof entry.isCorrect === 'boolean' ? entry.isCorrect : null;
+      const answeredAt = new Date(
+        typeof entry.answeredAt === 'number' ? entry.answeredAt : Date.now(),
+      );
+      return { id, quizKind, questionId, selectedAnswer, isCorrect, answeredAt };
+    })
+    .filter(
+      (entry) =>
+        !!entry.id &&
+        !!entry.quizKind &&
+        Number.isInteger(entry.questionId) &&
+        Number.isInteger(entry.selectedAnswer),
+    );
+
+  if (attempts.length === 0) {
+    return c.json({ ok: true, accepted: 0 });
+  }
+
+  await db
+    .insert(schema.questionAttempts)
+    .values(
+      attempts.map((entry) => ({
+        id: entry.id!,
+        userId,
+        quizKind: entry.quizKind!,
+        questionId: entry.questionId,
+        selectedAnswer: entry.selectedAnswer,
+        isCorrect: entry.isCorrect,
+        answeredAt: entry.answeredAt,
+        source: 'live',
+      })),
+    )
+    .onConflictDoNothing({ target: schema.questionAttempts.id });
+
+  return c.json({ ok: true, accepted: attempts.length });
+});
+
 api.post('/quiz-sessions', async (c) => {
   const userId = c.get('userId');
   const body = await c.req.json<{
     mode?: unknown;
     answered?: unknown;
     correct?: unknown;
+    attempts?: Array<{
+      quizKind?: unknown;
+      questionId?: unknown;
+      selectedAnswer?: unknown;
+      isCorrect?: unknown;
+      answeredAt?: unknown;
+    }>;
   }>();
 
   const answered = Number(body.answered);
@@ -714,15 +875,51 @@ api.post('/quiz-sessions', async (c) => {
   const mode = sanitizeQuizMode(body.mode);
   const now = new Date();
   const score = answered + correct;
+  const attemptsInput = Array.isArray(body.attempts) ? body.attempts : [];
 
-  await db.insert(schema.quizSessions).values({
-    id: crypto.randomUUID(),
-    userId,
-    mode,
-    answered,
-    correct,
-    score,
-    createdAt: now,
+  const attempts = attemptsInput
+    .map((entry) => {
+      const quizKind = sanitizeQuizKind(entry.quizKind);
+      const questionId = Number(entry.questionId);
+      const selectedAnswer = Number(entry.selectedAnswer);
+      const isCorrect =
+        typeof entry.isCorrect === 'boolean' ? entry.isCorrect : null;
+      const answeredAt = new Date(
+        typeof entry.answeredAt === 'number' ? entry.answeredAt : now.getTime(),
+      );
+      return { quizKind, questionId, selectedAnswer, isCorrect, answeredAt };
+    })
+    .filter(
+      (entry) =>
+        !!entry.quizKind &&
+        Number.isInteger(entry.questionId) &&
+        Number.isInteger(entry.selectedAnswer),
+    );
+
+  await db.transaction(async (tx) => {
+    await tx.insert(schema.quizSessions).values({
+      id: crypto.randomUUID(),
+      userId,
+      mode,
+      answered,
+      correct,
+      score,
+      createdAt: now,
+    });
+    if (attempts.length > 0) {
+      await tx.insert(schema.questionAttempts).values(
+        attempts.map((entry) => ({
+          id: crypto.randomUUID(),
+          userId,
+          quizKind: entry.quizKind!,
+          questionId: entry.questionId,
+          selectedAnswer: entry.selectedAnswer,
+          isCorrect: entry.isCorrect,
+          answeredAt: entry.answeredAt,
+          source: 'live',
+        })),
+      );
+    }
   });
 
   const [weekly, global] = await Promise.all([

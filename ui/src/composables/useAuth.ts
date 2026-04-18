@@ -15,7 +15,7 @@ import {
   confirmImportLocalData,
   dismissImportPrompt,
 } from 'src/auth/state';
-import { scheduleClientStateSync } from 'src/auth/sync';
+import { scheduleDataSync } from 'src/auth/sync';
 
 export type { AuthUser } from 'src/auth/state';
 
@@ -29,7 +29,7 @@ export function useAuth() {
 
   async function setUsername(username: string) {
     await setUsernameApi(username);
-    scheduleClientStateSync(0);
+    scheduleDataSync(0);
     $q.notify({ type: 'positive', message: 'Nome utente salvato' });
   }
 

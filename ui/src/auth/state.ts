@@ -1,12 +1,11 @@
 import { ref } from 'vue';
 import { apiFetch, ApiError } from 'src/api/client';
 import {
-  applyQuizSnapshotToLocal,
-  collectQuizLocalSnapshot,
   hasLocalQuizData,
   isEmptyClientState,
   replaceQuizSnapshotToLocal,
 } from 'src/lib/localStorageSync';
+import { pushLocalQuizSnapshot } from 'src/auth/clientStateRemote';
 
 const TOKEN_KEY = 'nautiquiz-token';
 const USER_KEY = 'nautiquiz-user';
@@ -68,19 +67,6 @@ export const showImportDialog = ref(false);
 /** Shared with MainLayout — open login/register from any page (e.g. classifiche). */
 export const showAuthDialog = ref(false);
 
-async function pushLocalSnapshot(t: string) {
-  const snapshot = collectQuizLocalSnapshot();
-  const res = await apiFetch<{ clientState: Record<string, unknown> }>(
-    '/me/client-state',
-    {
-      method: 'PUT',
-      body: JSON.stringify({ data: snapshot, merge: true }),
-      token: t,
-    },
-  );
-  applyQuizSnapshotToLocal(res.clientState);
-}
-
 async function reconcileClientState(
   me: MeResponse,
   t: string,
@@ -99,7 +85,7 @@ async function reconcileClientState(
   }
 
   if (options.preferLocalMerge) {
-    await pushLocalSnapshot(t);
+    await pushLocalQuizSnapshot(t);
     return;
   }
 
@@ -108,7 +94,7 @@ async function reconcileClientState(
     return;
   }
 
-  await pushLocalSnapshot(t);
+  await pushLocalQuizSnapshot(t);
 }
 
 export async function restoreSession() {
@@ -218,16 +204,7 @@ export async function confirmImportLocalData() {
   const t = token.value;
   const u = user.value;
   if (!t || !u) return;
-  const snapshot = collectQuizLocalSnapshot();
-  const res = await apiFetch<{ clientState: Record<string, unknown> }>(
-    '/me/client-state',
-    {
-      method: 'PUT',
-      body: JSON.stringify({ data: snapshot, merge: true }),
-      token: t,
-    },
-  );
-  applyQuizSnapshotToLocal(res.clientState);
+  await pushLocalQuizSnapshot(t);
   showImportDialog.value = false;
   localStorage.removeItem(`nautiquiz-import-dismissed-${u.id}`);
   window.location.reload();

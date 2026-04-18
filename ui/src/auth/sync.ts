@@ -1,10 +1,13 @@
-import { apiFetch, ApiError } from 'src/api/client';
+import { ApiError } from 'src/api/client';
+import { pushQuizAttempts } from 'src/api/quizAttempts';
+import { pushLocalQuizSnapshot } from 'src/auth/clientStateRemote';
 import { token, user, restoreSession, logout } from 'src/auth/state';
-import {
-  applyQuizSnapshotToLocal,
-  collectQuizLocalSnapshot,
-} from 'src/lib/localStorageSync';
 import { setLocalMutationHandler } from 'src/lib/localMutationBus';
+import {
+  getQueuedQuizAttempts,
+  hasQueuedQuizAttempts,
+  removeQueuedQuizAttempts,
+} from 'src/lib/quizAttemptQueue';
 
 const DIRTY_KEY = 'nautiquiz-sync-dirty';
 
@@ -25,26 +28,30 @@ function hasDirtyState() {
   return localStorage.getItem(DIRTY_KEY) === '1';
 }
 
+function hasSyncWork() {
+  return hasDirtyState() || hasQueuedQuizAttempts();
+}
+
 function canUseNetwork() {
   return typeof navigator === 'undefined' || navigator.onLine;
 }
 
-export function scheduleClientStateSync(delayMs = 400) {
+export function scheduleDataSync(delayMs = 400) {
   if (syncTimer) clearTimeout(syncTimer);
   syncTimer = setTimeout(() => {
     syncTimer = null;
-    void syncClientStateNow();
+    void syncDataNow();
   }, delayMs);
 }
 
-export async function syncClientStateNow() {
+export async function syncDataNow() {
   if (syncInFlight) {
     syncQueued = true;
     return syncInFlight;
   }
 
   syncInFlight = (async () => {
-    if (!hasDirtyState() || !token.value || !canUseNetwork()) return;
+    if (!hasSyncWork() || !token.value || !canUseNetwork()) return;
 
     if (!user.value) {
       await restoreSession();
@@ -52,21 +59,28 @@ export async function syncClientStateNow() {
     }
 
     try {
-      const snapshot = collectQuizLocalSnapshot();
-      const res = await apiFetch<{ clientState: Record<string, unknown> }>(
-        '/me/client-state',
-        {
-          method: 'PUT',
-          body: JSON.stringify({ data: snapshot, merge: true }),
-          token: token.value,
-        },
-      );
-      applyQuizSnapshotToLocal(res.clientState);
+      while (token.value && hasQueuedQuizAttempts()) {
+        const chunk = getQueuedQuizAttempts(100);
+        if (chunk.length === 0) break;
+        await pushQuizAttempts(token.value, chunk);
+        removeQueuedQuizAttempts(chunk.map((row) => row.id));
+      }
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        logout();
+        return;
+      }
+      // Keep queue as-is and retry on next trigger/network recovery.
+      return;
+    }
+
+    try {
+      if (!hasDirtyState()) return;
+      await pushLocalQuizSnapshot(token.value);
       clearDirty();
     } catch (error) {
       if (error instanceof ApiError && error.status === 401) {
         logout();
-        clearDirty();
       } else {
         /* Includes 403 (username required) until onboarding completes */
         markDirty();
@@ -80,31 +94,38 @@ export async function syncClientStateNow() {
     syncInFlight = null;
     if (syncQueued) {
       syncQueued = false;
-      scheduleClientStateSync(50);
+      scheduleDataSync(50);
     }
   }
 }
 
-export function initClientStateSync() {
+export function initDataSync() {
   if (initialized) return;
   initialized = true;
 
-  setLocalMutationHandler(() => {
-    markDirty();
-    scheduleClientStateSync();
+  setLocalMutationHandler(({ channel }) => {
+    if (channel === 'client-state') {
+      markDirty();
+    }
+    scheduleDataSync();
   });
 
   window.addEventListener('online', () => {
-    void syncClientStateNow();
+    void syncDataNow();
   });
 
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
-      void syncClientStateNow();
+      void syncDataNow();
     }
   });
 
-  if (hasDirtyState()) {
-    scheduleClientStateSync(50);
+  if (hasSyncWork()) {
+    scheduleDataSync(50);
   }
 }
+
+/** Backward-compatible aliases used by existing imports. */
+export const scheduleClientStateSync = scheduleDataSync;
+export const syncClientStateNow = syncDataNow;
+export const initClientStateSync = initDataSync;

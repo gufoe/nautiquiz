@@ -109,7 +109,34 @@ describe('user flows (end-to-end)', () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenA}`,
       },
-      body: JSON.stringify({ mode: 'all', answered: 3, correct: 2 }),
+      body: JSON.stringify({
+        mode: 'all',
+        answered: 3,
+        correct: 2,
+        attempts: [
+          {
+            quizKind: 'base',
+            questionId: 1,
+            selectedAnswer: 1,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+          {
+            quizKind: 'base',
+            questionId: 2,
+            selectedAnswer: 0,
+            isCorrect: false,
+            answeredAt: Date.now(),
+          },
+          {
+            quizKind: 'base',
+            questionId: 3,
+            selectedAnswer: 2,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+        ],
+      }),
     });
     expect(sessionA1.status).toBe(200);
 
@@ -119,7 +146,20 @@ describe('user flows (end-to-end)', () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenA}`,
       },
-      body: JSON.stringify({ mode: 'all', answered: 1, correct: 1 }),
+      body: JSON.stringify({
+        mode: 'all',
+        answered: 1,
+        correct: 1,
+        attempts: [
+          {
+            quizKind: 'base',
+            questionId: 4,
+            selectedAnswer: 1,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+        ],
+      }),
     });
     expect(sessionA2.status).toBe(200);
 
@@ -129,7 +169,27 @@ describe('user flows (end-to-end)', () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenB}`,
       },
-      body: JSON.stringify({ mode: 'all', answered: 2, correct: 2 }),
+      body: JSON.stringify({
+        mode: 'all',
+        answered: 2,
+        correct: 2,
+        attempts: [
+          {
+            quizKind: 'base',
+            questionId: 1,
+            selectedAnswer: 2,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+          {
+            quizKind: 'base',
+            questionId: 2,
+            selectedAnswer: 1,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+        ],
+      }),
     });
     expect(sessionB.status).toBe(200);
 
@@ -146,8 +206,8 @@ describe('user flows (end-to-end)', () => {
     expect(body.global.rows[0].isCurrentUser).toBe(true);
   });
 
-  test('global leaderboard includes legacy synced history counts', async () => {
-    const email = `legacy-${crypto.randomUUID()}@example.com`;
+  test('quiz-progress exposes latest answer per question for a kind', async () => {
+    const email = `progress-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
     const username = uniqueUsername();
 
@@ -159,19 +219,98 @@ describe('user flows (end-to-end)', () => {
     expect(reg.status).toBe(200);
     const { token } = await json(reg);
 
-    const put = await apiFetch('/api/me/client-state', {
-      method: 'PUT',
+    const first = await apiFetch('/api/quiz-sessions', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        data: {
-          history: { 1: 0, 2: 1, 3: 0 },
-          'vela-history': { 11: 1, 12: 0 },
-          '5d-history': { 21: 1 },
-          '42d-history': { 31: 1, 32: 1 },
-        },
+        mode: 'all',
+        answered: 2,
+        correct: 1,
+        attempts: [
+          {
+            quizKind: 'base',
+            questionId: 10,
+            selectedAnswer: 1,
+            isCorrect: true,
+            answeredAt: Date.now() - 2000,
+          },
+          {
+            quizKind: 'base',
+            questionId: 11,
+            selectedAnswer: 0,
+            isCorrect: false,
+            answeredAt: Date.now() - 1000,
+          },
+        ],
+      }),
+    });
+    expect(first.status).toBe(200);
+
+    const second = await apiFetch('/api/quiz-sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        mode: 'all',
+        answered: 1,
+        correct: 1,
+        attempts: [
+          {
+            quizKind: 'base',
+            questionId: 11,
+            selectedAnswer: 2,
+            isCorrect: true,
+            answeredAt: Date.now(),
+          },
+        ],
+      }),
+    });
+    expect(second.status).toBe(200);
+
+    const progress = await apiFetch('/api/quiz-progress/base', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(progress.status).toBe(200);
+    const body = await json(progress);
+    expect(body.quizKind).toBe('base');
+    expect(body.history).toEqual({ 10: 1, 11: 2 });
+  });
+
+  test('batch attempts update leaderboard without ending session', async () => {
+    const email = `realtime-${crypto.randomUUID()}@example.com`;
+    const password = 'password123';
+    const username = uniqueUsername();
+
+    const reg = await apiFetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, username }),
+    });
+    expect(reg.status).toBe(200);
+    const { token } = await json(reg);
+
+    const put = await apiFetch('/api/quiz-attempts/batch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        attempts: [
+          {
+            id: crypto.randomUUID(),
+            quizKind: 'base',
+            questionId: 1,
+            selectedAnswer: 0,
+            isCorrect: false,
+            answeredAt: Date.now(),
+          },
+        ],
       }),
     });
     expect(put.status).toBe(200);
@@ -181,9 +320,8 @@ describe('user flows (end-to-end)', () => {
     });
     expect(boards.status).toBe(200);
     const body = (await json(boards)) as LeaderboardsBody;
-    const globalRows = body.global.rows;
-    const row = globalRows.find((entry) => entry.username === username);
+    const row = body.global.rows.find((entry) => entry.username === username);
     expect(row).toBeDefined();
-    expect(row!.quizCount).toBe(8);
+    expect(row!.quizCount).toBeGreaterThanOrEqual(1);
   });
 });

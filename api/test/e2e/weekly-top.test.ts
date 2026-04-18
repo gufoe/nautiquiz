@@ -43,7 +43,18 @@ describe('GET /api/leaderboards/weekly-top', () => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ mode: 'all', answered: 500, correct: 400 }),
+      body: JSON.stringify({
+        mode: 'all',
+        answered: 500,
+        correct: 400,
+        attempts: Array.from({ length: 500 }, (_, i) => ({
+          quizKind: 'base',
+          questionId: i + 1,
+          selectedAnswer: 0,
+          isCorrect: i < 400,
+          answeredAt: Date.now(),
+        })),
+      }),
     });
     expect(session.status).toBe(200);
 

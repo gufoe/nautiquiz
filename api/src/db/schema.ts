@@ -29,3 +29,24 @@ export const quizSessions = sqliteTable('quiz_sessions', {
   score: integer('score').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp_ms' }).notNull(),
 });
+
+export const questionAttempts = sqliteTable('question_attempts', {
+  id: text('id').primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  /** Quiz family the question belongs to: base, vela, 5d, 42d. */
+  quizKind: text('quiz_kind').notNull(),
+  questionId: integer('question_id').notNull(),
+  selectedAnswer: integer('selected_answer').notNull(),
+  /** Nullable for imported legacy rows where correctness is unknown. */
+  isCorrect: integer('is_correct', { mode: 'boolean' }),
+  /** Event time in epoch milliseconds. */
+  answeredAt: integer('answered_at', { mode: 'timestamp_ms' }).notNull(),
+  /**
+   * Source marker for lineage/debugging:
+   * - "live" from current session submissions
+   * - "legacy" imported from historical client-state maps
+   */
+  source: text('source').notNull(),
+});

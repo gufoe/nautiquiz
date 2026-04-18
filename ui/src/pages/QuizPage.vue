@@ -151,18 +151,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import LeaderboardDialog from 'src/components/LeaderboardDialog.vue';
 import { submitQuizSession, type LeaderboardsResponse } from 'src/api/leaderboards';
 import { ApiError } from 'src/api/client';
 import { token } from 'src/auth/state';
+import { fetchQuizProgress, type QuizKind } from 'src/api/quizProgress';
+import { enqueueQuizAttempt } from 'src/lib/quizAttemptQueue';
 import { getQuiz, QuizBase, QuizMode, shuffle } from 'src/utils';
 
 const route = useRoute();
 const router = useRouter();
-const quiz = getQuiz(route.params.mode as 'base' | 'vela');
-const quiz_history = quiz.getQuizHistory();
+const quizKind = route.params.mode as QuizKind;
+const quiz = getQuiz(quizKind);
+const quiz_history = ref<Record<number, number>>(
+  quiz.getQuizHistory() as Record<number, number>,
+);
 
 const selected_mode: QuizMode =
   route.query.mode === 'missing' ||
@@ -172,9 +177,27 @@ const selected_mode: QuizMode =
     ? route.query.mode
     : 'all';
 
-const available_quizzes = quiz.getQuizzes(selected_mode);
-shuffle(available_quizzes as QuizBase[]);
-available_quizzes.splice(20);
+const available_quizzes = ref<QuizBase[]>([]);
+function rebuildAvailableQuizzes() {
+  const rows = quiz.getQuizzes(
+    selected_mode,
+    quiz_history.value as Record<number, number>,
+  );
+  shuffle(rows as QuizBase[]);
+  available_quizzes.value = rows.slice(0, 20);
+}
+rebuildAvailableQuizzes();
+
+onMounted(async () => {
+  if (!token.value) return;
+  try {
+    const remote = await fetchQuizProgress(token.value, quizKind);
+    quiz_history.value = remote.history as Record<number, number>;
+    rebuildAvailableQuizzes();
+  } catch {
+    /* Keep local fallback for temporary API errors/offline usage. */
+  }
+});
 
 const current_quiz_index = ref(0);
 /** Highest index reached moving forward in this session (used to detect “review” mode). */
@@ -186,15 +209,15 @@ watch(
   },
   { immediate: true },
 );
-const quiz_total = available_quizzes.length;
+const quiz_total = computed(() => available_quizzes.value.length);
 const question_pos = computed(() => current_quiz_index.value + 1);
 const is_reviewing_previous = computed(
   () => current_quiz_index.value < furthest_quiz_index.value,
 );
 const next_question_pos = computed(() =>
-  Math.min(current_quiz_index.value + 2, quiz_total),
+  Math.min(current_quiz_index.value + 2, quiz_total.value),
 );
-const current_quiz = computed(() => available_quizzes[current_quiz_index.value]);
+const current_quiz = computed(() => available_quizzes.value[current_quiz_index.value]);
 const show_answer = ref(false);
 const session_answers = ref<Record<number, number>>({});
 const show_leaderboard = ref(false);
@@ -218,20 +241,23 @@ const current_answer = computed(
 
 const answered_count = computed(() => Object.keys(session_answers.value).length);
 const correct_count = computed(
-  () => available_quizzes.filter((x) => x.answer === session_answers.value[x.id]).length,
+  () =>
+    available_quizzes.value.filter(
+      (x) => x.answer === session_answers.value[x.id],
+    ).length,
 );
 
 /** Bar length = which question slot you are on (1…M), not how many are answered. */
 const percent = computed(() =>
-  quiz_total > 0 ? question_pos.value / quiz_total : 0,
+  quiz_total.value > 0 ? question_pos.value / quiz_total.value : 0,
 );
 const percent_label = computed(
   () =>
-    `Domanda ${question_pos.value} di ${quiz_total} · Risposte: ${answered_count.value} · Errori: ${current_errors.value.length}`,
+    `Domanda ${question_pos.value} di ${quiz_total.value} · Risposte: ${answered_count.value} · Errori: ${current_errors.value.length}`,
 );
 const max_errors = 4;
 const current_errors = computed(() => {
-  return available_quizzes.filter(
+  return available_quizzes.value.filter(
     (x) =>
       x.id in session_answers.value && x.answer !== session_answers.value[x.id],
   );
@@ -246,8 +272,15 @@ const session_summary = computed(() => ({
 function selectAnswer(answer: number) {
   if (current_quiz.value.id in session_answers.value) return;
   session_answers.value[current_quiz.value.id] = answer;
-  quiz_history[current_quiz.value.id] = answer;
-  quiz.setQuizHistory(quiz_history as never);
+  quiz_history.value[current_quiz.value.id] = answer;
+  quiz.setQuizHistory(quiz_history.value as never);
+  enqueueQuizAttempt({
+    quizKind,
+    questionId: current_quiz.value.id,
+    selectedAnswer: answer,
+    isCorrect: current_quiz.value.answer === answer,
+    answeredAt: Date.now(),
+  });
 }
 
 /** Stop bubble only when this click records an answer, so the same event does not advance. */
@@ -318,7 +351,7 @@ async function finishSession() {
 }
 
 function advanceOrFinish() {
-  if (current_quiz_index.value + 1 < available_quizzes.length) {
+  if (current_quiz_index.value + 1 < available_quizzes.value.length) {
     current_quiz_index.value++;
   } else {
     void finishSession();

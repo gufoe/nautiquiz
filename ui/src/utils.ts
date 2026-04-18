@@ -11,7 +11,7 @@ export class Storage {
   static set<T>(name: string, value: T, options?: { notify?: boolean }) {
     localStorage.setItem(name, JSON.stringify(value));
     if (options?.notify !== false) {
-      notifyLocalMutation();
+      notifyLocalMutation('client-state');
     }
   }
 }
@@ -59,16 +59,16 @@ export class Quiz<T extends QuizBase, Y> {
   setQuizHistory(history: QuizHistory<Y>) {
     return Storage.set(this.prefix + 'history', history);
   }
-  getQuizStats() {
-    const h = this.getQuizHistory();
+  getQuizStats(history?: QuizHistory<Y>) {
+    const h = history ?? this.getQuizHistory();
     return {
       total: this.quizzes.length,
       completed: Object.values(h).length,
       correct: this.quizzes.filter((q) => this.isCorrect(q, h[q.id])).length,
     };
   }
-  getQuizzes(mode: QuizMode) {
-    const h = this.getQuizHistory();
+  getQuizzes(mode: QuizMode, history?: QuizHistory<Y>) {
+    const h = history ?? this.getQuizHistory();
     const modes: Record<QuizMode, (q: T) => boolean> = {
       all: () => true,
       // all: (q) => !!q.image,

@@ -47,6 +47,14 @@ export type QuizSessionResponse = {
   leaderboards: LeaderboardsResponse;
 };
 
+export type QuizAttemptPayload = {
+  quizKind: 'base' | 'vela' | '5d' | '42d';
+  questionId: number;
+  selectedAnswer: number;
+  isCorrect: boolean;
+  answeredAt: number;
+};
+
 export async function submitQuizSession(
   token: string,
   payload: { mode: string; answered: number; correct: number },
