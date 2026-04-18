@@ -12,6 +12,17 @@ import { hashPassword, verifyPassword } from './lib/password';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const migrationsFolder = `${__dirname}/../drizzle`;
 
+type QuizKind = 'base' | 'vela' | '5d' | '42d';
+
+const LEGACY_STATE_KEY_BY_KIND: Record<QuizKind, string> = {
+  base: 'history',
+  vela: 'vela-history',
+  '5d': '5d-history',
+  '42d': '42d-history',
+};
+
+const LEGACY_SEEDED_MARKER = 'question-attempts-seeded-v1';
+
 await migrate(db, { migrationsFolder });
 await seedQuestionAttemptsFromClientState();
 
@@ -87,17 +98,6 @@ function mergeClientState(
 }
 
 type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
-
-type QuizKind = 'base' | 'vela' | '5d' | '42d';
-
-const LEGACY_STATE_KEY_BY_KIND: Record<QuizKind, string> = {
-  base: 'history',
-  vela: 'vela-history',
-  '5d': '5d-history',
-  '42d': '42d-history',
-};
-
-const LEGACY_SEEDED_MARKER = 'question-attempts-seeded-v1';
 
 type LeaderboardQueryRow = {
   userId: string;
