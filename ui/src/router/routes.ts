@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
         name: 'home',
       },
       {
+        path: 'leaderboards',
+        component: () => import('pages/LeaderboardsPage.vue'),
+        name: 'leaderboards',
+      },
+      {
         name: 'quiz-home',
         path: ':mode/',
         component: () => import('pages/ModeSelector.vue'),

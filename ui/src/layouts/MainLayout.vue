@@ -55,13 +55,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useTheme } from 'src/composables/useTheme';
 import { useAuth } from 'src/composables/useAuth';
 import AuthDialog from 'src/components/AuthDialog.vue';
 import ImportLocalDialog from 'src/components/ImportLocalDialog.vue';
+import { showAuthDialog } from 'src/auth/state';
 
-const showAuthDialog = ref(false);
 const { isDark, toggle, icon, btnClass } = useTheme();
 const { isLoggedIn, user, logout } = useAuth();
 

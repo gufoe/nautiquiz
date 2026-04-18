@@ -11,6 +11,24 @@
       </div>
     </q-linear-progress>
 
+    <div class="row items-center">
+      <q-btn
+        flat
+        dense
+        no-caps
+        color="grey-8"
+        icon="arrow_back"
+        label="Indietro"
+        :disable="current_quiz_index === 0"
+        @click="goToPreviousQuestion"
+      >
+        <q-tooltip v-if="current_quiz_index > 0"
+          >Rileggi le domande già risposte (la risposta non si può
+          cambiare)</q-tooltip
+        >
+      </q-btn>
+    </div>
+
     <div class="column col" style="gap: 10px" :key="current_quiz.id">
       <img
         v-if="current_quiz.image"
@@ -49,7 +67,7 @@
         </ol>
       </template>
       <div
-        v-else-if="current_quiz.solution && !show_answer"
+        v-else-if="current_quiz.solution && !show_answer && !is_answered"
         class="row"
         style="gap: 20px"
       >

@@ -9,6 +9,7 @@
     "build": "bun build src/index.ts --outdir dist --target bun",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "bun run src/db/migrate.ts",
+    "db:list-issues": "bun scripts/list-quiz-issues.ts",
     "db:studio": "drizzle-kit studio",
     "test": "bun test --preload ./test/setup.ts ./test/e2e",
     "test:e2e": "bun test --preload ./test/setup.ts ./test/e2e"

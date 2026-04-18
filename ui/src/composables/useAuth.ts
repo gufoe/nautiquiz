@@ -5,6 +5,7 @@ import {
   user,
   sessionReady,
   showImportDialog,
+  showAuthDialog,
   restoreSession,
   register as registerApi,
   login as loginApi,
@@ -36,6 +37,10 @@ export function useAuth() {
     dismissImportPrompt();
   }
 
+  function openAuthDialog() {
+    showAuthDialog.value = true;
+  }
+
   const isLoggedIn = computed(() => !!token.value && !!user.value);
 
   return {
@@ -44,6 +49,8 @@ export function useAuth() {
     sessionReady,
     isLoggedIn,
     showImportDialog,
+    showAuthDialog,
+    openAuthDialog,
     restoreSession,
     register,
     login,

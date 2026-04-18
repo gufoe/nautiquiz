@@ -5,6 +5,13 @@
       Quiz ministeriali per la patente nautica
     </div>
     <div class="column q-gap-1">
+      <q-btn
+        flat
+        color="primary"
+        icon="emoji_events"
+        label="Classifiche"
+        :to="{ name: 'leaderboards' }"
+      />
       <div class="q-mt-md q-mb-xs text-grey">Quizzoni</div>
       <q-btn
         flat

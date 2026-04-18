@@ -58,6 +58,8 @@ export const token = ref<string | null>(safeGetToken());
 export const user = ref<AuthUser | null>(safeGetUser());
 export const sessionReady = ref(false);
 export const showImportDialog = ref(false);
+/** Shared with MainLayout — open login/register from any page (e.g. classifiche). */
+export const showAuthDialog = ref(false);
 
 async function pushLocalSnapshot(t: string) {
   const snapshot = collectQuizLocalSnapshot();

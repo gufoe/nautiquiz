@@ -27,6 +27,7 @@ export interface QuizBase {
   solution?: string;
 }
 export interface QuizInterface extends QuizBase {
+  description: string;
   choiches: string[];
   answer: number;
 }
