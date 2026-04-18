@@ -58,7 +58,24 @@ export const user = ref<AuthUser | null>(safeGetUser());
 export const sessionReady = ref(false);
 export const showImportDialog = ref(false);
 
-async function reconcileClientState(me: MeResponse, t: string) {
+async function pushLocalSnapshot(t: string) {
+  const snapshot = collectQuizLocalSnapshot();
+  const res = await apiFetch<{ clientState: Record<string, unknown> }>(
+    '/me/client-state',
+    {
+      method: 'PUT',
+      body: JSON.stringify({ data: snapshot, merge: true }),
+      token: t,
+    },
+  );
+  applyQuizSnapshotToLocal(res.clientState);
+}
+
+async function reconcileClientState(
+  me: MeResponse,
+  t: string,
+  options: { preferLocalMerge: boolean },
+) {
   const hasLocalData = hasLocalQuizData();
   const hasRemoteData = !isEmptyClientState(me.clientState);
 
@@ -67,18 +84,21 @@ async function reconcileClientState(me: MeResponse, t: string) {
     return;
   }
 
-  if (hasLocalData) {
-    const snapshot = collectQuizLocalSnapshot();
-    const res = await apiFetch<{ clientState: Record<string, unknown> }>(
-      '/me/client-state',
-      {
-        method: 'PUT',
-        body: JSON.stringify({ data: snapshot, merge: true }),
-        token: t,
-      },
-    );
-    applyQuizSnapshotToLocal(res.clientState);
+  if (!hasLocalData) {
+    return;
   }
+
+  if (options.preferLocalMerge) {
+    await pushLocalSnapshot(t);
+    return;
+  }
+
+  if (hasRemoteData) {
+    applyQuizSnapshotToLocal(me.clientState);
+    return;
+  }
+
+  await pushLocalSnapshot(t);
 }
 
 export async function restoreSession() {
@@ -94,7 +114,7 @@ export async function restoreSession() {
     const data = await apiFetch<MeResponse>('/me', { token: t });
     user.value = data.user;
     safeSetUser(data.user);
-    await reconcileClientState(data, t);
+    await reconcileClientState(data, t, { preferLocalMerge: false });
   } catch (error) {
     if (error instanceof ApiError && error.status === 401) {
       safeSetToken(null);
@@ -120,7 +140,7 @@ export async function register(email: string, password: string) {
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await reconcileClientState(me, data.token);
+  await reconcileClientState(me, data.token, { preferLocalMerge: true });
 }
 
 export async function login(email: string, password: string) {
@@ -136,7 +156,7 @@ export async function login(email: string, password: string) {
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await reconcileClientState(me, data.token);
+  await reconcileClientState(me, data.token, { preferLocalMerge: true });
 }
 
 export function logout() {
