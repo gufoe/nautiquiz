@@ -8,7 +8,7 @@ export type LeaderboardRow = {
   username: string | null;
   /** Answers counted in this leaderboard scope (session totals and/or synced attempts). */
   quizCount: number;
-  /** Share of answers correct in this scope, 0–1. */
+  /** Fraction of answers that were correct in this scope (0–1), i.e. correct ÷ total. */
   accuracy: number;
   isCurrentUser: boolean;
 };
@@ -20,6 +20,7 @@ export type WeeklyTopResponse = {
     rank: number;
     username: string;
     quizCount: number;
+    /** Fraction of answers correct (0–1). */
     accuracy: number;
   }>;
 };

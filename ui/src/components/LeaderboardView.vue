@@ -82,7 +82,12 @@
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
               <th class="text-right">Quiz</th>
-              <th class="text-right">%</th>
+              <th
+                class="text-right"
+                title="Percentuale di risposte corrette (risposte giuste ÷ risposte totali)"
+              >
+                % corr.
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -94,7 +99,12 @@
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.quizCount }}</td>
-              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
+              <td
+                class="text-right text-weight-medium"
+                :class="leaderboardCorrectPercentClass(row.accuracy)"
+              >
+                {{ leaderboardCorrectPercent(row.accuracy) }}%
+              </td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -106,7 +116,12 @@
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
               <th class="text-right">Quiz</th>
-              <th class="text-right">%</th>
+              <th
+                class="text-right"
+                title="Percentuale di risposte corrette (risposte giuste ÷ risposte totali)"
+              >
+                % corr.
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -118,7 +133,12 @@
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.quizCount }}</td>
-              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
+              <td
+                class="text-right text-weight-medium"
+                :class="leaderboardCorrectPercentClass(row.accuracy)"
+              >
+                {{ leaderboardCorrectPercent(row.accuracy) }}%
+              </td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -134,6 +154,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { LeaderboardsResponse } from 'src/api/leaderboards';
+import {
+  leaderboardCorrectPercent,
+  leaderboardCorrectPercentClass,
+} from 'src/lib/leaderboardUi';
 
 const props = withDefaults(
   defineProps<{

@@ -280,14 +280,17 @@ function toPublicLeaderboardRows(
   rows: LeaderboardQueryRow[],
   currentUserId: string,
 ): PublicLeaderboardRow[] {
-  return rows.map((row, index) => ({
-    rank: index + 1,
-    username: row.username,
-    quizCount: row.quizCount,
-    accuracy:
-      row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
-    isCurrentUser: row.userId === currentUserId,
-  }));
+  return rows.map((row, index) => {
+    const total = row.correctKnown;
+    const correct = row.correctCount;
+    return {
+      rank: index + 1,
+      username: row.username,
+      quizCount: row.quizCount,
+      accuracy: total > 0 ? correct / total : 0,
+      isCurrentUser: row.userId === currentUserId,
+    };
+  });
 }
 
 function countHistoryEntries(value: unknown): number {
@@ -507,13 +510,16 @@ async function fetchWeeklyTopPublic(limit: number) {
   return {
     scope: 'weekly' as const,
     weekStartsAt: weekStart.getTime(),
-    rows: rows.map((row, index) => ({
-      rank: index + 1,
-      username: row.username as string,
-      quizCount: row.quizCount,
-      accuracy:
-        row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
-    })),
+    rows: rows.map((row, index) => {
+      const total = row.correctKnown;
+      const correct = row.correctCount;
+      return {
+        rank: index + 1,
+        username: row.username as string,
+        quizCount: row.quizCount,
+        accuracy: total > 0 ? correct / total : 0,
+      };
+    }),
   };
 }
 

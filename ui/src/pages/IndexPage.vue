@@ -52,9 +52,16 @@
             <q-item-section side class="text-weight-medium text-grey-8">#{{ row.rank }}</q-item-section>
             <q-item-section>
               <q-item-label>{{ row.username }}</q-item-label>
-              <q-item-label caption
-                >{{ row.quizCount }} quiz · {{ Math.round(row.accuracy * 100) }}%</q-item-label
-              >
+              <q-item-label caption>
+                <span class="text-grey-8">{{ row.quizCount }} quiz ·</span>
+                <span
+                  class="text-weight-medium q-ml-xs"
+                  :class="leaderboardCorrectPercentClass(row.accuracy)"
+                  title="Percentuale di risposte corrette"
+                >
+                  {{ leaderboardCorrectPercent(row.accuracy) }}% corr.
+                </span>
+              </q-item-label>
             </q-item-section>
           </q-item>
         </template>
@@ -74,6 +81,10 @@ import {
   fetchWeeklyTopPublic,
   type WeeklyTopResponse,
 } from 'src/api/leaderboards';
+import {
+  leaderboardCorrectPercent,
+  leaderboardCorrectPercentClass,
+} from 'src/lib/leaderboardUi';
 
 const weeklyLoading = ref(true);
 const weeklyError = ref(false);
