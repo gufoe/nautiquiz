@@ -8,5 +8,5 @@ This is a fully client-side Vue application made with Quasar framework.
 Start the development server with:
 
 ```bash
-yarn dev
+bun dev
 ```

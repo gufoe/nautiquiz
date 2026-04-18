@@ -1,12 +1,12 @@
-FROM node:20-alpine3.16 AS builder
+FROM oven/bun:1-alpine AS builder
 
-USER node
-RUN mkdir /home/node/app
-WORKDIR /home/node/app
-COPY package.json yarn.lock ./
-RUN yarn install
+WORKDIR /app
+
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+
 COPY --chmod=777 . .
-RUN yarn install && yarn build
+RUN bun install && bun run build
 
 FROM alpine:3.16
 RUN apk add --no-cache wget ca-certificates && \
@@ -15,7 +15,7 @@ RUN apk add --no-cache wget ca-certificates && \
 
 RUN adduser --disabled-password noob
 WORKDIR /home/noob
-COPY --from=builder /home/node/app/dist/spa ./static
+COPY --from=builder /app/dist/spa ./static
 RUN wget -O sfz.tar https://github.com/weihanglo/sfz/releases/download/v0.4.0/sfz-v0.4.0-x86_64-unknown-linux-musl.tar.gz && \
     tar xf sfz.tar && \
     rm -f sfz.tar
