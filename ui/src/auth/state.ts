@@ -5,6 +5,7 @@ import {
   collectQuizLocalSnapshot,
   hasLocalQuizData,
   isEmptyClientState,
+  replaceQuizSnapshotToLocal,
 } from 'src/lib/localStorageSync';
 
 const TOKEN_KEY = 'nautiquiz-token';
@@ -80,7 +81,7 @@ async function reconcileClientState(
   const hasRemoteData = !isEmptyClientState(me.clientState);
 
   if (!hasLocalData && hasRemoteData) {
-    applyQuizSnapshotToLocal(me.clientState);
+    replaceQuizSnapshotToLocal(me.clientState);
     return;
   }
 
@@ -94,7 +95,7 @@ async function reconcileClientState(
   }
 
   if (hasRemoteData) {
-    applyQuizSnapshotToLocal(me.clientState);
+    replaceQuizSnapshotToLocal(me.clientState);
     return;
   }
 

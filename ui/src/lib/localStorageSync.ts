@@ -51,6 +51,13 @@ export function applyQuizSnapshotToLocal(data: Record<string, unknown>) {
   }
 }
 
+export function replaceQuizSnapshotToLocal(data: Record<string, unknown>) {
+  for (const key of QUIZ_STORAGE_KEYS) {
+    localStorage.removeItem(key);
+  }
+  applyQuizSnapshotToLocal(data);
+}
+
 export function isEmptyClientState(state: Record<string, unknown> | null | undefined) {
   return !state || Object.keys(state).length === 0;
 }
