@@ -46,7 +46,7 @@ export function applyQuizSnapshotToLocal(data: Record<string, unknown>) {
   for (const [key, value] of Object.entries(data)) {
     if (isMetaKey(key)) continue;
     if (QUIZ_STORAGE_KEYS.includes(key as (typeof QUIZ_STORAGE_KEYS)[number])) {
-      Storage.set(key, value);
+      Storage.set(key, value, { notify: false });
     }
   }
 }

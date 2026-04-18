@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { QUIZZES, QUIZZES_5D, VELAQUIZZES } from './data/quiz';
+import { notifyLocalMutation } from './lib/localMutationBus';
 
 export class Storage {
   static get<T>(name: string, def: () => T): T {
@@ -7,8 +8,11 @@ export class Storage {
     if (!data) return def();
     return JSON.parse(data);
   }
-  static set<T>(name: string, value: T) {
+  static set<T>(name: string, value: T, options?: { notify?: boolean }) {
     localStorage.setItem(name, JSON.stringify(value));
+    if (options?.notify !== false) {
+      notifyLocalMutation();
+    }
   }
 }
 

@@ -95,4 +95,42 @@ describe('PUT /api/me/client-state', () => {
     const body = await json(res);
     expect(body.clientState).toEqual({ a: 1, b: 2 });
   });
+
+  test('deep-merges nested history objects and unions arrays', async () => {
+    const token = await registerToken();
+    await apiFetch('/api/me/client-state', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        data: {
+          history: { 1: 0, 2: 1 },
+          'quiz-favs': [7, 8],
+        },
+      }),
+    });
+
+    const res = await apiFetch('/api/me/client-state', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        data: {
+          history: { 3: 1 },
+          'quiz-favs': [8, 9],
+        },
+      }),
+    });
+
+    expect(res.status).toBe(200);
+    const body = await json(res);
+    expect(body.clientState).toEqual({
+      history: { 1: 0, 2: 1, 3: 1 },
+      'quiz-favs': [7, 8, 9],
+    });
+  });
 });

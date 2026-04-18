@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { apiFetch } from 'src/api/client';
+import { apiFetch, ApiError } from 'src/api/client';
 import {
   applyQuizSnapshotToLocal,
   collectQuizLocalSnapshot,
@@ -8,6 +8,7 @@ import {
 } from 'src/lib/localStorageSync';
 
 const TOKEN_KEY = 'nautiquiz-token';
+const USER_KEY = 'nautiquiz-user';
 
 export function safeGetToken(): string | null {
   try {
@@ -26,6 +27,24 @@ export function safeSetToken(t: string | null) {
   }
 }
 
+function safeGetUser(): AuthUser | null {
+  try {
+    const raw = localStorage.getItem(USER_KEY);
+    return raw ? (JSON.parse(raw) as AuthUser) : null;
+  } catch {
+    return null;
+  }
+}
+
+function safeSetUser(next: AuthUser | null) {
+  try {
+    if (next) localStorage.setItem(USER_KEY, JSON.stringify(next));
+    else localStorage.removeItem(USER_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
 export type AuthUser = { id: string; email: string };
 
 type MeResponse = {
@@ -35,26 +54,38 @@ type MeResponse = {
 };
 
 export const token = ref<string | null>(safeGetToken());
-export const user = ref<AuthUser | null>(null);
+export const user = ref<AuthUser | null>(safeGetUser());
 export const sessionReady = ref(false);
 export const showImportDialog = ref(false);
 
-async function maybePromptImport(me: MeResponse) {
-  const t = token.value;
-  if (!t) return;
-  if (!hasLocalQuizData()) return;
-  if (!isEmptyClientState(me.clientState)) return;
-  const dismissed = localStorage.getItem(
-    `nautiquiz-import-dismissed-${me.user.id}`,
-  );
-  if (dismissed) return;
-  showImportDialog.value = true;
+async function reconcileClientState(me: MeResponse, t: string) {
+  const hasLocalData = hasLocalQuizData();
+  const hasRemoteData = !isEmptyClientState(me.clientState);
+
+  if (!hasLocalData && hasRemoteData) {
+    applyQuizSnapshotToLocal(me.clientState);
+    return;
+  }
+
+  if (hasLocalData) {
+    const snapshot = collectQuizLocalSnapshot();
+    const res = await apiFetch<{ clientState: Record<string, unknown> }>(
+      '/me/client-state',
+      {
+        method: 'PUT',
+        body: JSON.stringify({ data: snapshot, merge: true }),
+        token: t,
+      },
+    );
+    applyQuizSnapshotToLocal(res.clientState);
+  }
 }
 
 export async function restoreSession() {
   sessionReady.value = false;
   const t = safeGetToken();
   token.value = t;
+  user.value = safeGetUser();
   if (!t) {
     sessionReady.value = true;
     return;
@@ -62,11 +93,15 @@ export async function restoreSession() {
   try {
     const data = await apiFetch<MeResponse>('/me', { token: t });
     user.value = data.user;
-    await maybePromptImport(data);
-  } catch {
-    safeSetToken(null);
-    token.value = null;
-    user.value = null;
+    safeSetUser(data.user);
+    await reconcileClientState(data, t);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 401) {
+      safeSetToken(null);
+      safeSetUser(null);
+      token.value = null;
+      user.value = null;
+    }
   } finally {
     sessionReady.value = true;
   }
@@ -81,10 +116,11 @@ export async function register(email: string, password: string) {
     },
   );
   safeSetToken(data.token);
+  safeSetUser(data.user);
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await maybePromptImport(me);
+  await reconcileClientState(me, data.token);
 }
 
 export async function login(email: string, password: string) {
@@ -96,14 +132,16 @@ export async function login(email: string, password: string) {
     },
   );
   safeSetToken(data.token);
+  safeSetUser(data.user);
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await maybePromptImport(me);
+  await reconcileClientState(me, data.token);
 }
 
 export function logout() {
   safeSetToken(null);
+  safeSetUser(null);
   token.value = null;
   user.value = null;
 }

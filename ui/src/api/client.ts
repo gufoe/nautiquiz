@@ -6,6 +6,16 @@ function apiRoot(): string {
   return base ? `${base}/api` : '/api';
 }
 
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public readonly status?: number,
+    public readonly network = false,
+  ) {
+    super(message);
+  }
+}
+
 export async function apiFetch<T>(
   path: string,
   init: RequestInit & { token?: string | null } = {},
@@ -19,13 +29,20 @@ export async function apiFetch<T>(
     headers.set('Authorization', `Bearer ${token}`);
   }
   const url = `${apiRoot()}${path.startsWith('/') ? path : `/${path}`}`;
-  const res = await fetch(url, { ...rest, headers });
+  let res: Response;
+  try {
+    res = await fetch(url, { ...rest, headers });
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : 'Network request failed';
+    throw new ApiError(message, undefined, true);
+  }
   const text = await res.text();
   const data = text ? (JSON.parse(text) as unknown) : null;
   if (!res.ok) {
     const err = data as { error?: string } | null;
     const msg = err?.error ?? res.statusText ?? `HTTP ${res.status}`;
-    throw new Error(msg);
+    throw new ApiError(msg, res.status);
   }
   return data as T;
 }

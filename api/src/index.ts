@@ -41,6 +41,35 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function mergeClientState(
+  prev: Record<string, unknown>,
+  next: Record<string, unknown>,
+): Record<string, unknown> {
+  const merged: Record<string, unknown> = { ...prev };
+
+  for (const [key, nextValue] of Object.entries(next)) {
+    const prevValue = merged[key];
+
+    if (Array.isArray(prevValue) && Array.isArray(nextValue)) {
+      merged[key] = Array.from(new Set([...prevValue, ...nextValue]));
+      continue;
+    }
+
+    if (isPlainObject(prevValue) && isPlainObject(nextValue)) {
+      merged[key] = { ...prevValue, ...nextValue };
+      continue;
+    }
+
+    merged[key] = nextValue;
+  }
+
+  return merged;
+}
+
 const api = new Hono<{ Variables: Variables }>();
 
 api.post('/auth/register', async (c) => {
@@ -208,7 +237,7 @@ api.put('/me/client-state', async (c) => {
   if (body.merge !== false && existing) {
     try {
       const prev = JSON.parse(existing.dataJson) as Record<string, unknown>;
-      nextData = { ...prev, ...body.data };
+      nextData = mergeClientState(prev, body.data);
     } catch {
       nextData = { ...body.data };
     }
