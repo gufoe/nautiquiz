@@ -4,7 +4,6 @@ const META_PREFIX = 'nautiquiz-';
 
 /** Keys used by the quiz app (theme, progress, favorites, issues). */
 export const QUIZ_STORAGE_KEYS = [
-  'theme-dark',
   'history',
   'quiz-favs',
   'quiz-issues',
