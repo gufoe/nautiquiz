@@ -1,16 +1,21 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header reveal :class="'bg-grey-9'">
+    <q-header reveal :class="headerClass">
       <q-toolbar>
-        <q-btn flat :to="{ name: 'home' }" round dense icon="show_chart" />
+        <q-btn flat :to="{ name: 'home' }" round dense size="sm" icon="show_chart" />
         <q-toolbar-title>Nautiquiz</q-toolbar-title>
-        <!-- <q-btn
+        <!-- Theme toggle -->
+        <q-btn
+          :class="btnClass"
           flat
-          @click="drawerRight = !drawerRight"
           round
           dense
-          icon="menu"
-        /> -->
+          size="sm"
+          :icon="icon"
+          :aria-pressed="isDark"
+          @click="toggle"
+          aria-label="Toggle theme"
+        />
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -19,4 +24,15 @@
   </q-layout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useTheme } from 'src/composables/useTheme';
+
+const { isDark, toggle, icon, btnClass } = useTheme();
+
+const headerClass = computed(() =>
+  isDark.value
+    ? 'bg-grey-9 text-white'
+    : 'bg-grey-2 text-grey-9 shadow-1',
+);
+</script>
