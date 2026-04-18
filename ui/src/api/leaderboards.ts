@@ -2,15 +2,26 @@ import { apiFetch } from 'src/api/client';
 
 export type LeaderboardScope = 'weekly' | 'global';
 
+/** Leaderboard entries never include email or other users’ internal ids. */
 export type LeaderboardRow = {
   rank: number;
-  userId: string;
   username: string | null;
   score: number;
   answered: number;
   correct: number;
   accuracy: number;
   isCurrentUser: boolean;
+};
+
+export type WeeklyTopResponse = {
+  scope: 'weekly';
+  weekStartsAt: number;
+  rows: Array<{
+    rank: number;
+    username: string;
+    score: number;
+    accuracy: number;
+  }>;
 };
 
 export type LeaderboardPayload = {
@@ -49,4 +60,9 @@ export async function submitQuizSession(
 
 export async function fetchLeaderboards(token: string) {
   return apiFetch<LeaderboardsResponse>('/leaderboards', { token });
+}
+
+/** Public top weekly players (no auth). Usernames only. */
+export async function fetchWeeklyTopPublic() {
+  return apiFetch<WeeklyTopResponse>('/leaderboards/weekly-top');
 }

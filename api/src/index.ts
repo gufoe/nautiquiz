@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { and, desc, eq, gte, sql } from 'drizzle-orm';
+import { and, desc, eq, gte, isNotNull, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -87,12 +87,23 @@ function mergeClientState(
 
 type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
 
-type LeaderboardRow = {
+type LeaderboardQueryRow = {
   userId: string;
   username: string | null;
   score: number;
   answered: number;
   correct: number;
+};
+
+/** Serialized leaderboard row — never includes email or internal user ids. */
+type PublicLeaderboardRow = {
+  rank: number;
+  username: string | null;
+  score: number;
+  answered: number;
+  correct: number;
+  accuracy: number;
+  isCurrentUser: boolean;
 };
 
 function sanitizeQuizMode(value: unknown): QuizMode {
@@ -203,25 +214,46 @@ function getWeekStartRome(now = new Date()): Date {
   );
 }
 
+function toPublicLeaderboardRows(
+  rows: LeaderboardQueryRow[],
+  currentUserId: string,
+): PublicLeaderboardRow[] {
+  return rows.map((row, index) => ({
+    rank: index + 1,
+    username: row.username,
+    score: row.score,
+    answered: row.answered,
+    correct: row.correct,
+    accuracy: row.answered > 0 ? row.correct / row.answered : 0,
+    isCurrentUser: row.userId === currentUserId,
+  }));
+}
+
 async function fetchLeaderboard(
   userId: string,
   scope: 'weekly' | 'global',
 ): Promise<{
   scope: 'weekly' | 'global';
   weekStartsAt: number | null;
-  rows: Array<
-    LeaderboardRow & { rank: number; accuracy: number; isCurrentUser: boolean }
-  >;
+  rows: PublicLeaderboardRow[];
 }> {
   const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
 
+  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
+  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
+  const sumScore = sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`;
+
+  /** Global: rank by total questions answered (all time). Weekly: rank by session score sum. */
   const rows = await db
     .select({
       userId: schema.users.id,
       username: schema.users.username,
-      score: sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`,
-      answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
-      correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
+      score:
+        scope === 'global'
+          ? sumAnswered
+          : sumScore,
+      answered: sumAnswered,
+      correct: sumCorrect,
     })
     .from(schema.users)
     .leftJoin(
@@ -235,21 +267,60 @@ async function fetchLeaderboard(
     )
     .groupBy(schema.users.id, schema.users.username)
     .orderBy(
-      desc(sql`coalesce(sum(${schema.quizSessions.score}), 0)`),
-      desc(sql`coalesce(sum(${schema.quizSessions.correct}), 0)`),
-      desc(sql`coalesce(sum(${schema.quizSessions.answered}), 0)`),
-      schema.users.username,
+      ...(scope === 'global'
+        ? [desc(sumAnswered), desc(sumCorrect), schema.users.username]
+        : [
+            desc(sumScore),
+            desc(sumCorrect),
+            desc(sumAnswered),
+            schema.users.username,
+          ]),
     )
     .limit(100);
 
   return {
     scope,
     weekStartsAt: weekStart?.getTime() ?? null,
+    rows: toPublicLeaderboardRows(rows, userId),
+  };
+}
+
+/** Public weekly snapshot: usernames only, no auth. Users without a username are omitted. */
+async function fetchWeeklyTopPublic(limit: number) {
+  const weekStart = getWeekStartRome();
+  const rows = await db
+    .select({
+      username: schema.users.username,
+      score: sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`,
+      answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
+      correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
+    })
+    .from(schema.users)
+    .leftJoin(
+      schema.quizSessions,
+      and(
+        eq(schema.quizSessions.userId, schema.users.id),
+        gte(schema.quizSessions.createdAt, weekStart),
+      ),
+    )
+    .where(isNotNull(schema.users.username))
+    .groupBy(schema.users.id, schema.users.username)
+    .orderBy(
+      desc(sql`coalesce(sum(${schema.quizSessions.score}), 0)`),
+      desc(sql`coalesce(sum(${schema.quizSessions.correct}), 0)`),
+      desc(sql`coalesce(sum(${schema.quizSessions.answered}), 0)`),
+      schema.users.username,
+    )
+    .limit(limit);
+
+  return {
+    scope: 'weekly' as const,
+    weekStartsAt: weekStart.getTime(),
     rows: rows.map((row, index) => ({
-      ...row,
       rank: index + 1,
+      username: row.username as string,
+      score: row.score,
       accuracy: row.answered > 0 ? row.correct / row.answered : 0,
-      isCurrentUser: row.userId === userId,
     })),
   };
 }
@@ -363,6 +434,11 @@ api.post('/auth/login', async (c) => {
   });
 });
 
+api.get('/leaderboards/weekly-top', async (c) => {
+  const data = await fetchWeeklyTopPublic(3);
+  return c.json(data);
+});
+
 api.use('*', async (c, next) => {
   const h = c.req.header('Authorization');
   if (!h?.startsWith('Bearer ')) {
@@ -381,8 +457,10 @@ api.use('*', async (c, next) => {
 api.use('*', async (c, next) => {
   const path = c.req.path;
   const method = c.req.method;
-  if (method === 'GET' && path === '/me') return next();
-  if (method === 'PUT' && path === '/me/username') return next();
+  // Nested `api` app is mounted at `/api`; `c.req.path` is the full path (e.g. `/api/me`).
+  if (method === 'GET' && path === '/api/me') return next();
+  if (method === 'PUT' && path === '/api/me/username') return next();
+  if (method === 'PUT' && path === '/api/me/password') return next();
 
   const userId = c.get('userId');
   const urows = await db
@@ -483,8 +561,50 @@ api.put('/me/username', async (c) => {
     .limit(1);
   const u = row[0]!;
   return c.json({
-    user: { id: u.id, email: u.email, username: u.username ?? null },
+    user: { id: u.id, username: u.username ?? null },
   });
+});
+
+api.put('/me/password', async (c) => {
+  const userId = c.get('userId');
+  const body = await c.req.json<{
+    currentPassword?: string;
+    newPassword?: string;
+  }>();
+  const currentPassword = body.currentPassword;
+  const newPassword = body.newPassword;
+  if (
+    typeof currentPassword !== 'string' ||
+    typeof newPassword !== 'string' ||
+    !currentPassword ||
+    !newPassword
+  ) {
+    return c.json(
+      { error: 'Current password and new password are required' },
+      400,
+    );
+  }
+  if (newPassword.length < 8) {
+    return c.json({ error: 'Password must be at least 8 characters' }, 400);
+  }
+
+  const userRows = await db
+    .select()
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+  const row = userRows[0];
+  if (!row) return c.json({ error: 'Not found' }, 404);
+  if (!verifyPassword(currentPassword, row.passwordHash)) {
+    return c.json({ error: 'Current password is incorrect' }, 401);
+  }
+
+  await db
+    .update(schema.users)
+    .set({ passwordHash: hashPassword(newPassword) })
+    .where(eq(schema.users.id, userId));
+
+  return c.json({ ok: true });
 });
 
 api.put('/me/client-state', async (c) => {

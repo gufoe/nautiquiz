@@ -1,4 +1,8 @@
 import { describe, expect, test } from 'bun:test';
+import * as schema from '../../src/db/schema';
+import { db } from '../../src/db';
+import { signUserToken } from '../../src/lib/jwt';
+import { hashPassword } from '../../src/lib/password';
 import { apiFetch } from '../helpers/api';
 import { uniqueUsername } from '../helpers/username';
 
@@ -57,5 +61,49 @@ describe('GET /api/me', () => {
     expect(body.user).toEqual({ id: expect.any(String), email, username });
     expect(body.clientState).toEqual({});
     expect(typeof body.clientStateUpdatedAt).toBe('number');
+  });
+
+  test('200 GET /api/me and PUT /api/me/username when username is null (onboarding)', async () => {
+    const id = crypto.randomUUID();
+    const email = `onboard-${crypto.randomUUID()}@example.com`;
+    const now = new Date();
+    await db.insert(schema.users).values({
+      id,
+      email,
+      username: null,
+      passwordHash: hashPassword('password123'),
+      createdAt: now,
+    });
+    await db.insert(schema.userClientState).values({
+      userId: id,
+      dataJson: '{}',
+      updatedAt: now,
+    });
+    const token = await signUserToken(id);
+
+    const me1 = await apiFetch('/api/me', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(me1.status).toBe(200);
+    const me1Body = await json(me1);
+    expect((me1Body.user as { username: unknown }).username).toBeNull();
+
+    const desired = uniqueUsername();
+    const put = await apiFetch('/api/me/username', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ username: desired }),
+    });
+    expect(put.status).toBe(200);
+
+    const me2 = await apiFetch('/api/me', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(me2.status).toBe(200);
+    const me2Body = await json(me2);
+    expect(me2Body.user).toEqual({ id, email, username: desired });
   });
 });

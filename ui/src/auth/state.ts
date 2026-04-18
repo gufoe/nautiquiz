@@ -175,14 +175,36 @@ export async function login(email: string, password: string) {
 
 export async function setUsername(username: string) {
   const t = token.value;
+  const prev = user.value;
+  if (!t || !prev) throw new Error('Not logged in');
+  const data = await apiFetch<{ user: { id: string; username: string | null } }>(
+    '/me/username',
+    {
+      method: 'PUT',
+      body: JSON.stringify({ username }),
+      token: t,
+    },
+  );
+  const next: AuthUser = {
+    ...prev,
+    id: data.user.id,
+    username: data.user.username,
+  };
+  user.value = next;
+  safeSetUser(next);
+}
+
+export async function updatePassword(
+  currentPassword: string,
+  newPassword: string,
+) {
+  const t = token.value;
   if (!t) throw new Error('Not logged in');
-  const data = await apiFetch<{ user: AuthUser }>('/me/username', {
+  await apiFetch<{ ok: true }>('/me/password', {
     method: 'PUT',
-    body: JSON.stringify({ username }),
+    body: JSON.stringify({ currentPassword, newPassword }),
     token: t,
   });
-  user.value = data.user;
-  safeSetUser(data.user);
 }
 
 export function logout() {

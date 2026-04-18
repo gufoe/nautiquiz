@@ -4,7 +4,12 @@
       <div>
         <div class="text-h6">Classifica</div>
         <div class="text-caption text-grey-7">
-          Settimana: reset ogni lunedi. Punteggio = volume + correttezza.
+          <template v-if="tab === 'weekly'">
+            Settimana: reset ogni lunedi. Punteggio = volume + correttezza.
+          </template>
+          <template v-else>
+            Ordinamento per numero totale di risposte date (tutte le sessioni).
+          </template>
         </div>
       </div>
       <q-btn
@@ -35,7 +40,9 @@
             <q-card-section class="q-py-sm">
               <div class="text-caption text-grey-7">Posizione attuale</div>
               <div class="text-subtitle1">#{{ currentRank ?? '...' }}</div>
-              <div class="text-caption text-grey-7">{{ currentScore ?? 0 }} punti</div>
+              <div class="text-caption text-grey-7">
+                {{ positionSummary }}
+              </div>
             </q-card-section>
           </q-card>
         </div>
@@ -47,7 +54,7 @@
         <q-card-section class="q-py-sm">
           <div class="text-caption text-grey-7">Posizione attuale</div>
           <div class="text-subtitle1">#{{ currentRank ?? '...' }}</div>
-          <div class="text-caption text-grey-7">{{ currentScore ?? 0 }} punti</div>
+          <div class="text-caption text-grey-7">{{ positionSummary }}</div>
         </q-card-section>
       </q-card>
     </q-card-section>
@@ -81,7 +88,7 @@
           <tbody>
             <tr
               v-for="row in leaderboards.weekly.rows"
-              :key="row.userId"
+              :key="`w-${row.rank}-${row.username}-${row.score}`"
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
@@ -98,14 +105,14 @@
             <tr>
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
-              <th class="text-right">Score</th>
+              <th class="text-right">Risposte</th>
               <th class="text-right">Prec.</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="row in leaderboards.global.rows"
-              :key="row.userId"
+              :key="`g-${row.rank}-${row.username}-${row.score}`"
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
@@ -151,17 +158,27 @@ const emit = defineEmits<{
 const tab = ref<'weekly' | 'global'>('weekly');
 
 const currentRank = computed(() => {
-  const row =
-    props.leaderboards.weekly.rows.find((entry) => entry.isCurrentUser) ??
-    props.leaderboards.global.rows.find((entry) => entry.isCurrentUser);
-  return row?.rank ?? null;
+  const rows =
+    tab.value === 'weekly'
+      ? props.leaderboards.weekly.rows
+      : props.leaderboards.global.rows;
+  return rows.find((entry) => entry.isCurrentUser)?.rank ?? null;
 });
 
 const currentScore = computed(() => {
-  const row =
-    props.leaderboards.weekly.rows.find((entry) => entry.isCurrentUser) ??
-    props.leaderboards.global.rows.find((entry) => entry.isCurrentUser);
-  return row?.score ?? null;
+  const rows =
+    tab.value === 'weekly'
+      ? props.leaderboards.weekly.rows
+      : props.leaderboards.global.rows;
+  return rows.find((entry) => entry.isCurrentUser)?.score ?? null;
+});
+
+const positionSummary = computed(() => {
+  const v = currentScore.value ?? 0;
+  if (tab.value === 'global') {
+    return `${v} risposte totali`;
+  }
+  return `${v} punti`;
 });
 </script>
 

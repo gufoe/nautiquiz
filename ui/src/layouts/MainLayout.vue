@@ -25,7 +25,10 @@
           :label="userDisplayName"
         >
           <q-menu anchor="bottom right" self="top right">
-            <q-list dense style="min-width: 160px">
+            <q-list dense style="min-width: 180px">
+              <q-item v-close-popup clickable :to="{ name: 'account' }">
+                <q-item-section>Profilo</q-item-section>
+              </q-item>
               <q-item clickable v-close-popup @click="logout">
                 <q-item-section>Esci</q-item-section>
               </q-item>

@@ -10,6 +10,7 @@ import {
   register as registerApi,
   login as loginApi,
   setUsername as setUsernameApi,
+  updatePassword as updatePasswordApi,
   logout,
   confirmImportLocalData,
   dismissImportPrompt,
@@ -30,6 +31,11 @@ export function useAuth() {
     await setUsernameApi(username);
     scheduleClientStateSync(0);
     $q.notify({ type: 'positive', message: 'Nome utente salvato' });
+  }
+
+  async function updatePassword(currentPassword: string, newPassword: string) {
+    await updatePasswordApi(currentPassword, newPassword);
+    $q.notify({ type: 'positive', message: 'Password aggiornata' });
   }
 
   async function login(email: string, password: string) {
@@ -66,6 +72,7 @@ export function useAuth() {
     restoreSession,
     register,
     setUsername,
+    updatePassword,
     login,
     logout,
     confirmImportLocalData: confirmImport,
