@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { and, count, desc, eq, gt, gte, isNotNull, sql } from 'drizzle-orm';
+import { and, count, desc, eq, gt, gte, inArray, isNotNull, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -86,6 +86,13 @@ function mergeClientState(
 }
 
 type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
+
+const LEGACY_HISTORY_KEYS = [
+  'history',
+  'vela-history',
+  '5d-history',
+  '42d-history',
+] as const;
 
 type LeaderboardQueryRow = {
   userId: string;
@@ -228,6 +235,29 @@ function toPublicLeaderboardRows(
   }));
 }
 
+function countHistoryEntries(value: unknown): number {
+  if (Array.isArray(value)) return value.length;
+  if (isPlainObject(value)) return Object.keys(value).length;
+  return 0;
+}
+
+/**
+ * Counts historical completed quiz entries from synced client state.
+ * This preserves pre-quiz_sessions progress that was tracked only in local storage history maps.
+ */
+function countLegacyCompletedFromClientState(dataJson: string | null | undefined): number {
+  if (!dataJson) return 0;
+  try {
+    const state = JSON.parse(dataJson) as Record<string, unknown>;
+    return LEGACY_HISTORY_KEYS.reduce(
+      (sum, key) => sum + countHistoryEntries(state[key]),
+      0,
+    );
+  } catch {
+    return 0;
+  }
+}
+
 async function fetchLeaderboard(
   userId: string,
   scope: 'weekly' | 'global',
@@ -260,15 +290,41 @@ async function fetchLeaderboard(
           )
         : eq(schema.quizSessions.userId, schema.users.id),
     )
-    .groupBy(schema.users.id, schema.users.username)
-    .having(gt(quizCount, 0))
-    .orderBy(desc(quizCount), schema.users.username)
-    .limit(100);
+    .groupBy(schema.users.id, schema.users.username);
+
+  let normalizedRows = rows;
+  if (scope === 'global' && rows.length > 0) {
+    const states = await db
+      .select({
+        userId: schema.userClientState.userId,
+        dataJson: schema.userClientState.dataJson,
+      })
+      .from(schema.userClientState)
+      .where(inArray(schema.userClientState.userId, rows.map((row) => row.userId)));
+    const legacyByUserId = new Map(
+      states.map((row) => [
+        row.userId,
+        countLegacyCompletedFromClientState(row.dataJson),
+      ]),
+    );
+    normalizedRows = rows.map((row) => ({
+      ...row,
+      quizCount: row.quizCount + (legacyByUserId.get(row.userId) ?? 0),
+    }));
+  }
+
+  const rankedRows = normalizedRows
+    .filter((row) => row.quizCount > 0)
+    .sort((a, b) => {
+      if (a.quizCount !== b.quizCount) return b.quizCount - a.quizCount;
+      return (a.username ?? '').localeCompare(b.username ?? '');
+    })
+    .slice(0, 100);
 
   return {
     scope,
     weekStartsAt: weekStart?.getTime() ?? null,
-    rows: toPublicLeaderboardRows(rows, userId),
+    rows: toPublicLeaderboardRows(rankedRows, userId),
   };
 }
 
