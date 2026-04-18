@@ -1,4 +1,7 @@
 :80 {
+	handle /health {
+		reverse_proxy api:3333
+	}
 	handle /api* {
 		reverse_proxy api:3333
 	}
