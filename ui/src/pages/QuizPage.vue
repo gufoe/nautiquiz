@@ -11,25 +11,37 @@
       </div>
     </q-linear-progress>
 
-    <div class="row items-center">
-      <q-btn
-        flat
-        dense
-        no-caps
-        color="grey-8"
-        icon="arrow_back"
-        label="Indietro"
-        :disable="current_quiz_index === 0"
-        @click="goToPreviousQuestion"
-      >
-        <q-tooltip v-if="current_quiz_index > 0"
-          >Rileggi le domande già risposte (la risposta non si può
-          cambiare)</q-tooltip
+    <div class="column" style="gap: 6px">
+      <div class="row items-center no-wrap" style="gap: 8px">
+        <q-btn
+          flat
+          dense
+          no-caps
+          color="grey-8"
+          icon="arrow_back"
+          label="Indietro"
+          :disable="current_quiz_index === 0"
+          @click="goToPreviousQuestion"
+        />
+        <q-space />
+        <div
+          class="text-body2 text-weight-medium text-grey-9 text-right"
+          style="line-height: 1.3"
         >
-      </q-btn>
+          <div>Domanda {{ question_pos }} di {{ quiz_total }}</div>
+          <div v-if="is_reviewing_previous" class="text-caption text-grey-7">
+            Rilettura — domanda già risposta
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="column col" style="gap: 10px" :key="current_quiz.id">
+    <div
+      class="column col"
+      style="gap: 10px"
+      :key="current_quiz.id"
+      @click="onAnsweredContentClick"
+    >
       <img
         v-if="current_quiz.image"
         :src="`${current_quiz.image}`"
@@ -43,6 +55,7 @@
       />
       <div
         class="q-mt-md q-mb-xs row no-wrap cursor-pointer"
+        data-quiz-no-advance
         style="gap: 5px; position: relative; z-index: 10"
         @click="quiz.favs.toggle(current_quiz.id)"
       >
@@ -62,7 +75,7 @@
             :class="`text-${optionColor(c_i) ?? 'grey'}`"
             v-text="c"
             :key="[current_quiz.id, c_i].join('x')"
-            @click="!is_answered && selectAnswer(c_i)"
+            @click="onMcqClick(c_i, $event)"
           />
         </ol>
       </template>
@@ -74,7 +87,7 @@
         <q-btn
           class="col"
           color="blue"
-          @click="show_answer = true"
+          @click.stop="show_answer = true"
           icon="o_lightbulb"
           flat
         >
@@ -85,7 +98,7 @@
         <q-btn
           class="col"
           :color="optionColor(0)"
-          @click="!is_answered && selectAnswer(0)"
+          @click="onTrueFalseClick(0, $event)"
           icon="close"
           flat
           >{{ current_quiz.solution ? 'Altro' : 'Falso' }}</q-btn
@@ -95,7 +108,7 @@
           icon="done"
           flat
           :color="optionColor(1)"
-          @click="!is_answered && selectAnswer(1)"
+          @click="onTrueFalseClick(1, $event)"
           >{{ current_quiz.solution ?? 'Vero' }}</q-btn
         >
       </div>
@@ -103,10 +116,15 @@
       <div class="text-grey" v-if="is_answered">
         <div class="row items-center">
           <q-icon name="touch_app" size="sm" />
-          &nbsp; Tocca ovunque per continuare
+          &nbsp;
+          <span v-if="is_reviewing_previous">
+            Tocca per la domanda {{ next_question_pos }} di {{ quiz_total }}
+          </span>
+          <span v-else>Tocca ovunque per continuare</span>
         </div>
         <div
           class="row items-center"
+          data-quiz-no-advance
           style="position: relative; z-index: 9"
           @click.stop="quiz.issues.toggle(current_quiz.id)"
         >
@@ -119,11 +137,6 @@
         </div>
         <hr />
         <div v-text="current_quiz.description" style="white-space: pre-line" />
-        <div
-          class="absolute"
-          style="top: 0; bottom: 0; left: 0; right: 0"
-          @click.stop="advanceOrFinish"
-        ></div>
       </div>
     </div>
 
@@ -163,6 +176,23 @@ shuffle(available_quizzes as QuizBase[]);
 available_quizzes.splice(20);
 
 const current_quiz_index = ref(0);
+/** Highest index reached moving forward in this session (used to detect “review” mode). */
+const furthest_quiz_index = ref(0);
+watch(
+  current_quiz_index,
+  (n) => {
+    furthest_quiz_index.value = Math.max(furthest_quiz_index.value, n);
+  },
+  { immediate: true },
+);
+const quiz_total = available_quizzes.length;
+const question_pos = computed(() => current_quiz_index.value + 1);
+const is_reviewing_previous = computed(
+  () => current_quiz_index.value < furthest_quiz_index.value,
+);
+const next_question_pos = computed(() =>
+  Math.min(current_quiz_index.value + 2, quiz_total),
+);
 const current_quiz = computed(() => available_quizzes[current_quiz_index.value]);
 const show_answer = ref(false);
 const session_answers = ref<Record<number, number>>({});
@@ -190,14 +220,13 @@ const correct_count = computed(
   () => available_quizzes.filter((x) => x.answer === session_answers.value[x.id]).length,
 );
 
+/** Bar length = which question slot you are on (1…M), not how many are answered. */
 const percent = computed(() =>
-  available_quizzes.length > 0
-    ? answered_count.value / available_quizzes.length
-    : 0,
+  quiz_total > 0 ? question_pos.value / quiz_total : 0,
 );
 const percent_label = computed(
   () =>
-    `${answered_count.value} / ${available_quizzes.length} (Errori: ${current_errors.value.length})`,
+    `Domanda ${question_pos.value} di ${quiz_total} · Risposte: ${answered_count.value} · Errori: ${current_errors.value.length}`,
 );
 const max_errors = 4;
 const current_errors = computed(() => {
@@ -214,9 +243,36 @@ const session_summary = computed(() => ({
 }));
 
 function selectAnswer(answer: number) {
+  if (current_quiz.value.id in session_answers.value) return;
   session_answers.value[current_quiz.value.id] = answer;
   quiz_history[current_quiz.value.id] = answer;
   quiz.setQuizHistory(quiz_history as never);
+}
+
+/** Stop bubble only when this click records an answer, so the same event does not advance. */
+function onMcqClick(c_i: number, ev: Event) {
+  if (current_quiz.value.id in session_answers.value) return;
+  ev.stopPropagation();
+  selectAnswer(c_i);
+}
+
+function onTrueFalseClick(answer: number, ev: Event) {
+  if (current_quiz.value.id in session_answers.value) return;
+  ev.stopPropagation();
+  selectAnswer(answer);
+}
+
+function goToPreviousQuestion() {
+  if (current_quiz_index.value > 0) {
+    current_quiz_index.value--;
+  }
+}
+
+function onAnsweredContentClick(ev: MouseEvent) {
+  if (!is_answered.value) return;
+  const t = ev.target;
+  if (t instanceof Element && t.closest('[data-quiz-no-advance]')) return;
+  advanceOrFinish();
 }
 
 function optionColor(c_i: number) {
