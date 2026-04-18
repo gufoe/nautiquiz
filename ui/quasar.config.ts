@@ -5,7 +5,7 @@
 
 import { configure } from 'quasar/wrappers';
 
-export default configure((/* ctx */) => {
+export default configure((ctx) => {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -59,20 +59,22 @@ export default configure((/* ctx */) => {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      vitePlugins: [
-        [
-          'vite-plugin-checker',
-          {
-            vueTsc: {
-              tsconfigPath: 'tsconfig.vue-tsc.json',
-            },
-            eslint: {
-              lintCommand: 'eslint "./**/*.{js,ts,mjs,cjs,vue}"',
-            },
-          },
-          { server: false },
-        ],
-      ],
+      vitePlugins: ctx.dev
+        ? [
+            [
+              'vite-plugin-checker',
+              {
+                vueTsc: {
+                  tsconfigPath: 'tsconfig.vue-tsc.json',
+                },
+                eslint: {
+                  lintCommand: 'eslint "./**/*.{js,ts,mjs,cjs,vue}"',
+                },
+              },
+              { server: false },
+            ],
+          ]
+        : [],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
