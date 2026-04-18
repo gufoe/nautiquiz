@@ -1,5 +1,13 @@
 /* eslint-disable */
 
+interface ImportMetaEnv {
+  readonly VITE_API_BASE?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string;

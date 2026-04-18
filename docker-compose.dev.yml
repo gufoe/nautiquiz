@@ -1,0 +1,47 @@
+# Development: hot-reload API and Quasar UI; SQLite persists in volume `nautiquiz_sqlite_dev`.
+#
+# Usage:
+#   docker compose -f docker-compose.dev.yml up
+#
+# API e2e tests (same image/volumes as api; uses temp DB via test preload):
+#   bun run dev:test
+#   # or: docker compose -f docker-compose.dev.yml run --rm api sh -c "bun install && bun run test"
+#
+# UI: http://localhost:9000  (proxies /api to the api service)
+# API: http://localhost:3333 (direct, optional)
+
+services:
+  api:
+    image: oven/bun:1-alpine
+    working_dir: /app
+    command: sh -c "bun install && exec bun run dev"
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./api:/app
+      - api_node_modules:/app/node_modules
+      - nautiquiz_sqlite_dev:/data
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-use-long-random-string-32chars}
+      SQLITE_PATH: /data/nautiquiz.sqlite
+      UI_ORIGIN: http://localhost:9000,http://127.0.0.1:9000
+      PORT: "3333"
+
+  ui:
+    image: oven/bun:1-alpine
+    working_dir: /app
+    command: sh -c "bun install && exec bun run dev -- -H 0.0.0.0 -p 9000"
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./ui:/app
+      - ui_node_modules:/app/node_modules
+    environment:
+      API_PROXY_TARGET: http://api:3333
+    depends_on:
+      - api
+
+volumes:
+  nautiquiz_sqlite_dev:
+  api_node_modules:
+  ui_node_modules:

@@ -1,21 +1,25 @@
 .DS_Store
 .thumbs.db
-node_modules
 
-# Quasar core related directories
-.quasar
-/dist
-/quasar.config.*.temporary.compiled*
+# Dependencies (any directory)
+node_modules/
 
-# Cordova related directories and files
+# Build output (Quasar → ui/dist, API → api/dist, etc.)
+dist/
+
+# Quasar / Vite
+.quasar/
+quasar.config.*.temporary.compiled*
+
+# Cordova / Capacitor (repo root or ui/)
 /src-cordova/node_modules
 /src-cordova/platforms
 /src-cordova/plugins
 /src-cordova/www
-
-# Capacitor related directories and files
 /src-capacitor/www
 /src-capacitor/node_modules
+ui/src-cordova/
+ui/src-capacitor/
 
 # Log files
 npm-debug.log*
@@ -30,5 +34,13 @@ bun-debug.log*
 *.njsproj
 *.sln
 
-# local .env files
+# Secrets and local env
+.env
 .env.local*
+
+# API SQLite (local dev + Docker bind mounts)
+api/data/
+
+# Tooling caches
+coverage/
+.eslintcache

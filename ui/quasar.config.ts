@@ -13,7 +13,7 @@ export default configure((/* ctx */) => {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: [],
+    boot: ['auth'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ['app.scss'],
@@ -79,6 +79,13 @@ export default configure((/* ctx */) => {
     devServer: {
       // https: true
       open: false, // opens browser window automatically
+      proxy: {
+        '/api': {
+          target:
+            process.env.API_PROXY_TARGET ?? 'http://127.0.0.1:3333',
+          changeOrigin: true,
+        },
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
@@ -98,7 +105,7 @@ export default configure((/* ctx */) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Notify'],
     },
 
     // animations: 'all', // --- includes all animations

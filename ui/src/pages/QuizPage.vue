@@ -145,7 +145,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { QuizBase, QuizMode, shuffle } from '../utils.ts';
+import { QuizBase, QuizMode, shuffle } from '../utils';
 
 import { getQuiz } from 'src/utils';
 import { useRoute } from 'vue-router';
