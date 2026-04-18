@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { and, desc, eq, gte, isNotNull, sql } from 'drizzle-orm';
+import { and, eq, gte, isNotNull, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -111,7 +111,10 @@ type LeaderboardQueryRow = {
 type PublicLeaderboardRow = {
   rank: number;
   username: string | null;
-  /** Completed quiz sessions in this scope (weekly window or all time). */
+  /**
+   * Answers counted in this scope: per completed session (`quiz_sessions.answered`) and/or
+   * `question_attempts` rows, whichever is higher (sessions are authoritative when batch sync lags).
+   */
   quizCount: number;
   /** Share of answers correct in this scope, 0–1 (sum correct / sum answered). */
   accuracy: number;
@@ -366,6 +369,101 @@ async function seedQuestionAttemptsFromClientState() {
   }
 }
 
+/**
+ * Merge session totals with per-question attempt rows. The UI often completes sessions without
+ * syncing every attempt to `question_attempts`, so `sum(quiz_sessions.answered)` is the reliable
+ * score for finished quizzes; `question_attempts` still matters for in-progress batch sync.
+ */
+async function fetchLeaderboardMetrics(
+  weekStart: Date | null,
+): Promise<LeaderboardQueryRow[]> {
+  const sessionFilter =
+    weekStart != null
+      ? gte(schema.quizSessions.createdAt, weekStart)
+      : sql`1 = 1`;
+  const attemptFilter =
+    weekStart != null
+      ? gte(schema.questionAttempts.answeredAt, weekStart)
+      : sql`1 = 1`;
+
+  const [sessionRows, attemptRows] = await Promise.all([
+    db
+      .select({
+        userId: schema.users.id,
+        username: schema.users.username,
+        answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
+        correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
+      })
+      .from(schema.users)
+      .leftJoin(
+        schema.quizSessions,
+        and(eq(schema.quizSessions.userId, schema.users.id), sessionFilter),
+      )
+      .groupBy(schema.users.id, schema.users.username),
+    db
+      .select({
+        userId: schema.users.id,
+        username: schema.users.username,
+        attemptCount: sql<number>`coalesce(count(${schema.questionAttempts.id}), 0)`,
+        correctKnown: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} is not null then 1 else 0 end), 0)`,
+        correctCount: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} = 1 then 1 else 0 end), 0)`,
+      })
+      .from(schema.users)
+      .leftJoin(
+        schema.questionAttempts,
+        and(eq(schema.questionAttempts.userId, schema.users.id), attemptFilter),
+      )
+      .groupBy(schema.users.id, schema.users.username),
+  ]);
+
+  const sessionMap = new Map(
+    sessionRows.map((r) => [
+      r.userId,
+      { username: r.username, answered: r.answered, correct: r.correct },
+    ]),
+  );
+  const attemptMap = new Map(
+    attemptRows.map((r) => [
+      r.userId,
+      {
+        username: r.username,
+        attemptCount: r.attemptCount,
+        correctKnown: r.correctKnown,
+        correctCount: r.correctCount,
+      },
+    ]),
+  );
+
+  const merged: LeaderboardQueryRow[] = [];
+  for (const userId of new Set([...sessionMap.keys(), ...attemptMap.keys()])) {
+    const s = sessionMap.get(userId);
+    const a = attemptMap.get(userId);
+    const username = s?.username ?? a?.username ?? null;
+    const sAnswered = s?.answered ?? 0;
+    const sCorrect = s?.correct ?? 0;
+    const aCnt = a?.attemptCount ?? 0;
+    const aKnown = a?.correctKnown ?? 0;
+    const aCorrect = a?.correctCount ?? 0;
+
+    const quizCount = Math.max(sAnswered, aCnt);
+    if (quizCount <= 0) continue;
+
+    let correctKnown: number;
+    let correctCount: number;
+    if (sAnswered >= aCnt) {
+      correctKnown = sAnswered;
+      correctCount = sCorrect;
+    } else {
+      correctKnown = aKnown;
+      correctCount = aCorrect;
+    }
+
+    merged.push({ userId, username, quizCount, correctKnown, correctCount });
+  }
+
+  return merged;
+}
+
 async function fetchLeaderboard(
   userId: string,
   scope: 'weekly' | 'global',
@@ -375,28 +473,11 @@ async function fetchLeaderboard(
   rows: PublicLeaderboardRow[];
 }> {
   const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
-  const rows = await db
-    .select({
-      userId: schema.users.id,
-      username: schema.users.username,
-      quizCount: sql<number>`coalesce(count(${schema.questionAttempts.id}), 0)`,
-      correctKnown: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} is not null then 1 else 0 end), 0)`,
-      correctCount: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} = 1 then 1 else 0 end), 0)`,
-    })
-    .from(schema.users)
-    .leftJoin(
-      schema.questionAttempts,
-      and(
-        eq(schema.questionAttempts.userId, schema.users.id),
-        scope === 'weekly' && weekStart
-          ? gte(schema.questionAttempts.answeredAt, weekStart)
-          : sql`1 = 1`,
-      ),
-    )
-    .groupBy(schema.users.id, schema.users.username);
+  const rows = await fetchLeaderboardMetrics(
+    scope === 'weekly' ? weekStart : null,
+  );
 
   const rankedRows = rows
-    .filter((row) => row.quizCount > 0)
     .sort((a, b) => {
       if (a.quizCount !== b.quizCount) return b.quizCount - a.quizCount;
       return (a.username ?? '').localeCompare(b.username ?? '');
@@ -413,42 +494,26 @@ async function fetchLeaderboard(
 /** Public weekly snapshot: usernames only, no auth. Users without a username are omitted. */
 async function fetchWeeklyTopPublic(limit: number) {
   const weekStart = getWeekStartRome();
-  const rows = await db
-    .select({
-      username: schema.users.username,
-      quizCount: sql<number>`coalesce(count(${schema.questionAttempts.id}), 0)`,
-      correctKnown: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} is not null then 1 else 0 end), 0)`,
-      correctCount: sql<number>`coalesce(sum(case when ${schema.questionAttempts.isCorrect} = 1 then 1 else 0 end), 0)`,
+  const merged = await fetchLeaderboardMetrics(weekStart);
+
+  const rows = merged
+    .filter((row) => row.username != null && row.quizCount > 0)
+    .sort((a, b) => {
+      if (a.quizCount !== b.quizCount) return b.quizCount - a.quizCount;
+      return (a.username ?? '').localeCompare(b.username ?? '');
     })
-    .from(schema.users)
-    .leftJoin(
-      schema.questionAttempts,
-      and(
-        eq(schema.questionAttempts.userId, schema.users.id),
-        gte(schema.questionAttempts.answeredAt, weekStart),
-      ),
-    )
-    .where(isNotNull(schema.users.username))
-    .groupBy(schema.users.id, schema.users.username)
-    .orderBy(
-      desc(sql`coalesce(count(${schema.questionAttempts.id}), 0)`),
-      schema.users.username,
-    )
-    .limit(limit);
+    .slice(0, limit);
 
   return {
     scope: 'weekly' as const,
     weekStartsAt: weekStart.getTime(),
-    rows: rows
-      .filter((row) => row.quizCount > 0)
-      .slice(0, limit)
-      .map((row, index) => ({
-        rank: index + 1,
-        username: row.username as string,
-        quizCount: row.quizCount,
-        accuracy:
-          row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
-      })),
+    rows: rows.map((row, index) => ({
+      rank: index + 1,
+      username: row.username as string,
+      quizCount: row.quizCount,
+      accuracy:
+        row.correctKnown > 0 ? row.correctCount / row.correctKnown : 0,
+    })),
   };
 }
 

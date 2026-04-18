@@ -6,7 +6,7 @@ export type LeaderboardScope = 'weekly' | 'global';
 export type LeaderboardRow = {
   rank: number;
   username: string | null;
-  /** Completed quiz sessions in this leaderboard scope. */
+  /** Answers counted in this leaderboard scope (session totals and/or synced attempts). */
   quizCount: number;
   /** Share of answers correct in this scope, 0–1. */
   accuracy: number;
