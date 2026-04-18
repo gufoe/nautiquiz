@@ -52,9 +52,7 @@
             <q-item-section side class="text-weight-medium text-grey-8">#{{ row.rank }}</q-item-section>
             <q-item-section>
               <q-item-label>{{ row.username }}</q-item-label>
-              <q-item-label caption
-                >{{ row.score }} pt · {{ Math.round(row.accuracy * 100) }}% prec.</q-item-label
-              >
+              <q-item-label caption>{{ row.quizCount }} quiz completati</q-item-label>
             </q-item-section>
           </q-item>
         </template>

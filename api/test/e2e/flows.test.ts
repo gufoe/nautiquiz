@@ -95,7 +95,7 @@ describe('user flows (end-to-end)', () => {
     });
     const { token: tokenB } = await json(regB);
 
-    const sessionA = await apiFetch('/api/quiz-sessions', {
+    const sessionA1 = await apiFetch('/api/quiz-sessions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -103,7 +103,17 @@ describe('user flows (end-to-end)', () => {
       },
       body: JSON.stringify({ mode: 'all', answered: 3, correct: 2 }),
     });
-    expect(sessionA.status).toBe(200);
+    expect(sessionA1.status).toBe(200);
+
+    const sessionA2 = await apiFetch('/api/quiz-sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenA}`,
+      },
+      body: JSON.stringify({ mode: 'all', answered: 1, correct: 1 }),
+    });
+    expect(sessionA2.status).toBe(200);
 
     const sessionB = await apiFetch('/api/quiz-sessions', {
       method: 'POST',
@@ -124,7 +134,7 @@ describe('user flows (end-to-end)', () => {
     expect(body.weekly.weekStartsAt).toEqual(expect.any(Number));
     expect(body.global.weekStartsAt).toBeNull();
     expect(body.weekly.rows[0].username).toBe(usernameA);
-    expect(body.weekly.rows[0].score).toBeGreaterThan(body.weekly.rows[1].score);
+    expect(body.weekly.rows[0].quizCount).toBeGreaterThan(body.weekly.rows[1].quizCount);
     expect(body.global.rows[0].isCurrentUser).toBe(true);
   });
 });

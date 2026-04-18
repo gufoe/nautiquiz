@@ -6,10 +6,8 @@ export type LeaderboardScope = 'weekly' | 'global';
 export type LeaderboardRow = {
   rank: number;
   username: string | null;
-  score: number;
-  answered: number;
-  correct: number;
-  accuracy: number;
+  /** Completed quiz sessions in this leaderboard scope. */
+  quizCount: number;
   isCurrentUser: boolean;
 };
 
@@ -19,8 +17,7 @@ export type WeeklyTopResponse = {
   rows: Array<{
     rank: number;
     username: string;
-    score: number;
-    accuracy: number;
+    quizCount: number;
   }>;
 };
 

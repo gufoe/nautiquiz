@@ -5,10 +5,10 @@
         <div class="text-h6">Classifica</div>
         <div class="text-caption text-grey-7">
           <template v-if="tab === 'weekly'">
-            Settimana: reset ogni lunedi. Punteggio = volume + correttezza.
+            Settimana in corso (reset ogni lunedì). Conta i quiz completati in questa settimana.
           </template>
           <template v-else>
-            Ordinamento per numero totale di risposte date (tutte le sessioni).
+            Tutti i tempi: numero di quiz completati (ogni sessione conta 1).
           </template>
         </div>
       </div>
@@ -81,20 +81,18 @@
             <tr>
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
-              <th class="text-right">Score</th>
-              <th class="text-right">Prec.</th>
+              <th class="text-right">Quiz</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="row in leaderboards.weekly.rows"
-              :key="`w-${row.rank}-${row.username}-${row.score}`"
+              :key="`w-${row.rank}-${row.username}-${row.quizCount}`"
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
-              <td class="text-right">{{ row.score }}</td>
-              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
+              <td class="text-right">{{ row.quizCount }}</td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -105,20 +103,18 @@
             <tr>
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
-              <th class="text-right">Risposte</th>
-              <th class="text-right">Prec.</th>
+              <th class="text-right">Quiz</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="row in leaderboards.global.rows"
-              :key="`g-${row.rank}-${row.username}-${row.score}`"
+              :key="`g-${row.rank}-${row.username}-${row.quizCount}`"
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
-              <td class="text-right">{{ row.score }}</td>
-              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
+              <td class="text-right">{{ row.quizCount }}</td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -165,20 +161,20 @@ const currentRank = computed(() => {
   return rows.find((entry) => entry.isCurrentUser)?.rank ?? null;
 });
 
-const currentScore = computed(() => {
+const currentQuizCount = computed(() => {
   const rows =
     tab.value === 'weekly'
       ? props.leaderboards.weekly.rows
       : props.leaderboards.global.rows;
-  return rows.find((entry) => entry.isCurrentUser)?.score ?? null;
+  return rows.find((entry) => entry.isCurrentUser)?.quizCount ?? null;
 });
 
 const positionSummary = computed(() => {
-  const v = currentScore.value ?? 0;
+  const v = currentQuizCount.value ?? 0;
   if (tab.value === 'global') {
-    return `${v} risposte totali`;
+    return `${v} quiz completati (totale)`;
   }
-  return `${v} punti`;
+  return `${v} quiz questa settimana`;
 });
 </script>
 

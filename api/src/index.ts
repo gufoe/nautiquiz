@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { and, desc, eq, gte, isNotNull, sql } from 'drizzle-orm';
+import { and, count, desc, eq, gt, gte, isNotNull, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -90,19 +90,15 @@ type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
 type LeaderboardQueryRow = {
   userId: string;
   username: string | null;
-  score: number;
-  answered: number;
-  correct: number;
+  quizCount: number;
 };
 
 /** Serialized leaderboard row — never includes email or internal user ids. */
 type PublicLeaderboardRow = {
   rank: number;
   username: string | null;
-  score: number;
-  answered: number;
-  correct: number;
-  accuracy: number;
+  /** Completed quiz sessions in this scope (weekly window or all time). */
+  quizCount: number;
   isCurrentUser: boolean;
 };
 
@@ -221,10 +217,7 @@ function toPublicLeaderboardRows(
   return rows.map((row, index) => ({
     rank: index + 1,
     username: row.username,
-    score: row.score,
-    answered: row.answered,
-    correct: row.correct,
-    accuracy: row.answered > 0 ? row.correct / row.answered : 0,
+    quizCount: row.quizCount,
     isCurrentUser: row.userId === currentUserId,
   }));
 }
@@ -239,21 +232,13 @@ async function fetchLeaderboard(
 }> {
   const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
 
-  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
-  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
-  const sumScore = sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`;
+  const quizCount = count(schema.quizSessions.id);
 
-  /** Global: rank by total questions answered (all time). Weekly: rank by session score sum. */
   const rows = await db
     .select({
       userId: schema.users.id,
       username: schema.users.username,
-      score:
-        scope === 'global'
-          ? sumAnswered
-          : sumScore,
-      answered: sumAnswered,
-      correct: sumCorrect,
+      quizCount,
     })
     .from(schema.users)
     .leftJoin(
@@ -266,16 +251,8 @@ async function fetchLeaderboard(
         : eq(schema.quizSessions.userId, schema.users.id),
     )
     .groupBy(schema.users.id, schema.users.username)
-    .orderBy(
-      ...(scope === 'global'
-        ? [desc(sumAnswered), desc(sumCorrect), schema.users.username]
-        : [
-            desc(sumScore),
-            desc(sumCorrect),
-            desc(sumAnswered),
-            schema.users.username,
-          ]),
-    )
+    .having(gt(quizCount, 0))
+    .orderBy(desc(quizCount), schema.users.username)
     .limit(100);
 
   return {
@@ -288,12 +265,11 @@ async function fetchLeaderboard(
 /** Public weekly snapshot: usernames only, no auth. Users without a username are omitted. */
 async function fetchWeeklyTopPublic(limit: number) {
   const weekStart = getWeekStartRome();
+  const quizCount = count(schema.quizSessions.id);
   const rows = await db
     .select({
       username: schema.users.username,
-      score: sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`,
-      answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
-      correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
+      quizCount,
     })
     .from(schema.users)
     .leftJoin(
@@ -305,12 +281,8 @@ async function fetchWeeklyTopPublic(limit: number) {
     )
     .where(isNotNull(schema.users.username))
     .groupBy(schema.users.id, schema.users.username)
-    .orderBy(
-      desc(sql`coalesce(sum(${schema.quizSessions.score}), 0)`),
-      desc(sql`coalesce(sum(${schema.quizSessions.correct}), 0)`),
-      desc(sql`coalesce(sum(${schema.quizSessions.answered}), 0)`),
-      schema.users.username,
-    )
+    .having(gt(quizCount, 0))
+    .orderBy(desc(quizCount), schema.users.username)
     .limit(limit);
 
   return {
@@ -319,8 +291,7 @@ async function fetchWeeklyTopPublic(limit: number) {
     rows: rows.map((row, index) => ({
       rank: index + 1,
       username: row.username as string,
-      score: row.score,
-      accuracy: row.answered > 0 ? row.correct / row.answered : 0,
+      quizCount: row.quizCount,
     })),
   };
 }
