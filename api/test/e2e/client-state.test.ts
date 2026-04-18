@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { apiFetch } from '../helpers/api';
+import { uniqueUsername } from '../helpers/username';
 
 function json(res: Response) {
   return res.json() as Promise<Record<string, unknown>>;
@@ -10,7 +11,11 @@ async function registerToken(): Promise<string> {
   const res = await apiFetch('/api/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password: 'password123' }),
+    body: JSON.stringify({
+      email,
+      password: 'password123',
+      username: uniqueUsername(),
+    }),
   });
   expect(res.status).toBe(200);
   const body = await json(res);

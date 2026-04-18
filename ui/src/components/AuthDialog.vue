@@ -23,6 +23,17 @@
           class="q-mb-md"
         />
         <q-input
+          v-if="isRegister"
+          v-model="username"
+          label="Nome utente"
+          outlined
+          dense
+          autocomplete="username"
+          class="q-mb-md"
+          hint="3–24 caratteri: lettere minuscole, numeri, _ (visibile in classifica)"
+          @keyup.enter="submit"
+        />
+        <q-input
           v-model="password"
           type="password"
           label="Password"
@@ -63,8 +74,12 @@ const open = computed({
 
 const tab = ref<'login' | 'register'>('login');
 const email = ref('');
+const username = ref('');
 const password = ref('');
 const loading = ref(false);
+
+/** Matches API: lowercase a-z, digits, underscore, length 3–24. */
+const USERNAME_RE = /^[a-z0-9_]{3,24}$/;
 
 const $q = useQuasar();
 const { register, login } = useAuth();
@@ -83,6 +98,7 @@ watch(
 
 function resetFields() {
   email.value = '';
+  username.value = '';
   password.value = '';
 }
 
@@ -93,11 +109,24 @@ function reset() {
 async function submit() {
   const em = email.value.trim().toLowerCase();
   const pw = password.value;
+  const un = username.value.trim().toLowerCase();
   if (!em || !pw) return;
-  if (isRegister.value && pw.length < 8) return;
+  if (isRegister.value) {
+    if (pw.length < 8) {
+      $q.notify({ type: 'warning', message: 'La password deve avere almeno 8 caratteri' });
+      return;
+    }
+    if (!USERNAME_RE.test(un)) {
+      $q.notify({
+        type: 'warning',
+        message: 'Nome utente: 3–24 caratteri (lettere minuscole, numeri, _ )',
+      });
+      return;
+    }
+  }
   loading.value = true;
   try {
-    if (isRegister.value) await register(em, pw);
+    if (isRegister.value) await register(em, pw, un);
     else await login(em, pw);
     open.value = false;
   } catch (e: unknown) {

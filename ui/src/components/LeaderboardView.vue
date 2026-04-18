@@ -85,7 +85,7 @@
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
-              <td>{{ row.email }}</td>
+              <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.score }}</td>
               <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
             </tr>
@@ -109,7 +109,7 @@
               :class="row.isCurrentUser ? 'bg-blue-1' : ''"
             >
               <td>{{ row.rank }}</td>
-              <td>{{ row.email }}</td>
+              <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.score }}</td>
               <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
             </tr>

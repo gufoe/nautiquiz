@@ -5,7 +5,7 @@ export type LeaderboardScope = 'weekly' | 'global';
 export type LeaderboardRow = {
   rank: number;
   userId: string;
-  email: string;
+  username: string | null;
   score: number;
   answered: number;
   correct: number;

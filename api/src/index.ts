@@ -41,6 +41,21 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+/** Normalized form stored in DB (lowercase). */
+const USERNAME_RE = /^[a-z0-9_]{3,24}$/;
+
+function normalizeUsername(raw: string): string {
+  return raw.trim().toLowerCase();
+}
+
+function usernameValidationError(normalized: string): string | null {
+  if (!normalized) return 'Username is required';
+  if (!USERNAME_RE.test(normalized)) {
+    return 'Username must be 3–24 characters: lowercase letters, numbers, underscore only';
+  }
+  return null;
+}
+
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === 'object' && !Array.isArray(value);
 }
@@ -74,7 +89,7 @@ type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
 
 type LeaderboardRow = {
   userId: string;
-  email: string;
+  username: string | null;
   score: number;
   answered: number;
   correct: number;
@@ -203,7 +218,7 @@ async function fetchLeaderboard(
   const rows = await db
     .select({
       userId: schema.users.id,
-      email: schema.users.email,
+      username: schema.users.username,
       score: sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`,
       answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
       correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
@@ -218,12 +233,12 @@ async function fetchLeaderboard(
           )
         : eq(schema.quizSessions.userId, schema.users.id),
     )
-    .groupBy(schema.users.id, schema.users.email)
+    .groupBy(schema.users.id, schema.users.username)
     .orderBy(
       desc(sql`coalesce(sum(${schema.quizSessions.score}), 0)`),
       desc(sql`coalesce(sum(${schema.quizSessions.correct}), 0)`),
       desc(sql`coalesce(sum(${schema.quizSessions.answered}), 0)`),
-      schema.users.email,
+      schema.users.username,
     )
     .limit(100);
 
@@ -242,9 +257,17 @@ async function fetchLeaderboard(
 const api = new Hono<{ Variables: Variables }>();
 
 api.post('/auth/register', async (c) => {
-  const body = await c.req.json<{ email?: string; password?: string }>();
+  const body = await c.req.json<{
+    email?: string;
+    password?: string;
+    username?: string;
+  }>();
   const email = body.email?.trim().toLowerCase();
   const password = body.password;
+  const usernameRaw = body.username;
+  const username =
+    typeof usernameRaw === 'string' ? normalizeUsername(usernameRaw) : '';
+
   if (!email || !password) {
     return c.json({ error: 'Email and password are required' }, 400);
   }
@@ -254,6 +277,10 @@ api.post('/auth/register', async (c) => {
   if (password.length < 8) {
     return c.json({ error: 'Password must be at least 8 characters' }, 400);
   }
+  const uErr = usernameValidationError(username);
+  if (uErr) {
+    return c.json({ error: uErr }, 400);
+  }
 
   const id = crypto.randomUUID();
   const passwordHash = hashPassword(password);
@@ -262,6 +289,7 @@ api.post('/auth/register', async (c) => {
     await db.insert(schema.users).values({
       id,
       email,
+      username,
       passwordHash,
       createdAt: now,
     });
@@ -273,13 +301,16 @@ api.post('/auth/register', async (c) => {
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : String(e);
     if (msg.includes('UNIQUE') || msg.includes('unique')) {
+      if (msg.toLowerCase().includes('username')) {
+        return c.json({ error: 'Username already taken' }, 409);
+      }
       return c.json({ error: 'Email already registered' }, 409);
     }
     throw e;
   }
 
   const token = await signUserToken(id);
-  return c.json({ token, user: { id, email } });
+  return c.json({ token, user: { id, email, username } });
 });
 
 api.post('/auth/login', async (c) => {
@@ -322,7 +353,14 @@ api.post('/auth/login', async (c) => {
   }
 
   const token = await signUserToken(row.id);
-  return c.json({ token, user: { id: row.id, email: row.email } });
+  return c.json({
+    token,
+    user: {
+      id: row.id,
+      email: row.email,
+      username: row.username ?? null,
+    },
+  });
 });
 
 api.use('*', async (c, next) => {
@@ -338,6 +376,27 @@ api.use('*', async (c, next) => {
   } catch {
     return c.json({ error: 'Unauthorized' }, 401);
   }
+});
+
+api.use('*', async (c, next) => {
+  const path = c.req.path;
+  const method = c.req.method;
+  if (method === 'GET' && path === '/me') return next();
+  if (method === 'PUT' && path === '/me/username') return next();
+
+  const userId = c.get('userId');
+  const urows = await db
+    .select({ username: schema.users.username })
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+  if (!urows[0]?.username) {
+    return c.json(
+      { error: 'Username required', code: 'USERNAME_REQUIRED' },
+      403,
+    );
+  }
+  return next();
 });
 
 api.get('/me', async (c) => {
@@ -379,9 +438,52 @@ api.get('/me', async (c) => {
   }
 
   return c.json({
-    user: { id: user.id, email: user.email },
+    user: {
+      id: user.id,
+      email: user.email,
+      username: user.username ?? null,
+    },
     clientState: data,
     clientStateUpdatedAt: state!.updatedAt.getTime(),
+  });
+});
+
+api.put('/me/username', async (c) => {
+  const userId = c.get('userId');
+  const body = await c.req.json<{ username?: string }>();
+  const normalized =
+    typeof body.username === 'string' ? normalizeUsername(body.username) : '';
+  const err = usernameValidationError(normalized);
+  if (err) return c.json({ error: err }, 400);
+
+  const existing = await db
+    .select({ username: schema.users.username })
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+  if (!existing[0]) return c.json({ error: 'Not found' }, 404);
+
+  try {
+    await db
+      .update(schema.users)
+      .set({ username: normalized })
+      .where(eq(schema.users.id, userId));
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : String(e);
+    if (msg.includes('UNIQUE') || msg.includes('unique')) {
+      return c.json({ error: 'Username already taken' }, 409);
+    }
+    throw e;
+  }
+
+  const row = await db
+    .select()
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+  const u = row[0]!;
+  return c.json({
+    user: { id: u.id, email: u.email, username: u.username ?? null },
   });
 });
 

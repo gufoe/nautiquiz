@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { apiFetch } from '../helpers/api';
+import { uniqueUsername } from '../helpers/username';
 
 function json(res: Response) {
   return res.json() as Promise<Record<string, unknown>>;
@@ -9,11 +10,12 @@ describe('user flows (end-to-end)', () => {
   test('register → GET /me → PUT client-state → GET /me reflects saved state', async () => {
     const email = `flow-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
+    const username = uniqueUsername();
 
     const reg = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
     });
     expect(reg.status).toBe(200);
     const { token } = await json(reg);
@@ -39,7 +41,7 @@ describe('user flows (end-to-end)', () => {
     });
     expect(me2.status).toBe(200);
     const body = await json(me2);
-    expect(body.user).toEqual({ id: expect.any(String), email });
+    expect(body.user).toEqual({ id: expect.any(String), email, username });
     expect(body.clientState).toEqual({ quizProgress: { done: 3 } });
     expect(typeof body.clientStateUpdatedAt).toBe('number');
   });
@@ -47,11 +49,12 @@ describe('user flows (end-to-end)', () => {
   test('register → login → GET /me (returning user)', async () => {
     const email = `return-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
+    const username = uniqueUsername();
 
     await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
     });
 
     const login = await apiFetch('/api/auth/login', {
@@ -67,7 +70,7 @@ describe('user flows (end-to-end)', () => {
     });
     expect(me.status).toBe(200);
     const body = await json(me);
-    expect(body.user).toEqual({ id: expect.any(String), email });
+    expect(body.user).toEqual({ id: expect.any(String), email, username });
     expect(body.clientState).toEqual({});
   });
 
@@ -75,18 +78,20 @@ describe('user flows (end-to-end)', () => {
     const emailA = `leader-a-${crypto.randomUUID()}@example.com`;
     const emailB = `leader-b-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
+    const usernameA = uniqueUsername();
+    const usernameB = uniqueUsername();
 
     const regA = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailA, password }),
+      body: JSON.stringify({ email: emailA, password, username: usernameA }),
     });
     const { token: tokenA } = await json(regA);
 
     const regB = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailB, password }),
+      body: JSON.stringify({ email: emailB, password, username: usernameB }),
     });
     const { token: tokenB } = await json(regB);
 
@@ -118,7 +123,7 @@ describe('user flows (end-to-end)', () => {
 
     expect(body.weekly.weekStartsAt).toEqual(expect.any(Number));
     expect(body.global.weekStartsAt).toBeNull();
-    expect(body.weekly.rows[0].email).toBe(emailA);
+    expect(body.weekly.rows[0].username).toBe(usernameA);
     expect(body.weekly.rows[0].score).toBeGreaterThan(body.weekly.rows[1].score);
     expect(body.global.rows[0].isCurrentUser).toBe(true);
   });

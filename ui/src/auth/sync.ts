@@ -68,6 +68,7 @@ export async function syncClientStateNow() {
         logout();
         clearDirty();
       } else {
+        /* Includes 403 (username required) until onboarding completes */
         markDirty();
       }
     }

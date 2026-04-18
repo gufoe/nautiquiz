@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { apiFetch } from '../helpers/api';
+import { uniqueUsername } from '../helpers/username';
 
 function json(res: Response) {
   return res.json() as Promise<Record<string, unknown>>;
@@ -8,15 +9,16 @@ function json(res: Response) {
 describe('POST /api/auth/register', () => {
   test('creates user and returns token', async () => {
     const email = `reg-${crypto.randomUUID()}@example.com`;
+    const username = uniqueUsername();
     const res = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: 'password123' }),
+      body: JSON.stringify({ email, password: 'password123', username }),
     });
     expect(res.status).toBe(200);
     const body = await json(res);
     expect(typeof body.token).toBe('string');
-    expect(body.user).toEqual({ id: expect.any(String), email });
+    expect(body.user).toEqual({ id: expect.any(String), email, username });
   });
 
   test('400 when email or password missing', async () => {
@@ -29,6 +31,19 @@ describe('POST /api/auth/register', () => {
     expect(await json(res)).toEqual({
       error: 'Email and password are required',
     });
+  });
+
+  test('400 when username missing', async () => {
+    const res = await apiFetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: `u-${crypto.randomUUID()}@example.com`,
+        password: 'password123',
+      }),
+    });
+    expect(res.status).toBe(400);
+    expect(await json(res)).toEqual({ error: 'Username is required' });
   });
 
   test('400 when email invalid', async () => {
@@ -58,14 +73,22 @@ describe('POST /api/auth/register', () => {
     const ok = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: 'password123' }),
+      body: JSON.stringify({
+        email,
+        password: 'password123',
+        username: uniqueUsername(),
+      }),
     });
     expect(ok.status).toBe(200);
 
     const res = await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: 'password45678' }),
+      body: JSON.stringify({
+        email,
+        password: 'password45678',
+        username: uniqueUsername(),
+      }),
     });
     expect(res.status).toBe(409);
     expect(await json(res)).toEqual({ error: 'Email already registered' });
@@ -76,10 +99,11 @@ describe('POST /api/auth/login', () => {
   test('returns token for valid credentials', async () => {
     const email = `login-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
+    const username = uniqueUsername();
     await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
     });
 
     const res = await apiFetch('/api/auth/login', {
@@ -90,7 +114,7 @@ describe('POST /api/auth/login', () => {
     expect(res.status).toBe(200);
     const body = await json(res);
     expect(typeof body.token).toBe('string');
-    expect(body.user).toEqual({ id: expect.any(String), email });
+    expect(body.user).toEqual({ id: expect.any(String), email, username });
   });
 
   test('400 when email or password missing', async () => {
@@ -110,7 +134,11 @@ describe('POST /api/auth/login', () => {
     await apiFetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: 'password123' }),
+      body: JSON.stringify({
+        email,
+        password: 'password123',
+        username: uniqueUsername(),
+      }),
     });
 
     const res = await apiFetch('/api/auth/login', {

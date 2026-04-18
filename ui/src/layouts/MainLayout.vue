@@ -22,7 +22,7 @@
           size="sm"
           class="ellipsis"
           style="max-width: 140px"
-          :label="userEmail"
+          :label="userDisplayName"
         >
           <q-menu anchor="bottom right" self="top right">
             <q-list dense style="min-width: 160px">
@@ -50,6 +50,7 @@
       <router-view />
     </q-page-container>
     <AuthDialog v-model="showAuthDialog" />
+    <UsernameRequiredDialog v-if="sessionReady && needsUsername" />
     <ImportLocalDialog />
   </q-layout>
 </template>
@@ -59,13 +60,18 @@ import { computed } from 'vue';
 import { useTheme } from 'src/composables/useTheme';
 import { useAuth } from 'src/composables/useAuth';
 import AuthDialog from 'src/components/AuthDialog.vue';
+import UsernameRequiredDialog from 'src/components/UsernameRequiredDialog.vue';
 import ImportLocalDialog from 'src/components/ImportLocalDialog.vue';
 import { showAuthDialog } from 'src/auth/state';
 
 const { isDark, toggle, icon, btnClass } = useTheme();
-const { isLoggedIn, user, logout } = useAuth();
+const { isLoggedIn, user, logout, sessionReady, needsUsername } = useAuth();
 
-const userEmail = computed(() => user.value?.email ?? '');
+const userDisplayName = computed(() => {
+  const u = user.value;
+  if (!u) return '';
+  return u.username ?? u.email;
+});
 
 const headerClass = computed(() =>
   isDark.value

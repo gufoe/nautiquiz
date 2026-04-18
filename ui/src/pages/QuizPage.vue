@@ -155,6 +155,7 @@ import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import LeaderboardDialog from 'src/components/LeaderboardDialog.vue';
 import { submitQuizSession, type LeaderboardsResponse } from 'src/api/leaderboards';
+import { ApiError } from 'src/api/client';
 import { token } from 'src/auth/state';
 import { getQuiz, QuizBase, QuizMode, shuffle } from 'src/utils';
 
@@ -302,10 +303,15 @@ async function finishSession() {
     const res = await submitQuizSession(token.value, payload);
     leaderboards.value = res.leaderboards;
   } catch (error) {
-    leaderboard_notice.value =
-      error instanceof Error
-        ? error.message
-        : 'Classifica non disponibile al momento.';
+    if (error instanceof ApiError && error.status === 403) {
+      leaderboard_notice.value =
+        'Imposta un nome utente dal menu account per salvare il risultato in classifica.';
+    } else {
+      leaderboard_notice.value =
+        error instanceof Error
+          ? error.message
+          : 'Classifica non disponibile al momento.';
+    }
   } finally {
     show_leaderboard.value = true;
   }

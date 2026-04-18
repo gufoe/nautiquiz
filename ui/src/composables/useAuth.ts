@@ -9,19 +9,27 @@ import {
   restoreSession,
   register as registerApi,
   login as loginApi,
+  setUsername as setUsernameApi,
   logout,
   confirmImportLocalData,
   dismissImportPrompt,
 } from 'src/auth/state';
+import { scheduleClientStateSync } from 'src/auth/sync';
 
 export type { AuthUser } from 'src/auth/state';
 
 export function useAuth() {
   const $q = useQuasar();
 
-  async function register(email: string, password: string) {
-    await registerApi(email, password);
+  async function register(email: string, password: string, username: string) {
+    await registerApi(email, password, username);
     $q.notify({ type: 'positive', message: 'Account creato' });
+  }
+
+  async function setUsername(username: string) {
+    await setUsernameApi(username);
+    scheduleClientStateSync(0);
+    $q.notify({ type: 'positive', message: 'Nome utente salvato' });
   }
 
   async function login(email: string, password: string) {
@@ -42,17 +50,22 @@ export function useAuth() {
   }
 
   const isLoggedIn = computed(() => !!token.value && !!user.value);
+  const needsUsername = computed(
+    () => !!token.value && !!user.value && user.value.username == null,
+  );
 
   return {
     token,
     user,
     sessionReady,
     isLoggedIn,
+    needsUsername,
     showImportDialog,
     showAuthDialog,
     openAuthDialog,
     restoreSession,
     register,
+    setUsername,
     login,
     logout,
     confirmImportLocalData: confirmImport,

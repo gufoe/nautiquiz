@@ -17,6 +17,12 @@
       </q-banner>
     </template>
 
+    <template v-else-if="needsUsername">
+      <q-banner rounded class="bg-amber-2 text-amber-10" style="max-width: 520px; width: 100%">
+        Completa la scelta del nome utente nel dialogo aperto in primo piano per usare le classifiche.
+      </q-banner>
+    </template>
+
     <template v-else>
       <div v-if="loading" class="flex flex-center q-pa-xl">
         <q-spinner color="primary" size="40px" />
@@ -48,7 +54,7 @@ const emptyBoards = (): LeaderboardsResponse => ({
   global: { scope: 'global', weekStartsAt: null, rows: [] },
 });
 
-const { token, sessionReady, isLoggedIn, openAuthDialog } = useAuth();
+const { token, sessionReady, isLoggedIn, needsUsername, openAuthDialog } = useAuth();
 
 const loading = ref(false);
 const error = ref<string | null>(null);
@@ -56,7 +62,7 @@ const leaderboards = ref<LeaderboardsResponse>(emptyBoards());
 
 async function load() {
   const t = token.value;
-  if (!t) return;
+  if (!t || needsUsername.value) return;
   loading.value = true;
   error.value = null;
   try {
@@ -76,7 +82,7 @@ onMounted(() => {
 });
 
 watch(
-  [sessionReady, isLoggedIn, token],
+  [sessionReady, isLoggedIn, needsUsername, token],
   ([ready, logged]) => {
     if (ready && logged) void load();
   },

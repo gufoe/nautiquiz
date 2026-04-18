@@ -31,7 +31,14 @@ export function safeSetToken(t: string | null) {
 function safeGetUser(): AuthUser | null {
   try {
     const raw = localStorage.getItem(USER_KEY);
-    return raw ? (JSON.parse(raw) as AuthUser) : null;
+    if (!raw) return null;
+    const o = JSON.parse(raw) as Partial<AuthUser>;
+    if (!o.id || typeof o.email !== 'string') return null;
+    return {
+      id: o.id,
+      email: o.email,
+      username: typeof o.username === 'string' ? o.username : null,
+    };
   } catch {
     return null;
   }
@@ -46,7 +53,7 @@ function safeSetUser(next: AuthUser | null) {
   }
 }
 
-export type AuthUser = { id: string; email: string };
+export type AuthUser = { id: string; email: string; username: string | null };
 
 type MeResponse = {
   user: AuthUser;
@@ -130,12 +137,16 @@ export async function restoreSession() {
   }
 }
 
-export async function register(email: string, password: string) {
+export async function register(
+  email: string,
+  password: string,
+  username: string,
+) {
   const data = await apiFetch<{ token: string; user: AuthUser }>(
     '/auth/register',
     {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
     },
   );
   safeSetToken(data.token);
@@ -160,6 +171,18 @@ export async function login(email: string, password: string) {
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
   await reconcileClientState(me, data.token, { preferLocalMerge: true });
+}
+
+export async function setUsername(username: string) {
+  const t = token.value;
+  if (!t) throw new Error('Not logged in');
+  const data = await apiFetch<{ user: AuthUser }>('/me/username', {
+    method: 'PUT',
+    body: JSON.stringify({ username }),
+    token: t,
+  });
+  user.value = data.user;
+  safeSetUser(data.user);
 }
 
 export function logout() {

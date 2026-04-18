@@ -1,21 +1,27 @@
 import { describe, expect, test } from 'bun:test';
 import { apiFetch } from '../helpers/api';
+import { uniqueUsername } from '../helpers/username';
 
 function json(res: Response) {
   return res.json() as Promise<Record<string, unknown>>;
 }
 
-async function registerAndToken(): Promise<{ token: string; email: string }> {
+async function registerAndToken(): Promise<{
+  token: string;
+  email: string;
+  username: string;
+}> {
   const email = `me-${crypto.randomUUID()}@example.com`;
   const password = 'password123';
+  const username = uniqueUsername();
   const res = await apiFetch('/api/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, username }),
   });
   expect(res.status).toBe(200);
   const body = await json(res);
-  return { token: body.token as string, email };
+  return { token: body.token as string, email, username };
 }
 
 describe('GET /api/me', () => {
@@ -42,13 +48,13 @@ describe('GET /api/me', () => {
   });
 
   test('200 returns user and empty client state', async () => {
-    const { token, email } = await registerAndToken();
+    const { token, email, username } = await registerAndToken();
     const res = await apiFetch('/api/me', {
       headers: { Authorization: `Bearer ${token}` },
     });
     expect(res.status).toBe(200);
     const body = await json(res);
-    expect(body.user).toEqual({ id: expect.any(String), email });
+    expect(body.user).toEqual({ id: expect.any(String), email, username });
     expect(body.clientState).toEqual({});
     expect(typeof body.clientStateUpdatedAt).toBe('number');
   });
