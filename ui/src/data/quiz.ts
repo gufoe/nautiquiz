@@ -452,14 +452,14 @@ export const QUIZZES: QuizInterface[] = [
   {
     id: 40,
     question: 'La sagola è:',
-    answer: 2,
+    answer: 0,
     choiches: [
-      'la corda più lunga.',
+      'una fune sottile per usi vari (cime di calaggio, ormeggi ausiliari, linee di ribaltamento in zattera, ecc.).',
       'una sartia volante.',
-      'una sartia volante.',
+      'la drizza di una vela.',
     ],
     description:
-      "La sagola è una fune sottile e resistente utilizzata in vari contesti nautici, ad esempio per legare boe, appendere oggetti o come linee di ribaltamento nelle zattere di salvataggio. Non è una sartia volante, la quale è un componente dell'attrezzatura di un'imbarcazione a vela utilizzato per sostenere l'albero. Pertanto, la risposta corretta nel contesto della domanda è quella che definisce la sagola come una corda più lunga, sebbene questa definizione non sia precisa, risulta essere quella più vicina al vero scopo della sagola.",
+      "La sagola è una fune sottile e resistente usata per legature leggere, cime di calaggio, linee ausiliarie e, in zattera, la linea di ribaltamento. Non va confusa con la sartia volante (parte dell'attrezzatura di un'imbarcazione a vela collegata all'albero) né con la drizza, che serve a issare le vele.",
   },
   {
     id: 41,
@@ -1289,7 +1289,7 @@ export const QUIZZES: QuizInterface[] = [
     answer: 1,
     choiches: ['compensato.', 'ordinario.', 'comune.'],
     description:
-      "Il timone avente tutta la pala a poppavia dell’anima è denominato \"compensato\". Tecnicamente, ciò significa che la sua pala è separata dall'asse di rotazione, situato più indietro rispetto alla cuspide stessa della pala. Questo tipo di timone tende a ridurre lo sforzo richiesto per la manovra, poiché parte del flusso d'acqua genera una forza sulla pala che contribuisce a ruotare il timone nella direzione voluta. In pratica, il flusso d'acqua crea un effetto di levitazione sulla pala, diminuendo la resistenza meccanica avvertita al timone. Questo è particolarmente utile su imbarcazioni più grandi e veloci dove il bilanciamento delle forze è cruciale per mantenere un controllo efficiente e preciso senza dover ricorrere a eccessiva forza fisica o a sistemi di assistenza come i servocomandi.",
+      "Il timone avente tutta la pala a poppavia dell'anima (asse di rotazione) è un timone non compensato, detto anche ordinario: tutta la superficie direzionale è a poppa dell'asse. Il timone compensato ha invece parte della pala a prua dell'asse per bilanciare le pressioni idrodinamiche e ridurre lo sforzo al timone.",
   },
   {
     id: 112,
@@ -1899,10 +1899,10 @@ export const QUIZZES: QuizInterface[] = [
     choiches: [
       'S = 10 Miglia V = 15 Nodi',
       'S = 4 Miglia     C = 10 litri/h 7 Nodi     Q = 15 litri.',
-      'S = 10 Miglia   C = 10 litri/h Nodi   Q = 13,0 litri.',
+      'S = 10 Miglia   V = 10 Nodi   C = 10 litri/h   Q = 13,0 litri.',
     ],
     description:
-      "Per calcolare la quantità di carburante necessaria includendo un incremento del 30% di sicurezza, dobbiamo considerare il consumo orario (espressi in litri/ora), la distanza da percorrere (espressa in miglia nautiche) e la velocità dell'imbarcazione (espressa in nodi). \n\nInnanzitutto, calcoliamo il tempo di navigazione con la formula:\n\\[ T = \\frac{S}{V} \\]\ndove S è la distanza in miglia nautiche e V è la velocità in nodi. Dopo aver determinato il tempo di navigazione, possiamo calcolare il consumo di carburante con la formula:\n\\[ C_{\\text{totale}} = T \\times C \\]\ndove C è il consumo orario in litri/ora.\n\nA questo punto, per tenere conto del margine di sicurezza del 30%, il consumo totale deve essere incrementato del 30%, quindi:\n\\[ Q = C_{\\text{totale}} \\times 1.30 \\]\n\nAnalizziamo i dati delle scelte:\n\n1. **S = 10 Miglia, V = 15 Nodi**\n    - Il calcolo del tempo sarebbe \\( \\frac{10}{15} = 0.6667 \\) ore.\n    - Non viene fornito il consumo in litri/ora, quindi non è possibile calcolare \\( C_{\\text{totale}} \\) e né \\( Q \\).\n\n2. **S = 4 Miglia, C = 10 litri/h, V = 7 Nodi**\n    - Prima calcoliamo il tempo: \\( \\frac{4}{7} = 0.5714 \\) ore.\n    - Calcoliamo il consumo totale: \\( 0.5714 \\times 10 = 5.714 \\) litri.\n    - Incrementando del 30%: \\( 5.714 \\times 1.30 = 7.428 \\) litri.\n    - La quantità di carburante prevista è 15 litri, quindi viene fornita ampiamente una riserva maggiore del 30%.\n\n3. **S = 10 Miglia, C = 10 litri/h, V = non specificata**\n    - Non conoscendo la velocità (V), non è possibile calcolare il tempo di navigazione (T).\n    - Senza il tempo, non possiamo calcolare né \\( C_{\\text{totale}} \\) né \\( Q \\) direttamente.\n\nDalla seconda scelta, vediamo che il calcolo del carburante effettivo incluso un incremento significativo (oltre il 30%) è logicamente coerente con le informazioni date, confermando che l'incremento del 30% è più che soddisfatto con i 15 litri indicati.",
+      "Si calcola il tempo di navigazione \\(T = S/V\\) in ore, poi il consumo \\(C_{\\text{totale}} = T \\times C\\) (litri), infine la quantità con margine del 30%: \\(Q = C_{\\text{totale}} \\times 1{,}30\\).\n\n- **Prima scelta:** manca il consumo orario \\(C\\): non si può completare il calcolo.\n- **Seconda scelta:** \\(T = 4/7\\) h, consumo \\(5{,}71\\) litri circa, con il 30% diventa circa \\(7{,}4\\) litri: **non** coincide con i 15 litri indicati.\n- **Terza scelta:** \\(T = 10/10 = 1\\) h, consumo 10 litri, \\(Q = 13\\) litri: **coerente** con l'incremento del 30%.",
   },
   {
     id: 162,
@@ -2355,14 +2355,14 @@ export const QUIZZES: QuizInterface[] = [
     id: 199,
     question:
       'Quali possono essere le cause per le quali un motore diesel produce fumi di scarico di colore blu o bianco?',
-    answer: 1,
+    answer: 0,
     choiches: [
       "aria nel sistema carburante, comando di stop difettoso, avaria della pompa dell'olio.",
       "intasamento del filtro dell'olio, malfunzionamento della turbina di sovralimentazione.",
       "intasamento del filtro dell'olio, carburatore intasato, malfunzionamento della turbina di sovralimentazione.",
     ],
     description:
-      "I fumi di scarico di colore blu o bianco in un motore diesel possono essere causati da aria nel sistema carburante, da un comando di stop difettoso o da un'avaria della pompa dell'olio. Quando c'è aria nel sistema di alimentazione, il motore non riceve il carburante corretto, causando una combustione incompleta che può portare alla produzione di fumi bianchi. Il comando di stop difettoso potrebbe non arrestare correttamente l'alimentazione del carburante, causando problemi di combustione e la conseguente emissione di fumi bianchi o blu. L'avaria della pompa dell'olio può portare a una lubrificazione insufficiente, influenzando negativamente la combustione e causando fumi blu, che sono il risultato della combustione dell'olio che entra nei cilindri. Le altre opzioni elencano carburatore, che non è presente nei motori diesel, o problematiche non correlate specificamente ai sintomi descritti.",
+      "I fumi bianchi nel diesel si associano spesso a combustione incompleta, presenza di vapore/acqua o aria nel circuito di alimentazione; i fumi blu indicano in genere olio che brucia in camera (tenute, turbina, lubrificazione). Tra le combinazioni proposte, aria nel sistema carburante, anomalie al comando di stop e avaria della pompa dell'olio coprono cause tipiche di fumi chiari o bluastri; la terza opzione è fuori tema (carburatore assente nei diesel).",
   },
   {
     id: 200,
@@ -3309,7 +3309,7 @@ export const QUIZZES: QuizInterface[] = [
       'comunque e sempre, a prescindere dal tipo di navigazione effettuata.',
     ],
     description:
-      "I fanali regolamentari di navigazione sono obbligatoriamente prescritti comunque e sempre, a prescindere dal tipo di navigazione effettuata, perché sono dispositivi fondamentali per garantire la sicurezza in mare, sia per la propria imbarcazione che per le altre. Essi servono a segnalare la presenza e il movimento di una barca, prevenendo collisioni, specialmente in condizioni di visibilità ridotta (come durante la notte, o in caso di nebbia e maltempo). Le norme internazionali e nazionali impongono l'uso di fanali regolamentari per rispettare gli standard di sicurezza marittima, garantendo che ogni imbarcazione sia chiaramente visibile agli altri naviganti indipendentemente dalla distanza dalla costa o dalle condizioni ambientali.",
+      'Secondo la tabella delle dotazioni minime (Allegato V al DM 146/2008, come modificato dal DM 17 settembre 2024 n. 133), i fanali regolamentari rientrano tra le dotazioni prescritte per la navigazione notturna oltre la distanza dalla costa indicata in tabella per la classe di navigazione (per molte unità da diporto: oltre 1 miglio). Di notte, in navigazione, vanno utilizzati i fanali conformi al Regolamento COLREG per segnalare tipo di unità e aspetto; la tabella nazionale stabilisce quando devono essere in dotazione obbligatoria a bordo in funzione della zona autorizzata.',
   },
   {
     id: 281,
@@ -3343,7 +3343,7 @@ export const QUIZZES: QuizInterface[] = [
     answer: 2,
     choiches: ['2', '3', '1'],
     description:
-      'La normativa italiana stabilisce che un natante da diporto che naviga entro 3 miglia nautiche dalla costa deve avere a bordo specifici dispositivi di segnalazione visiva di emergenza. Tra questi vi sono le boette fumogene, che sono dispositivi progettati per emettere fumo colorato, ben visibile durante il giorno, utilizzato per segnalare la propria posizione in caso di emergenza. Questo tipo di segnalazione è particolarmente utile perché il fumo può essere visto facilmente a lunga distanza, anche in presenza di luce solare intensa. La legge richiede che tali natanti abbiano a bordo 2 boette fumogene al fine di garantire che, in caso di necessità, vi sia una riserva sufficiente per prolungare la durata della segnalazione o per garantire un secondo tentativo qualora la prima boetta non funzioni correttamente.',
+      'Per un natante da diporto in navigazione entro 3 miglia dalla costa, la tabella (Allegato V al DM 146/2008, aggiornata dal DM 17 settembre 2024 n. 133) prescrive una boetta fumogena arancione tra i segnali di soccorso. Per zone più lontane dalla costa il numero può aumentare (es. due boette oltre certe soglie): verificare sempre la propria autorizzazione di navigazione e la tabella vigente per la propria unità.',
   },
   {
     id: 284,
@@ -3526,7 +3526,7 @@ export const QUIZZES: QuizInterface[] = [
     id: 300,
     question:
       "Normalmente, qual è all'incirca la portata diurna dei razzi a paracadute a luce rossa?",
-    answer: 1,
+    answer: 2,
     choiches: ['9 miglia.', '7 miglia.', '5 miglia.'],
     description:
       "I razzi a paracadute a luce rossa sono dispositivi di segnalazione visiva utilizzati in situazioni di emergenza in ambito marittimo. La portata diurna di questi razzi dipende dalla loro altitudine massima e dalla luminosità del segnale rilasciato. I razzi a paracadute salgono a un'altezza considerevole prima di rilasciare il paracadute con la luce a caduta lenta, permettendo al segnale di essere visibile per un periodo più prolungato. In condizioni diurne, la visibilità del segnale può essere influenzata dall'illuminazione ambientale e dalle condizioni atmosferiche. Basandosi su performance standard e normative di sicurezza internazionale, la portata diurna stimata per questi razzi è generalmente intorno alle 5 miglia, offrendo un compromesso efficace tra altitudine raggiunta e luminosità del segnale nella luce del giorno.",
@@ -3587,7 +3587,7 @@ export const QUIZZES: QuizInterface[] = [
       'per la navigazione oltre 1 miglio dalla costa.',
     ],
     description:
-      "La zattera costiera è necessaria per la navigazione oltre 1 miglio dalla costa perché le normative marittime italiane richiedono la presenza di dispositivi di salvataggio appropriati a bordo delle imbarcazioni che si allontanano più di un miglio dalla costa. Questo obbligo è stabilito per garantire la sicurezza degli occupanti in caso di emergenze o situazioni pericolose in mare. La zattera costiera, essendo un dispositivo gonfiabile e di facile utilizzo, offre un rifugio sicuro e può mantenere a galla le persone fino all'arrivo dei soccorsi. Essa deve essere conforme agli standard di sicurezza e dotata delle attrezzature di emergenza necessarie, come segnali pirotecnici, razioni di cibo e acqua, e attrezzature per la comunicazione di emergenza. La distanza di 1 miglio è stabilita come soglia minima perché entro questa distanza è più probabile che i soccorsi possano arrivare in breve tempo, riducendo i rischi associati alla permanenza in mare in caso di problemi.",
+      "La zattera di salvataggio autogonfiabile costiera è prescritta per le unità abilitate alla navigazione oltre le 6 miglia e fino alle 12 miglia dalla costa (dotazioni di cui all'Allegato V al DM 146/2008, come modificato dal DM 17 settembre 2024 n. 133). Per distanze minori spesso non è richiesta una zattera collettiva; oltre le 12 miglia si richiede in genere una zattera d'altura idonea al numero di persone. Dal 2025 verificare eventuali alternative ammesse in tabella per la propria classe di navigazione.",
   },
   {
     id: 306,
@@ -7187,7 +7187,7 @@ export const QUIZZES: QuizInterface[] = [
   {
     id: 599,
     question: 'Il solcometro (comunemente detto anche log) misura la velocità:',
-    answer: 0,
+    answer: 1,
     choiches: [
       'propria o propulsiva, cioè quella prodotta dalle eliche.',
       "rispetto alla superficie dell'acqua.",
@@ -17290,7 +17290,7 @@ export const QUIZZES: QuizInterface[] = [
       'una cassetta di pronto soccorso.',
     ],
     description:
-      "Lo sci nautico è un'attività che comporta un elevato rischio di infortuni, sia per il praticante che per gli astanti. Per questo motivo, la sicurezza è di fondamentale importanza. Il DM 146/2008 elenca le dotazioni di sicurezza obbligatorie per le imbarcazioni che navigano entro 12 miglia dalla costa. Tuttavia, per affrontare l'attività dello sci nautico, che comporta un ulteriore rischio di incidenti e infortuni, è opportuno dotarsi di una cassetta di pronto soccorso.\n\nLa cassetta di pronto soccorso comprende una serie di articoli utili per il trattamento immediato delle ferite e per la gestione delle emergenze mediche fino all'arrivo dei soccorsi professionali. Questo può includere bende, cerotti, soluzioni antisettiche, gel refrigeranti per ustioni, guanti sterili e altre attrezzature necessarie per fornire un primo soccorso efficace.\n\nNel contesto specifico dello sci nautico, eventuali ferite da cadute, abrasioni o contusioni sono comuni e avere a disposizione una cassetta di pronto soccorso permette di intervenire rapidamente per stabilizzare la situazione e ridurre il rischio di complicazioni. Inoltre, la normativa sulla sicurezza marittima prevede che ogni attività sportiva o ricreativa in mare sia svolta in conformità alle norme più rigorose di sicurezza per tutelare tutti i partecipanti. Per queste ragioni, una cassetta di pronto soccorso è indispensabile per integrare le dotazioni previste e garantire un'adeguata sicurezza durante lo sci nautico.",
+      "Lo sci nautico è un'attività che comporta un elevato rischio di infortuni, sia per il praticante che per gli astanti. Per questo motivo, la sicurezza è di fondamentale importanza. Il regolamento sulle dotazioni (DM 146/2008 e successive modifiche, tra cui il DM 17 settembre 2024 n. 133) elenca le dotazioni obbligatorie per fascia di navigazione; la domanda rimanda al testo ministeriale che cita l'Allegato V al DM 146/2008. Per lo sci nautico si aggiunge la cassetta di pronto soccorso.\n\nLa cassetta di pronto soccorso comprende una serie di articoli utili per il trattamento immediato delle ferite e per la gestione delle emergenze mediche fino all'arrivo dei soccorsi professionali. Questo può includere bende, cerotti, soluzioni antisettiche, gel refrigeranti per ustioni, guanti sterili e altre attrezzature necessarie per fornire un primo soccorso efficace.\n\nNel contesto specifico dello sci nautico, eventuali ferite da cadute, abrasioni o contusioni sono comuni e avere a disposizione una cassetta di pronto soccorso permette di intervenire rapidamente per stabilizzare la situazione e ridurre il rischio di complicazioni. Inoltre, la normativa sulla sicurezza marittima prevede che ogni attività sportiva o ricreativa in mare sia svolta in conformità alle norme più rigorose di sicurezza per tutelare tutti i partecipanti. Per queste ragioni, una cassetta di pronto soccorso è indispensabile per integrare le dotazioni previste e garantire un'adeguata sicurezza durante lo sci nautico.",
   },
   {
     id: 1436,
@@ -19198,7 +19198,7 @@ export const VELAQUIZZES: QuizVelaInterface[] = [
   {
     id: 183,
     question:
-      "L'avvolgifiocco e il moderno sistema che consente di ridurre la vela di prua senza ammainarla.",
+      "L'avvolgifiocco è il moderno sistema che consente di ridurre la vela di prua senza ammainarla.",
     answer: 1,
     description:
       "L'avvolgifiocco è un meccanismo che consente di avvolgere o ridurre la vela di prua (spesso detta fiocco) attorno al proprio strallo, senza doverla ammainare completamente. Questo sistema è particolarmente utile quando le condizioni atmosferiche richiedono una riduzione della superficie velica per migliorare la manovrabilità della barca e garantirne la sicurezza. Il funzionamento dell'avvolgifiocco si basa su un tamburo avvolgitore posto alla base dello strallo o su un sistema integrato nel profilo del fiocco stesso. Utilizzando una cima dedicata, l'equipaggio può avvolgere parzialmente o completamente la vela intorno al cavo, consentendo una regolazione precisa della superficie esposta al vento. Questo sistema è ampiamente utilizzato nella navigazione moderna grazie alla sua praticità e alla capacità di ridurre lo sforzo fisico necessario per gestire le vele, soprattutto in condizioni di mare agitato o vento forte. Inoltre, l'avvolgifiocco può migliorare la velocità delle manovre, aumentando l'efficienza complessiva della navigazione.",
@@ -19548,9 +19548,9 @@ export const VELAQUIZZES: QuizVelaInterface[] = [
   {
     id: 227,
     question: 'Per poggiare è necessario porre la barra al centro',
-    answer: 1,
+    answer: 0,
     description:
-      "Poggiare significa far allontanare la prua dell'imbarcazione dalla direzione del vento. Questo si ottiene muovendo il timone in modo che la poppa dell'imbarcazione si sposti verso il vento, il che fa spostare la prua in direzione opposta, ossia \"poggia\". Se la barra della timoneria è al centro in posizione neutrale, in un'imbarcazione con barra, per far poggiare l'imbarcazione, bisogna spostarla nella direzione opposta alla quale si vuole muovere la prua. In realtà, la barra dovrebbe essere spostata lateralmente e non semplicemente lasciata al centro.\n\nLa risposta \"vera\" in questo caso sembra basarsi su un concetto semplificato che potrebbe aver spinto l'utente a pensare che la condizione per poggiare sia mantenere la barra al centro, ma tecnicamente, per poggiare, la barra deve essere spostata. La posizione della barra centrale indica una direzione neutrale per il timone, mentre per poggiare bisogna spostarla lateralmente per indirizzare l'acqua verso la poppa e causare il movimento di allontanamento dal vento rivolto in prua.",
+      "Poggiare significa far allontanare la prua dalla direzione del vento (andature più portanti). Con barra o ruota timone, si ottiene con una manovra attiva del timone, non lasciando la barra al centro in posizione neutra: al centro la deriva non induce il cambio di rotta voluto. L'affermazione della domanda è quindi falsa.",
   },
   {
     id: 228,
