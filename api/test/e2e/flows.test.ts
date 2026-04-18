@@ -70,4 +70,56 @@ describe('user flows (end-to-end)', () => {
     expect(body.user).toEqual({ id: expect.any(String), email });
     expect(body.clientState).toEqual({});
   });
+
+  test('quiz sessions populate weekly and global leaderboards', async () => {
+    const emailA = `leader-a-${crypto.randomUUID()}@example.com`;
+    const emailB = `leader-b-${crypto.randomUUID()}@example.com`;
+    const password = 'password123';
+
+    const regA = await apiFetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailA, password }),
+    });
+    const { token: tokenA } = await json(regA);
+
+    const regB = await apiFetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailB, password }),
+    });
+    const { token: tokenB } = await json(regB);
+
+    const sessionA = await apiFetch('/api/quiz-sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenA}`,
+      },
+      body: JSON.stringify({ mode: 'all', answered: 3, correct: 2 }),
+    });
+    expect(sessionA.status).toBe(200);
+
+    const sessionB = await apiFetch('/api/quiz-sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenB}`,
+      },
+      body: JSON.stringify({ mode: 'all', answered: 2, correct: 2 }),
+    });
+    expect(sessionB.status).toBe(200);
+
+    const boards = await apiFetch('/api/leaderboards', {
+      headers: { Authorization: `Bearer ${tokenA}` },
+    });
+    expect(boards.status).toBe(200);
+    const body = await json(boards);
+
+    expect(body.weekly.weekStartsAt).toEqual(expect.any(Number));
+    expect(body.global.weekStartsAt).toBeNull();
+    expect(body.weekly.rows[0].email).toBe(emailA);
+    expect(body.weekly.rows[0].score).toBeGreaterThan(body.weekly.rows[1].score);
+    expect(body.global.rows[0].isCurrentUser).toBe(true);
+  });
 });

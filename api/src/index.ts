@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-import { eq } from 'drizzle-orm';
+import { and, desc, eq, gte, sql } from 'drizzle-orm';
 import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -68,6 +68,175 @@ function mergeClientState(
   }
 
   return merged;
+}
+
+type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
+
+type LeaderboardRow = {
+  userId: string;
+  email: string;
+  score: number;
+  answered: number;
+  correct: number;
+};
+
+function sanitizeQuizMode(value: unknown): QuizMode {
+  const mode = typeof value === 'string' ? value : '';
+  if (
+    mode === 'all' ||
+    mode === 'missing' ||
+    mode === 'mistakes' ||
+    mode === 'favs' ||
+    mode === 'issues'
+  ) {
+    return mode;
+  }
+  return 'all';
+}
+
+const LEADERBOARD_TIME_ZONE = 'Europe/Rome';
+
+function getZonedParts(date: Date, timeZone: string) {
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23',
+  });
+  const parts = formatter.formatToParts(date);
+  const lookup = Object.fromEntries(
+    parts
+      .filter((part) => part.type !== 'literal')
+      .map((part) => [part.type, part.value]),
+  ) as Record<string, string>;
+  return {
+    year: Number(lookup.year),
+    month: Number(lookup.month),
+    day: Number(lookup.day),
+    hour: Number(lookup.hour ?? 0),
+    minute: Number(lookup.minute ?? 0),
+    second: Number(lookup.second ?? 0),
+  };
+}
+
+function zonedTimeToUtc(parts: {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}, timeZone: string) {
+  const utcGuess = new Date(
+    Date.UTC(
+      parts.year,
+      parts.month - 1,
+      parts.day,
+      parts.hour,
+      parts.minute,
+      parts.second,
+      0,
+    ),
+  );
+  const actual = getZonedParts(utcGuess, timeZone);
+  const actualAsUtc = Date.UTC(
+    actual.year,
+    actual.month - 1,
+    actual.day,
+    actual.hour,
+    actual.minute,
+    actual.second,
+    0,
+  );
+  return new Date(utcGuess.getTime() - (actualAsUtc - utcGuess.getTime()));
+}
+
+function getWeekStartRome(now = new Date()): Date {
+  const romeNow = getZonedParts(now, LEADERBOARD_TIME_ZONE);
+  const weekDay = new Intl.DateTimeFormat('en-US', {
+    timeZone: LEADERBOARD_TIME_ZONE,
+    weekday: 'short',
+  }).format(now);
+  const dayIndex =
+    weekDay === 'Mon'
+      ? 0
+      : weekDay === 'Tue'
+        ? 1
+        : weekDay === 'Wed'
+          ? 2
+          : weekDay === 'Thu'
+            ? 3
+            : weekDay === 'Fri'
+              ? 4
+              : weekDay === 'Sat'
+                ? 5
+                : 6;
+  return zonedTimeToUtc(
+    {
+      year: romeNow.year,
+      month: romeNow.month,
+      day: romeNow.day - dayIndex,
+      hour: 0,
+      minute: 0,
+      second: 0,
+    },
+    LEADERBOARD_TIME_ZONE,
+  );
+}
+
+async function fetchLeaderboard(
+  userId: string,
+  scope: 'weekly' | 'global',
+): Promise<{
+  scope: 'weekly' | 'global';
+  weekStartsAt: number | null;
+  rows: Array<
+    LeaderboardRow & { rank: number; accuracy: number; isCurrentUser: boolean }
+  >;
+}> {
+  const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
+
+  const rows = await db
+    .select({
+      userId: schema.users.id,
+      email: schema.users.email,
+      score: sql<number>`coalesce(sum(${schema.quizSessions.score}), 0)`,
+      answered: sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`,
+      correct: sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`,
+    })
+    .from(schema.users)
+    .leftJoin(
+      schema.quizSessions,
+      scope === 'weekly' && weekStart
+        ? and(
+            eq(schema.quizSessions.userId, schema.users.id),
+            gte(schema.quizSessions.createdAt, weekStart),
+          )
+        : eq(schema.quizSessions.userId, schema.users.id),
+    )
+    .groupBy(schema.users.id, schema.users.email)
+    .orderBy(
+      desc(sql`coalesce(sum(${schema.quizSessions.score}), 0)`),
+      desc(sql`coalesce(sum(${schema.quizSessions.correct}), 0)`),
+      desc(sql`coalesce(sum(${schema.quizSessions.answered}), 0)`),
+      schema.users.email,
+    )
+    .limit(100);
+
+  return {
+    scope,
+    weekStartsAt: weekStart?.getTime() ?? null,
+    rows: rows.map((row, index) => ({
+      ...row,
+      rank: index + 1,
+      accuracy: row.answered > 0 ? row.correct / row.answered : 0,
+      isCurrentUser: row.userId === userId,
+    })),
+  };
 }
 
 const api = new Hono<{ Variables: Variables }>();
@@ -258,6 +427,64 @@ api.put('/me/client-state', async (c) => {
   }
 
   return c.json({ ok: true, clientState: nextData });
+});
+
+api.post('/quiz-sessions', async (c) => {
+  const userId = c.get('userId');
+  const body = await c.req.json<{
+    mode?: unknown;
+    answered?: unknown;
+    correct?: unknown;
+  }>();
+
+  const answered = Number(body.answered);
+  const correct = Number(body.correct);
+  if (!Number.isInteger(answered) || answered <= 0) {
+    return c.json({ error: 'answered must be a positive integer' }, 400);
+  }
+  if (!Number.isInteger(correct) || correct < 0 || correct > answered) {
+    return c.json({ error: 'correct must be an integer between 0 and answered' }, 400);
+  }
+
+  const mode = sanitizeQuizMode(body.mode);
+  const now = new Date();
+  const score = answered + correct;
+
+  await db.insert(schema.quizSessions).values({
+    id: crypto.randomUUID(),
+    userId,
+    mode,
+    answered,
+    correct,
+    score,
+    createdAt: now,
+  });
+
+  const [weekly, global] = await Promise.all([
+    fetchLeaderboard(userId, 'weekly'),
+    fetchLeaderboard(userId, 'global'),
+  ]);
+
+  return c.json({
+    ok: true,
+    session: {
+      mode,
+      answered,
+      correct,
+      score,
+      createdAt: now.getTime(),
+    },
+    leaderboards: { weekly, global },
+  });
+});
+
+api.get('/leaderboards', async (c) => {
+  const userId = c.get('userId');
+  const [weekly, global] = await Promise.all([
+    fetchLeaderboard(userId, 'weekly'),
+    fetchLeaderboard(userId, 'global'),
+  ]);
+  return c.json({ weekly, global });
 });
 
 app.route('/api', api);
