@@ -91,6 +91,8 @@ type LeaderboardQueryRow = {
   userId: string;
   username: string | null;
   quizCount: number;
+  answeredSum: number;
+  correctSum: number;
 };
 
 /** Serialized leaderboard row — never includes email or internal user ids. */
@@ -99,6 +101,8 @@ type PublicLeaderboardRow = {
   username: string | null;
   /** Completed quiz sessions in this scope (weekly window or all time). */
   quizCount: number;
+  /** Share of answers correct in this scope, 0–1 (sum correct / sum answered). */
+  accuracy: number;
   isCurrentUser: boolean;
 };
 
@@ -218,6 +222,8 @@ function toPublicLeaderboardRows(
     rank: index + 1,
     username: row.username,
     quizCount: row.quizCount,
+    accuracy:
+      row.answeredSum > 0 ? row.correctSum / row.answeredSum : 0,
     isCurrentUser: row.userId === currentUserId,
   }));
 }
@@ -233,12 +239,16 @@ async function fetchLeaderboard(
   const weekStart = scope === 'weekly' ? getWeekStartRome() : null;
 
   const quizCount = count(schema.quizSessions.id);
+  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
+  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
 
   const rows = await db
     .select({
       userId: schema.users.id,
       username: schema.users.username,
       quizCount,
+      answeredSum: sumAnswered,
+      correctSum: sumCorrect,
     })
     .from(schema.users)
     .leftJoin(
@@ -266,10 +276,14 @@ async function fetchLeaderboard(
 async function fetchWeeklyTopPublic(limit: number) {
   const weekStart = getWeekStartRome();
   const quizCount = count(schema.quizSessions.id);
+  const sumAnswered = sql<number>`coalesce(sum(${schema.quizSessions.answered}), 0)`;
+  const sumCorrect = sql<number>`coalesce(sum(${schema.quizSessions.correct}), 0)`;
   const rows = await db
     .select({
       username: schema.users.username,
       quizCount,
+      answeredSum: sumAnswered,
+      correctSum: sumCorrect,
     })
     .from(schema.users)
     .leftJoin(
@@ -292,6 +306,8 @@ async function fetchWeeklyTopPublic(limit: number) {
       rank: index + 1,
       username: row.username as string,
       quizCount: row.quizCount,
+      accuracy:
+        row.answeredSum > 0 ? row.correctSum / row.answeredSum : 0,
     })),
   };
 }

@@ -82,6 +82,7 @@
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
               <th class="text-right">Quiz</th>
+              <th class="text-right">%</th>
             </tr>
           </thead>
           <tbody>
@@ -93,6 +94,7 @@
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.quizCount }}</td>
+              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -104,6 +106,7 @@
               <th class="text-left">#</th>
               <th class="text-left">Utente</th>
               <th class="text-right">Quiz</th>
+              <th class="text-right">%</th>
             </tr>
           </thead>
           <tbody>
@@ -115,6 +118,7 @@
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
               <td class="text-right">{{ row.quizCount }}</td>
+              <td class="text-right">{{ Math.round(row.accuracy * 100) }}%</td>
             </tr>
           </tbody>
         </q-markup-table>

@@ -18,7 +18,7 @@ describe('GET /api/leaderboards/weekly-top', () => {
     expect(rows.length).toBeLessThanOrEqual(3);
     for (const row of rows) {
       expect(Object.keys(row).sort()).toEqual(
-        ['quizCount', 'rank', 'username'].sort(),
+        ['accuracy', 'quizCount', 'rank', 'username'].sort(),
       );
       expect(typeof row.username).toBe('string');
     }

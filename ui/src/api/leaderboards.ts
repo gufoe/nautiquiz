@@ -8,6 +8,8 @@ export type LeaderboardRow = {
   username: string | null;
   /** Completed quiz sessions in this leaderboard scope. */
   quizCount: number;
+  /** Share of answers correct in this scope, 0–1. */
+  accuracy: number;
   isCurrentUser: boolean;
 };
 
@@ -18,6 +20,7 @@ export type WeeklyTopResponse = {
     rank: number;
     username: string;
     quizCount: number;
+    accuracy: number;
   }>;
 };
 
