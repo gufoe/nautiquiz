@@ -15,7 +15,7 @@ type LeaderboardsBody = {
 };
 
 describe('user flows (end-to-end)', () => {
-  test('register → GET /me → PUT client-state → GET /me reflects saved state', async () => {
+  test('register → GET /me → GET /quiz-histories (empty)', async () => {
     const email = `flow-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
     const username = uniqueUsername();
@@ -32,26 +32,67 @@ describe('user flows (end-to-end)', () => {
       headers: { Authorization: `Bearer ${token}` },
     });
     expect(me1.status).toBe(200);
-    expect((await json(me1)).clientState).toEqual({});
+    const meBody = await json(me1);
+    expect(meBody.user).toEqual({ id: expect.any(String), email, username });
 
-    const put = await apiFetch('/api/me/client-state', {
+    const hist = await apiFetch('/api/quiz-histories', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(hist.status).toBe(200);
+    const h = await json(hist);
+    expect(h.base).toEqual({});
+    expect(h.vela).toEqual({});
+    expect(h['5d']).toEqual({});
+    expect(h['42d']).toEqual({});
+  });
+
+  test('GET /quiz-lists and PUT replace favorites and issues', async () => {
+    const email = `lists-${crypto.randomUUID()}@example.com`;
+    const password = 'password123';
+    const username = uniqueUsername();
+
+    const reg = await apiFetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, username }),
+    });
+    expect(reg.status).toBe(200);
+    const { token } = await json(reg);
+
+    const get0 = await apiFetch('/api/quiz-lists', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(get0.status).toBe(200);
+    const empty = (await json(get0)) as {
+      favorites: Record<string, number[]>;
+      issues: Record<string, number[]>;
+    };
+    expect(empty.favorites.base).toEqual([]);
+    expect(empty.issues.base).toEqual([]);
+
+    const put = await apiFetch('/api/quiz-lists', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ data: { quizProgress: { done: 3 } } }),
+      body: JSON.stringify({
+        favorites: { base: [1, 2], vela: [], '5d': [], '42d': [] },
+        issues: { base: [9], vela: [], '5d': [], '42d': [] },
+      }),
     });
     expect(put.status).toBe(200);
 
-    const me2 = await apiFetch('/api/me', {
+    const get1 = await apiFetch('/api/quiz-lists', {
       headers: { Authorization: `Bearer ${token}` },
     });
-    expect(me2.status).toBe(200);
-    const body = await json(me2);
-    expect(body.user).toEqual({ id: expect.any(String), email, username });
-    expect(body.clientState).toEqual({ quizProgress: { done: 3 } });
-    expect(typeof body.clientStateUpdatedAt).toBe('number');
+    expect(get1.status).toBe(200);
+    const data = (await json(get1)) as {
+      favorites: Record<string, number[]>;
+      issues: Record<string, number[]>;
+    };
+    expect(data.favorites.base).toEqual([1, 2]);
+    expect(data.issues.base).toEqual([9]);
   });
 
   test('register → login → GET /me (returning user)', async () => {
@@ -79,10 +120,9 @@ describe('user flows (end-to-end)', () => {
     expect(me.status).toBe(200);
     const body = await json(me);
     expect(body.user).toEqual({ id: expect.any(String), email, username });
-    expect(body.clientState).toEqual({});
   });
 
-  test('quiz sessions populate weekly and global leaderboards', async () => {
+  test('answer batches populate weekly and global leaderboards', async () => {
     const emailA = `leader-a-${crypto.randomUUID()}@example.com`;
     const emailB = `leader-b-${crypto.randomUUID()}@example.com`;
     const password = 'password123';
@@ -103,95 +143,93 @@ describe('user flows (end-to-end)', () => {
     });
     const { token: tokenB } = await json(regB);
 
-    const sessionA1 = await apiFetch('/api/quiz-sessions', {
+    const t = Date.now();
+    const batchA1 = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenA}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 3,
-        correct: 2,
         attempts: [
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 1,
             selectedAnswer: 1,
             isCorrect: true,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 2,
             selectedAnswer: 0,
             isCorrect: false,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 3,
             selectedAnswer: 2,
             isCorrect: true,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
         ],
       }),
     });
-    expect(sessionA1.status).toBe(200);
+    expect(batchA1.status).toBe(200);
 
-    const sessionA2 = await apiFetch('/api/quiz-sessions', {
+    const batchA2 = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenA}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 1,
-        correct: 1,
         attempts: [
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 4,
             selectedAnswer: 1,
             isCorrect: true,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
         ],
       }),
     });
-    expect(sessionA2.status).toBe(200);
+    expect(batchA2.status).toBe(200);
 
-    const sessionB = await apiFetch('/api/quiz-sessions', {
+    const batchB = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${tokenB}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 2,
-        correct: 2,
         attempts: [
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 1,
             selectedAnswer: 2,
             isCorrect: true,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 2,
             selectedAnswer: 1,
             isCorrect: true,
-            answeredAt: Date.now(),
+            answeredAt: t,
           },
         ],
       }),
     });
-    expect(sessionB.status).toBe(200);
+    expect(batchB.status).toBe(200);
 
     const boards = await apiFetch('/api/leaderboards', {
       headers: { Authorization: `Bearer ${tokenA}` },
@@ -219,18 +257,16 @@ describe('user flows (end-to-end)', () => {
     expect(reg.status).toBe(200);
     const { token } = await json(reg);
 
-    const first = await apiFetch('/api/quiz-sessions', {
+    const first = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 2,
-        correct: 1,
         attempts: [
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 10,
             selectedAnswer: 1,
@@ -238,6 +274,7 @@ describe('user flows (end-to-end)', () => {
             answeredAt: Date.now() - 2000,
           },
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 11,
             selectedAnswer: 0,
@@ -249,18 +286,16 @@ describe('user flows (end-to-end)', () => {
     });
     expect(first.status).toBe(200);
 
-    const second = await apiFetch('/api/quiz-sessions', {
+    const second = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 1,
-        correct: 1,
         attempts: [
           {
+            id: crypto.randomUUID(),
             quizKind: 'base',
             questionId: 11,
             selectedAnswer: 2,

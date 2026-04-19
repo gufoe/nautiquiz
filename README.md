@@ -32,6 +32,9 @@ Questa sezione definisce come scrivere e aggiornare guide e README nel repo, in 
 |------|--------|
 | Frontend (Quasar / Vue) | [`ui/README.md`](ui/README.md) |
 | Backend API (Bun / Hono) | [`api/README.md`](api/README.md) |
+| Catalogo risposte attese (pacchetto condiviso UI/API) | Cartella `packages/quiz-catalog`: mappe id→indice corretto generate dagli array in `ui/src/data/quiz.ts`; dalla root del monorepo lo script di rigenerazione è quello denominato catalog nel manifest principale. |
 | Fonti ufficiali quiz MIT e note normative | [`sources/quiz-ministeriali/README.md`](sources/quiz-ministeriali/README.md) |
+
+**Invarianti dati (sintesi):** il backend conserva solo righe di risposta (utente, quiz, domanda, scelta, correttezza, istante). Preferiti e segnalazioni restano nel browser. Dopo login, se c’è progresso locale viene chiesto se importarlo. Le risposte fatte offline vanno in coda e si inviano al server appena c’è connessione. Dettaglio nelle guide API e UI.
 
 Il **package root** orchestra script condivisi (sviluppo UI, sviluppo API, build, database): i dettagli sono nei README di `ui` e `api` e negli script del manifest root.

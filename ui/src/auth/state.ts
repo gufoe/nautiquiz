@@ -1,11 +1,20 @@
 import { ref } from 'vue';
 import { apiFetch, ApiError } from 'src/api/client';
+import { fetchQuizLists } from 'src/api/quizLists';
+import { fetchQuizHistories } from 'src/api/quizProgress';
+import { buildImportAttemptsFromLocalStorage } from 'src/lib/buildImportAttempts';
 import {
+  applyServerHistoriesToLocal,
+  applyServerQuizListsToLocal,
   hasLocalQuizData,
-  isEmptyClientState,
-  replaceQuizSnapshotToLocal,
 } from 'src/lib/localStorageSync';
-import { pushLocalQuizSnapshot } from 'src/auth/clientStateRemote';
+import { reloadAllQuizFavsAndIssuesFromStorage } from 'src/utils';
+import { pushQuizAttempts } from 'src/api/quizAttempts';
+import {
+  getQueuedQuizAttempts,
+  removeQueuedQuizAttempts,
+} from 'src/lib/quizAttemptQueue';
+import { syncDataNow } from 'src/auth/sync';
 
 const TOKEN_KEY = 'nautiquiz-token';
 const USER_KEY = 'nautiquiz-user';
@@ -56,9 +65,38 @@ export type AuthUser = { id: string; email: string; username: string | null };
 
 type MeResponse = {
   user: AuthUser;
-  clientState: Record<string, unknown>;
-  clientStateUpdatedAt: number;
 };
+
+function importDismissedFor(userId: string): boolean {
+  try {
+    return localStorage.getItem(`nautiquiz-import-dismissed-${userId}`) === '1';
+  } catch {
+    return false;
+  }
+}
+
+async function pullServerQuizData(token: string) {
+  const [h, lists] = await Promise.all([
+    fetchQuizHistories(token),
+    fetchQuizLists(token),
+  ]);
+  applyServerHistoriesToLocal(h);
+  applyServerQuizListsToLocal(lists);
+  reloadAllQuizFavsAndIssuesFromStorage();
+}
+
+/** After login: pull server-only progress, or prompt to import browser data. */
+async function reconcileQuizData(me: MeResponse, tokenStr: string) {
+  if (!hasLocalQuizData()) {
+    await pullServerQuizData(tokenStr);
+    return;
+  }
+  if (importDismissedFor(me.user.id)) {
+    await pullServerQuizData(tokenStr);
+    return;
+  }
+  showImportDialog.value = true;
+}
 
 export const token = ref<string | null>(safeGetToken());
 export const user = ref<AuthUser | null>(safeGetUser());
@@ -66,36 +104,6 @@ export const sessionReady = ref(false);
 export const showImportDialog = ref(false);
 /** Shared with MainLayout — open login/register from any page (e.g. classifiche). */
 export const showAuthDialog = ref(false);
-
-async function reconcileClientState(
-  me: MeResponse,
-  t: string,
-  options: { preferLocalMerge: boolean },
-) {
-  const hasLocalData = hasLocalQuizData();
-  const hasRemoteData = !isEmptyClientState(me.clientState);
-
-  if (!hasLocalData && hasRemoteData) {
-    replaceQuizSnapshotToLocal(me.clientState);
-    return;
-  }
-
-  if (!hasLocalData) {
-    return;
-  }
-
-  if (options.preferLocalMerge) {
-    await pushLocalQuizSnapshot(t);
-    return;
-  }
-
-  if (hasRemoteData) {
-    replaceQuizSnapshotToLocal(me.clientState);
-    return;
-  }
-
-  await pushLocalQuizSnapshot(t);
-}
 
 export async function restoreSession() {
   sessionReady.value = false;
@@ -110,7 +118,7 @@ export async function restoreSession() {
     const data = await apiFetch<MeResponse>('/me', { token: t });
     user.value = data.user;
     safeSetUser(data.user);
-    await reconcileClientState(data, t, { preferLocalMerge: false });
+    await reconcileQuizData(data, t);
   } catch (error) {
     if (error instanceof ApiError && error.status === 401) {
       safeSetToken(null);
@@ -140,7 +148,7 @@ export async function register(
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await reconcileClientState(me, data.token, { preferLocalMerge: true });
+  await reconcileQuizData(me, data.token);
 }
 
 export async function login(email: string, password: string) {
@@ -156,7 +164,7 @@ export async function login(email: string, password: string) {
   token.value = data.token;
   user.value = data.user;
   const me = await apiFetch<MeResponse>('/me', { token: data.token });
-  await reconcileClientState(me, data.token, { preferLocalMerge: true });
+  await reconcileQuizData(me, data.token);
 }
 
 export async function setUsername(username: string) {
@@ -204,16 +212,39 @@ export async function confirmImportLocalData() {
   const t = token.value;
   const u = user.value;
   if (!t || !u) return;
-  await pushLocalQuizSnapshot(t);
+  const attempts = buildImportAttemptsFromLocalStorage();
+  const chunkSize = 100;
+  for (let i = 0; i < attempts.length; i += chunkSize) {
+    await pushQuizAttempts(t, attempts.slice(i, i + chunkSize));
+  }
+  removeQueuedQuizAttempts(getQueuedQuizAttempts().map((row) => row.id));
+  await syncDataNow();
+  await pullServerQuizData(t);
   showImportDialog.value = false;
-  localStorage.removeItem(`nautiquiz-import-dismissed-${u.id}`);
+  try {
+    localStorage.removeItem(`nautiquiz-import-dismissed-${u.id}`);
+  } catch {
+    /* ignore */
+  }
   window.location.reload();
 }
 
-export function dismissImportPrompt() {
+export async function dismissImportPrompt() {
   const u = user.value;
   if (u) {
-    localStorage.setItem(`nautiquiz-import-dismissed-${u.id}`, '1');
+    try {
+      localStorage.setItem(`nautiquiz-import-dismissed-${u.id}`, '1');
+    } catch {
+      /* ignore */
+    }
   }
   showImportDialog.value = false;
+  const t = token.value;
+  if (t) {
+    try {
+      await pullServerQuizData(t);
+    } catch {
+      /* offline or unauthorized — local progress stays until next sync */
+    }
+  }
 }

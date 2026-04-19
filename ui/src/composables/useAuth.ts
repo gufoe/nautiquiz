@@ -47,8 +47,8 @@ export function useAuth() {
     await confirmImportLocalData();
   }
 
-  function dismissImport() {
-    dismissImportPrompt();
+  async function dismissImport() {
+    await dismissImportPrompt();
   }
 
   function openAuthDialog() {

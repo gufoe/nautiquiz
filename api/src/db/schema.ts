@@ -9,44 +9,43 @@ export const users = sqliteTable('users', {
   createdAt: integer('created_at', { mode: 'timestamp_ms' }).notNull(),
 });
 
-export const userClientState = sqliteTable('user_client_state', {
-  userId: text('user_id')
-    .primaryKey()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  /** JSON object: localStorage key -> parsed value */
-  dataJson: text('data_json').notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
-});
-
-export const quizSessions = sqliteTable('quiz_sessions', {
+/**
+ * One row per answered question event: user, question (quiz_kind + question_id), chosen index,
+ * whether it matches the catalog, and when it happened.
+ */
+export const answers = sqliteTable('answers', {
   id: text('id').primaryKey(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  mode: text('mode').notNull(),
-  answered: integer('answered').notNull(),
-  correct: integer('correct').notNull(),
-  score: integer('score').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp_ms' }).notNull(),
-});
-
-export const questionAttempts = sqliteTable('question_attempts', {
-  id: text('id').primaryKey(),
-  userId: text('user_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  /** Quiz family the question belongs to: base, vela, 5d, 42d. */
   quizKind: text('quiz_kind').notNull(),
   questionId: integer('question_id').notNull(),
   selectedAnswer: integer('selected_answer').notNull(),
-  /** Nullable for imported legacy rows where correctness is unknown. */
-  isCorrect: integer('is_correct', { mode: 'boolean' }),
-  /** Event time in epoch milliseconds. */
+  isCorrect: integer('is_correct', { mode: 'boolean' }).notNull(),
   answeredAt: integer('answered_at', { mode: 'timestamp_ms' }).notNull(),
-  /**
-   * Source marker for lineage/debugging:
-   * - "live" from current session submissions
-   * - "legacy" imported from historical client-state maps
-   */
-  source: text('source').notNull(),
+});
+
+/**
+ * Segnalazioni: one row per (user, quiz family, question) while the user has that question flagged.
+ * Replaced in full on each client sync so the table matches browser state for analysis.
+ */
+export const quizIssueReports = sqliteTable('quiz_issue_reports', {
+  id: text('id').primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  quizKind: text('quiz_kind').notNull(),
+  questionId: integer('question_id').notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
+});
+
+/** Preferiti: same shape as segnalazioni — full replace on each client sync. */
+export const quizFavorites = sqliteTable('quiz_favorites', {
+  id: text('id').primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  quizKind: text('quiz_kind').notNull(),
+  questionId: integer('question_id').notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
 });

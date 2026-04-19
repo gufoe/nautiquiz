@@ -1,7 +1,8 @@
 import { ApiError } from 'src/api/client';
 import { pushQuizAttempts } from 'src/api/quizAttempts';
-import { pushLocalQuizSnapshot } from 'src/auth/clientStateRemote';
+import { putQuizLists } from 'src/api/quizLists';
 import { token, user, restoreSession, logout } from 'src/auth/state';
+import { collectFavAndIssueListsFromLocal } from 'src/lib/localStorageSync';
 import { setLocalMutationHandler } from 'src/lib/localMutationBus';
 import {
   getQueuedQuizAttempts,
@@ -9,28 +10,10 @@ import {
   removeQueuedQuizAttempts,
 } from 'src/lib/quizAttemptQueue';
 
-const DIRTY_KEY = 'nautiquiz-sync-dirty';
-
 let syncTimer: ReturnType<typeof setTimeout> | null = null;
 let syncInFlight: Promise<void> | null = null;
 let syncQueued = false;
 let initialized = false;
-
-function markDirty() {
-  localStorage.setItem(DIRTY_KEY, '1');
-}
-
-function clearDirty() {
-  localStorage.removeItem(DIRTY_KEY);
-}
-
-function hasDirtyState() {
-  return localStorage.getItem(DIRTY_KEY) === '1';
-}
-
-function hasSyncWork() {
-  return hasDirtyState() || hasQueuedQuizAttempts();
-}
 
 function canUseNetwork() {
   return typeof navigator === 'undefined' || navigator.onLine;
@@ -51,7 +34,7 @@ export async function syncDataNow() {
   }
 
   syncInFlight = (async () => {
-    if (!hasSyncWork() || !token.value || !canUseNetwork()) return;
+    if (!token.value || !canUseNetwork()) return;
 
     if (!user.value) {
       await restoreSession();
@@ -65,6 +48,7 @@ export async function syncDataNow() {
         await pushQuizAttempts(token.value, chunk);
         removeQueuedQuizAttempts(chunk.map((row) => row.id));
       }
+      await putQuizLists(token.value, collectFavAndIssueListsFromLocal());
     } catch (error) {
       if (error instanceof ApiError && error.status === 401) {
         logout();
@@ -72,19 +56,6 @@ export async function syncDataNow() {
       }
       // Keep queue as-is and retry on next trigger/network recovery.
       return;
-    }
-
-    try {
-      if (!hasDirtyState()) return;
-      await pushLocalQuizSnapshot(token.value);
-      clearDirty();
-    } catch (error) {
-      if (error instanceof ApiError && error.status === 401) {
-        logout();
-      } else {
-        /* Includes 403 (username required) until onboarding completes */
-        markDirty();
-      }
     }
   })();
 
@@ -103,10 +74,7 @@ export function initDataSync() {
   if (initialized) return;
   initialized = true;
 
-  setLocalMutationHandler(({ channel }) => {
-    if (channel === 'client-state') {
-      markDirty();
-    }
+  setLocalMutationHandler(() => {
     scheduleDataSync();
   });
 
@@ -120,7 +88,7 @@ export function initDataSync() {
     }
   });
 
-  if (hasSyncWork()) {
+  if (hasQueuedQuizAttempts() || token.value) {
     scheduleDataSync(50);
   }
 }

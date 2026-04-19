@@ -154,9 +154,11 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import LeaderboardDialog from 'src/components/LeaderboardDialog.vue';
-import { submitQuizSession, type LeaderboardsResponse } from 'src/api/leaderboards';
+import { fetchLeaderboards, type LeaderboardsResponse } from 'src/api/leaderboards';
 import { ApiError } from 'src/api/client';
 import { token } from 'src/auth/state';
+import { syncDataNow } from 'src/auth/sync';
+import { isAnswerCorrect } from '@nautiquiz/quiz-catalog';
 import { fetchQuizProgress, type QuizKind } from 'src/api/quizProgress';
 import { enqueueQuizAttempt } from 'src/lib/quizAttemptQueue';
 import { getQuiz, QuizBase, QuizMode, shuffle } from 'src/utils';
@@ -242,8 +244,8 @@ const current_answer = computed(
 const answered_count = computed(() => Object.keys(session_answers.value).length);
 const correct_count = computed(
   () =>
-    available_quizzes.value.filter(
-      (x) => x.answer === session_answers.value[x.id],
+    available_quizzes.value.filter((x) =>
+      isAnswerCorrect(quizKind, x.id, session_answers.value[x.id]),
     ).length,
 );
 
@@ -259,7 +261,8 @@ const max_errors = 4;
 const current_errors = computed(() => {
   return available_quizzes.value.filter(
     (x) =>
-      x.id in session_answers.value && x.answer !== session_answers.value[x.id],
+      x.id in session_answers.value &&
+      !isAnswerCorrect(quizKind, x.id, session_answers.value[x.id]),
   );
 });
 
@@ -278,7 +281,7 @@ function selectAnswer(answer: number) {
     quizKind,
     questionId: current_quiz.value.id,
     selectedAnswer: answer,
-    isCorrect: current_quiz.value.answer === answer,
+    isCorrect: isAnswerCorrect(quizKind, current_quiz.value.id, answer),
     answeredAt: Date.now(),
   });
 }
@@ -311,7 +314,7 @@ function onAnsweredContentClick(ev: MouseEvent) {
 
 function optionColor(c_i: number) {
   if (!is_answered.value) return;
-  if (c_i === current_quiz.value.answer) return 'green';
+  if (isAnswerCorrect(quizKind, current_quiz.value.id, c_i)) return 'green';
   if (c_i == current_answer.value) return 'red';
 }
 
@@ -320,12 +323,6 @@ async function finishSession() {
   session_submitted.value = true;
   leaderboard_notice.value = null;
 
-  const payload = {
-    mode: String(route.query.mode ?? 'all'),
-    answered: session_summary.value.answered,
-    correct: session_summary.value.correct,
-  };
-
   if (!token.value) {
     leaderboard_notice.value = 'Accedi per salvare il risultato nella classifica globale.';
     show_leaderboard.value = true;
@@ -333,8 +330,8 @@ async function finishSession() {
   }
 
   try {
-    const res = await submitQuizSession(token.value, payload);
-    leaderboards.value = res.leaderboards;
+    await syncDataNow();
+    leaderboards.value = await fetchLeaderboards(token.value);
   } catch (error) {
     if (error instanceof ApiError && error.status === 403) {
       leaderboard_notice.value =

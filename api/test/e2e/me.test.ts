@@ -51,7 +51,7 @@ describe('GET /api/me', () => {
     expect(await json(res)).toEqual({ error: 'Unauthorized' });
   });
 
-  test('200 returns user and empty client state', async () => {
+  test('200 returns user', async () => {
     const { token, email, username } = await registerAndToken();
     const res = await apiFetch('/api/me', {
       headers: { Authorization: `Bearer ${token}` },
@@ -59,8 +59,6 @@ describe('GET /api/me', () => {
     expect(res.status).toBe(200);
     const body = await json(res);
     expect(body.user).toEqual({ id: expect.any(String), email, username });
-    expect(body.clientState).toEqual({});
-    expect(typeof body.clientStateUpdatedAt).toBe('number');
   });
 
   test('200 GET /api/me and PUT /api/me/username when username is null (onboarding)', async () => {
@@ -73,11 +71,6 @@ describe('GET /api/me', () => {
       username: null,
       passwordHash: hashPassword('password123'),
       createdAt: now,
-    });
-    await db.insert(schema.userClientState).values({
-      userId: id,
-      dataJson: '{}',
-      updatedAt: now,
     });
     const token = await signUserToken(id);
 

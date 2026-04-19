@@ -1,4 +1,4 @@
-export type LocalMutationChannel = 'client-state' | 'attempt-queue';
+export type LocalMutationChannel = 'attempt-queue';
 
 type MutationEvent = { channel: LocalMutationChannel };
 

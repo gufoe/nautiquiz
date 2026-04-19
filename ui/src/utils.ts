@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { QUIZ_KINDS, type QuizKind } from '@nautiquiz/quiz-catalog';
 import { QUIZZES, QUIZZES_5D, VELAQUIZZES } from './data/quiz';
 import { notifyLocalMutation } from './lib/localMutationBus';
 
@@ -11,7 +12,7 @@ export class Storage {
   static set<T>(name: string, value: T, options?: { notify?: boolean }) {
     localStorage.setItem(name, JSON.stringify(value));
     if (options?.notify !== false) {
-      notifyLocalMutation('client-state');
+      notifyLocalMutation('attempt-queue');
     }
   }
 }
@@ -40,6 +41,36 @@ export interface QuizCarteggio extends QuizBase {
 }
 
 export type QuizMode = 'all' | 'missing' | 'mistakes' | 'favs' | 'issues';
+
+export class StoredQuestions {
+  private readonly favs;
+
+  constructor(private storage_name: string) {
+    this.favs = ref(Storage.get<number[]>(this.storage_name, () => []));
+  }
+
+  includes(quiz_id: number) {
+    return this.favs.value.includes(quiz_id);
+  }
+
+  toggle(quiz_id: number) {
+    const i = this.favs.value.indexOf(quiz_id);
+    if (i < 0) {
+      this.favs.value.push(quiz_id);
+    } else {
+      this.favs.value.splice(i, 1);
+    }
+    Storage.set(this.storage_name, this.favs.value);
+  }
+
+  get length() {
+    return this.favs.value.length;
+  }
+
+  reloadFromStorage() {
+    this.favs.value = Storage.get<number[]>(this.storage_name, () => []);
+  }
+}
 
 export class Quiz<T extends QuizBase, Y> {
   public favs;
@@ -71,7 +102,6 @@ export class Quiz<T extends QuizBase, Y> {
     const h = history ?? this.getQuizHistory();
     const modes: Record<QuizMode, (q: T) => boolean> = {
       all: () => true,
-      // all: (q) => !!q.image,
       missing: (q) => !(q.id in h),
       favs: (q) => this.favs.includes(q.id),
       issues: (q) => this.issues.includes(q.id),
@@ -79,40 +109,11 @@ export class Quiz<T extends QuizBase, Y> {
     };
     return this.quizzes.filter((q) => modes[mode](q));
   }
-}
 
-export function getQuiz(name: 'base' | 'vela' | '5d' | '42d') {
-  return {
-    base: BASE_QUIZ,
-    vela: VELA_QUIZ,
-    '5d': CARTEGGIO_5D_QUIZ,
-    '42d': CARTEGGIO_42D_QUIZ,
-  }[name];
-}
-
-export class StoredQuestions {
-  private readonly favs;
-
-  constructor(private storage_name: string) {
-    this.favs = ref(Storage.get<number[]>(this.storage_name, () => []));
-  }
-
-  includes(quiz_id: number) {
-    return this.favs.value.includes(quiz_id);
-  }
-
-  toggle(quiz_id: number) {
-    const i = this.favs.value.indexOf(quiz_id);
-    if (i < 0) {
-      this.favs.value.push(quiz_id);
-    } else {
-      this.favs.value.splice(i, 1);
-    }
-    Storage.set(this.storage_name, this.favs.value);
-  }
-
-  get length() {
-    return this.favs.value.length;
+  /** After server merge into localStorage — refresh Vue refs for favs/issues. */
+  reloadFavsAndIssuesFromStorage() {
+    this.favs.reloadFromStorage();
+    this.issues.reloadFromStorage();
   }
 }
 
@@ -121,16 +122,29 @@ const VELA_QUIZ = new Quiz('vela-', VELAQUIZZES);
 const CARTEGGIO_5D_QUIZ = new Quiz('5d-', QUIZZES_5D);
 const CARTEGGIO_42D_QUIZ = new Quiz('42d-', QUIZZES_5D);
 
+export function getQuiz(name: QuizKind) {
+  return {
+    base: BASE_QUIZ,
+    vela: VELA_QUIZ,
+    '5d': CARTEGGIO_5D_QUIZ,
+    '42d': CARTEGGIO_42D_QUIZ,
+  }[name];
+}
+
+/** Call after applyServerQuizListsToLocal so UI reflects merged preferiti/segnalazioni. */
+export function reloadAllQuizFavsAndIssuesFromStorage() {
+  for (const name of QUIZ_KINDS) {
+    getQuiz(name).reloadFavsAndIssuesFromStorage();
+  }
+}
+
 export function shuffle<T>(array: T[]) {
   let currentIndex = array.length;
 
-  // While there remain elements to shuffle...
   while (currentIndex != 0) {
-    // Pick a remaining element...
     const randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex],
       array[currentIndex],

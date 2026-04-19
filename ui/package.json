@@ -11,9 +11,10 @@
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "build": "quasar build"
+    "build": "quasar prepare && quasar build"
   },
   "dependencies": {
+    "@nautiquiz/quiz-catalog": "workspace:*",
     "@quasar/extras": "^1.16.4",
     "@types/lodash": "^4.17.7",
     "lodash": "^4.17.21",

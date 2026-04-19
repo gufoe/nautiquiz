@@ -10,11 +10,13 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "bun run src/db/migrate.ts",
     "db:list-issues": "bun scripts/list-quiz-issues.ts",
+    "db:backfill-is-correct": "bun scripts/backfill-answers-is-correct.ts",
     "db:studio": "drizzle-kit studio",
     "test": "bun test --preload ./test/setup.ts ./test/e2e",
     "test:e2e": "bun test --preload ./test/setup.ts ./test/e2e"
   },
   "dependencies": {
+    "@nautiquiz/quiz-catalog": "workspace:*",
     "bcryptjs": "^3.0.2",
     "drizzle-orm": "^0.38.3",
     "hono": "^4.6.14",

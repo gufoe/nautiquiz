@@ -37,17 +37,15 @@ describe('GET /api/leaderboards/weekly-top', () => {
     expect(reg.status).toBe(200);
     const { token } = await json(reg);
 
-    const session = await apiFetch('/api/quiz-sessions', {
+    const batch = await apiFetch('/api/quiz-attempts/batch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        mode: 'all',
-        answered: 500,
-        correct: 400,
         attempts: Array.from({ length: 500 }, (_, i) => ({
+          id: crypto.randomUUID(),
           quizKind: 'base',
           questionId: i + 1,
           selectedAnswer: 0,
@@ -56,7 +54,7 @@ describe('GET /api/leaderboards/weekly-top', () => {
         })),
       }),
     });
-    expect(session.status).toBe(200);
+    expect(batch.status).toBe(200);
 
     const top = await apiFetch('/api/leaderboards/weekly-top');
     expect(top.status).toBe(200);

@@ -36,37 +36,6 @@ export type LeaderboardsResponse = {
   global: LeaderboardPayload;
 };
 
-export type QuizSessionResponse = {
-  ok: true;
-  session: {
-    mode: string;
-    answered: number;
-    correct: number;
-    score: number;
-    createdAt: number;
-  };
-  leaderboards: LeaderboardsResponse;
-};
-
-export type QuizAttemptPayload = {
-  quizKind: 'base' | 'vela' | '5d' | '42d';
-  questionId: number;
-  selectedAnswer: number;
-  isCorrect: boolean;
-  answeredAt: number;
-};
-
-export async function submitQuizSession(
-  token: string,
-  payload: { mode: string; answered: number; correct: number },
-) {
-  return apiFetch<QuizSessionResponse>('/quiz-sessions', {
-    method: 'POST',
-    body: JSON.stringify(payload),
-    token,
-  });
-}
-
 export async function fetchLeaderboards(token: string) {
   return apiFetch<LeaderboardsResponse>('/leaderboards', { token });
 }

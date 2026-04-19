@@ -1,4 +1,4 @@
-import { QuizCarteggio, QuizInterface, QuizVelaInterface } from 'src/utils';
+import type { QuizCarteggio, QuizInterface, QuizVelaInterface } from '../utils';
 
 export const QUIZZES: QuizInterface[] = [
   {
