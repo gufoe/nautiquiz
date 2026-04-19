@@ -1,6 +1,6 @@
 <template>
   <q-page class="column items-center q-pa-md" style="padding-top: 8px">
-    <div class="text-caption text-grey-7 q-mb-sm self-stretch" style="max-width: 520px">
+    <div class="text-caption q-mb-sm self-stretch leaderboard-page-muted" style="max-width: 520px">
       <q-btn flat dense no-caps icon="arrow_back" label="Home" :to="{ name: 'home' }" />
     </div>
 
@@ -9,7 +9,7 @@
     </div>
 
     <template v-else-if="!isLoggedIn">
-      <q-banner rounded class="bg-grey-3 text-grey-9" style="max-width: 520px; width: 100%">
+      <q-banner rounded dense style="max-width: 520px; width: 100%">
         Accedi per vedere le classifiche settimanali e globali.
         <template #action>
           <q-btn flat color="primary" label="Accedi" no-caps @click="openAuthDialog" />
@@ -18,7 +18,7 @@
     </template>
 
     <template v-else-if="needsUsername">
-      <q-banner rounded class="bg-amber-2 text-amber-10" style="max-width: 520px; width: 100%">
+      <q-banner rounded dense color="warning" style="max-width: 520px; width: 100%">
         Completa la scelta del nome utente nel dialogo aperto in primo piano per usare le classifiche.
       </q-banner>
     </template>
@@ -27,7 +27,7 @@
       <div v-if="loading" class="flex flex-center q-pa-xl">
         <q-spinner color="primary" size="40px" />
       </div>
-      <q-banner v-else-if="error" rounded class="bg-red-2 text-red-10" style="max-width: 520px">
+      <q-banner v-else-if="error" rounded dense color="negative" style="max-width: 520px">
         {{ error }}
       </q-banner>
       <LeaderboardView
@@ -88,3 +88,9 @@ watch(
   },
 );
 </script>
+
+<style scoped lang="scss">
+.leaderboard-page-muted {
+  opacity: 0.75;
+}
+</style>

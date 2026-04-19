@@ -3,7 +3,7 @@
     <q-card-section class="row items-start justify-between q-pb-none">
       <div>
         <div class="text-h6">Classifica</div>
-        <div class="text-caption text-grey-7">
+        <div class="text-caption leaderboard-muted">
           <template v-if="tab === 'weekly'">
             Settimana in corso (reset ogni lunedì). Conta i quiz completati in questa settimana.
           </template>
@@ -25,22 +25,22 @@
     <q-card-section v-if="session" class="q-pb-none">
       <div class="row q-col-gutter-sm">
         <div class="col-6">
-          <q-card flat bordered class="bg-grey-2">
+          <q-card flat bordered class="leaderboard-inset">
             <q-card-section class="q-py-sm">
-              <div class="text-caption text-grey-7">Sessione</div>
+              <div class="text-caption leaderboard-muted">Sessione</div>
               <div class="text-subtitle1">
                 {{ session.correct }} corrette su {{ session.answered }}
               </div>
-              <div class="text-caption text-grey-7">Score: {{ session.score }}</div>
+              <div class="text-caption leaderboard-muted">Score: {{ session.score }}</div>
             </q-card-section>
           </q-card>
         </div>
         <div class="col-6">
-          <q-card flat bordered class="bg-grey-2">
+          <q-card flat bordered class="leaderboard-inset">
             <q-card-section class="q-py-sm">
-              <div class="text-caption text-grey-7">Posizione attuale</div>
+              <div class="text-caption leaderboard-muted">Posizione attuale</div>
               <div class="text-subtitle1">#{{ currentRank ?? '...' }}</div>
-              <div class="text-caption text-grey-7">
+              <div class="text-caption leaderboard-muted">
                 {{ positionSummary }}
               </div>
             </q-card-section>
@@ -50,23 +50,23 @@
     </q-card-section>
 
     <q-card-section v-else class="q-pb-none">
-      <q-card flat bordered class="bg-grey-2">
+      <q-card flat bordered class="leaderboard-inset">
         <q-card-section class="q-py-sm">
-          <div class="text-caption text-grey-7">Posizione attuale</div>
+          <div class="text-caption leaderboard-muted">Posizione attuale</div>
           <div class="text-subtitle1">#{{ currentRank ?? '...' }}</div>
-          <div class="text-caption text-grey-7">{{ positionSummary }}</div>
+          <div class="text-caption leaderboard-muted">{{ positionSummary }}</div>
         </q-card-section>
       </q-card>
     </q-card-section>
 
     <q-card-section v-if="notice" class="q-pb-none">
-      <q-banner rounded class="bg-amber-2 text-amber-10">
+      <q-banner rounded dense color="warning">
         {{ notice }}
       </q-banner>
     </q-card-section>
 
     <q-card-section class="q-pb-none">
-      <q-tabs v-model="tab" dense class="text-grey-8" active-color="primary" indicator-color="primary">
+      <q-tabs v-model="tab" dense active-color="primary" indicator-color="primary">
         <q-tab name="weekly" label="Settimanale" />
         <q-tab name="global" label="Globale" />
       </q-tabs>
@@ -94,7 +94,7 @@
             <tr
               v-for="row in leaderboards.weekly.rows"
               :key="`w-${row.rank}-${row.username}-${row.quizCount}`"
-              :class="row.isCurrentUser ? 'bg-blue-1' : ''"
+              :class="{ 'leaderboard-row-self': row.isCurrentUser }"
             >
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
@@ -128,7 +128,7 @@
             <tr
               v-for="row in leaderboards.global.rows"
               :key="`g-${row.rank}-${row.username}-${row.quizCount}`"
-              :class="row.isCurrentUser ? 'bg-blue-1' : ''"
+              :class="{ 'leaderboard-row-self': row.isCurrentUser }"
             >
               <td>{{ row.rank }}</td>
               <td>{{ row.username ?? '—' }}</td>
@@ -206,10 +206,29 @@ const positionSummary = computed(() => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .leaderboard-card {
   width: min(92vw, 520px);
   max-height: 85vh;
   overflow: hidden;
+}
+
+/* Secondary captions: inherit theme text, reduce emphasis (works light + dark) */
+.leaderboard-muted {
+  opacity: 0.75;
+}
+
+/* Subtle inset surface without fixed grey palette */
+.leaderboard-inset {
+  background: rgba(0, 0, 0, 0.045);
+}
+
+.body--dark .leaderboard-inset {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Highlight row using primary tint (theme token) */
+.leaderboard-row-self {
+  background: color-mix(in srgb, var(--q-primary) 18%, transparent);
 }
 </style>

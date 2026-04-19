@@ -2,7 +2,7 @@
   <q-page class="text-center column">
     <div class="col">
       <h4 class="q-mb-none">Patente Nautica</h4>
-      <div class="q-mb-md q-text-xs text-body2" style="opacity: 0.5">
+      <div class="q-mb-md q-text-xs text-body2 index-tagline">
         Quiz ministeriali per la patente nautica
       </div>
       <div class="column q-gap-1">
@@ -13,7 +13,7 @@
           label="Classifiche"
           :to="{ name: 'leaderboards' }"
         />
-        <div class="q-mt-md q-mb-xs text-grey">Quizzoni</div>
+        <div class="q-mt-md q-mb-xs index-section-label">Quizzoni</div>
         <q-btn
           flat
           label="Quizzone"
@@ -24,7 +24,7 @@
           label="Quizzone a vela"
           :to="{ name: 'quiz-home', params: { mode: 'vela' } }"
         />
-        <div class="q-mt-md q-mb-xs text-grey">Carteggioni</div>
+        <div class="q-mt-md q-mb-xs index-section-label">Carteggioni</div>
         <q-btn
           flat
           label="Carteggio 5D"
@@ -43,17 +43,17 @@
       <div v-if="weeklyLoading" class="flex flex-center q-py-md">
         <q-spinner color="primary" size="28px" />
       </div>
-      <q-banner v-else-if="weeklyError" rounded dense class="bg-grey-4 text-grey-9 text-caption">
+      <q-banner v-else-if="weeklyError" rounded dense class="text-caption">
         Classifica non disponibile al momento.
       </q-banner>
       <q-list v-else bordered class="rounded-borders text-left" style="max-width: 360px; margin: 0 auto">
         <template v-if="weeklyTop.rows.length">
           <q-item v-for="row in weeklyTop.rows" :key="row.rank + row.username">
-            <q-item-section side class="text-weight-medium text-grey-8">#{{ row.rank }}</q-item-section>
+            <q-item-section side class="text-weight-medium index-weekly-rank">#{{ row.rank }}</q-item-section>
             <q-item-section>
               <q-item-label>{{ row.username }}</q-item-label>
               <q-item-label caption>
-                <span class="text-grey-8">{{ row.quizCount }} quiz ·</span>
+                <span class="index-weekly-caption">{{ row.quizCount }} quiz ·</span>
                 <span
                   class="text-weight-medium q-ml-xs"
                   :class="leaderboardCorrectPercentClass(row.accuracy)"
@@ -66,7 +66,7 @@
           </q-item>
         </template>
         <q-item v-else>
-          <q-item-section class="text-grey-7 text-caption">
+          <q-item-section class="text-caption index-weekly-empty">
             Ancora nessun risultato questa settimana (serve un nome utente e sessioni giocate).
           </q-item-section>
         </q-item>
@@ -106,3 +106,19 @@ onMounted(async () => {
   }
 });
 </script>
+
+<style scoped lang="scss">
+.index-tagline {
+  opacity: 0.65;
+}
+
+.index-section-label {
+  opacity: 0.75;
+}
+
+.index-weekly-rank,
+.index-weekly-caption,
+.index-weekly-empty {
+  opacity: 0.75;
+}
+</style>
