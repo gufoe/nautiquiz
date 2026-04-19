@@ -2,21 +2,22 @@
 
 ## Scopo
 
-Servizio HTTP per autenticazione, invio in batch delle risposte ai quiz, lettura degli storici per tipo quiz e classifiche; persistenza su SQLite con migrazioni versionate.
+Servizio HTTP per autenticazione, invio in batch delle risposte ai quiz, lettura degli storici per tipo quiz e classifiche; persistenza su SQLite con migrazioni versionate. Le famiglie di quiz (`base`, `vela`, `5d`, `42d`) e la validazione delle stringhe `quiz_kind` sono allineate al [catalogo condiviso](../packages/quiz-catalog/README.md) importato come dipendenza.
 
 ## Invarianti dati
 
-- **`answers`**: una riga per ogni risposta inviata (utente, `quiz_kind`, `question_id`, indice scelto, correttezza, timestamp). Classifiche e storici per tipo quiz si derivano da questa tabella.
-- **`quiz_issue_reports`** (segnalazioni) e **`quiz_favorites`** (preferiti): insiemi di id domanda per utente e per famiglia quiz; il client invia uno snapshot completo con **`PUT /quiz-lists`** (corpo con `favorites` e `issues`, ciascuno con chiavi `base` / `vela` / `5d` / `42d` e array di interi). Il server sostituisce tutte le righe dell’utente in quelle due tabelle, così l’analisi SQL resta semplice.
+- **`answers`**: una riga per ogni risposta accettata (utente, `quiz_kind`, `question_id`, indice scelto, correttezza, timestamp). Classifiche e storici per tipo quiz si derivano da questa tabella.
+- **`quiz_issue_reports`** (segnalazioni) e **`quiz_favorites`** (preferiti): insiemi di id domanda per utente e per famiglia quiz; il client invia uno snapshot completo con **`PUT /quiz-lists`** (corpo con `favorites` e `issues`, ciascuno con le quattro famiglie e array di interi). Il server **sostituisce** tutte le righe dell’utente in quelle due tabelle a ogni sync, così l’analisi SQL resta semplice e coerente con lo stato dichiarato dal client.
 - **`GET /quiz-lists`** restituisce lo stesso formato per allineare il browser dopo login.
-- Il batch **`POST /quiz-attempts/batch`** accetta solo righe con **`is_correct`** booleano; id univoco per riga per deduplicare i reinvii.
-- Il catalogo delle risposte attese è condiviso con la UI tramite il pacchetto `packages/quiz-catalog` (mappe generate dagli array quiz nel client). Per riallineare **`answers.is_correct`** al catalogo attuale dopo correzioni ai dati o migrazioni, usare lo script di backfill indicato nel manifest del package (stesso database SQLite dell’API, variabile di percorso come per gli altri script operativi).
+- Il batch **`POST /quiz-attempts/batch`** accetta solo righe con **`is_correct`** booleano; id univoco per riga per deduplicare i reinvii. La logica di validazione delle famiglie quiz sulle route e sui JSON è la stessa usata nel catalogo condiviso (`isQuizKind`, elenco `QUIZ_KINDS`).
+- Il **catalogo delle risposte attese** è lo stesso della UI (pacchetto `packages/quiz-catalog`, mappe generate dagli array quiz nel client). Serve a ricalcolare la correttezza lato server dove serve (es. script di **backfill** sul database di produzione o di manutenzione). Per riallineare **`answers.is_correct`** dopo correzioni ai dati quiz o migrazioni, usare lo script di backfill indicato nel manifest del package API; percorso database come negli altri script operativi che leggono SQLite.
 
 ## Collegamenti
 
 - Indice repository: [README principale](../README.md)
 - Frontend: [guida UI](../ui/README.md)
-- Dataset ministeriale (contesto domande): [quiz ministeriali](../sources/quiz-ministeriali/README.md)
+- Catalogo condiviso (correttezza, tipi): [packages/quiz-catalog](../packages/quiz-catalog/README.md)
+- Dataset ministeriale (contesto normativo delle domande): [quiz ministeriali](../sources/quiz-ministeriali/README.md)
 
 ## Responsabilità
 
@@ -33,4 +34,4 @@ Servizio HTTP per autenticazione, invio in batch delle risposte ai quiz, lettura
 
 ## Allineamento
 
-Aggiorna questa guida quando cambiano route o contratti API, modello dati o migrazioni, variabili d’ambiente richieste, o stack runtime (Bun, dipendenze principali). Aggiorna anche la guida UI se il frontend deve adattarsi.
+Aggiorna questa guida quando cambiano route o contratti API, modello dati o migrazioni, variabili d’ambiente richieste, stack runtime (Bun, dipendenze principali), oppure quando cambiano il catalogo condiviso o gli script operativi (`db:*`, backfill, dump liste). Aggiorna anche la guida UI se il frontend deve adattarsi.

@@ -8,8 +8,8 @@
 services:
   api:
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
     environment:
       JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in the environment or .env}
       SQLITE_PATH: /data/nautiquiz.sqlite

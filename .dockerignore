@@ -1,4 +1,10 @@
+# Host-only / build artifacts (context is repo root for production images)
+.git
 **/node_modules
 **/dist
-**/.quasar
-.git
+ui/.quasar
+ui/dist
+api/dist
+api/data
+**/coverage
+**/.eslintcache

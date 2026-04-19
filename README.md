@@ -1,6 +1,6 @@
 # Nautiquiz
 
-Applicazione per esercitarsi con i quiz della patente nautica. Dataset di riferimento in repository: Allegato A MIT (elenco nazionale quesiti D1) in [`sources/quiz-ministeriali/`](sources/quiz-ministeriali/README.md). In produzione: [nautiquiz.gufoe.it](https://nautiquiz.gufoe.it/).
+Applicazione per esercitarsi con i quiz della patente nautica. Il repository è un **monorepo** (workspaces Bun: `api`, `ui`, pacchetti sotto `packages/`). Dataset di riferimento normativo: Allegato A MIT in [`sources/quiz-ministeriali/`](sources/quiz-ministeriali/README.md). In produzione: [nautiquiz.gufoe.it](https://nautiquiz.gufoe.it/).
 
 ---
 
@@ -32,9 +32,9 @@ Questa sezione definisce come scrivere e aggiornare guide e README nel repo, in 
 |------|--------|
 | Frontend (Quasar / Vue) | [`ui/README.md`](ui/README.md) |
 | Backend API (Bun / Hono) | [`api/README.md`](api/README.md) |
-| Catalogo risposte attese (pacchetto condiviso UI/API) | Cartella `packages/quiz-catalog`: mappe id→indice corretto generate dagli array in `ui/src/data/quiz.ts`; dalla root del monorepo lo script di rigenerazione è quello denominato catalog nel manifest principale. |
+| Catalogo risposte condiviso (tipi, correttezza, mappe generate) | [`packages/quiz-catalog/README.md`](packages/quiz-catalog/README.md) |
 | Fonti ufficiali quiz MIT e note normative | [`sources/quiz-ministeriali/README.md`](sources/quiz-ministeriali/README.md) |
 
-**Invarianti dati (sintesi):** il backend conserva solo righe di risposta (utente, quiz, domanda, scelta, correttezza, istante). Preferiti e segnalazioni restano nel browser. Dopo login, se c’è progresso locale viene chiesto se importarlo. Le risposte fatte offline vanno in coda e si inviano al server appena c’è connessione. Dettaglio nelle guide API e UI.
+**Invarianti dati (sintesi):** il backend conserva le **risposte** come righe (utente, famiglia quiz, domanda, scelta, correttezza, istante) e, separatamente, **preferiti e segnalazioni** come tabelle sostituibili per utente (allineate a snapshot inviati dal client). Nel browser restano copie in `localStorage` per uso offline; dopo login gli storici e le liste vengono riallineati con il server. Se esisteva già progresso locale, l’utente può scegliere di importarlo sull’account. Le nuove risposte in assenza di rete restano in coda e si inviano in batch quando la connessione c’è. Il dettaglio dei flussi è nelle guide UI e API.
 
-Il **package root** orchestra script condivisi (sviluppo UI, sviluppo API, build, database): i dettagli sono nei README di `ui` e `api` e negli script del manifest root.
+Il **manifest nella root** del monorepo espone script per sviluppo e build di UI e API, migrazioni database e **rigenerazione del catalogo** risposte dopo modifiche ai dati quiz; i nomi esatti sono quelli definiti lì.

@@ -24,3 +24,11 @@ Per l’applicazione pratica a bordo e per dotazioni aggiornate rispetto al solo
 - Esempi di novità ricorrenti in letteratura nautica 2025 (verificare sempre testo unico e circolari MIT): luce ad attivazione automatica su alcuni dispositivi di galleggiamento oltre certe distanze; **scandaglio** per fasce di navigazione più estese; **tabella segnali COLREG** per alcune fasce; integrazioni su imbragature; evoluzione di giubbotti e marcature; possibili alternative alla sola zattera in alcune fasce (es. tender con kit, vincoli su geolocalizzazione) — **sempre** in funzione del tipo di unità, noleggio e licenza.
 
 In app, le **domande** restano come nel PDF MIT 2025 ove presenti; le **spiegazioni** possono richiamare esplicitamente il DM 133/2024 dove serve distinguere testo d’esame e dotazione effettiva a bordo.
+
+---
+
+### Collegamenti al codice e alle altre guide
+
+- Indice del repository: [README principale](../../README.md)
+- Dove sono curati testi, scelte e logica lato client: [guida UI](../../ui/README.md)
+- Catalogo numerico delle risposte attese condiviso con l’API: [packages/quiz-catalog](../../packages/quiz-catalog/README.md)
