@@ -91,14 +91,14 @@ ssh gufoe "cd ~/pro/nautiquiz && docker compose -f docker-compose.prod.yml up -d
 `sqlite3` may be unavailable in the image. Prefer Bun SQLite:
 
 ```bash
-ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log(db.query(\\\"select count(*) as c from quiz_sessions\\\").get());\"'"
+ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log(db.query(\\\"select count(*) as c from answers\\\").get());\"'"
 ```
 
 Useful checks:
 
-- table counts
+- table counts (legacy `user_client_state` / `quiz_sessions` are dropped by `0005_answers_only` and idempotently by `0008_drop_legacy_client_tables` if they still existed; lists sync uses `quiz_issue_reports` / `quiz_favorites`)
 ```bash
-ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log({users:db.query(\\\"select count(*) as c from users\\\").get().c, client_state:db.query(\\\"select count(*) as c from user_client_state\\\").get().c, quiz_sessions:db.query(\\\"select count(*) as c from quiz_sessions\\\").get().c});\"'"
+ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log({users:db.query(\\\"select count(*) as c from users\\\").get().c, answers:db.query(\\\"select count(*) as c from answers\\\").get().c, quiz_issue_reports:db.query(\\\"select count(*) as c from quiz_issue_reports\\\").get().c, quiz_favorites:db.query(\\\"select count(*) as c from quiz_favorites\\\").get().c});\"'"
 ```
 
 - recent users
@@ -106,9 +106,9 @@ ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from
 ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log(db.query(\\\"select id,email,username,created_at from users order by created_at desc limit 20\\\").all());\"'"
 ```
 
-- inspect one user state payload size
+- inspect one user’s segnalazioni row count (replaces legacy `user_client_state.data_json` size check)
 ```bash
-ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); const row=db.query(\\\"select u.id,u.username,s.data_json from users u join user_client_state s on s.user_id=u.id where u.username=?\\\").get(\\\"gufoe\\\"); console.log({id:row?.id, username:row?.username, bytes:(row?.data_json||\\\"\\\").length});\"'"
+ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); const u=db.query(\\\"select id, username from users where username=?\\\").get(\\\"gufoe\\\"); if (!u) { console.log({ user: null }); process.exit(0); } const n = db.query(\\\"select count(*) as c from quiz_issue_reports where user_id=?\\\").get(u.id).c; console.log({ id: u.id, username: u.username, issue_rows: n });\"'"
 ```
 
 ## Verify Live API Behavior
@@ -122,8 +122,8 @@ curl -s "https://nautiquiz.gufoe.it/api/leaderboards" \
 
 When debugging leaderboard mismatches, always compare:
 1. API response payload
-2. `quiz_sessions` row counts
-3. `user_client_state` historical fields (if relevant to migration logic)
+2. `answers` row counts for the relevant scope
+3. User identity (`users.username`) if the issue is account-specific
 
 ## Deploy Workflow
 
@@ -156,7 +156,7 @@ Post-deploy checks:
 - **Unexpected low counts**:
   - verify active DB path in compose (`/data/nautiquiz.sqlite`)
   - verify correct volume (`nautiquiz_nautiquiz_sqlite`)
-  - inspect legacy client state vs `quiz_sessions`
+  - compare `answers` / `quiz_issue_reports` counts to API expectations (legacy `user_client_state` / `quiz_sessions` should be absent after migration `0008`)
 - **502/404 through domain**:
   - verify `/etc/caddy/Caddyfile` still proxies `nautiquiz.gufoe.it` -> `localhost:5010`
   - verify `nautiquiz-edge-1` is running and bound to `127.0.0.1:5010`

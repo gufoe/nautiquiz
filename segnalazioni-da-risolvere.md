@@ -1,8 +1,8 @@
 # Segnalazioni — quiz da rivedere
 
-Elenco generato dai flag **Segnalazioni** (`quiz-issues` / `vela-quiz-issues` / …) salvati nel client state sincronizzato sul server di produzione.
+Elenco generato dai flag **Segnalazioni** (`quiz-issues` / `vela-quiz-issues` / …); sul server le righe sono in `quiz_issue_reports` (sync da client; il vecchio blob `user_client_state` è stato rimosso dalle migration 0005/0008).
 
-- **Origine dati:** SQLite `user_client_state.data_json` su host `gufoe`, volume Docker `nautiquiz_sqlite` → `/data/nautiquiz.sqlite`.
+- **Origine dati:** SQLite `quiz_issue_reports` su host `gufoe`, volume Docker `nautiquiz_sqlite` → `/data/nautiquiz.sqlite`.
 - **Aggregazione:** unione di tutti gli ID segnalati da ogni utente (deduplicati).
 - **Dataset testi/risposte:** versione corrente del repo (`ui/src/data/quiz.ts`).
 - **Generato:** 2026-04-18.

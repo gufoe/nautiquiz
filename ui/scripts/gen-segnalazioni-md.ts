@@ -1,6 +1,7 @@
 /**
- * One-off: aggregates production "segnalazioni" (quiz-issues*) from SQLite user_client_state,
- * then emits a markdown report joined with local quiz copy. Re-fetch IDs:
+ * One-off: aggregates production "segnalazioni" (quiz-issues*) — historically from `user_client_state`
+ * (dropped in 0005 / idempotent 0008); live DB uses `quiz_issue_reports` synced from clients.
+ * Emits a markdown report joined with local quiz copy. Re-fetch IDs:
  *   ssh gufoe 'docker exec nautiquiz-api-1 bun -e "..."'  # see README or runbook
  */
 import { writeFileSync } from 'node:fs';
@@ -151,9 +152,9 @@ const userAppendix = [
 const md = [
   '# Segnalazioni — quiz da rivedere',
   '',
-  'Elenco generato dai flag **Segnalazioni** (`quiz-issues` / `vela-quiz-issues` / …) salvati nel client state sincronizzato sul server di produzione.',
+  'Elenco generato dai flag **Segnalazioni** (`quiz-issues` / `vela-quiz-issues` / …); sul server le righe sono in `quiz_issue_reports` (sync da client; il vecchio blob `user_client_state` è stato rimosso dalle migration 0005/0008).',
   '',
-  '- **Origine dati:** SQLite `user_client_state.data_json` su host `gufoe`, volume Docker `nautiquiz_sqlite` → `/data/nautiquiz.sqlite`.',
+  '- **Origine dati:** SQLite `quiz_issue_reports` (e/o snapshot manuale) su host `gufoe`, volume Docker `nautiquiz_sqlite` → `/data/nautiquiz.sqlite`.',
   '- **Aggregazione:** unione di tutti gli ID segnalati da ogni utente (deduplicati).',
   '- **Dataset testi/risposte:** versione corrente del repo (`ui/src/data/quiz.ts`).',
   '- **Generato:** 2026-04-18.',
