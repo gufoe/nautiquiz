@@ -96,7 +96,7 @@ ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from
 
 Useful checks:
 
-- table counts (legacy `user_client_state` / `quiz_sessions` are dropped by `0005_answers_only` and idempotently by `0008_drop_legacy_client_tables` if they still existed; lists sync uses `quiz_issue_reports` / `quiz_favorites`)
+- table counts (legacy `user_client_state` / `quiz_sessions`: `0005` plus `0008`/`0009`; SQLite migrator needs `--> statement-breakpoint` between statements — see [drizzle#393](https://github.com/drizzle-team/drizzle-orm/issues/393); lists sync uses `quiz_issue_reports` / `quiz_favorites`)
 ```bash
 ssh gufoe "docker exec nautiquiz-api-1 sh -lc 'bun -e \"import { Database } from \\\"bun:sqlite\\\"; const db=new Database(\\\"/data/nautiquiz.sqlite\\\"); console.log({users:db.query(\\\"select count(*) as c from users\\\").get().c, answers:db.query(\\\"select count(*) as c from answers\\\").get().c, quiz_issue_reports:db.query(\\\"select count(*) as c from quiz_issue_reports\\\").get().c, quiz_favorites:db.query(\\\"select count(*) as c from quiz_favorites\\\").get().c});\"'"
 ```
