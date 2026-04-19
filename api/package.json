@@ -11,6 +11,7 @@
     "db:migrate": "bun run src/db/migrate.ts",
     "db:list-issues": "bun scripts/list-quiz-issues.ts",
     "db:backfill-is-correct": "bun scripts/backfill-answers-is-correct.ts",
+    "db:repair-answers": "bun scripts/repair-answers-from-backup.ts",
     "db:studio": "drizzle-kit studio",
     "test": "bun test --preload ./test/setup.ts ./test/e2e",
     "test:e2e": "bun test --preload ./test/setup.ts ./test/e2e"

@@ -29,7 +29,7 @@ Servizio HTTP per autenticazione, invio in batch delle risposte ai quiz, lettura
 
 - Sviluppo: dalla root del monorepo si avvia lo script di sviluppo della cartella `api` (watch sul codice sorgente).
 - Avvio diretto: entrypoint principale nel sorgente TypeScript del package; porta e variabili d’ambiente documentate implicitamente nel codice e nel deploy.
-- Database: generazione e applicazione migrazioni tramite script `db:*` nel manifest del package; eventuale studio schema tramite lo strumento indicato negli script.
+- Database: generazione e applicazione migrazioni tramite script `db:*` nel manifest del package; eventuale studio schema tramite lo strumento indicato negli script. Se la tabella **`answers`** risulta incoerente (es. tutte le righe attribuite a un solo utente) ma esiste ancora **`question_attempts`** oppure un backup SQLite antico con quella tabella, lo script **`db:repair-answers`** nel package (vedi intestazione del file sotto `scripts/`) ricostruisce **`answers`** dalla fonte corretta; in produzione usare solo dopo backup del volume database.
 - Test: suite e2e invocabile dallo script di test del package; la root può offrire un comando che esegue i test in container per ambienti isolati.
 
 ## Allineamento
