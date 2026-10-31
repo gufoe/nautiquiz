@@ -1,40 +1,49 @@
 # Nautiquiz
 
-Applicazione per esercitarsi con i quiz della patente nautica. Il repository è un **monorepo** (workspaces Bun: `api`, `ui`, pacchetti sotto `packages/`). Dataset di riferimento normativo: Allegato A MIT in [`sources/quiz-ministeriali/`](sources/quiz-ministeriali/README.md). In produzione: [nautiquiz.gufoe.it](https://nautiquiz.gufoe.it/).
+**Allenati per la patente nautica, una domanda alla volta.** Nautiquiz è un’applicazione web per esercitarsi con i quiz ministeriali, ripassare gli errori e tenere traccia dei propri progressi.
 
----
+▶ **Prova l’app:** [nautiquiz.gufoe.it](https://nautiquiz.gufoe.it/)
 
-## Guide maintenance (read this before editing docs)
+## Cosa puoi fare
 
-Questa sezione definisce come scrivere e aggiornare guide e README nel repo, in modo che restino utili sia alle persone sia agli agenti che navigano il progetto.
+- Esercitarti con i quiz base, i quiz a vela e i carteggi 5D e 42D.
+- Scegliere se svolgere tutti i quiz, concentrarti su quelli mancanti o sbagliati, oppure rivedere preferiti e domande segnalate.
+- Consultare spiegazioni e immagini associate alle domande.
+- Salvare i progressi nel browser e continuare a esercitarti anche offline; con un account, sincronizzare risposte e liste personali.
+- Confrontare i risultati nella classifica settimanale.
 
-### Principles
+## Dati e fonti
 
-- **High level.** Descrivi ruolo, confini e flussi; evita elenchi di file, nomi di simboli o passi da manuale salvo quando servono davvero a orientarsi.
-- **Cross linked.** Ogni guida punta al contesto padre (README radice) e alle guide sorelle (UI, API, dataset). La radice resta l’indice; non duplicare paragrafi interi tra file.
-- **No code.** Niente blocchi di codice, snippet di terminale o configurazione nelle guide. Indica *cosa* fare (es. “avvia lo script di sviluppo UI dal package root”) e rimanda agli script reali nel codice o al README della cartella se serve il dettaglio operativo minimo in una riga.
-- **Semistructured.** Usa sempre la stessa intelaiatura (titolo → scopo → collegamenti → responsabilità / operazioni → note di allineamento) così strumenti e agenti possono agganciare sezioni in modo prevedibile. Sottosezioni brevi battono paragrafi unici lunghi.
-- **After code changes.** Se modifichi comportamento, dipendenze, percorsi o contratti (API, env, build), aggiorna nella stessa PR (o subito dopo) la guida della cartella toccata e, se l’impatto è trasversale, una riga nell’indice in questa pagina.
+I quiz sono organizzati nell’app a partire dai documenti del Ministero delle Infrastrutture e dei Trasporti. I PDF originali, i relativi riferimenti e alcune note sul contesto normativo sono raccolti in [`sources/quiz-ministeriali/`](sources/quiz-ministeriali/README.md). L’app non è un servizio del MIT e non sostituisce i testi ufficiali, la formazione o le disposizioni vigenti: verifica sempre le informazioni aggiornate presso le fonti istituzionali.
 
-### Default outline for package guides
+## Avvio in locale
 
-1. **Scopo** — cosa copre la cartella e cosa esclude.
-2. **Collegamenti** — link alla radice, alle altre guide rilevanti e a dataset o deploy se servono.
-3. **Responsabilità** — ruolo nel sistema (es. solo client, solo HTTP, solo dati).
-4. **Operazioni** — come si sviluppa e si builda in linguaggio naturale; niente comandi copiabili in blocco.
-5. **Allineamento** — quando e perché aggiornare questa guida (trigger legati al codice).
+Il progetto usa [Bun](https://bun.sh/) e Docker Compose per avviare insieme interfaccia e API in ambiente di sviluppo. Dalla root del repository:
 
----
+```sh
+bun install
+docker compose -f docker-compose.dev.yml up
+```
 
-## Documentation index
+Apri [http://localhost:9000](http://localhost:9000). L’interfaccia è disponibile sulla porta 9000 e l’API sulla 3333. La configurazione Compose usa valori adatti allo sviluppo: non riutilizzarli in produzione.
 
-| Area | Guida |
-|------|--------|
-| Frontend (Quasar / Vue) | [`ui/README.md`](ui/README.md) |
-| Backend API (Bun / Hono) | [`api/README.md`](api/README.md) |
-| Catalogo risposte condiviso (tipi, correttezza, mappe generate) | [`packages/quiz-catalog/README.md`](packages/quiz-catalog/README.md) |
-| Fonti ufficiali quiz MIT e note normative | [`sources/quiz-ministeriali/README.md`](sources/quiz-ministeriali/README.md) |
+Per avviare i componenti separatamente, eseguire i test o lavorare sul database, consulta le guide dedicate.
 
-**Invarianti dati (sintesi):** il backend conserva le **risposte** come righe (utente, famiglia quiz, domanda, scelta, correttezza, istante) e, separatamente, **preferiti e segnalazioni** come tabelle sostituibili per utente (allineate a snapshot inviati dal client). Nel browser restano copie in `localStorage` per uso offline; dopo login gli storici e le liste vengono riallineati con il server. Se esisteva già progresso locale, l’utente può scegliere di importarlo sull’account. Le nuove risposte in assenza di rete restano in coda e si inviano in batch quando la connessione c’è. Il dettaglio dei flussi è nelle guide UI e API.
+## Struttura e documentazione
 
-Il **manifest nella root** del monorepo espone script per sviluppo e build di UI e API, migrazioni database e **rigenerazione del catalogo** risposte dopo modifiche ai dati quiz; i nomi esatti sono quelli definiti lì.
+Il repository è un monorepo Bun con interfaccia, API e un pacchetto condiviso per il catalogo delle risposte corrette.
+
+| Area | Descrizione |
+| --- | --- |
+| [`ui/`](ui/README.md) | Applicazione web Vue e Quasar, contenuti e flussi di studio |
+| [`api/`](api/README.md) | API HTTP, autenticazione, sincronizzazione e persistenza |
+| [`packages/quiz-catalog/`](packages/quiz-catalog/README.md) | Tipi condivisi e catalogo delle risposte attese |
+| [`sources/quiz-ministeriali/`](sources/quiz-ministeriali/README.md) | Documenti di riferimento e note sulle fonti |
+
+## Sviluppo
+
+Le modifiche a domande e risposte devono mantenere allineati interfaccia e catalogo condiviso: la guida del [catalogo quiz](packages/quiz-catalog/README.md) descrive il flusso di generazione. Prima di contribuire, leggi la guida relativa all’area interessata e includi nella modifica l’aggiornamento della documentazione quando cambiano comportamento o configurazione.
+
+## Licenza
+
+Non è indicata una licenza per il repository. In assenza di una licenza esplicita, il codice non è automaticamente riutilizzabile o ridistribuibile: contatta i maintainer per informazioni.
